@@ -1,0 +1,58 @@
+.article{
+    margin-bottom: 20px;
+}
+.article-author{
+    font-size: 11px;
+}
+.article-title{
+    font-size: 18px;
+    font-weight: bold;
+    font-family: JungleFeverRegular;
+}
+.article-subtitle{
+    font-size: 16px;
+    font-weight: bold;
+}
+.article-image{
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 250px;
+    background-size: cover;
+    border-style: none;
+    border-color: red;
+    border-radius: 20px 0 0 20px;
+}
+.article-blockquote {
+    float: right;
+    margin: 0;
+    /* margin-left: 12px; */
+    /* margin-right: -4px; */
+    /* margin-bottom: 2pt; */
+    line-height: 20pt;
+    font-size: 12px;
+    font-style: italic;
+    text-align: center;
+    background-color: rgba(255,255,255,0.15);
+    border-radius: 12px;
+    padding: 8px;
+    /* padding-right: 8px; */
+}
+
+.container-article{
+    margin-left: -50px!important;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 767px) {
+    .container-article{
+        margin-left: -15px!important;
+    }
+    .article-image{
+        border-radius: 0;
+    }
+}
+@media (max-width: 990px) {
+     .container-article{
+        margin-left: -15px!important;
+    }
+}

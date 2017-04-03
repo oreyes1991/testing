@@ -1,0 +1,73 @@
+.banner-right{
+    margin-right: -50px;
+    margin-bottom: 20px;
+    padding-left: 0!important;
+    padding-right: 0!important;
+    min-width: 280px;
+}
+
+.banner-img{
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    margin: 0;
+    border-radius: 0 0 20px 20px;
+}
+
+.arequipa-tour{
+    background-image: url(../images/banners/arequipa.jpg);
+}
+.puno-tour{
+    background-image: url(../images/banners/puno_1_t.jpg);
+}
+.cuzco-tour{
+    background-image: url(../images/banners/cusco_1_t.jpg);
+}
+.ballestas-tour{
+    background-image: url(../images/banners/paracas_07_t.jpg);
+}
+.paracas-tour{
+    background-image: url(../images/banners/paracas_lacatedral.t.jpg);
+}
+
+
+
+.bike-activitie{
+    background-image: url(../images/banners/bike_paracas_3_t.jpg);
+}
+.kitesurf-activitie{
+    background-image: url(../images/banners/kitesurf_1_t.jpg);
+}
+.sandboard-activitie{
+    background-image: url(../images/banners/sandboard_1_t.jpg);
+}
+.banners{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+@media (max-width: 1040px) {
+    .banner-right{
+          margin-right: 0;
+    }
+}
+
+
+@media (max-width: 990px) {
+    .banners{
+        flex-direction: row;
+    }
+    .banner-right{
+          margin-left: 10px;
+          margin-right: 10px;
+          flex: 1;
+    }
+}
+
+
+@media (max-width: 650px) {
+     .banners{
+        flex-direction: column;
+    }
+}
