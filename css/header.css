@@ -1,5 +1,6 @@
 header{
     position: relative;
+    background-color: #101010;
 }
 header .title{
     width:100%;
@@ -143,4 +144,8 @@ nav.mainmenu{
 
 .banner-right .image-zoom{
 
+}
+
+.navbar-fixed-top .navbar-brand{
+    display: inline-block;
 }

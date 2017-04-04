@@ -4,6 +4,7 @@
     padding-left: 0!important;
     padding-right: 0!important;
     min-width: 280px;
+     transition: all .2s ease-in-out; 
 }
 
 .banner-img{
@@ -13,6 +14,17 @@
     height: 100%;
     margin: 0;
     border-radius: 0 0 20px 20px;
+    position: relative;
+}
+
+.banner-img .title-banner{
+    bottom: 10px;
+    color: white;
+    position: absolute;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    text-shadow: 2px 2px #898989;
 }
 
 .arequipa-tour{
@@ -70,4 +82,17 @@
      .banners{
         flex-direction: column;
     }
+}
+
+.banner-right > .gallery > figure .banner-img:hover{
+    transform: scale(1.4);
+    transition: all .2s ease-in-out; 
+}
+
+.banner-right > .gallery > figure .banner-img{
+    transform: scale(1);
+    transition: all .2s ease-in-out; 
+}
+.banner-right  .gallery{
+    overflow: hidden;
 }
