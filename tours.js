@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		12: 0
+/******/ 		13: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -3191,39 +3191,39 @@ return /******/ (function(modules) { // webpackBootstrap
 
 var map = {
 	"./tours-arequipa.en.js": [
-		17,
+		18,
 		8
 	],
 	"./tours-cuzco.en.js": [
-		18,
+		19,
 		7
 	],
 	"./tours-ica.en.js": [
-		19,
+		20,
 		6
 	],
 	"./tours-iquitos.en.js": [
-		20,
+		21,
 		5
 	],
 	"./tours-lima.en.js": [
-		21,
+		22,
 		4
 	],
 	"./tours-nasca.en.js": [
-		22,
+		23,
 		3
 	],
 	"./tours-north.en.js": [
-		23,
+		24,
 		2
 	],
 	"./tours-paracas.en.js": [
-		24,
+		25,
 		1
 	],
 	"./tours-puno.en.js": [
-		25,
+		26,
 		0
 	]
 };

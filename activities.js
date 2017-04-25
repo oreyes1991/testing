@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		13: 0
+/******/ 		14: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -3189,8 +3189,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./biking-paracas.en.js": [
+	"./activities-cusco.en.js": [
 		16,
+		10
+	],
+	"./activities-paracas.en.js": [
+		17,
 		9
 	]
 };
