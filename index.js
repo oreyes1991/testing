@@ -3194,21 +3194,21 @@ frame.set("loop.revindex0", t_2 - t_1 - 1);
 frame.set("loop.first", t_1 === 0);
 frame.set("loop.last", t_1 === t_2 - 1);
 frame.set("loop.length", t_2);
-output += "\r\n<div class=\"row container-article\">\r\n    <div class=\"col-sm-4 col-md-4\">\r\n        <img class=\"article-image\" style=\"background-image:url(";
+output += "\n<div class=\"row container-article\">\n    <div class=\"col-sm-4 col-md-4\">\n        <img class=\"article-image\" style=\"background-image:url(";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"url_image"), env.opts.autoescape);
-output += ");\" alt=\"\" width=\"100%\">\r\n    </div>\r\n    <div class=\"col-sm-8 col-md-8\">\r\n        <div class=\"row article\">\r\n            <div class=\"col-lg-8 col-md-7\">\r\n                <div class=\"article-title\">";
+output += ");\" alt=\"\" width=\"100%\">\n    </div>\n    <div class=\"col-sm-8 col-md-8\">\n        <div class=\"row article\">\n            <div class=\"col-lg-8 col-md-7\">\n                <div class=\"article-title\">";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"title"), env.opts.autoescape);
-output += "</div>\r\n                <div class=\"article-author\">";
+output += "</div>\n                <div class=\"article-author\">";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"date"), env.opts.autoescape);
 output += " - ";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"author"), env.opts.autoescape);
-output += "</div>\r\n                <div class=\"article-subtitle\">\r\n                    ";
+output += "</div>\n                <div class=\"article-subtitle\">\n                    ";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"subtitle"), env.opts.autoescape);
-output += "\r\n                </div>\r\n                <p class=\"text-justify\">\r\n                    ";
+output += "\n                </div>\n                <p class=\"text-justify\">\n                    ";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"description"), env.opts.autoescape);
-output += "\r\n                </p>\r\n            </div>\r\n            <div class=\"col-lg-4 col-md-5\">\r\n                <blockquote class=\"article-blockquote\">\r\n                    ";
+output += "\n                </p>\n            </div>\n            <div class=\"col-lg-4 col-md-5\">\n                <blockquote class=\"article-blockquote\">\n                    ";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"blockquote"), env.opts.autoescape);
-output += "\r\n                </blockquote>\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n</div>\r\n";
+output += "\n                </blockquote>\n            </div>\n        </div>\n\n    </div>\n</div>\n";
 ;
 }
 }
