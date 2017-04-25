@@ -1,5 +1,7 @@
+@import 'bttn.min.css';
 @import 'main.css';
 @import 'banners.css';
+@import 'tours.css';
 html,body{
     width: 100%;
     height: 100vh;
@@ -9,6 +11,7 @@ html,body{
     height: 100%;
     width: 100%;
     overflow: auto;
+    position: relative;
 }
 body{
     margin: 0px;
@@ -52,3 +55,20 @@ body{
     margin-bottom: 46px;
     padding: 10px;
 }
+
+.padding-page{
+    padding-top: 120px;
+}
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
+
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 0!important;
+    padding-right: 0!important;
+    max-width: 1020px;
+}
+
