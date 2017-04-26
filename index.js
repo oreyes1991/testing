@@ -3196,7 +3196,7 @@ frame.set("loop.last", t_1 === t_2 - 1);
 frame.set("loop.length", t_2);
 output += "\r\n<div class=\"row container-article\">\r\n    <div class=\"col-sm-4 col-md-4\">\r\n        <img class=\"article-image\" style=\"background-image:url(";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"url_image"), env.opts.autoescape);
-output += ");\" alt=\"\" width=\"100%\">\r\n    </div>\r\n    <div class=\"col-sm-8 col-md-8\">\r\n        <div class=\"row article\">\r\n            <div class=\"col-lg-8 col-md-7\">\r\n                <div class=\"article-title\">";
+output += ");\" alt=\"\" width=\"100%\">\r\n    </div>\r\n    <div class=\"col-sm-8 col-md-8\">\r\n        <div class=\"row article\">\r\n            <div class=\"col-lg-12\">\r\n                <div class=\"article-title\">";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"title"), env.opts.autoescape);
 output += "</div>\r\n                <div class=\"article-author\">";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"date"), env.opts.autoescape);
@@ -3206,9 +3206,9 @@ output += "</div>\r\n                <div class=\"article-subtitle\">\r\n       
 output += runtime.suppressValue(runtime.memberLookup((t_4),"subtitle"), env.opts.autoescape);
 output += "\r\n                </div>\r\n                <p class=\"text-justify\">\r\n                    ";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"description"), env.opts.autoescape);
-output += "\r\n                </p>\r\n            </div>\r\n            <div class=\"col-lg-4 col-md-5\">\r\n                <blockquote class=\"article-blockquote\">\r\n                    ";
+output += "\r\n                </p>\r\n                 <blockquote class=\"article-blockquote\">\r\n                    ";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"blockquote"), env.opts.autoescape);
-output += "\r\n                </blockquote>\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n</div>\r\n";
+output += "\r\n                </blockquote>\r\n            </div>\r\n      \r\n        </div>\r\n\r\n    </div>\r\n</div>\r\n";
 ;
 }
 }
