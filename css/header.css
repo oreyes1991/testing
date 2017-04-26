@@ -144,3 +144,28 @@ nav.mainmenu{
 .navbar-fixed-top .navbar-brand{
     display: inline-block;
 }
+
+.logo{
+    position: absolute;
+    z-index: 100;
+    padding: 10px;
+    text-align: center;
+}
+.logo img{
+    height: 150px;
+    opacity: .7;   
+}
+
+@media (max-width:768px){
+    .logo{
+        width:100%;
+        padding:0;
+    }
+    .logo img{
+        height: 210px;
+    }
+     header .title { 
+        display: none;
+    }
+
+}
