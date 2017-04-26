@@ -3241,17 +3241,9 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += " <div class=\"col-md-12\">\n    <div class=\"row tour-container\">\n        <div class=\"col-md-8 col-sm-12\">      \n            <p class=\"text-justify\">\n                <img class=\"article-image tour-image\" style=\"background-image:url(";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"url_image"), env.opts.autoescape);
-output += ");\" alt=\"\" width=\"100%\">\n\n                <div class=\"article-title\">";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"title"), env.opts.autoescape);
-output += "</div>\n            <div class=\"article-subtitle\">\n                ";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"subtitle"), env.opts.autoescape);
-output += "\n            </div>\n                ";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"description"), env.opts.autoescape);
-output += "\n            </p>\n        </div>\n        <div class=\"col-md-4 hidden-sm\">\n            <div class=\"banner-right floating-right tour-menu\">\n                <ul>\n                    ";
+output += " <div class=\"col-md-12\">\r\n\r\n    ";
 frame = frame.push();
-var t_3 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"tours");
+var t_3 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"activities");
 if(t_3) {var t_2 = t_3.length;
 for(var t_1=0; t_1 < t_3.length; t_1++) {
 var t_4 = t_3[t_1];
@@ -3263,20 +3255,23 @@ frame.set("loop.revindex0", t_2 - t_1 - 1);
 frame.set("loop.first", t_1 === 0);
 frame.set("loop.last", t_1 === t_2 - 1);
 frame.set("loop.length", t_2);
-output += "\n                    <li><a href=\"\">";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"shortTitle"), env.opts.autoescape);
-output += "</a></li>\n                    ";
-;
-}
-}
-frame = frame.pop();
-output += "\n                </ul>\n            </div>\n        </div>\n    </div>\n\n    ";
+output += "\r\n     <div class=\"row tour-container\">\r\n        <div class=\"col-md-8\">\r\n          <p class=\"text-justify\">\r\n                <img class=\"article-image tour-image\" style=\"background-image:url(";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"url_image"), env.opts.autoescape);
+output += ");\" alt=\"\" width=\"100%\">\r\n\r\n                <div class=\"article-title\" id=";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"id"), env.opts.autoescape);
+output += ">";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"title"), env.opts.autoescape);
+output += "</div>\r\n            <div class=\"article-subtitle\">\r\n                ";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"subtitle"), env.opts.autoescape);
+output += "\r\n            </div>\r\n                ";
+output += runtime.suppressValue(env.getFilter("safe").call(context, runtime.memberLookup((t_4),"description")), env.opts.autoescape);
+output += "\r\n            </p>\r\n        </div>\r\n        <div class=\"col-md-4\">\r\n            <div class=\"banner-right floating-right\">\r\n            <div class=\"tour-detail\">\r\n                <div class=\"tour-info-title\">Include</div>\r\n                <ul>\r\n                    ";
 frame = frame.push();
-var t_7 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"tours");
+var t_7 = runtime.memberLookup((runtime.memberLookup((t_4),"additionalData")),"include");
 if(t_7) {var t_6 = t_7.length;
 for(var t_5=0; t_5 < t_7.length; t_5++) {
 var t_8 = t_7[t_5];
-frame.set("item", t_8);
+frame.set("inc", t_8);
 frame.set("loop.index", t_5 + 1);
 frame.set("loop.index0", t_5);
 frame.set("loop.revindex", t_6 - t_5);
@@ -3284,17 +3279,16 @@ frame.set("loop.revindex0", t_6 - t_5 - 1);
 frame.set("loop.first", t_5 === 0);
 frame.set("loop.last", t_5 === t_6 - 1);
 frame.set("loop.length", t_6);
-output += "\n     <div class=\"row tour-container\">\n        <div class=\"col-md-8\">\n          <p class=\"text-justify\">\n                <img class=\"article-image tour-image\" style=\"background-image:url(";
-output += runtime.suppressValue(runtime.memberLookup((t_8),"url_image"), env.opts.autoescape);
-output += ");\" alt=\"\" width=\"100%\">\n\n                <div class=\"article-title\">";
-output += runtime.suppressValue(runtime.memberLookup((t_8),"title"), env.opts.autoescape);
-output += "</div>\n            <div class=\"article-subtitle\">\n                ";
-output += runtime.suppressValue(runtime.memberLookup((t_8),"subtitle"), env.opts.autoescape);
-output += "\n            </div>\n                ";
-output += runtime.suppressValue(env.getFilter("safe").call(context, runtime.memberLookup((t_8),"description")), env.opts.autoescape);
-output += "\n            </p>\n        </div>\n        <div class=\"col-md-4\">\n            <div class=\"banner-right floating-right\">\n            <div class=\"tour-detail\">\n                <div class=\"tour-info-title\">Include</div>\n                <ul>\n                    ";
+output += "\r\n                    <li>\r\n                    ";
+output += runtime.suppressValue(t_8, env.opts.autoescape);
+output += "\r\n                    </li>\r\n                    ";
+;
+}
+}
+frame = frame.pop();
+output += "\r\n                </ul>\r\n\r\n                <div class=\"tour-info-title\">Not Include</div>\r\n                <ul>\r\n                    ";
 frame = frame.push();
-var t_11 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"include");
+var t_11 = runtime.memberLookup((runtime.memberLookup((t_4),"additionalData")),"notInclude");
 if(t_11) {var t_10 = t_11.length;
 for(var t_9=0; t_9 < t_11.length; t_9++) {
 var t_12 = t_11[t_9];
@@ -3306,16 +3300,18 @@ frame.set("loop.revindex0", t_10 - t_9 - 1);
 frame.set("loop.first", t_9 === 0);
 frame.set("loop.last", t_9 === t_10 - 1);
 frame.set("loop.length", t_10);
-output += "\n                    <li>\n                    ";
+output += "\r\n                    <li>\r\n                    ";
 output += runtime.suppressValue(t_12, env.opts.autoescape);
-output += "\n                    </li>\n                    ";
+output += "\r\n                    </li>\r\n                    ";
 ;
 }
 }
 frame = frame.pop();
-output += "\n                </ul>\n\n                <div class=\"tour-info-title\">Not Include</div>\n                <ul>\n                    ";
+output += "\r\n                </ul>\r\n\r\n                <div class=\"tour-info-title\">Duration <small>";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_4),"additionalData")),"duration")),"subtitle"), env.opts.autoescape);
+output += "</small></div>\r\n                <ul>\r\n                    ";
 frame = frame.push();
-var t_15 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"notInclude");
+var t_15 = runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_4),"additionalData")),"duration")),"data");
 if(t_15) {var t_14 = t_15.length;
 for(var t_13=0; t_13 < t_15.length; t_13++) {
 var t_16 = t_15[t_13];
@@ -3327,42 +3323,19 @@ frame.set("loop.revindex0", t_14 - t_13 - 1);
 frame.set("loop.first", t_13 === 0);
 frame.set("loop.last", t_13 === t_14 - 1);
 frame.set("loop.length", t_14);
-output += "\n                    <li>\n                    ";
+output += "\r\n                    <li>\r\n                    ";
 output += runtime.suppressValue(t_16, env.opts.autoescape);
-output += "\n                    </li>\n                    ";
+output += "\r\n                    </li>\r\n                    ";
 ;
 }
 }
 frame = frame.pop();
-output += "\n                </ul>\n\n                <div class=\"tour-info-title\">Duration <small>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"duration")),"subtitle"), env.opts.autoescape);
-output += "</small></div>\n                <ul>\n                    ";
-frame = frame.push();
-var t_19 = runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"duration")),"data");
-if(t_19) {var t_18 = t_19.length;
-for(var t_17=0; t_17 < t_19.length; t_17++) {
-var t_20 = t_19[t_17];
-frame.set("inc", t_20);
-frame.set("loop.index", t_17 + 1);
-frame.set("loop.index0", t_17);
-frame.set("loop.revindex", t_18 - t_17);
-frame.set("loop.revindex0", t_18 - t_17 - 1);
-frame.set("loop.first", t_17 === 0);
-frame.set("loop.last", t_17 === t_18 - 1);
-frame.set("loop.length", t_18);
-output += "\n                    <li>\n                    ";
-output += runtime.suppressValue(t_20, env.opts.autoescape);
-output += "\n                    </li>\n                    ";
+output += "\r\n                </ul>\r\n\r\n                <button class=\"bttn-unite bttn-md bttn-warning\">Reserve Tour</button>\r\n            </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    ";
 ;
 }
 }
 frame = frame.pop();
-output += "\n                </ul>\n\n                <button class=\"bttn-unite bttn-md bttn-warning\">Reserve Tour</button>\n            </div>\n            </div>\n        </div>\n    </div>\n    ";
-;
-}
-}
-frame = frame.pop();
-output += "\n    <hr/>\n <div class=\"row additional-info\">\n    <div class=\"col-md-12\">\n       <h2>Additional Information</h2>\n            <ul>\n                <li>All your personal information is required at the moment of your booking.</li>\n                <li>Confirmation of the excursion will be received at time of booking.</li>\n                <li>All tours are operated in English unless otherwise stated.</li>\n            </ul>\n            \n            <h4>Travel voucher:</h4>\n            <ul>\n            <li>You will receive an electronic voucher via e mail once you booking is confirmed.</li>\n            <li>For each confirmed booking you are required to print your electronic voucher for presentation at the start of the excursion.</li>\n            <li>The electronic voucher acts a confirmation for all services you request.</li>\n            </ul>\n\n            <h4>Local operator information:</h4>\n            <ul>\n            <li>We will send you complete operator information, including phone numbers at your destination.</li>\n            <li>Our managers select only the most experienced and reliable operators in each destination, removing the guesswork for you, and ensuring your peace of mind.</li>\n            </ul>\n\n    </div>\n </div>\n\n</div>\n";
+output += "\r\n    <hr/>\r\n <div class=\"row additional-info\">\r\n    <div class=\"col-md-12\">\r\n       <h2>Additional Information</h2>\r\n            <ul>\r\n                <li>All your personal information is required at the moment of your booking.</li>\r\n                <li>Confirmation of the excursion will be received at time of booking.</li>\r\n                <li>All tours are operated in English unless otherwise stated.</li>\r\n            </ul>\r\n            \r\n            <h4>Travel voucher:</h4>\r\n            <ul>\r\n            <li>You will receive an electronic voucher via e mail once you booking is confirmed.</li>\r\n            <li>For each confirmed booking you are required to print your electronic voucher for presentation at the start of the excursion.</li>\r\n            <li>The electronic voucher acts a confirmation for all services you request.</li>\r\n            </ul>\r\n\r\n            <h4>Local operator information:</h4>\r\n            <ul>\r\n            <li>We will send you complete operator information, including phone numbers at your destination.</li>\r\n            <li>Our managers select only the most experienced and reliable operators in each destination, removing the guesswork for you, and ensuring your peace of mind.</li>\r\n            </ul>\r\n\r\n    </div>\r\n </div>\r\n\r\n</div>\r\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
