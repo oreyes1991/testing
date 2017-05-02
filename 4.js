@@ -1,104 +1,148 @@
 webpackJsonp([4],{
 
-/***/ 22:
+/***/ 40:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 exports.default = {
-    title: 'Tours of Lima',
-    subtitle: 'Once called the City of Kings and awash in gold, Lima has grown to become a modern and cosmopolitan metropolis.',
-    description: 'A vast, sprawling city and home to nearly 9 million habitants, Lima offers modern amenities, fantastic cuisine and great nightlife.',
-    url_image: 'images/tours/larcomar_1.jpg',
-
-    tours: [{
-        id: "lima-city-tour",
-        title: 'Lima City Tour',
-        shortTitle: 'City Tour',
-        subtitle: 'Axis of Latin American History',
-        url_image: 'images/tours/lima_conventsanfrancisco.t.jpg',
-        description: 'The best introduction to Peruvian natural history and it\'s three historical periods: pre-Hispanic, colonial, and contemporary. Lima was the home pre-Colombian cultures which date back thousands of years. The land of the Incas, Lima was conquered by Spaniards on the 18th of January, 1535. Tour with South Americans\' Secrets to learn and retrace the steps of this millennial history.\n                        Discover ancestral Lima "Huaca Pucllana" - the Incan\'s most important ceremonial and administrative center and South America\'s most culturally developed civilization between 200 AD and 700 AD. Marvel at the great adobe clay pyramid constructed during this period with it\'s seven staggering platforms.',
-        additionalData: {
-            include: ['Private VIP transport to Pisco airport from your hotel in Lima (3 hours)', 'VIP First Class Guided tour of the "Candelbra" geoglyph and the Ballestas Islands (2 hours)', 'Overflight of Nazca Lines (95 minutes)', 'Private VIP transport return to Lima', 'All transport, fees and taxes'],
-            notInclude: ['Extras & gratuities.'],
-
-            duration: {
-                subtitle: '12 hours (approx.)',
-                data: ['Departs daily at 6.00am']
-            },
-            price: {
-                currency: '$',
-                ammount: 430,
-                data: ['A minimum of 2 participants are required']
-            }
-
-        }
-    }, {
-        id: "nazca-lines",
-        title: 'Flights over Nazca Lines From Lima (1-day VIP Private)',
-        shortTitle: 'Nazca Lines from Lima',
-        subtitle: 'See the Nazca Lines, Candelbra Geoglyph and Ballestas Islands all in one day!',
-        url_image: 'images/tours/nazca_flight_03_t.jpg',
-        description: '\n            Without question this tour is the quickest way to cram these incredible sights in just a day while in VIP comfort and style.<br/>\n            You will be picked up at your hotel in either a car or van (with air conditioning) - depending on your group\'s size - and be whisked to the docks of Paracas bay to set out on an exciting voyage to the famous Ballestas Islands nearby. The Ballestas Islands is considered the Galapagos of Peru for it\'s immense abundance of sea life and unique rock formations.<br/>\n\nAlong the way you will pass the enigmatic "Candelabra" - a famous geoglyph with a mysterious past. Your english-speaking guide will explain the various theories of it\'s creation along with natural and geologic explanations of the islands and the plethora of wildlife that it hosts. You will enjoy front row VIP seating (2 seats for one person) so you will have ample space for camera bags and you won\'t have to tolerate other passengers breathing down your neck while you view this spectacular marvel of nature.',
-        gallery: ['images/gallery/ballestas_01_t.jpg', 'images/gallery/ballestas_02_t.jpg', 'images/gallery/ballestas_03_t.jpg', 'images/gallery/ballestas_04_t.jpg', 'images/gallery/ballestas_05_t.jpg', 'images/gallery/ballestas_06_t.jpg', 'images/gallery/ballestas_07_t.jpg', 'images/gallery/ballestas_08_t.jpg', 'images/gallery/ballestas_09_t.jpg', 'images/gallery/ballestas_10_t.jpg', 'images/gallery/ballestas_12_t.jpg', 'images/gallery/ballestas_14_t.jpg', 'images/gallery/ballestas_15_t.jpg', 'images/gallery/ballestas_18_t.jpg', 'images/gallery/ballestas_19_t.jpg', 'images/gallery/nazca_flights_01_t.jpg', 'images/gallery/nazca_flights_02_t.jpg', 'images/gallery/nazca_flights_05_t.jpg', 'images/gallery/nazcaLines_1_t.jpg', 'images/gallery/taxi_01_t.jpg'],
-        additionalData: {
-            include: ['Private VIP transport to Pisco airport from your hotel in Lima (3 hours)', 'VIP First Class Guided tour of the "Candelbra" geoglyph and the Ballestas Islands (2 hours)', 'Overflight of Nazca Lines (95 minutes)', 'Private VIP transport return to Lima', 'All transport, fees and taxes'],
-            notInclude: ['Extras & gratuities.'],
-            time: '12 hours (approx.)',
-            duration: ['Departs daily at 6.00am'],
-            price: {
-                currency: '$',
-                ammount: 430,
-                data: ['A minimum of 2 participants are required']
-            }
-
-        }
-    }, {
-        id: 'pachacamac',
-        title: 'Pachacamac',
-        shortTitle: 'Pachacamac',
-        subtitle: 'A unique archaeological and mystical experience',
-        url_image: 'images/tours/lima_pachamac.t.jpg',
-        description: '\n            A guided tour of the vast and splendid archaeological citadel of Pachacamac, the temple of the deity, and Pachacamac - believed to be the creator of the universe and a divinity adored by old Andean civilizations. A sacred and ceremonial site dating back to the beginnings of Christianity where thousands of pilgrims converged to pay tribute to and consult the Pachacamac Oracle who they believed could see the past, the future, and the fate of any man, woman, or child.\nThe site comprises pyramidal temples and enclosures built by successive pre-Colombian civilizations then finally the Incas. Highlights include the Temple of Pachacamac, the Sun God Shrine, and the Palace of the Chosen Women or Virgins of the Sun. At the site\'s museum find an idol of the deity Pachacamac, which was invisible to the profane, and was reserved for the high priests who kept, revered, and interpreted the Divine Oracle in old times. A sacred site, the temple was considered to be part of the planet\u2019s mystical axis.',
-        additionalData: {
-            include: ['Private VIP transport to Pisco airport from your hotel in Lima (3 hours)', 'VIP First Class Guided tour of the "Candelbra" geoglyph and the Ballestas Islands (2 hours)', 'Overflight of Nazca Lines (95 minutes)', 'Private VIP transport return to Lima', 'All transport, fees and taxes'],
-            notInclude: ['Extras & gratuities.'],
-            duration: {
-                subtitle: '12 hours (approx.)',
-                data: ['Departs daily at 6.00am']
-            },
-            price: {
-                currency: '$',
-                ammount: 430,
-                data: ['A minimum of 2 participants are required']
-            }
-
-        }
-    }, {
-        title: 'Caral',
-        shortTitle: 'Caral',
-        subtitle: 'The Oldest Civilization of Americas',
-        url_image: 'images/tours/nazca_flight_03_t.jpg',
-        description: '\n           For those with a keen interest in archeology and adventure, the tour embarks from Lima via the Ruta del Sol (just around 2 hours) enroute to discover the Norte Central civilization.\nAlso known as Caral or Caral-Supe, the Norte Central civilization was a complex Pre-Columbian society that spanned nearly 30 major population centers in what is now known as the Norte Chico region of north-central coastal Peru.\nThe oldest known civilization in the Americas and one of six sites where civilization separately originated in the ancient world, Caral flourished between 3000 BC and 1800 BC. It\'s derivative name, Caral-Supe, is born from Caral in the Supe Valley, a large and significantly studied site in Norte Chico. Complex society in Norte Chico emerged just a millennium after Sumer in Mesopotamia, around the same time as the pyramids of Ancient Egypt. Norte Chico predates the Mesoamerican Olmec by nearly two millennia.',
-        additionalData: {
-            include: ['Private VIP transport to Pisco airport from your hotel in Lima (3 hours)', 'VIP First Class Guided tour of the "Candelbra" geoglyph and the Ballestas Islands (2 hours)', 'Overflight of Nazca Lines (95 minutes)', 'Private VIP transport return to Lima', 'All transport, fees and taxes'],
-            notInclude: ['Extras & gratuities.'],
-            duration: {
-                subtitle: '12 hours (approx.)',
-                data: ['Departs daily at 6.00am']
-            },
-            price: {
-                currency: '$',
-                ammount: 430,
-                data: ['A minimum of 2 participants are required']
-            }
-
-        }
-    }]
+	title: 'Reserva de Paracas e Islas Ballestas',
+	subtitle: 'La joya de la Ruta del sur del Perú, la Reserva Nacional de Vida Silvestre de Paracas y las Islas Ballestas es considerada el Galápagos del Perú.',
+	description: 'Paracas es sin duda es el más interesante de los atractivos de la costa sur del Perú y está situado idealmente como punto de partida de los viajeros a otros destinos en virtud del puerto maritimo San Martin y aeropuerto internacional recién terminado. La corriente de Humboldt desde antártida trae una fantástica riqueza marina que pone a Paracas como uno de los sitios mas ricos de flora y fauna marina de la costa peruana. Es la parada mas importante para los viajeros amantes de la naturaleza ademas Paracas esta considerado refugio de pinguinos de Humbold, delfines de nariz de botella, lobos marinos sudamericanos, ballenas y es el lugar de alimentacion de aves migratorios de la red emisferica.',
+	url_image: 'images/tours/paracas/ballestas14_portrait.jpg',
+	tours: [{
+		id: 'islas-ballestas',
+		title: 'Islas Ballestas',
+		shortTitle: 'Islas Ballestas',
+		subtitle: 'Las Islas Ballestas es el principal atractivo de Paracas. Usted encontrará innumberables especies exóticas de aves y vida marina, algunas únicas en el Perú',
+		url_image: 'images/tours/paracas/paracas_03_t.jpg',
+		description: 'Visitar estas islas es como participar de la filmacion de un documental de Nacional Geografic. Organizamos tours guiados desde nuestra oficina en Paracas, \xF3 lo recojemos desde su hotel y nuestro personal le acompa\xF1ar\xE1 hasta el muelle de Paracas. Este viaje de ida y vuelta es de dos horas a las islas m\xE1s famosas del Per\xFA, le permite disfrutar de magn\xEDficas formaciones de rocas esculpidas por la naturaleza y es el hogar de los ping\xFCinos de Humboldt, lobos marinos sudamericanos y una multitud de aves marinas. Estos servicios tambien estan disponibles en primera clase y servicios privados.',
+		gallery: ['images/gallery/ballestas_01_t.jpg', 'images/gallery/ballestas_02_t.jpg', 'images/gallery/ballestas_03_t.jpg', 'images/gallery/ballestas_04_t.jpg', 'images/gallery/ballestas_15_t.jpg'],
+		additionalData: {
+			include: ['40 Pax. capacidad', 'Traslado al muelle de Paracas', 'Transporte en lancha', 'Otro lancha de emergencia preparado y listo', '2 Pilotos abordo', 'Entrada a la Reserva'],
+			notInclude: ['Extras y propinas', 'Alojamiento'],
+			duration: {
+				subtitle: '2 horas',
+				data: ['Salidas diarias: 8am and 10am']
+			},
+			recommendations: ['Traer crema solar, gafas de sol y una gorra.', 'Llevar ropa abrigadora o chaqueta lijera'],
+			price: {
+				currency: '$',
+				ammount: 25,
+				data: ['Hay descuentos para grupos']
+			}
+		}
+	}, {
+		id: 'islas-ballestas-first-class',
+		title: 'Islas Ballestas First Class',
+		subtitle: '',
+		url_image: 'images/tours/paracas/ballestas10_t.jpg',
+		description: 'M\xE1s libertad de movimiento y espacio para llevar equipos de c\xE1mara - nuestra opci\xF3n de servicio de primera clase garantiza nuestro yate con asiento preferencial (2 asientos por persona) de su capacidad siempre habra lugar para cambiarse de sitio \xF3 de posici\xF3n.',
+		gallery: ['images/gallery/ballestas_13_t.jpg', 'images/gallery/ballestas_02_t.jpg', 'images/gallery/ballestas_03_t.jpg', 'images/gallery/ballestas_04_t.jpg', 'images/gallery/ballestas_15_t.jpg'],
+		additionalData: {
+			include: ['Incluye todo de nuestro tour estándar', 'Asiento preferenciales (2 asientos por persona)'],
+			notInclude: [],
+			duration: {
+				subtitle: '2 horas',
+				data: ['Salidas diarias: 8am ó 10am']
+			},
+			recommendations: [],
+			price: {
+				currency: '$',
+				ammount: 44,
+				data: ['Hay descuentos para grupos']
+			}
+		}
+	}, {
+		id: 'private-tour',
+		title: 'Tour Privado',
+		subtitle: '',
+		url_image: 'images/tours/paracas/paracas_05_t.jpg',
+		description: 'Salida en los horarios m\xE1s convenientes para el cliente y disfrute con sus amigos y familiares. El tour privado es para aquellos que desean la exclusividad.Nuestro tour privado es, tambien asequible con los precios para grupos grandes.',
+		gallery: ['images/gallery/ballestas_05_t.jpg', 'images/gallery/ballestas_17_t.jpg', 'images/gallery/ballestas_18_t.jpg', 'images/gallery/ballestas_19_t.jpg', 'images/gallery/ballestas_20_t.jpg'],
+		additionalData: {
+			include: ['29 Pax. capacidad', 'Incluye todo de nuestro tour estándar'],
+			notInclude: [],
+			duration: {
+				subtitle: '2 horas',
+				data: ['Salida a la hora conveniente del cliente']
+			},
+			recommendations: [],
+			price: {
+				currency: '$',
+				ammount: 250,
+				data: ['Hay descuentos para grupos']
+			}
+		}
+	}, {
+		id: 'yacht-charter',
+		title: 'Charter de Yate',
+		subtitle: '',
+		url_image: 'images/tours/paracas/ballestas_yacht_1_t.jpg',
+		description: 'Chart\xE9e su propio yate y elija su propio plan de viaje con nosotros. Usted es libre de escoger para descubrir todas las islas de Paracas como mejor le parezca.',
+		gallery: ['images/gallery/ballestas_16_t.jpg', 'images/gallery/ballestas_15_t.jpg', 'images/gallery/ballestas_11_t.jpg', 'images/gallery/ballestas_12_t.jpg'],
+		additionalData: {
+			include: ['29 Pax. capacidad', 'Incluye todos los beneficios del Tour Privado', 'Acesoria profesional para su itinerario', 'Le ayudaremos a tramitar permisos especiales de reserva a las islas de Paracas'],
+			notInclude: [],
+			duration: {
+				subtitle: '2 horas',
+				data: ['Departs by appointment as late as 1pm']
+			},
+			recommendations: [],
+			price: {
+				currency: '$',
+				ammount: 125,
+				data: ['Minimo 2 horas']
+			}
+		}
+	}, {
+		id: 'paracas-national-reserve',
+		title: 'La Reserva Nacional de Paracas',
+		shortTitle: 'La Reserva Nacional de Paracas',
+		subtitle: 'La Reserva Nacional de Paracas es el área natural protegida del Perú que preserva el ecosistema marino costero',
+		url_image: 'images/tours/paracas/paracas_11_t.jpg',
+		description: 'Debido a una excepcional diversidad biol\xF3gica, generada por la corriente de Humboldt y el afloramiento costero que ocurre durante todo el a\xF1o, esta parte del oc\xE9ano Pac\xEDfico es uno de los m\xE1s productivos y ricos del mundo. Tambi\xE9n se considera refugio de vida silvestre, esta \xE1rea natural alberga 224 especies de aves, m\xE1s de 180 de peces y 20 especies de cet\xE1ceos.\nLa reserva tambi\xE9n ofrece maravillas hist\xF3ricas y culturales que se evidencian en 114 sitios arqueol\xF3gicos registrados y un testimonio de la exitosa interacci\xF3n de los antiguos habitantes de Paracas con el mar. La Reserva de Paracas fue declarada Sitio Ramsar en el marco del Convenio de Humedales de Importancia Internacional en 1991.\nNuestro programa guiado a la Reserva Nacional de Paracas se inicia a las 11:00 am para explorar algunos de los fen\xF3menos geol\xF3gicos de la pen\xEDnsula, como vistas panor\xE1micas, playas de arena blanca, las l\xEDneas de las rocas sedimentarias, de colores, aguas azules y turquesas del Pac\xEDfico.',
+		additionalData: {
+			include: ['Recojo de su hotel en Paracas.', 'Transporte privado', 'Entradas'],
+			notInclude: ['Extras y propinas.', 'Alojamiento en Pisco o Paracas.'],
+			duration: {
+				subtitle: '3 horas(approx)',
+				data: ['Salidas diarias: 11.00am']
+			},
+			recommendations: ['Traer crema solar, gafas de sol y una gorra.', 'Lleve una botella de agua'],
+			price: {
+				currency: '$',
+				ammount: 25,
+				data: ['Se requiere un mínimo de 2 participantes']
+			}
+		}
+	}, {
+		id: 'nazca-lines-from-paracas',
+		title: 'Líneas de Nazca desde Paracas',
+		shortTitle: 'Líneas de Nazca desde Paracas',
+		subtitle: '\xA1Nuevo! Sobrevuelo de las l\xEDneas de Nasca saliendo desde Paracas (Pisco)! Ahorre tiempo volando desde Paracas.',
+		url_image: 'images/tours/paracas/nazca_condor.t.jpg',
+		description: 'Nazca es el nombre de sistema de valles en la costa sur del Per\xFA, as\xED como el nombre de la cultura pre-inca que floreci\xF3 en la zona entre 200 AC y 800 DC.\nLa cultura Nazca es de fama mundial por sus L\xEDneas de Nazca, cer\xE1mica policromada y sofisticado sistema de acueductos para riego de campos de cultivo (agricultura). Pero las l\xEDneas de Nazca siguen siendo la atracci\xF3n m\xE1s fascinante y misterioso para los viajeros.\nLa cultura Nazca dise\xF1o figuras \xF3 geoglifos enormes y misteriosos que son imposibles de ver estas sofisticadas l\xEDneas, sin la tecnolog\xEDa de vuelo habr\xEDa sido imposible para ellos ver nunca sus propios dise\xF1os terminados. Muchas de las teor\xEDas extra\xF1as de por qu\xE9 la gente de Nazca a dedicado un enorme esfuerzo en la creaci\xF3n de estas l\xEDneas ser\xE1 compartida con usted por nuestros gu\xEDas.\nNuestro programa guiado comienza una vez que nuestro gu\xEDa le recoge en su hotel. Nuestros pilotos hablan Ingl\xE9s y explican cada ubicacion de la figura grabada en la tierra.',
+		additionalData: {
+			include: ['Recojo de su hotel en Paracas', 'Tasas de aeropuerto', 'Traslado al aeropuerto internacional de Pisco', 'Guía', 'Traslado a su hotel al final del vuelo'],
+			notInclude: ['Extras y propinas.', 'Alojamiento'],
+			notes: ['Portar pasaporte original ó DNI', 'Informar si el pasajero pesa mas de 100 kg'],
+			duration: {
+				subtitle: '1 hr 45 min',
+				data: ['De 07:00 am a 4:00 pm de Lunes a Domingo (los vuelos están sujetos a las condiciones del tiempo y del tráfico aéreo)']
+			},
+			recommendations: ['Use ropa ligera, especialmente en verano'],
+			price: {
+				currency: '$',
+				ammount: 280,
+				data: ['Se requiere un mínimo de 2 participantes']
+			}
+		}
+	}]
 };
 
 /***/ })

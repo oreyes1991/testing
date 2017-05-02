@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -3107,7 +3107,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 2 */,
 /* 3 */,
 /* 4 */,
-/* 5 */
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3118,7 +3123,7 @@ if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv;
 }
 var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-dependencies["../layouts/layout.njk"] = __webpack_require__( 13 );
+dependencies["../layouts/layout.njk"] = __webpack_require__( 18 );
 
 
 
@@ -3180,22 +3185,22 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["pages/index.njk"] , dependencies)
 
 /***/ }),
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
 /* 11 */,
-/* 12 */
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(5);
+__webpack_require__(10);
 
 /***/ }),
-/* 13 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3206,7 +3211,7 @@ if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv;
 }
 var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-dependencies["../partials/header.njk"] = __webpack_require__( 14 );
+dependencies["../partials/header.njk"] = __webpack_require__( 19 );
 
 
 
@@ -3221,7 +3226,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<!-- layout.nunjucks -->\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n    <head>\r\n        <title></title>\r\n        <meta charset=\"UTF-8\">\r\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n        <meta name=\"theme-color\" content=\"#DE5A2E\">\r\n        <meta name=\"msapplication-navbutton-color\" content=\"#DE5A2E\">\r\n        <meta name=\"apple-mobile-web-app-status-bar-style\" content=\"#DE5A2E\">\r\n        <link href=\"css/style.css\" rel=\"stylesheet\">\r\n        <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\r\n        <link href=\"css/header.css\" rel=\"stylesheet\">\r\n        <link href=\"css/gallery.css\" rel=\"stylesheet\">\r\n        <link href=\"css/gallery.theme.css\" rel=\"stylesheet\">\r\n        <link href=\"css/slick.css\" rel=\"stylesheet\">\r\n        <link href=\"css/slick.css\" rel=\"stylesheet\">\r\n        <link href=\"css/popup.css\" rel=\"stylesheet\">\r\n        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\r\n        <script src=\"js/bootstrap.min.js\"></script>\r\n\r\n    </head>\r\n    <body>\r\n      <div class=\"container-app\">\r\n        <div id=\"app\" class=\"container-fluid no-gutter \">\r\n          <header>\r\n            ";
+output += "<!-- layout.nunjucks -->\n<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <title></title>\n        <meta charset=\"UTF-8\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n        <meta name=\"theme-color\" content=\"#DE5A2E\">\n        <meta name=\"msapplication-navbutton-color\" content=\"#DE5A2E\">\n        <meta name=\"apple-mobile-web-app-status-bar-style\" content=\"#DE5A2E\">\n        <link href=\"css/style.css\" rel=\"stylesheet\">\n        <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\n        <link href=\"css/header.css\" rel=\"stylesheet\">\n        <link href=\"css/gallery.css\" rel=\"stylesheet\">\n        <link href=\"css/gallery.theme.css\" rel=\"stylesheet\">\n        <link href=\"css/slick.css\" rel=\"stylesheet\">\n        <link href=\"css/slick.css\" rel=\"stylesheet\">\n        <link href=\"css/popup.css\" rel=\"stylesheet\">\n        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n        <script src=\"js/bootstrap.min.js\"></script>\n\n    </head>\n    <body>\n      <div class=\"container-app\">\n        <div id=\"app\" class=\"container-fluid no-gutter \">\n          <header>\n            ";
 var tasks = [];
 tasks.push(
 function(callback) {
@@ -3241,11 +3246,11 @@ output += result;
 callback(null);
 });
 env.waterfall(tasks, function(){
-output += "\r\n          </header>\r\n          <section class=\"page\">\r\n            ";
+output += "\n          </header>\n          <section class=\"page\">\n            ";
 (parentTemplate ? function(e, c, f, r, cb) { cb(""); } : context.getBlock("content"))(env, context, frame, runtime, function(t_6,t_5) {
 if(t_6) { cb(t_6); return; }
 output += t_5;
-output += "\r\n          </section>\r\n        </div>\r\n      </div>\r\n    <script src=\"js/menu.js\"></script>\r\n    <script src=\"js/slick.min.js\"></script>\r\n    <script src=\"js/small-gallery.js\"></script>\r\n    <script src=\"js/popup.min.js\"></script>\r\n    </body>\r\n</html>\r\n";
+output += "\n          </section>\n        </div>\n      </div>\n    <script src=\"js/slick.min.js\"></script>\n    <script src=\"js/small-gallery.js\"></script>\n    <script src=\"js/popup.min.js\"></script>\n    <script src=\"menu.js\"></script>\n\n    </body>\n</html>\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -3282,7 +3287,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["layouts/layout.njk"] , dependencies)
 
 /***/ }),
-/* 14 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3293,7 +3298,6 @@ if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv;
 }
 var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-dependencies["./menu.njk"] = __webpack_require__( 15 );
 
 
 
@@ -3308,75 +3312,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<div class=\"logo\">\r\n    <img src=\"images/logo.png\" alt=\"\" >\r\n</div>\r\n<div class=\"title\">\r\n<h1>South American's Secrets</h1>\r\n<h2>Secrets of Peru</h2>\r\n</div>\r\n\r\n<div class=\"gallery autoplay items-4\">\r\n    <div id=\"item-1\" class=\"control-operator\"></div>\r\n    <div id=\"item-2\" class=\"control-operator\"></div>\r\n    <div id=\"item-3\" class=\"control-operator\"></div>\r\n\r\n    <figure class=\"item\">\r\n        <div class=\"header-img machupicchu-1\">\r\n        </div>\r\n    </figure>\r\n\r\n    <figure class=\"item\">\r\n        <div class=\"header-img machupicchu-2\">\r\n        </div>\r\n    </figure>\r\n\r\n    <figure class=\"item\">\r\n        <div class=\"header-img nazca-1\">\r\n        </div>\r\n    </figure>\r\n\r\n    <figure class=\"item\">\r\n        <div class=\"header-img bikeparacas-1\">\r\n        </div>\r\n    </figure>\r\n</div>\r\n<div class=\"menu-header\">\r\n        ";
-var tasks = [];
-tasks.push(
-function(callback) {
-env.getTemplate("./menu.njk", false, "partials/header.njk", null, function(t_3,t_1) {
-if(t_3) { cb(t_3); return; }
-callback(null,t_1);});
-});
-tasks.push(
-function(template, callback){
-template.render(context.getVariables(), frame, function(t_4,t_2) {
-if(t_4) { cb(t_4); return; }
-callback(null,t_2);});
-});
-tasks.push(
-function(result, callback){
-output += result;
-callback(null);
-});
-env.waterfall(tasks, function(){
-output += "\r\n</div>\r\n";
-if(parentTemplate) {
-parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
-} else {
-cb(null, output);
-}
-});
-} catch (e) {
-  cb(runtime.handleError(e, lineno, colno));
-}
-}
-return {
-root: root
-};
-
-})();
-})();
-
-
-
-module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/header.njk"] , dependencies)
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var nunjucks = __webpack_require__(1);
-var env;
-if (!nunjucks.currentEnv){
-	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
-} else {
-	env = nunjucks.currentEnv;
-}
-var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-
-
-
-
-var shim = __webpack_require__(0);
-
-
-(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/menu.njk"] = (function() {
-function root(env, context, frame, runtime, cb) {
-var lineno = null;
-var colno = null;
-var output = "";
-try {
-var parentTemplate = null;
-output += "<nav id=\"mainmenu\" class=\"navbar  navbar-inverse\">\r\n  <div class=\"container-fluid\">\r\n    <!-- Brand and toggle get grouped for better mobile display -->\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">\r\n        <span class=\"sr-only\">Toggle navigation</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">South American's Secret</a>\r\n    </div>\r\n\r\n    <!-- Collect the nav links, forms, and other content for toggling -->\r\n    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\r\n      <ul class=\"nav navbar-nav\">\r\n\r\n        <li class=\"dropdown\">\r\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Tours of Peru <span class=\"caret\"></span></a>\r\n          <ul class=\"dropdown-menu multi-column columns-3\">\r\n\t\t            <div class=\"row\">\r\n\t\t\t            <div class=\"col-sm-4\">\r\n\t\t\t\t            <ul class=\"multi-column-dropdown\">\r\n\t\t\t\t\t            <li><span class=\"navbar-text\">Coast of Peru</span></li>\r\n\t\t\t\t\t            <li><a href=\"tourslima.html\">Tours in Lima</a></li>\r\n\t\t\t\t\t            <li><a href=\"toursparacas.html\">Paracas & Islas Ballestas</a></li>\r\n\t\t\t\t\t            <li><a href=\"toursica.html\">Ica & Huacachina</a></li>\r\n\t\t\t\t\t            <li><a href=\"toursnasca.html\">Nazca Lines</a></li>\r\n\t\t\t\t\t\t\t\t\t\t\t<li><a href=\"toursnorth.html\">North Coast Tours</a></li>\r\n\r\n\t\t\t\t            </ul>\r\n\t\t\t            </div>\r\n\t\t\t            <div class=\"col-sm-4\">\r\n\t\t\t\t            <ul class=\"multi-column-dropdown\">\r\n\t\t\t\t\t            <li><span class=\"navbar-text\">The Highlands</span></li>\r\n\t\t\t\t\t            <li><a href=\"toursarequipa.html\">Arequipa</a></li>\r\n\t\t\t\t\t            <li><a href=\"tourspuno.html\">Lake Titicaca</a></li>\r\n\t\t\t\t\t            <li><a href=\"tourscuzco.html\">Cuzco</a></li>\r\n\r\n\t\t\t\t            </ul>\r\n\t\t\t            </div>\r\n\t\t\t\t\t\t<div class=\"col-sm-4\">\r\n\t\t\t\t            <ul class=\"multi-column-dropdown\">\r\n\t\t\t\t\t            <li><span class=\"navbar-text\">Rainforest</span></li>\r\n\t\t\t\t\t            <li><a href=\"toursiquitos.html#tambopata-reserve\">Tambopata Rainforest</a></li>\r\n\t\t\t\t\t            <li><a href=\"toursiquitos.html#manu-reserve\">Manu Reserve</a></li>\r\n\t\t\t\t            </ul>\r\n\t\t\t            </div>\r\n\t\t            </div>\r\n\t            </ul>\r\n        </li>\r\n\t\t<li class=\"dropdown\">\r\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Activities Peru<span class=\"caret\"></span></a>\r\n         <ul class=\"dropdown-menu multi-column columns-2\">\r\n\t\t            <div class=\"row\">\r\n\t\t\t            <div class=\"col-sm-6\">\r\n\t\t\t\t            <ul class=\"multi-column-dropdown\">\r\n\t\t\t\t\t            <li><span class=\"navbar-text\">Paracas</span></li>\r\n\t\t\t\t\t            <li><a href=\"activities-paracas.html#biking-paracas-reserve\">Biking Paracas Reserve</a></li>\r\n\t\t\t\t\t            <li><a href=\"activities-paracas.html#kayak-paracas-bay\">Kayak Paracas Bay</a></li>\r\n\t\t\t\t\t            <li><a href=\"activities-paracas.html#islas-ballestas\">Islas Ballestas</a></li>\r\n\t\t\t\t\t            <li><a href=\"activities-paracas.html#dune-buggy-sandboard\">Dunebuggy Sandboarding</a></li>\r\n\r\n\t\t\t\t            </ul>\r\n\t\t\t            </div>\r\n\t\t\t            <div class=\"col-sm-6\">\r\n\t\t\t\t            <ul class=\"multi-column-dropdown\">\r\n\t\t\t\t\t            <li><span class=\"navbar-text\">Cusco</span></li>\r\n\t\t\t\t\t            <li><a href=\"activities-cuzco.html#\">Inca Bike & Jungle Trek</a></li>\r\n\t\t\t\t\t            <li><a href=\"activities-cuzco.html#\">Inca Trail Classic Trek</a></li>\r\n\t\t\t\t\t            <li><a href=\"activities-cuzco.html#\">Inca Salkantay Trek</a></li>\r\n\t\t\t\t\t            <li><a href=\"activities-cuzco.html#\">Urubamba White Water Rafting</a></li>\r\n\t\t\t\t            </ul>\r\n\t\t\t            </div>\r\n\t\t            </div>\r\n\t            </ul>\r\n        </li>\r\n\t\t<li class=\"dropdown\">\r\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Peru Packages <span class=\"caret\"></span></a>\r\n         <ul class=\"dropdown-menu\">\r\n            <li><a href=\"#\">Mysteries of the South Coast (2 days / 1 night)</a></li>\r\n\r\n          </ul>\r\n        </li>\r\n\t\t<li><a href=\"#\">Articles</a></li>\r\n        <li><a href=\"contact.html\">Contact</a></li>\r\n      </ul>\r\n        </li>\r\n      </ul>\r\n\r\n\r\n    </div><!-- /.navbar-collapse -->\r\n  </div><!-- /.container-fluid -->\r\n</nav>\r\n";
+output += "<div class=\"logo\">\n\t\t<img src=\"images/logo.png\" alt=\"\" >\n</div>\n\n<div class=\"title\">\n\t<h1>South American's Secrets</h1>\n\t<h2>Secrets of Peru</h2>\n</div>\n\n<div class=\"gallery autoplay items-4\">\n\t<div id=\"item-1\" class=\"control-operator\"></div>\n\t<div id=\"item-2\" class=\"control-operator\"></div>\n\t<div id=\"item-3\" class=\"control-operator\"></div>\n\n\t<figure class=\"item\">\n\t\t<div class=\"header-img machupicchu-1\">\n\t\t</div>\n\t</figure>\n\n\t<figure class=\"item\">\n\t\t<div class=\"header-img machupicchu-2\">\n\t\t</div>\n\t</figure>\n\n\t<figure class=\"item\">\n\t\t<div class=\"header-img nazca-1\">\n\t\t</div>\n\t</figure>\n\n\t<figure class=\"item\">\n\t\t<div class=\"header-img bikeparacas-1\">\n\t\t</div>\n\t</figure>\n</div>\n\n<div class=\"menu-header\" id=\"menu-content\">\n\n</div>\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -3396,7 +3332,7 @@ root: root
 
 
 
-module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/menu.njk"] , dependencies)
+module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/header.njk"] , dependencies)
 
 /***/ })
 /******/ ]);
