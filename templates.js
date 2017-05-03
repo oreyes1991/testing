@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 26);
+/******/ 	return __webpack_require__(__webpack_require__.s = 28);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3107,7 +3107,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 
-/***/ 17:
+/***/ 19:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3118,7 +3118,7 @@ if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv;
 }
 var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-dependencies["../layouts/layout.njk"] = __webpack_require__( 27 );
+dependencies["../layouts/layout.njk"] = __webpack_require__( 29 );
 
 
 
@@ -3144,6 +3144,7 @@ output += "\n\n";
 (parentTemplate ? function(e, c, f, r, cb) { cb(""); } : context.getBlock("content"))(env, context, frame, runtime, function(t_4,t_3) {
 if(t_4) { cb(t_4); return; }
 output += t_3;
+output += "\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -3160,7 +3161,7 @@ var colno = null;
 var output = "";
 try {
 var frame = frame.push(true);
-output += "  \n<div class=\"row content-page\">\n    <div class=\"col-md-8\" id=\"last-news\">\n        <!-- last-news container -->\n    </div>\n    <div class=\"col-md-4 banners\">\n        <div class=\"banner-right floating-right\">\n            <div class=\"title\">\n                SHOWCASED TOURS \n            </div>\n            <div class=\"gallery autoplay items-5\">\n                <div id=\"item-1\" class=\"control-operator\"></div>\n                <div id=\"item-2\" class=\"control-operator\"></div>\n                <div id=\"item-3\" class=\"control-operator\"></div>\n                <div id=\"item-4\" class=\"control-operator\"></div>\n                <div id=\"item-5\" class=\"control-operator\"></div>\n                <figure class=\"item\">\n                    <div class=\"banner-img arequipa-tour\">\n                    <div class=\"title-banner\">Arequipa</div>\n                    </div>\n                </figure>\n\n                <figure class=\"item\">\n                    <div class=\"banner-img puno-tour\">\n                        <div class=\"title-banner\">Puno Tour</div>\n                    </div>\n                </figure>\n\n                <figure class=\"item\">\n                    <div class=\"banner-img cuzco-tour\">\n                    <div class=\"title-banner\">Cuzco</div>\n                    </div>\n                </figure>\n\n                <figure class=\"item\">\n                    <div class=\"banner-img ballestas-tour\">\n                        <div class=\"title-banner\">Islas Ballestas</div>\n                    </div>\n                </figure>\n                 <figure class=\"item\">\n                    <div class=\"banner-img paracas-tour\">\n                    </div>\n                </figure>\n            </div>\n        </div>\n\n\n        <div class=\"banner-right floating-right\">\n            <div class=\"title\">\n                Exciting Activities\n            </div>\n            <div class=\"gallery autoplay items-3\">\n                <div id=\"item-1\" class=\"control-operator\"></div>\n                <div id=\"item-2\" class=\"control-operator\"></div>\n                <div id=\"item-3\" class=\"control-operator\"></div>\n                <figure class=\"item\">\n                    <div class=\"banner-img bike-activitie\">\n                    </div>\n                </figure>\n\n                <figure class=\"item\">\n                    <div class=\"banner-img sandboard-activitie\">\n                    </div>\n                </figure>\n\n                <figure class=\"item\">\n                    <div class=\"banner-img kitesurf-activitie\">\n                    </div>\n                </figure>\n\n\n            </div>\n        </div>\n\n\n        <div class=\"banner-right floating-right\">\n            <div class=\"title\">\n                Videos\n            </div>\n            <video width=\"100%\" controls>\n                <source src=\"videos/video1.mp4\" type=\"video/mp4\">\n                Your browser does not support the video tag. gg\n            </video>\n            <p style=\"margin-bottom:20px;\"></p>\n        </div>\n\n\n    </div>\n</div>\n<script src=\"index.js\"></script>\n";
+output += "\n<div class=\"row content-page\">\n  <div class=\"col-md-8\" id=\"last-news\">\n      <!-- last-news container -->\n  </div>\n  <div class=\"col-md-4 banners\" id=\"last-news-banners\">\n\n  </div>\n</div>\n<script src=\"index.js\"></script>\n";
 cb(null, output);
 ;
 } catch (e) {
@@ -3181,17 +3182,17 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["pages/index.n
 
 /***/ }),
 
-/***/ 26:
+/***/ 28:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(17);
+__webpack_require__(19);
 
 /***/ }),
 
-/***/ 27:
+/***/ 29:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3202,7 +3203,7 @@ if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv;
 }
 var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-dependencies["../partials/header.njk"] = __webpack_require__( 28 );
+dependencies["../partials/header.njk"] = __webpack_require__( 30 );
 
 
 
@@ -3279,7 +3280,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["layouts/layou
 
 /***/ }),
 
-/***/ 28:
+/***/ 30:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);

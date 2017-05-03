@@ -144,7 +144,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 25);
+/******/ 	return __webpack_require__(__webpack_require__.s = 27);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -3199,12 +3199,13 @@ exports.getTourPageByLanguage = getTourPageByLanguage;
 exports.getContactPageByLanguage = getContactPageByLanguage;
 exports.getContactChatOptionsByLanguafge = getContactChatOptionsByLanguafge;
 exports.getPackagePageByLanguafge = getPackagePageByLanguafge;
+exports.getLastNewsBannerByLanguage = getLastNewsBannerByLanguage;
 
-var _toursPageEn = __webpack_require__(9);
+var _toursPageEn = __webpack_require__(11);
 
 var _toursPageEn2 = _interopRequireDefault(_toursPageEn);
 
-var _toursPageEs = __webpack_require__(10);
+var _toursPageEs = __webpack_require__(12);
 
 var _toursPageEs2 = _interopRequireDefault(_toursPageEs);
 
@@ -3224,13 +3225,21 @@ var _contactoptionsEs = __webpack_require__(4);
 
 var _contactoptionsEs2 = _interopRequireDefault(_contactoptionsEs);
 
-var _packagePageEs = __webpack_require__(8);
+var _packagePageEs = __webpack_require__(10);
 
 var _packagePageEs2 = _interopRequireDefault(_packagePageEs);
 
-var _packagePageEn = __webpack_require__(7);
+var _packagePageEn = __webpack_require__(9);
 
 var _packagePageEn2 = _interopRequireDefault(_packagePageEn);
+
+var _lastNewsBannerEs = __webpack_require__(8);
+
+var _lastNewsBannerEs2 = _interopRequireDefault(_lastNewsBannerEs);
+
+var _lastNewsBannerEn = __webpack_require__(7);
+
+var _lastNewsBannerEn2 = _interopRequireDefault(_lastNewsBannerEn);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3287,6 +3296,19 @@ function getPackagePageByLanguafge(lng) {
 			break;
 		default:
 			return _packagePageEn2.default;
+	}
+}
+
+function getLastNewsBannerByLanguage(lng) {
+	switch (lng) {
+		case 'es':
+			return _lastNewsBannerEs2.default;
+			break;
+		case 'en':
+			return _lastNewsBannerEn2.default;
+			break;
+		default:
+			return _lastNewsBannerEn2.default;
 	}
 }
 
@@ -3426,6 +3448,102 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/cont
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var nunjucks = __webpack_require__(1);
+var env;
+if (!nunjucks.currentEnv){
+	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
+} else {
+	env = nunjucks.currentEnv;
+}
+var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
+
+
+
+
+var shim = __webpack_require__(0);
+
+
+(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/last-news-banner.en.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var parentTemplate = null;
+output += "<div class=\"banner-right floating-right\">\n\t<div class=\"title\">\n\t\t\tSHOWCASED TOURS\n\t</div>\n\t<div class=\"gallery autoplay items-5\">\n\t\t<div id=\"item-1\" class=\"control-operator\"></div>\n\t\t<div id=\"item-2\" class=\"control-operator\"></div>\n\t\t<div id=\"item-3\" class=\"control-operator\"></div>\n\t\t<div id=\"item-4\" class=\"control-operator\"></div>\n\t\t<div id=\"item-5\" class=\"control-operator\"></div>\n\t\t<figure class=\"item\">\n\t\t\t\t<div class=\"banner-img arequipa-tour\">\n\t\t\t\t<div class=\"title-banner\">Arequipa</div>\n\t\t\t\t</div>\n\t\t</figure>\n\n\t\t<figure class=\"item\">\n\t\t\t\t<div class=\"banner-img puno-tour\">\n\t\t\t\t\t\t<div class=\"title-banner\">Puno Tour</div>\n\t\t\t\t</div>\n\t\t</figure>\n\n\t\t<figure class=\"item\">\n\t\t\t\t<div class=\"banner-img cuzco-tour\">\n\t\t\t\t<div class=\"title-banner\">Cuzco</div>\n\t\t\t\t</div>\n\t\t</figure>\n\n\t\t<figure class=\"item\">\n\t\t\t\t<div class=\"banner-img ballestas-tour\">\n\t\t\t\t\t\t<div class=\"title-banner\">Islas Ballestas</div>\n\t\t\t\t</div>\n\t\t</figure>\n\t\t <figure class=\"item\">\n\t\t\t\t<div class=\"banner-img paracas-tour\">\n\t\t\t\t</div>\n\t\t</figure>\n\t</div>\n</div>\n\n<div class=\"banner-right floating-right\">\n\t<div class=\"title\">\n\t\t\tExciting Activities\n\t</div>\n\t<div class=\"gallery autoplay items-3\">\n\t\t<div id=\"item-1\" class=\"control-operator\"></div>\n\t\t<div id=\"item-2\" class=\"control-operator\"></div>\n\t\t<div id=\"item-3\" class=\"control-operator\"></div>\n\t\t<figure class=\"item\">\n\t\t\t\t<div class=\"banner-img bike-activitie\">\n\t\t\t\t</div>\n\t\t</figure>\n\n\t\t<figure class=\"item\">\n\t\t\t\t<div class=\"banner-img sandboard-activitie\">\n\t\t\t\t</div>\n\t\t</figure>\n\n\t\t<figure class=\"item\">\n\t\t\t<div class=\"banner-img kitesurf-activitie\">\n\t\t\t</div>\n\t\t</figure>\n\t</div>\n</div>\n\n\n<div class=\"banner-right floating-right\">\n\t<div class=\"title\">\n\t\t\tVideos\n\t</div>\n\t<video width=\"100%\" controls>\n\t\t<source src=\"videos/video1.mp4\" type=\"video/mp4\">\n\t\tYour browser does not support the video tag. gg\n\t</video>\n\t<p style=\"margin-bottom:20px;\"></p>\n</div>\n";
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
+
+
+module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last-news-banner.en.njk"] , dependencies)
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var nunjucks = __webpack_require__(1);
+var env;
+if (!nunjucks.currentEnv){
+	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
+} else {
+	env = nunjucks.currentEnv;
+}
+var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
+
+
+
+
+var shim = __webpack_require__(0);
+
+
+(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/last-news-banner.es.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var parentTemplate = null;
+output += "<div class=\"banner-right floating-right\">\n\t<div class=\"title\">\n\t\t\tTOURS DESTACADOS\n\t</div>\n\t<div class=\"gallery autoplay items-5\">\n\t\t<div id=\"item-1\" class=\"control-operator\"></div>\n\t\t<div id=\"item-2\" class=\"control-operator\"></div>\n\t\t<div id=\"item-3\" class=\"control-operator\"></div>\n\t\t<div id=\"item-4\" class=\"control-operator\"></div>\n\t\t<div id=\"item-5\" class=\"control-operator\"></div>\n\t\t<figure class=\"item\">\n\t\t\t\t<div class=\"banner-img arequipa-tour\">\n\t\t\t\t<div class=\"title-banner\">Arequipa</div>\n\t\t\t\t</div>\n\t\t</figure>\n\n\t\t<figure class=\"item\">\n\t\t\t\t<div class=\"banner-img puno-tour\">\n\t\t\t\t\t\t<div class=\"title-banner\">Puno Tour</div>\n\t\t\t\t</div>\n\t\t</figure>\n\n\t\t<figure class=\"item\">\n\t\t\t\t<div class=\"banner-img cuzco-tour\">\n\t\t\t\t<div class=\"title-banner\">Cuzco</div>\n\t\t\t\t</div>\n\t\t</figure>\n\n\t\t<figure class=\"item\">\n\t\t\t\t<div class=\"banner-img ballestas-tour\">\n\t\t\t\t\t\t<div class=\"title-banner\">Islas Ballestas</div>\n\t\t\t\t</div>\n\t\t</figure>\n\t\t <figure class=\"item\">\n\t\t\t\t<div class=\"banner-img paracas-tour\">\n\t\t\t\t</div>\n\t\t</figure>\n\t</div>\n</div>\n\n<div class=\"banner-right floating-right\">\n\t<div class=\"title\">\n\t\t\tActividades\n\t</div>\n\t<div class=\"gallery autoplay items-3\">\n\t\t<div id=\"item-1\" class=\"control-operator\"></div>\n\t\t<div id=\"item-2\" class=\"control-operator\"></div>\n\t\t<div id=\"item-3\" class=\"control-operator\"></div>\n\t\t<figure class=\"item\">\n\t\t\t\t<div class=\"banner-img bike-activitie\">\n\t\t\t\t</div>\n\t\t</figure>\n\n\t\t<figure class=\"item\">\n\t\t\t\t<div class=\"banner-img sandboard-activitie\">\n\t\t\t\t</div>\n\t\t</figure>\n\n\t\t<figure class=\"item\">\n\t\t\t<div class=\"banner-img kitesurf-activitie\">\n\t\t\t</div>\n\t\t</figure>\n\t</div>\n</div>\n\n\n<div class=\"banner-right floating-right\">\n\t<div class=\"title\">\n\t\t\tVideos\n\t</div>\n\t<video width=\"100%\" controls>\n\t\t<source src=\"videos/video1.mp4\" type=\"video/mp4\">\n\t\tTu explotador no soporta la etiqueta de video\n\t</video>\n\t<p style=\"margin-bottom:20px;\"></p>\n</div>\n";
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
+
+
+module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last-news-banner.es.njk"] , dependencies)
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3631,7 +3749,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/package-page.en.njk"] , dependencies)
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3837,7 +3955,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/package-page.es.njk"] , dependencies)
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4033,7 +4151,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tours-page.en.njk"] , dependencies)
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4229,84 +4347,84 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tours-page.es.njk"] , dependencies)
 
 /***/ }),
-/* 11 */,
-/* 12 */,
 /* 13 */,
 /* 14 */,
-/* 15 */
+/* 15 */,
+/* 16 */,
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"./tours-arequipa.en.js": [
-		36,
+		38,
 		19
 	],
 	"./tours-arequipa.es.js": [
-		37,
+		39,
 		18
 	],
 	"./tours-cuzco.en.js": [
-		38,
+		40,
 		17
 	],
 	"./tours-cuzco.es.js": [
-		39,
+		41,
 		16
 	],
 	"./tours-ica.en.js": [
-		40,
+		42,
 		15
 	],
 	"./tours-ica.es.js": [
-		41,
+		43,
 		14
 	],
 	"./tours-iquitos.en.js": [
-		42,
+		44,
 		13
 	],
 	"./tours-iquitos.es.js": [
-		43,
+		45,
 		12
 	],
 	"./tours-lima.en.js": [
-		44,
+		46,
 		11
 	],
 	"./tours-lima.es.js": [
-		45,
+		47,
 		10
 	],
 	"./tours-nasca.en.js": [
-		46,
+		48,
 		9
 	],
 	"./tours-nasca.es.js": [
-		47,
+		49,
 		8
 	],
 	"./tours-north.en.js": [
-		48,
+		50,
 		7
 	],
 	"./tours-north.es.js": [
-		49,
+		51,
 		6
 	],
 	"./tours-paracas.en.js": [
-		50,
+		52,
 		5
 	],
 	"./tours-paracas.es.js": [
-		51,
+		53,
 		4
 	],
 	"./tours-puno.en.js": [
-		52,
+		54,
 		3
 	],
 	"./tours-puno.es.js": [
-		53,
+		55,
 		2
 	]
 };
@@ -4322,11 +4440,9 @@ webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
 module.exports = webpackAsyncContext;
-webpackAsyncContext.id = 15;
+webpackAsyncContext.id = 17;
 
 /***/ }),
-/* 16 */,
-/* 17 */,
 /* 18 */,
 /* 19 */,
 /* 20 */,
@@ -4334,7 +4450,9 @@ webpackAsyncContext.id = 15;
 /* 22 */,
 /* 23 */,
 /* 24 */,
-/* 25 */
+/* 25 */,
+/* 26 */,
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4349,7 +4467,7 @@ var language = (0, _utils.getPageLanguage)('lng') || 'en';
 
 var tpl = (0, _utils.getTourPageByLanguage)(language);
 
-__webpack_require__(15)("./" + dataRef + '.' + language + '.js').then(function (m) {
+__webpack_require__(17)("./" + dataRef + '.' + language + '.js').then(function (m) {
 	console.log(m);
 	var data = m.default;
 	var html = tpl.render({ data: data });
