@@ -63,11 +63,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 17);
+/******/ 	return __webpack_require__(__webpack_require__.s = 26);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ (function(module, exports) {
 
 module.exports = function (nunjucks, env, obj, dependencies){
@@ -118,7 +119,8 @@ module.exports = function (nunjucks, env, obj, dependencies){
 };
 
 /***/ }),
-/* 1 */
+
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*! Browser bundle of nunjucks 3.0.0 (slim, only works with precompiled templates) */
@@ -3104,15 +3106,8 @@ return /******/ (function(modules) { // webpackBootstrap
 ;
 
 /***/ }),
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */
+
+/***/ 17:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3123,7 +3118,7 @@ if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv;
 }
 var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-dependencies["../layouts/layout.njk"] = __webpack_require__( 18 );
+dependencies["../layouts/layout.njk"] = __webpack_require__( 27 );
 
 
 
@@ -3185,22 +3180,18 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["pages/index.njk"] , dependencies)
 
 /***/ }),
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */
+
+/***/ 26:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(10);
+__webpack_require__(17);
 
 /***/ }),
-/* 18 */
+
+/***/ 27:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3211,7 +3202,7 @@ if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv;
 }
 var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-dependencies["../partials/header.njk"] = __webpack_require__( 19 );
+dependencies["../partials/header.njk"] = __webpack_require__( 28 );
 
 
 
@@ -3287,7 +3278,8 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["layouts/layout.njk"] , dependencies)
 
 /***/ }),
-/* 19 */
+
+/***/ 28:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3335,5 +3327,6 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/header.njk"] , dependencies)
 
 /***/ })
-/******/ ]);
+
+/******/ });
 //# sourceMappingURL=templates.js.map

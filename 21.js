@@ -1,6 +1,6 @@
 webpackJsonp([21],{
 
-/***/ 23:
+/***/ 34:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10,97 +10,45 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.default = {
-	activities: [{
-		id: 'biking-paracas-reserve',
-		title: 'La Reserva de Paracas en Bici',
-		shortTitle: 'La Reserva de Paracas en Bici',
-		subtitle: 'Disfrute de su libertad, disfrute de la belleza desertico y brisa marina fresca mientras descubre las maravillas de la Reserva Nacional de Paracas en bicicleta de montaña.',
-		url_image: 'images/activities/paracas/bike_paracas_3_t.jpg',
-		description: '<b>Tour de Bici Autoguiado</b></br>Descubra la belleza de la Reserva de Paracas y deje que la brisa de mar te lleve donde le lleve. Nuestro tour guiado en bicicleta le proporcionamos mapas de ruta, casco, herramientas para bicicletas, y los equipos de comunicaci\xF3n para emergencia (opcional).\n<b>Tour de Bici con soporte de Van</b><br/>\nVamos con usted y su bicicleta para llevar al mejor lugar en la Reserva. A partir de ah\xED a disfrutar de la libertad sobre dos ruedas con el viento en su espalda. Incluye transporte, mapas, rutas, casco, herramientas y comunicaci\xF3n de emergencia (opcional).',
-		gallery: ['images/gallery/bike_paracas_01.jpg', 'images/gallery/bike_paracas_02.jpg', 'images/gallery/bike_paracas_03.jpg', 'images/gallery/bike_paracas_04.jpg'],
+	title: 'The Nazca Lines and Peru\'s South Coast',
+	subtitle: 'Peru\'s south coast is the birthplace of the Inca civilization. It\'s intriguing enigmas pique the curiosity of even the most pragmatic of people. Strange geoglyphs speak to the heavens and ancient ruins and remains of questionable origin litter a landscape of mountainous dunes while overflowing sea-life inhabits ruggedly beautiful coastlines - all steeped in ancient culture.',
+	description: 'Our tour of the south coast of Peru offers the very best for those with constricted time with an ease and comfort that you deserve on your vacation to Peru. From Lima, our South Coast tour visits the famous Nazca lines with flights from Pisco (Paracas) - so much easier, the Ballestas Islands, the Paracas National Reserve and the dunes and oasis of Huacachina. All our Nazca flights operate just a few minutes away from Paracas so your travel time is greatly reduced!',
+	url_image: 'images/package/nazca_flight_01_p.jpg',
+	tours: [{
+		id: 'package-mystery-south-coast',
+		title: 'Nazca Lines Flight & South Coast',
+		shortTitle: 'Nazca Lines Flight & South Coast',
+		subtitle: 'The best of the South Coast of Peru in two days (1 night).',
+		url_image: 'images/package/nazca_spider.jpg',
+		description: 'Fly over the enigmatic Nazca lines, contemplate the rugged beauty of Paracas National Reserve, marvel at the abundant marine life at Islas Ballestas, sample some of the best pisco wines in Ica region, relax by a quaint oasis in the desert after an exciting dune buggy ride over mountainous dunes.\n        Your stay in Paracas is in the quaint Santa Maria hotel which offers clean modern rooms, private bathroom, hot water, cable television, internet at reception, continental breakfast.',
 		additionalData: {
-			include: ['Bicicletas profesionales', 'Mapa', 'Herramientas'],
-			notInclude: ['Extras y propinas', 'Entradas'],
-
+			include: ['All tranfers and transport', 'All entrance fees and taxes', 'Accomodation', 'Continental Breakfast'],
+			notInclude: ['Extras & gratuities'],
 			duration: {
-				subtitle: '5 horas (approx.)',
+				subtitle: '2 days / 1 night',
 				data: []
 			},
-			recommendations: ['Salida temprano antes de que comience el viento', 'Mantenerse en las pistas'],
+			recommendations: ['Bring sun creme, hats, sunglasses.', 'Bring a light jacket'],
 			price: {
 				currency: '$',
-				ammount: 18,
-				data: []
+				ammount: 565,
+				data: ['A minimum of 2 participants are required']
 			}
-
 		}
 	}, {
-		id: 'islas-ballestas',
-		title: 'Islas Ballestas',
-		shortTitle: 'Islas Ballestas',
-		subtitle: 'Las Islas Ballestas es el principal atractivo de Paracas. Usted encontrar\xE1 innumberables especies ex\xF3ticas de aves y vida marina, algunas \xFAnicas en el Per\xFA.',
-		url_image: 'images/activities/paracas/paracas_03_t.jpg',
-		description: 'Visitar estas islas es como participar de la filmacion de un documental de Nacional Geografic. Organizamos tours guiados desde nuestra oficina en Paracas, \xF3 lo recojemos desde su hotel y nuestro personal le acompa\xF1ar\xE1 hasta el muelle de Paracas. Este viaje de ida y vuelta es de dos horas a las islas m\xE1s famosas del Per\xFA, le permite disfrutar de magn\xEDficas formaciones de rocas esculpidas por la naturaleza y es el hogar de los ping\xFCinos de Humboldt, lobos marinos sudamericanos y una multitud de aves marinas. Estos servicios tambien estan disponibles en primera clase y servicios privados.Estos tours se realiza en lanchas rapidas con certificacion de Guardacostas del Per\xFA. Nuestros servicios de yates est\xE1n asegurados y registrados con todos los organismos pertinentes dispuesto por la ley. Contamos con personal capacitados por la marina de guerra.Capitan piloto y segundo piloto.',
-		gallery: ['images/gallery/ballestas_01_t.jpg', 'images/gallery/ballestas_02_t.jpg', 'images/gallery/ballestas_06_t.jpg', 'images/gallery/ballestas_08_t.jpg', 'images/gallery/ballestas_11_t.jpg', 'images/gallery/ballestas_16_t.jpg', 'images/gallery/ballestas_15_t.jpg', 'images/gallery/ballestas_03_t.jpg', 'images/gallery/ballestas_04_t.jpg'],
+		id: 'updgrade-to-vip',
+		title: 'Upgrade to VIP',
+		shortTitle: 'Upgrade to VIP',
+		subtitle: 'Our VIP option includes services for the luxury traveler. 5-star hotel stay at Paracas\' new Aranwa hotel - the best hotel in Paracas where hotels are very competitive.',
+		url_image: 'images/package/aranwa_paracas_01_p.jpg',
+		description: 'The Aranwa, a five-star hotel in Paracas includes feature 115 rooms, 2 pools, a lounge on the dock and a large restaurant and all the other amenities you should expect from a hotel in this category like in-room telephone, hairdryer, mini bar, electronic safe, bathrooms with bathtubs, cable television, room and laundry service.\n\t\t\t\tPrivate VIP transport (in car or van depending on the size of your party) gets you to and from Lima and the various destinations of this tour package in style, comfort and greater speed than bus transport allowing you to relax and enjoy even more leisure time on your precious vacation.',
 		additionalData: {
-			include: ['40 Pax. capacidad', 'Traslado al muelle de Paracas', 'Transporte en lancha', 'Otro lancha de emergencia preparado y listo', '2 Pilotos abordo', 'Entrada a la Reserva'],
-			notInclude: ['Extras y propinas', 'Alojamiento'],
-			duration: {
-				subtitle: '2 horas',
-				data: ['Salidas diarias: 8am and 10am']
-			},
-			recommendations: ['Traer crema solar, gafas de sol y una gorra.', 'Llevar ropa abrigadora o chaqueta lijera'],
+			include: ['Includes everything from the standard package and much more', 'VIP 5-star hotel', 'Private Transportation', 'All tours and services upgraded to VIP where they exist'],
 			price: {
 				currency: '$',
-				ammount: 25,
-				data: ['Hay descuentos para grupos']
+				ammount: 886.00,
+				data: ['A minimum of 2 participants are required']
 			}
-
-		}
-	}, {
-		id: 'dune-buggy-sandboard',
-		title: 'Tubular Arenero y Sandboard',
-		shortTitle: 'Tubular Arenero y Sandboard',
-		subtitle: 'Conozca la sede Dakar 2013 en areneros 4x4 y experimente la adrenalina pura y paisajes de dunas monstruosas.',
-		url_image: 'images/activities/paracas/paracas_buggy_1_t.jpg',
-		description: 'Siga el mismo recorrido que la carrera Dakar 2013. Una monta\xF1a rusa de enormes dunas ondulantes. Sandboard algunas de las dunas m\xE1s grandes del planeta.',
-		additionalData: {
-			include: ['Sandboarding', 'Viaje de buggy por las dunas gigantes', 'Entradas'],
-			notInclude: ['Extras y propinas'],
-			duration: {
-				subtitle: '2 horas (approx.)',
-				data: []
-			},
-			recommendations: ['Traer crema solar, gafas de sol y una gorra.', 'Lleve una botella de agua.'],
-			price: {
-				currency: '$',
-				ammount: 50,
-				data: []
-			}
-
-		}
-	}, {
-		id: 'kayak-paracas-bay',
-		title: 'Kayak en Bahia de Paracas',
-		shortTitle: 'Kayak en Bahia de Paracas',
-		subtitle: 'Explora la naturaleza y de la tranquilidad de la Bahía de Paracas en kayak',
-		url_image: 'images/activities/paracas/kayak_1_t.jpg',
-		description: 'Una de las mejores maneras de disfrutar de la bah\xEDa y ver la vida silvestre es en kayak durante la quietud de la ma\xF1ana.\nDescubra la bah\xEDa con kayak para 2 personas y segue tu sentido y descubre en tu camino nuevas experiencias y como tambien podemos ayudarle a planear una ruta a usted y su equipo. Sabra donde desembarcar.',
-		gallery: ['images/gallery/kayak_paracas_1.jpg', 'images/gallery/kayak_paracas_2.jpg'],
-		additionalData: {
-			include: ['Chaleco Salvavida', 'Kayak y remo(s)', 'Entrega de Kayak en la playa', 'Recogo del Kayak', 'Instrucciones'],
-			notInclude: ['Extras y propinas'],
-			duration: {
-				subtitle: '2 horas',
-				data: []
-			},
-			recommendations: ['Preparate para mojarse', 'Sólo los buenos nadadores deben considerar este deporte'],
-			price: {
-				currency: '$',
-				ammount: 20,
-				data: ['2-person kayak']
-			}
-
 		}
 	}]
 };
