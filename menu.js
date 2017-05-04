@@ -3578,7 +3578,7 @@ output += "\n\t\t\t\t\t </div>\n\t\t\t\t\t\t\t ";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"description"), env.opts.autoescape);
 output += "\n\t\t\t\t\t </p>\n\t\t\t </div>\n\t\t\t <div class=\"col-md-4 hidden-sm hidden-xs\">\n\t\t\t\t\t <div class=\"banner-right floating-right tour-menu\">\n\t\t\t\t\t\t\t <ul>\n\t\t\t\t\t\t\t\t\t ";
 frame = frame.push();
-var t_3 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"tours");
+var t_3 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"packages");
 if(t_3) {var t_2 = t_3.length;
 for(var t_1=0; t_1 < t_3.length; t_1++) {
 var t_4 = t_3[t_1];
@@ -3601,7 +3601,7 @@ output += "</a></li>\n\t\t\t\t\t\t\t\t\t ";
 frame = frame.pop();
 output += "\n\t\t\t\t\t\t\t\t\t <li><a href=\"#additional-info\">Additional Information</a></li>\n\t\t\t\t\t\t\t </ul>\n\t\t\t\t\t </div>\n\t\t\t </div>\n\t </div>\n\n\t ";
 frame = frame.push();
-var t_7 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"tours");
+var t_7 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"packages");
 if(t_7) {var t_6 = t_7.length;
 for(var t_5=0; t_5 < t_7.length; t_5++) {
 var t_8 = t_7[t_5];
@@ -3721,7 +3721,56 @@ frame = frame.pop();
 output += "\n\t\t\t\t\t\t\t\t </ul>\n\t\t\t\t\t\t\t ";
 ;
 }
-output += "\n\n\t\t\t\t\t\t\t <button class=\"bttn-unite bttn-md bttn-warning\">Reserve Tour</button>\n\t\t\t\t\t </div>\n\t\t\t\t\t </div>\n\t\t\t </div>\n\t </div>\n\t ";
+output += "\n\n\t\t\t\t\t\t\t <button class=\"bttn-unite bttn-md bttn-warning\">Reserve Tour</button>\n\t\t\t\t\t </div>\n\t\t\t\t\t </div>\n\t\t\t </div>\n\t </div>\n\n\t\t";
+if(runtime.memberLookup((t_8),"itenerary")) {
+output += "\n\t\t\t<div class=\"row tour-container\">\n\t\t\t\t\t<div style=\"padding-right:10px; padding-left:10px;\">\n\t\t\t\t \t\t<h3 style=\"margin-top:0px;\">Itenerary</h3>\n\t\t\t\t\t</div>\n\t\t\t\t ";
+frame = frame.push();
+var t_27 = runtime.memberLookup((t_8),"itenerary");
+if(t_27) {var t_26 = t_27.length;
+for(var t_25=0; t_25 < t_27.length; t_25++) {
+var t_28 = t_27[t_25];
+frame.set("itenerary", t_28);
+frame.set("loop.index", t_25 + 1);
+frame.set("loop.index0", t_25);
+frame.set("loop.revindex", t_26 - t_25);
+frame.set("loop.revindex0", t_26 - t_25 - 1);
+frame.set("loop.first", t_25 === 0);
+frame.set("loop.last", t_25 === t_26 - 1);
+frame.set("loop.length", t_26);
+output += "\n\t\t\t\t\t <div class=\"col-md-6\">\n\t\t\t\t\t\t <table class=\"schedule table\">\n\t\t\t\t\t\t\t <tbody>\n\t\t\t\t\t\t\t\t <tr>\n\t\t\t\t\t\t\t\t\t <th colspan=\"2\">";
+output += runtime.suppressValue(runtime.memberLookup((t_28),"title"), env.opts.autoescape);
+output += "</th>\n\t\t\t\t\t\t\t\t </tr>\n\t\t\t\t\t\t\t\t ";
+frame = frame.push();
+var t_31 = runtime.memberLookup((t_28),"data");
+if(t_31) {var t_30 = t_31.length;
+for(var t_29=0; t_29 < t_31.length; t_29++) {
+var t_32 = t_31[t_29];
+frame.set("row", t_32);
+frame.set("loop.index", t_29 + 1);
+frame.set("loop.index0", t_29);
+frame.set("loop.revindex", t_30 - t_29);
+frame.set("loop.revindex0", t_30 - t_29 - 1);
+frame.set("loop.first", t_29 === 0);
+frame.set("loop.last", t_29 === t_30 - 1);
+frame.set("loop.length", t_30);
+output += "\n\t\t\t\t\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t\t\t\t\t<td>";
+output += runtime.suppressValue(runtime.memberLookup((t_32),0), env.opts.autoescape);
+output += "</td>\n\t\t\t\t\t\t\t\t\t\t\t<td>";
+output += runtime.suppressValue(runtime.memberLookup((t_32),1), env.opts.autoescape);
+output += "</td>\n\t\t\t\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t\t\t ";
+;
+}
+}
+frame = frame.pop();
+output += "\n\t\t\t\t\t\t\t </tbody>\n\t\t\t\t\t\t </table>\n\t\t\t\t\t </div>\n\t\t\t\t ";
+;
+}
+}
+frame = frame.pop();
+output += "\n\t\t\t</div>\n\t\t";
+;
+}
+output += "\n\n\t ";
 ;
 }
 }
@@ -3784,7 +3833,7 @@ output += "\n\t\t\t\t\t </div>\n\t\t\t\t\t\t\t ";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"description"), env.opts.autoescape);
 output += "\n\t\t\t\t\t </p>\n\t\t\t </div>\n\t\t\t <div class=\"col-md-4 hidden-sm hidden-xs\">\n\t\t\t\t\t <div class=\"banner-right floating-right tour-menu\">\n\t\t\t\t\t\t\t <ul>\n\t\t\t\t\t\t\t\t\t ";
 frame = frame.push();
-var t_3 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"tours");
+var t_3 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"packages");
 if(t_3) {var t_2 = t_3.length;
 for(var t_1=0; t_1 < t_3.length; t_1++) {
 var t_4 = t_3[t_1];
@@ -3807,7 +3856,7 @@ output += "</a></li>\n\t\t\t\t\t\t\t\t\t ";
 frame = frame.pop();
 output += "\n\t\t\t\t\t\t\t\t\t <li><a href=\"#additional-info\">Información Adicional</a></li>\n\t\t\t\t\t\t\t </ul>\n\t\t\t\t\t </div>\n\t\t\t </div>\n\t </div>\n\n\t ";
 frame = frame.push();
-var t_7 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"tours");
+var t_7 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"packages");
 if(t_7) {var t_6 = t_7.length;
 for(var t_5=0; t_5 < t_7.length; t_5++) {
 var t_8 = t_7[t_5];
@@ -3819,15 +3868,15 @@ frame.set("loop.revindex0", t_6 - t_5 - 1);
 frame.set("loop.first", t_5 === 0);
 frame.set("loop.last", t_5 === t_6 - 1);
 frame.set("loop.length", t_6);
-output += "\n\t\t<div class=\"row tour-container\" >\n\t\t\t <div class=\"col-md-8 tour-info\">\n\t\t\t\t <p class=\"text-justify\">\n\t\t\t\t\t\t\t <img class=\"article-image tour-image\" style=\"background-image:url(";
+output += "\n\t\t<div class=\"row tour-container\" >\n\t\t\t <div class=\"col-md-8 tour-info\">\n\t\t\t\t <p class=\"text-justify\">\n\t\t\t\t\t <img class=\"article-image tour-image\" style=\"background-image:url(";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"url_image"), env.opts.autoescape);
-output += ");\" alt=\"\" width=\"100%\">\n\n\t\t\t\t\t\t\t <div class=\"article-title\" id=\"";
+output += ");\" alt=\"\" width=\"100%\">\n\t\t\t\t\t <div class=\"article-title\" id=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
 output += "\">";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"title"), env.opts.autoescape);
 output += "</div>\n\t\t\t\t\t <div class=\"article-subtitle\">\n\t\t\t\t\t\t\t ";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"subtitle"), env.opts.autoescape);
-output += "\n\t\t\t\t\t </div>\n\t\t\t\t\t\t\t ";
+output += "\n\t\t\t\t\t </div>\n\t\t\t\t\t ";
 output += runtime.suppressValue(env.getFilter("safe").call(context, runtime.memberLookup((t_8),"description")), env.opts.autoescape);
 output += "\n\t\t\t\t </p>\n\t\t\t\t <div class=\"slick-autoplay\">\n\t\t\t\t\t ";
 frame = frame.push();
@@ -3852,7 +3901,7 @@ output += "\" height=\"50px\" width=\"50px\"/>\n\t\t\t\t\t\t </a>\n\t\t\t\t\t ";
 }
 }
 frame = frame.pop();
-output += "\n\t\t\t\t </div>\n\t\t\t </div>\n\t\t\t <div class=\"col-md-4\">\n\t\t\t\t\t <div class=\"banner-right floating-right\">\n\t\t\t\t\t <div class=\"tour-detail\">\n\t\t\t\t\t\t\t <div class=\"tour-info-title\">Incluye</div>\n\t\t\t\t\t\t\t <ul>\n\t\t\t\t\t\t\t\t\t ";
+output += "\n\t\t\t\t </div>\n\n\t\t\t </div>\n\t\t\t <div class=\"col-md-4\">\n\t\t\t\t\t <div class=\"banner-right floating-right\">\n\t\t\t\t\t <div class=\"tour-detail\">\n\t\t\t\t\t\t\t <div class=\"tour-info-title\">Incluye</div>\n\t\t\t\t\t\t\t <ul>\n\t\t\t\t\t\t\t\t\t ";
 frame = frame.push();
 var t_15 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"include");
 if(t_15) {var t_14 = t_15.length;
@@ -3927,7 +3976,56 @@ frame = frame.pop();
 output += "\n\t\t\t\t\t\t\t\t </ul>\n\t\t\t\t\t\t\t ";
 ;
 }
-output += "\n\n\t\t\t\t\t\t\t <button class=\"bttn-unite bttn-md bttn-warning\">Reservar Tour</button>\n\t\t\t\t\t </div>\n\t\t\t\t\t </div>\n\t\t\t </div>\n\t </div>\n\t ";
+output += "\n\n\t\t\t\t\t\t\t <button class=\"bttn-unite bttn-md bttn-warning\">Reservar Tour</button>\n\t\t\t\t\t </div>\n\t\t\t\t\t </div>\n\t\t\t </div>\n\t </div>\n\n\t ";
+if(runtime.memberLookup((t_8),"itenerary")) {
+output += "\n\t\t <div class=\"row tour-container\">\n\t\t\t\t <div style=\"padding-right:10px; padding-left:10px;\">\n\t\t\t\t\t <h3 style=\"margin-top:0px;\">Itinerario</h3>\n\t\t\t\t </div>\n\t\t\t\t";
+frame = frame.push();
+var t_27 = runtime.memberLookup((t_8),"itenerary");
+if(t_27) {var t_26 = t_27.length;
+for(var t_25=0; t_25 < t_27.length; t_25++) {
+var t_28 = t_27[t_25];
+frame.set("itenerary", t_28);
+frame.set("loop.index", t_25 + 1);
+frame.set("loop.index0", t_25);
+frame.set("loop.revindex", t_26 - t_25);
+frame.set("loop.revindex0", t_26 - t_25 - 1);
+frame.set("loop.first", t_25 === 0);
+frame.set("loop.last", t_25 === t_26 - 1);
+frame.set("loop.length", t_26);
+output += "\n\t\t\t\t\t<div class=\"col-md-6\">\n\t\t\t\t\t\t<table class=\"schedule\">\n\t\t\t\t\t\t\t<tbody>\n\t\t\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t\t\t<th colspan=\"2\">";
+output += runtime.suppressValue(runtime.memberLookup((t_28),"title"), env.opts.autoescape);
+output += "</th>\n\t\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t\t\t";
+frame = frame.push();
+var t_31 = runtime.memberLookup((t_28),"data");
+if(t_31) {var t_30 = t_31.length;
+for(var t_29=0; t_29 < t_31.length; t_29++) {
+var t_32 = t_31[t_29];
+frame.set("row", t_32);
+frame.set("loop.index", t_29 + 1);
+frame.set("loop.index0", t_29);
+frame.set("loop.revindex", t_30 - t_29);
+frame.set("loop.revindex0", t_30 - t_29 - 1);
+frame.set("loop.first", t_29 === 0);
+frame.set("loop.last", t_29 === t_30 - 1);
+frame.set("loop.length", t_30);
+output += "\n\t\t\t\t\t\t\t\t\t <tr>\n\t\t\t\t\t\t\t\t\t\t <td>";
+output += runtime.suppressValue(runtime.memberLookup((t_32),0), env.opts.autoescape);
+output += "</td>\n\t\t\t\t\t\t\t\t\t\t <td>";
+output += runtime.suppressValue(runtime.memberLookup((t_32),1), env.opts.autoescape);
+output += "</td>\n\t\t\t\t\t\t\t\t\t </tr>\n\t\t\t\t\t\t\t\t";
+;
+}
+}
+frame = frame.pop();
+output += "\n\t\t\t\t\t\t\t</tbody>\n\t\t\t\t\t\t</table>\n\t\t\t\t\t</div>\n\t\t\t\t";
+;
+}
+}
+frame = frame.pop();
+output += "\n\t\t </div>\n\t ";
+;
+}
+output += "\n\n\t ";
 ;
 }
 }
