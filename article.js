@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		34: 0
+/******/ 		30: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -144,7 +144,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 31);
+/******/ 	return __webpack_require__(__webpack_require__.s = 27);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -4565,19 +4565,17 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tour
 /***/ }),
 /* 15 */,
 /* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./package-mystery-south-coast.en.js": [
-		43,
-		21
+	"./articles.en.js": [
+		40,
+		24
 	],
-	"./package-mystery-south-coast.es.js": [
-		44,
-		20
+	"./articles.es.js": [
+		41,
+		23
 	]
 };
 function webpackAsyncContext(req) {
@@ -4592,42 +4590,130 @@ webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
 module.exports = webpackAsyncContext;
-webpackAsyncContext.id = 19;
+webpackAsyncContext.id = 17;
 
 /***/ }),
+/* 18 */,
+/* 19 */,
 /* 20 */,
 /* 21 */,
 /* 22 */,
 /* 23 */,
-/* 24 */,
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var nunjucks = __webpack_require__(1);
+var env;
+if (!nunjucks.currentEnv){
+	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
+} else {
+	env = nunjucks.currentEnv;
+}
+var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
+
+
+
+
+var shim = __webpack_require__(0);
+
+
+(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/article.en.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var parentTemplate = null;
+frame = frame.push();
+var t_3 = runtime.contextOrFrameLookup(context, frame, "items");
+if(t_3) {var t_2 = t_3.length;
+for(var t_1=0; t_1 < t_3.length; t_1++) {
+var t_4 = t_3[t_1];
+frame.set("item", t_4);
+frame.set("loop.index", t_1 + 1);
+frame.set("loop.index0", t_1);
+frame.set("loop.revindex", t_2 - t_1);
+frame.set("loop.revindex0", t_2 - t_1 - 1);
+frame.set("loop.first", t_1 === 0);
+frame.set("loop.last", t_1 === t_2 - 1);
+frame.set("loop.length", t_2);
+output += "\n\t<div class=\"row container-article\">\n\t\t<div class=\"col-sm-4 col-md-4\">\n\t\t\t<img class=\"article-image\" style=\"background-image:url(";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"url_image"), env.opts.autoescape);
+output += ");\" alt=\"\" width=\"100%\">\n\t\t</div>\n\t\t<div class=\"col-sm-8 col-md-8\">\n\t\t\t<div class=\"row article\">\n\t\t\t\t<div class=\"col-lg-12\">\n\t\t\t\t\t<div class=\"article-title\">";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"title"), env.opts.autoescape);
+output += "</div>\n\t\t\t\t\t<div class=\"article-author\">";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"date"), env.opts.autoescape);
+output += " - ";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"author"), env.opts.autoescape);
+output += "</div>\n\t\t\t\t\t<div class=\"article-subtitle\">\n\t\t\t\t\t\t";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"subtitle"), env.opts.autoescape);
+output += "\n\t\t\t\t\t</div>\n\t\t\t\t\t<p class=\"text-justify\">\n\t\t\t\t\t\t";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"description"), env.opts.autoescape);
+output += "\n\t\t\t\t\t</p>\n\t\t\t\t\t";
+if(runtime.memberLookup((t_4),"blockquote")) {
+output += "\n\t\t\t\t\t\t<blockquote class=\"article-blockquote\">\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"blockquote"), env.opts.autoescape);
+output += "\n\t\t\t\t\t\t</blockquote>\n\t\t\t\t\t";
+;
+}
+output += "\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n  </div>\n";
+;
+}
+}
+frame = frame.pop();
+output += "\n";
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
+
+
+module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/article.en.njk"] , dependencies)
+
+/***/ }),
 /* 25 */,
 /* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+var _articleEn = __webpack_require__(24);
+
+var _articleEn2 = _interopRequireDefault(_articleEn);
+
 var _utils = __webpack_require__(2);
 
-var content = document.querySelector('#page-content');
-var dataRef = content.getAttribute('data-ref');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var language = (0, _utils.getPageLanguage)('lng') || 'en';
 
-var tpl = (0, _utils.getPackagePageByLanguafge)(language);
+var template = (0, _utils.getArticleSidebar)(language);
 
-__webpack_require__(19)("./" + dataRef + '.' + language + '.js').then(function (m) {
+__webpack_require__(17)("./articles." + language + '.js').then(function (m) {
 	console.log(m);
-	var data = m.default;
-	var html = tpl.render({ data: data });
+	var articles = m.default;
+	var html = _articleEn2.default.render({ items: articles });
 	document.querySelector('#page-content').innerHTML = html;
+
+	var html2 = template.render({});
+	document.querySelector('#articles-banners').innerHTML = html2;
 });
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=package.js.map
+//# sourceMappingURL=article.js.map

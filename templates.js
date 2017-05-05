@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 28);
+/******/ 	return __webpack_require__(__webpack_require__.s = 33);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3107,7 +3107,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 
-/***/ 19:
+/***/ 22:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3118,7 +3118,7 @@ if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv;
 }
 var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-dependencies["../layouts/layout.njk"] = __webpack_require__( 29 );
+dependencies["../layouts/layout.njk"] = __webpack_require__( 34 );
 
 
 
@@ -3182,17 +3182,17 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["pages/index.n
 
 /***/ }),
 
-/***/ 28:
+/***/ 33:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(19);
+__webpack_require__(22);
 
 /***/ }),
 
-/***/ 29:
+/***/ 34:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3203,7 +3203,7 @@ if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv;
 }
 var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-dependencies["../partials/header.njk"] = __webpack_require__( 30 );
+dependencies["../partials/header.njk"] = __webpack_require__( 35 );
 
 
 
@@ -3280,7 +3280,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["layouts/layou
 
 /***/ }),
 
-/***/ 30:
+/***/ 35:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);

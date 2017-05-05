@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		29: 0
+/******/ 		32: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -144,7 +144,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 25);
+/******/ 	return __webpack_require__(__webpack_require__.s = 30);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -3200,20 +3200,21 @@ exports.getContactPageByLanguage = getContactPageByLanguage;
 exports.getContactChatOptionsByLanguafge = getContactChatOptionsByLanguafge;
 exports.getPackagePageByLanguafge = getPackagePageByLanguafge;
 exports.getLastNewsBannerByLanguage = getLastNewsBannerByLanguage;
+exports.getArticleSidebar = getArticleSidebar;
 
-var _toursPageEn = __webpack_require__(11);
+var _toursPageEn = __webpack_require__(13);
 
 var _toursPageEn2 = _interopRequireDefault(_toursPageEn);
 
-var _toursPageEs = __webpack_require__(12);
+var _toursPageEs = __webpack_require__(14);
 
 var _toursPageEs2 = _interopRequireDefault(_toursPageEs);
 
-var _contactcontentEn = __webpack_require__(5);
+var _contactcontentEn = __webpack_require__(7);
 
 var _contactcontentEn2 = _interopRequireDefault(_contactcontentEn);
 
-var _contactcontentEs = __webpack_require__(6);
+var _contactcontentEs = __webpack_require__(8);
 
 var _contactcontentEs2 = _interopRequireDefault(_contactcontentEs);
 
@@ -3225,21 +3226,29 @@ var _contactoptionsEs = __webpack_require__(4);
 
 var _contactoptionsEs2 = _interopRequireDefault(_contactoptionsEs);
 
-var _packagePageEs = __webpack_require__(10);
+var _packagePageEs = __webpack_require__(12);
 
 var _packagePageEs2 = _interopRequireDefault(_packagePageEs);
 
-var _packagePageEn = __webpack_require__(9);
+var _packagePageEn = __webpack_require__(11);
 
 var _packagePageEn2 = _interopRequireDefault(_packagePageEn);
 
-var _lastNewsBannerEs = __webpack_require__(8);
+var _lastNewsBannerEs = __webpack_require__(10);
 
 var _lastNewsBannerEs2 = _interopRequireDefault(_lastNewsBannerEs);
 
-var _lastNewsBannerEn = __webpack_require__(7);
+var _lastNewsBannerEn = __webpack_require__(9);
 
 var _lastNewsBannerEn2 = _interopRequireDefault(_lastNewsBannerEn);
+
+var _articleSidebarEn = __webpack_require__(5);
+
+var _articleSidebarEn2 = _interopRequireDefault(_articleSidebarEn);
+
+var _articleSidebarEs = __webpack_require__(6);
+
+var _articleSidebarEs2 = _interopRequireDefault(_articleSidebarEs);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3312,6 +3321,19 @@ function getLastNewsBannerByLanguage(lng) {
 	}
 }
 
+function getArticleSidebar(lng) {
+	switch (lng) {
+		case 'es':
+			return _articleSidebarEs2.default;
+			break;
+		case 'en':
+			return _articleSidebarEn2.default;
+			break;
+		default:
+			return _articleSidebarEn2.default;
+	}
+}
+
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -3369,6 +3391,102 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 var shim = __webpack_require__(0);
 
 
+(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/article-sidebar.en.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var parentTemplate = null;
+output += "<div class=\"banner-right floating-right\">\n  <a href=\"packagecoast.html#package-mystery-south-coast\" class=\"ad\">\n    <div class=\"title\">\n      Nazca Lines & South Coast\n      <div class=\"gallery autoplay items-1\">\n        <div id=\"item-1\" class=\"control-operator\"></div>\n        <figure class=\"item\">\n            <div class=\"banner-img nazca-lines\">\n            </div>\n        </figure>\n      </div>\n      <div class=\"tour-info-title\">2 days / 1 night</div>\n      <div class=\"tour-info-title\"><h4>$565.00 USD</h4></div>\n      <div class=\"tour-info-title\">per person from Lima transport & hotel included</div>\n      <p style=\"font-size:14px;\">\n        <b>Short on time?</b> Get the most out of your vacation with <b>ease, comfort &amp; style</b>:<br>\n        Flight over Nazca lines, guided tour Paracas National Reserve, excursion to Ballestas Islands, visit a winery in Ica, visit Huacachina oasis and a thrilling dune buggy. <br> The price also includes *all* transport, transfers, and fees! From your hotel in Lima!\n      </p>\n    </div>\n  </a>\n</div>\n";
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
+
+
+module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/article-sidebar.en.njk"] , dependencies)
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var nunjucks = __webpack_require__(1);
+var env;
+if (!nunjucks.currentEnv){
+	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
+} else {
+	env = nunjucks.currentEnv;
+}
+var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
+
+
+
+
+var shim = __webpack_require__(0);
+
+
+(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/article-sidebar.es.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var parentTemplate = null;
+output += "<div class=\"banner-right floating-right\">\n  <a href=\"packagecoast.html#package-mystery-south-coast\" class=\"ad\">\n    <div class=\"title\">\n      Nazca Lines & South Coast\n      <div class=\"gallery autoplay items-1\">\n        <div id=\"item-1\" class=\"control-operator\"></div>\n        <figure class=\"item\">\n            <div class=\"banner-img nazca-lines\">\n            </div>\n        </figure>\n      </div>\n      <div class=\"tour-info-title\">2 days / 1 night</div>\n      <div class=\"tour-info-title\"><h4>$565.00 USD</h4></div>\n      <div class=\"tour-info-title\">per person from Lima transport & hotel included</div>\n      <p style=\"font-size:14px;\">\n        <b>Short on time?</b> Get the most out of your vacation with <b>ease, comfort &amp; style</b>:<br>\n        Flight over Nazca lines, guided tour Paracas National Reserve, excursion to Ballestas Islands, visit a winery in Ica, visit Huacachina oasis and a thrilling dune buggy. <br> The price also includes *all* transport, transfers, and fees! From your hotel in Lima!\n      </p>\n    </div>\n  </a>\n</div>\n";
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
+
+
+module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/article-sidebar.es.njk"] , dependencies)
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var nunjucks = __webpack_require__(1);
+var env;
+if (!nunjucks.currentEnv){
+	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
+} else {
+	env = nunjucks.currentEnv;
+}
+var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
+
+
+
+
+var shim = __webpack_require__(0);
+
+
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/contactcontent.en.njk"] = (function() {
 function root(env, context, frame, runtime, cb) {
 var lineno = null;
@@ -3399,7 +3517,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/contactcontent.en.njk"] , dependencies)
 
 /***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3447,7 +3565,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/contactcontent.es.njk"] , dependencies)
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3495,7 +3613,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last-news-banner.en.njk"] , dependencies)
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3543,7 +3661,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last-news-banner.es.njk"] , dependencies)
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3798,7 +3916,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/package-page.en.njk"] , dependencies)
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4053,7 +4171,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/package-page.es.njk"] , dependencies)
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4249,7 +4367,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tours-page.en.njk"] , dependencies)
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4445,21 +4563,22 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tours-page.es.njk"] , dependencies)
 
 /***/ }),
-/* 13 */,
-/* 14 */,
 /* 15 */,
 /* 16 */,
 /* 17 */,
-/* 18 */
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"./menu.en.njk": [
-		56,
+		63,
 		1
 	],
 	"./menu.es.njk": [
-		57,
+		64,
 		0
 	]
 };
@@ -4475,16 +4594,18 @@ webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
 module.exports = webpackAsyncContext;
-webpackAsyncContext.id = 18;
+webpackAsyncContext.id = 21;
 
 /***/ }),
-/* 19 */,
-/* 20 */,
-/* 21 */,
 /* 22 */,
 /* 23 */,
 /* 24 */,
-/* 25 */
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4494,7 +4615,7 @@ var _utils = __webpack_require__(2);
 
 var language = (0, _utils.getPageLanguage)('lng') || 'en';
 var menu = document.querySelector('#menu-content');
-__webpack_require__(18)("./menu." + language + '.njk').then(function (m) {
+__webpack_require__(21)("./menu." + language + '.njk').then(function (m) {
 	console.log(m);
 	var tpl = m;
 	var html = tpl.render({});
