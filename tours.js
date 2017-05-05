@@ -4339,7 +4339,31 @@ output += "\n                    </li>\n                    ";
 }
 }
 frame = frame.pop();
-output += "\n                </ul>\n\n                <button class=\"bttn-unite bttn-md bttn-warning\">Reserve Tour</button>\n            </div>\n            </div>\n        </div>\n    </div>\n    ";
+output += "\n                </ul>\n\n                <div class=\"tour-info-title\">Price: <small>";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"currency"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"ammount"), env.opts.autoescape);
+output += "</small></div>\n\t\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t\t\t\t";
+frame = frame.push();
+var t_27 = runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"data");
+if(t_27) {var t_26 = t_27.length;
+for(var t_25=0; t_25 < t_27.length; t_25++) {
+var t_28 = t_27[t_25];
+frame.set("inc", t_28);
+frame.set("loop.index", t_25 + 1);
+frame.set("loop.index0", t_25);
+frame.set("loop.revindex", t_26 - t_25);
+frame.set("loop.revindex0", t_26 - t_25 - 1);
+frame.set("loop.first", t_25 === 0);
+frame.set("loop.last", t_25 === t_26 - 1);
+frame.set("loop.length", t_26);
+output += "\n\t\t\t\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(t_28, env.opts.autoescape);
+output += "\n\t\t\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t\t\t";
+;
+}
+}
+frame = frame.pop();
+output += "\n\t\t\t\t\t\t\t\t</ul>\n\n\n                <button class=\"bttn-unite bttn-md bttn-warning\">Reserve Tour</button>\n            </div>\n            </div>\n        </div>\n    </div>\n    ";
 ;
 }
 }
@@ -4530,6 +4554,30 @@ frame.set("loop.last", t_21 === t_22 - 1);
 frame.set("loop.length", t_22);
 output += "\n\t\t\t\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t\t\t";
 output += runtime.suppressValue(t_24, env.opts.autoescape);
+output += "\n\t\t\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t\t\t";
+;
+}
+}
+frame = frame.pop();
+output += "\n\t\t\t\t\t\t\t\t</ul>\n\n                <div class=\"tour-info-title\">Precio: <small>";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"currency"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"ammount"), env.opts.autoescape);
+output += "</small></div>\n\t\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t\t\t\t";
+frame = frame.push();
+var t_27 = runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"data");
+if(t_27) {var t_26 = t_27.length;
+for(var t_25=0; t_25 < t_27.length; t_25++) {
+var t_28 = t_27[t_25];
+frame.set("inc", t_28);
+frame.set("loop.index", t_25 + 1);
+frame.set("loop.index0", t_25);
+frame.set("loop.revindex", t_26 - t_25);
+frame.set("loop.revindex0", t_26 - t_25 - 1);
+frame.set("loop.first", t_25 === 0);
+frame.set("loop.last", t_25 === t_26 - 1);
+frame.set("loop.length", t_26);
+output += "\n\t\t\t\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(t_28, env.opts.autoescape);
 output += "\n\t\t\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t\t\t";
 ;
 }

@@ -49,7 +49,10 @@ exports.default = {
 						include: ['Transporte privado desde su hotel en Lima a Paracas (3 horas)', 'Servicio VIP (2 asientos por persona) para el tours de las islas ballestas(2 horas)', 'Sobrevuelo a las Líneas de Nazca desde Pisco (95 minutos)', 'Transporte privado de retorno a Lima', 'Transporte y entradas a todos los lugares incluido.'],
 						notInclude: ['Extras y propinas.', 'Alimentacíon'],
 						time: '12 horas (approx.)',
-						duration: ['Salidas diarias 6:00 am'],
+						duration: {
+								subtitle: '12 horas (approx.)',
+								data: ['Salidas diarias 6:00 am']
+						},
 						price: {
 								currency: '$',
 								ammount: 430,

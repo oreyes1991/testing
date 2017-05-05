@@ -49,7 +49,10 @@ exports.default = {
 						include: ['Private VIP transport to Pisco airport from your hotel in Lima (3 hours)', 'VIP First Class Guided tour of the "Candelbra" geoglyph and the Ballestas Islands (2 hours)', 'Overflight of Nazca Lines (95 minutes)', 'Private VIP transport return to Lima', 'All transport, fees and taxes'],
 						notInclude: ['Extras & gratuities.'],
 						time: '12 hours (approx.)',
-						duration: ['Departs daily at 6.00am'],
+						duration: {
+								subtitle: '12 hours (approx.)',
+								data: ['Departs daily at 6.00am']
+						},
 						price: {
 								currency: '$',
 								ammount: 430,
