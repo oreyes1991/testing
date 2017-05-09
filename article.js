@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		30: 0
+/******/ 		32: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -144,7 +144,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 27);
+/******/ 	return __webpack_require__(__webpack_require__.s = 28);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -4618,12 +4618,12 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tour
 
 var map = {
 	"./articles.en.js": [
-		40,
-		24
+		42,
+		26
 	],
 	"./articles.es.js": [
-		41,
-		23
+		43,
+		25
 	]
 };
 function webpackAsyncContext(req) {
@@ -4647,7 +4647,8 @@ webpackAsyncContext.id = 17;
 /* 21 */,
 /* 22 */,
 /* 23 */,
-/* 24 */
+/* 24 */,
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4732,15 +4733,15 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/article.en.njk"] , dependencies)
 
 /***/ }),
-/* 25 */,
 /* 26 */,
-/* 27 */
+/* 27 */,
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _articleEn = __webpack_require__(24);
+var _articleEn = __webpack_require__(25);
 
 var _articleEn2 = _interopRequireDefault(_articleEn);
 

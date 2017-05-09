@@ -1,6 +1,6 @@
 webpackJsonp([19],{
 
-/***/ 45:
+/***/ 49:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10,25 +10,25 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.default = {
-	title: 'Arequipa - the White City',
-	subtitle: 'Peru\'s second most populous city, Arequipa, is located between the south-western Andes and coastal desert.',
-	description: 'Arequipa posesses a series of volcanic cones like El Misty, CHACHANI and PICHU PICHO the city has a nice weather warm and dry all year around the city has many colonial buildings made whit ashlars a pearly white volcanic rock from which it gets the name white city nowadays the historic centre is recognized as UNESCO WORLD HERITAGE SITE Arequipa city has many interesting tourist attraction like convent Santa Catalina, churches Basilica cathedral of Arequipa and old houses.',
-	url_image: 'images/tours/arequipa/arequipa_1_t.jpg',
+	title: 'Cuzco',
+	subtitle: 'Cuzco (or Cusco) is the oldest city of South America still alive where people conserve the official language of the Incas.',
+	description: 'Formerly named Cuzco by Spanish Conquistadors, the name originates from the Quechua the phrase \'qusqu wanka\' (\'Rock of the owl\').\nThis well-preserved historic capital of the Inca empire is where you\'ll find sacred sites, temples and huge fortresses. Cuzco was the epicenter of Inca ceremonies and also the launching pad for Spanish colonization and the spread of Christianity throughout the Andean world. This is evidenced by a proliferation of colonial christian churches, convents, monasteries and cathedrals - largley built atop former Inca sites.\nToday, Cuzco is a World Heritage site declared by Unesco and the major tourist destination in South America. Tourists come from all over the world to visit Cuzco and surrounding sites like Machu Piccu, Sacsayhuanman, Qenko, Puca Pucara and Tambo Machay. Popular activities among tourists include trekking, rafting, bird watching, culinary tours, shamanic ceremonies and shopping for arts hand-crafted from gold, silver, textile, ceramic.',
+	url_image: 'images/tours/cuzco/cusco_3_t.jpg',
 	tours: [{
-		id: 'arequipa-city-tour',
-		title: 'Arequipa City Tour',
-		shortTitle: 'Arequipa City Tour',
-		subtitle: 'Magnificent colonial architecture and cathedrals in Peru\'s famed White City',
-		url_image: 'images/tours/arequipa/arequipa_3_t.jpg',
-		description: 'Our guided program begins when your guide picks you up from your hotel. First we\'ll visit one of the most remarkable buildings of Arequipa, the Santa Catalina Monastery - a beautiful monastery in Arequipa that has lasted for centuries.Later on we will walk around the main square of Arequipa, a nice spot surrounded by colonial buildings. At the main plaza we will visit the interiors of magnificent Cathedral of Arequipa. Later on we will visit the museum of Santuarios Andinos, where we will see the Mummy named Juanita, an amazing frozen body of a little girl found at the cold slopes of the Ampato Mountain.',
+		id: 'cuzco-city-tour',
+		title: 'Cuzco City Tour',
+		shortTitle: 'Tour of Cuzco',
+		subtitle: 'Explore the city of Cuzco and surrounding and discover the best sites of ancient Inca and Spanish colonial culture ',
+		url_image: 'images/tours/cuzco/cusco_4_t.jpg',
+		description: 'Qoricancha: One of the most regarded churches in the city, the "gold room" was a sacred place where one could worship "Inti", the most revered Inca god. Entered only by fasting, barefoot and with a load on back as a sign of humility.\nSacsayhuaman: on of the most amazing Incan constructions and especially regarded by tourists, according to the latest hypothesis says it was an important ceremonial center and not a fortress as was previously though. A massive and spectacular building built with enormous carved rocks with incredible precision. Along with Machu Picchu and Choquequirao, Sacsayhuaman is without doubht one of the greatest architectural works of Tahuantinsuyo. It\'s Quechua name means "satisfied falcon".\nOther archaeologically important sites like Qenko, Puca, Pucara, Tambo Machay, and Cuzco city.',
 		additionalData: {
-			include: ['Pick up from your hotel in Arequipa', 'Visit to the Santa Calina Monastery', 'Visit the colonial buildings surrounding Arequipa\'s main square', 'Visit to the Cathedral of Arequipa', 'Visit to the museum of Santuarios Andinos', 'All entrance fees.', 'English speaking guide.'],
+			include: ['Pick up from your hotel in Cuzco', 'Transportation', 'All entrance fees.', 'English speaking guide.'],
 			notInclude: ['Extras & gratuities'],
 			duration: {
 				subtitle: '4 hours (approx.)',
-				data: ['Departs daily at 9:00am and 2:00pm approximately']
+				data: ['Departs daily at 1:30pm approximately']
 			},
-			recommendations: [],
+			recommendations: ['Bring a jacket or fleece for cool afternoons during winter', 'A rain poncho in case of rain'],
 			price: {
 				currency: '$',
 				ammount: 60,
@@ -36,24 +36,25 @@ exports.default = {
 			}
 		}
 	}, {
-		id: 'colca-canyon-tour',
-		title: 'Colca Canyon Tour',
-		shortTitle: 'Colca Canyon Tour',
-		subtitle: 'The Colca Canyon is one of the country\'s most popular sightseeing destination to see condor in the wild.',
-		url_image: 'images/tours/arequipa/colca_canyon_3_t.jpg',
-		description: 'From the great Andean Terraces (more than twice as deep as the Grand Ganyon in the USA at 4,160 meters deep) you will see the majestic condor in flight.\nOriginally, the area was inhabited by the anciants colloguas and the cabanas, finally by Incas. Nowadays the local people still maintain ancestral traditions cultivating the stepped teraces.\nIn additiono to the canyon, the area is one of the most volcanically active in Peru (like Misty).',
+
+		id: 'machu-picchu-day-trip',
+		shortTitle: 'Machu Picchu Day Trip',
+		title: 'Machu Picchu Day Trip',
+		subtitle: 'Enjoy a full day trip to breathtaking Machu Picchu. Discover the famous Inca city and learn about the ancient civilization that once thrived there.',
+		url_image: 'images/tours/cuzco/machu_picchu_3_t.jpg',
+		description: 'This tour is suited for first-time visitors, families (non-strenuous hiking) and individual travelers and is a once-in-a-lifetime experience - a must-do when visiting Peru!\nFrom Cusco, you\'ll be transferred to the railway station to enjoy your 2-hour scenic rail tour to Aguas Calientes. You have the option to upgrade to the The Vistadome panoramic rail service which is the most comfortable way to journey to Machu Picchu.\nThe renovated Vistadome railcars have beautiful panoramic windows to make the most of the spectacular scenery and allow for fantastic photo opportunities. Delicious meals as well as hot and cold refreshments are available on the way.\nOnce we have arrived at Aguas Calientes station we\'ll board a bus and head up to the ruins of the "sacred city" known as Machu Picchu. Your expert guide will walk with you through the main streets of these amazing ruins. Stroll through town squares and climb delicately carved stone stairways.\nMachu Picchu holds a deep spirituality in it\'s buildings and surrounding formations - we guarantee you ample time to embrace this magnificent wonder and steep in it\'s ancient glory. Hiking these ruins is sure to work up an appetite so there will be a buffet lunch waiting for you. In the afternoon you\'ll return to the train station in Aguas Calientes for the trip back to Cusco.',
 		additionalData: {
-			include: ['Pick up from your hotel in Lima.', 'Visit to the Temple of Pachacamac.', 'All entrance fees.', 'English speaking guide.', 'Drop off at your hotel at the end of the tour.'],
+			include: ['Day trip to Machu Picchu from Cuzco', 'Scenic rail tour', 'Upgrade option to "Vistadome" panaramic rail service', 'Guided tour of the sacred city', 'Pick up from your hotel in Cuzco', 'All entrance fees, train and bus tickets.', 'English speaking guide.'],
 			notInclude: ['Extras & gratuities.'],
 			duration: {
-				subtitle: '4 hours (approx.)',
-				data: ['Departs daily at 9:15am and 2:15pm approximately']
+				subtitle: '14 hours (approx.)',
+				data: ['Pickup daily (from your hotel in Cuzco) at 5:30am approx.']
 			},
-			recommendations: [],
+			recommendations: ['Bring a jacket or fleece for cool afternoons during winter', 'A rain poncho in case of rain'],
 			price: {
 				currency: '$',
-				ammount: 36,
-				data: ['A minimum of 2 participants are required']
+				ammount: 330,
+				data: []
 			}
 		}
 	}]

@@ -1,6 +1,6 @@
 webpackJsonp([21],{
 
-/***/ 43:
+/***/ 47:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10,62 +10,52 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.default = {
-	title: 'The Nazca Lines and Peru\'s South Coast',
-	subtitle: 'Peru\'s south coast is the birthplace of the Inca civilization. It\'s intriguing enigmas pique the curiosity of even the most pragmatic of people. Strange geoglyphs speak to the heavens and ancient ruins and remains of questionable origin litter a landscape of mountainous dunes while overflowing sea-life inhabits ruggedly beautiful coastlines - all steeped in ancient culture.',
-	description: 'Our tour of the south coast of Peru offers the very best for those with constricted time with an ease and comfort that you deserve on your vacation to Peru. From Lima, our South Coast tour visits the famous Nazca lines with flights from Pisco (Paracas) - so much easier, the Ballestas Islands, the Paracas National Reserve and the dunes and oasis of Huacachina. All our Nazca flights operate just a few minutes away from Paracas so your travel time is greatly reduced!',
-	url_image: 'images/package/nazca_flight_01_p.jpg',
-	packages: [{
-		id: 'package-mystery-south-coast',
-		title: 'Nazca Lines Flight & South Coast',
-		shortTitle: 'Nazca Lines Flight & South Coast',
-		subtitle: 'The best of the South Coast of Peru in two days (1 night).',
-		url_image: 'images/package/nazca_spider.jpg',
-		description: 'Fly over the enigmatic Nazca lines, contemplate the rugged beauty of Paracas National Reserve, marvel at the abundant marine life at Islas Ballestas, sample some of the best pisco wines in Ica region, relax by a quaint oasis in the desert after an exciting dune buggy ride over mountainous dunes.\n        Your stay in Paracas is in the quaint Santa Maria hotel which offers clean modern rooms, private bathroom, hot water, cable television, internet at reception, continental breakfast.',
-		gallery: ['images/gallery/ballestas_01_t.jpg', 'images/gallery/ballestas_02_t.jpg', 'images/gallery/ballestas_03_t.jpg', 'images/gallery/ballestas_04_t.jpg', 'images/gallery/ballestas_05_t.jpg', 'images/gallery/ballestas_06_t.jpg', 'images/gallery/ballestas_07_t.jpg', 'images/gallery/ballestas_08_t.jpg', 'images/gallery/ballestas_09_t.jpg', 'images/gallery/ballestas_10_t.jpg', 'images/gallery/ballestas_12_t.jpg', 'images/gallery/ballestas_14_t.jpg', 'images/gallery/ballestas_15_t.jpg', 'images/gallery/ballestas_18_t.jpg', 'images/gallery/ballestas_19_t.jpg', 'images/gallery/nazca_flights_01_t.jpg', 'images/gallery/nazca_flights_02_t.jpg', 'images/gallery/nazca_flights_05_t.jpg', 'images/gallery/nazcaLines_1_t.jpg', 'images/gallery/taxi_01_t.jpg'],
+	title: 'Arequipa - the White City',
+	subtitle: 'Peru\'s second most populous city, Arequipa, is located between the south-western Andes and coastal desert.',
+	description: 'Arequipa posesses a series of volcanic cones like El Misty, CHACHANI and PICHU PICHO the city has a nice weather warm and dry all year around the city has many colonial buildings made whit ashlars a pearly white volcanic rock from which it gets the name white city nowadays the historic centre is recognized as UNESCO WORLD HERITAGE SITE Arequipa city has many interesting tourist attraction like convent Santa Catalina, churches Basilica cathedral of Arequipa and old houses.',
+	url_image: 'images/tours/arequipa/arequipa_1_t.jpg',
+	tours: [{
+		id: 'arequipa-city-tour',
+		title: 'Arequipa City Tour',
+		shortTitle: 'Arequipa City Tour',
+		subtitle: 'Magnificent colonial architecture and cathedrals in Peru\'s famed White City',
+		url_image: 'images/tours/arequipa/arequipa_3_t.jpg',
+		description: 'Our guided program begins when your guide picks you up from your hotel. First we\'ll visit one of the most remarkable buildings of Arequipa, the Santa Catalina Monastery - a beautiful monastery in Arequipa that has lasted for centuries.Later on we will walk around the main square of Arequipa, a nice spot surrounded by colonial buildings. At the main plaza we will visit the interiors of magnificent Cathedral of Arequipa. Later on we will visit the museum of Santuarios Andinos, where we will see the Mummy named Juanita, an amazing frozen body of a little girl found at the cold slopes of the Ampato Mountain.',
 		additionalData: {
-			include: ['All tranfers and transport', 'All entrance fees and taxes', 'Accomodation', 'Continental Breakfast'],
+			include: ['Pick up from your hotel in Arequipa', 'Visit to the Santa Calina Monastery', 'Visit the colonial buildings surrounding Arequipa\'s main square', 'Visit to the Cathedral of Arequipa', 'Visit to the museum of Santuarios Andinos', 'All entrance fees.', 'English speaking guide.'],
 			notInclude: ['Extras & gratuities'],
 			duration: {
-				subtitle: '2 days / 1 night',
-				data: []
+				subtitle: '4 hours (approx.)',
+				data: ['Departs daily at 9:00am and 2:00pm approximately']
 			},
-			recommendations: ['Bring sun creme, hats, sunglasses.', 'Bring a light jacket'],
+			recommendations: [],
 			price: {
 				currency: '$',
-				ammount: 565,
+				ammount: 60,
 				data: ['A minimum of 2 participants are required']
 			}
-		},
-		itenerary: [{
-			title: 'Day 1',
-			data: [['6:00am', 'Transfer from Hotel to Cruz del Sur station'], ['6:45am - 11:20am', 'First class bus service to Paracas (3 hours 35 minutes) Includes breakfast, WiFi, movies, air-conditioning, 160 degree-reclining extra-wide sleeper seat, steward service'], ['11:30am', 'Transfer to airport (15 minutes)'], ['12:00pm - 1:30pm', 'Overflight of various Nazca line geoglyphs in Cessna Caravan air liner seating 12 persons. (90 minutes)'], ['1:45pm', 'Transfer to Paracas - check-in and opportunity to lunch at a seaside restaurant'], ['3:30pm - 5:30pm', 'Guided tour of the National Paracas Reserve (2 hours)']]
-		}, {
-			title: 'Day 2',
-			data: [['7:45am', 'Transfer to Paracas docks from designated meeting place'], ['8:00am - 10:00am', 'Trip to Islas Ballestas by boat (2 hours) Includes First Class seating (2 seats reserved for 1 First Class passenger and, English-speaking guide'], ['10:45am - 11:45pm', 'Check out then transfer to Huacachina (dune buggy center) by bus'], ['12:00am - 1:00pm', 'Adrenaline tour of Huacahina dunes in dune buggy. (60 minutes)'], ['1:00pm - 3:30pm', 'Time to enjoy lunch and walk overlooking the oasis'], ['2:00pm', 'Early departure option Cruz del sur (5 hours lunch included)'], ['3:30pm - 4:45pm', 'Tour to Pisco winery (75 minutes including transfer Cruz del Sur station Ica)'], ['5.45pm', 'Depart to Lima on Cruz del Sur First Class (5 hours dinner included)']]
-		}]
+		}
 	}, {
-		id: 'updgrade-to-vip',
-		title: 'Upgrade to VIP',
-		shortTitle: 'Upgrade to VIP',
-		subtitle: 'Our VIP option includes services for the luxury traveler. 5-star hotel stay at Paracas\' new Aranwa hotel - the best hotel in Paracas where hotels are very competitive.',
-		url_image: 'images/package/aranwa_paracas_01_p.jpg',
-		description: 'The Aranwa, a five-star hotel in Paracas includes feature 115 rooms, 2 pools, a lounge on the dock and a large restaurant and all the other amenities you should expect from a hotel in this category like in-room telephone, hairdryer, mini bar, electronic safe, bathrooms with bathtubs, cable television, room and laundry service.\n\t\t\t\tPrivate VIP transport (in car or van depending on the size of your party) gets you to and from Lima and the various destinations of this tour package in style, comfort and greater speed than bus transport allowing you to relax and enjoy even more leisure time on your precious vacation.',
+		id: 'colca-canyon-tour',
+		title: 'Colca Canyon Tour',
+		shortTitle: 'Colca Canyon Tour',
+		subtitle: 'The Colca Canyon is one of the country\'s most popular sightseeing destination to see condor in the wild.',
+		url_image: 'images/tours/arequipa/colca_canyon_3_t.jpg',
+		description: 'From the great Andean Terraces (more than twice as deep as the Grand Ganyon in the USA at 4,160 meters deep) you will see the majestic condor in flight.\nOriginally, the area was inhabited by the anciants colloguas and the cabanas, finally by Incas. Nowadays the local people still maintain ancestral traditions cultivating the stepped teraces.\nIn additiono to the canyon, the area is one of the most volcanically active in Peru (like Misty).',
 		additionalData: {
-			include: ['Includes everything from the standard package and much more', 'VIP 5-star hotel', 'Private Transportation', 'All tours and services upgraded to VIP where they exist'],
+			include: ['Pick up from your hotel in Lima.', 'Visit to the Temple of Pachacamac.', 'All entrance fees.', 'English speaking guide.', 'Drop off at your hotel at the end of the tour.'],
+			notInclude: ['Extras & gratuities.'],
+			duration: {
+				subtitle: '4 hours (approx.)',
+				data: ['Departs daily at 9:15am and 2:15pm approximately']
+			},
+			recommendations: [],
 			price: {
 				currency: '$',
-				ammount: 886.00,
+				ammount: 36,
 				data: ['A minimum of 2 participants are required']
 			}
-		},
-		gallery: ['images/gallery/taxi_01_t.jpg', 'images/package/aranwa_paracas_01_p.jpg', 'images/package/aranwa_paracas_02.jpg', 'images/package/aranwa_paracas_03.jpg', 'images/package/aranwa_paracas_04.jpg', 'images/package/nazca_flight_01_p.jpg', 'images/package/nazca_flights_03.jpg', 'images/package/nazca_flights_04.jpg', 'images/gallery/ballestas_04_t.jpg', 'images/gallery/ballestas_10_t.jpg', 'images/gallery/ballestas_12_t.jpg', 'images/gallery/ballestas_14_t.jpg', 'images/gallery/ballestas_15_t.jpg', 'images/gallery/ballestas_18_t.jpg', 'images/gallery/ballestas_19_t.jpg'],
-		itenerary: [{
-			title: 'Day 1',
-			data: [['8:00am - 11:00am', 'VIP Transport from Hotel (Lima) to Paracas (3 horas)'], ['11:30am', 'Check in hotel then private transfer to Pisco airport (15 minutes)'], ['12:00pm - 1:30pm', 'Overflight of Nazca lines in Cessna Caravan seats 12 persons. (95 minutes)'], ['1:45pm', 'Trasfer to Paracas - free to enjoy lunch at Aranwa restaurant'], ['3:30pm - 5:30pm', 'Private tour with guide of the Paracas Reserve (2 hours)']]
-		}, {
-			title: 'Day 2',
-			data: [['7:45am', 'Transfer to docks from Hotel Aranwa lobby'], ['8:00am - 10:00am', '	Excursion to Islas Ballestas (2 hours) Includes First Class seating (2 per person). Bilingual guide'], ['11:00am - 12:00pm', 'Check out and private transfer to Ica'], ['12:00am - 1:00pm', 'Guided visit of winery, private transfer to Huacachina. (60 minutos)'], ['1:00pm - 3:30pm', 'Free time to enjoy lunch and walk around the Oasis'], ['3:30pm - 5:00pm', 'Dune buggy Tour and sandboarding (private) (90 minutes)'], ['5.00pm - 9:00pm', 'Private transport to your Hotel in Lima or airport (4 horas)']]
-		}]
+		}
 	}]
 };
 

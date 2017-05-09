@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		31: 0
+/******/ 		33: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -144,7 +144,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 26);
+/******/ 	return __webpack_require__(__webpack_require__.s = 27);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -4617,20 +4617,20 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tour
 
 var map = {
 	"./activities-cusco.en.js": [
-		36,
-		28
+		38,
+		30
 	],
 	"./activities-cusco.es.js": [
-		37,
-		27
+		39,
+		29
 	],
 	"./activities-paracas.en.js": [
-		38,
-		26
+		40,
+		28
 	],
 	"./activities-paracas.es.js": [
-		39,
-		25
+		41,
+		27
 	]
 };
 function webpackAsyncContext(req) {
@@ -4654,7 +4654,8 @@ webpackAsyncContext.id = 16;
 /* 20 */,
 /* 21 */,
 /* 22 */,
-/* 23 */
+/* 23 */,
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4819,15 +4820,15 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/activities-page.njk"] , dependencies)
 
 /***/ }),
-/* 24 */,
 /* 25 */,
-/* 26 */
+/* 26 */,
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _activitiesPage = __webpack_require__(23);
+var _activitiesPage = __webpack_require__(24);
 
 var _activitiesPage2 = _interopRequireDefault(_activitiesPage);
 

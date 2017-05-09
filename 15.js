@@ -1,6 +1,6 @@
 webpackJsonp([15],{
 
-/***/ 49:
+/***/ 53:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10,49 +10,50 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.default = {
-	title: 'Ica & Huacachina',
-	subtitle: 'Travel through the winery valleys of Ica, a landscape of extreme contrasts where wine and pisco are produced in the traditional way since the colonial era.',
-	description: 'The city of Ica is located between drifting sand dunes and the western dry Andes. It\'s geographical location within the valley guarantees dry and sunny weather year round - perfect for growing grapes, asparagus, paprika, and cotton.',
-	url_image: 'images/tours/ica/ica_winery_3_t.jpg',
+	title: 'Peruvian Rainforests',
+	subtitle: 'The Peruvian Amazon jungle is one of the most biologically diverse areas on Earth',
+	description: 'As a nation, Peru has the largest number of bird species in the world and the third largest number of mammals; 44% of bird species and 63% of mammal species inhabit the Peruvian Amazon. Peru also has a very high number of species of butterflies, orchids, and other organisms',
+	url_image: 'images/tours/tambopata/iquitos_3_t.jpg',
 	tours: [{
-		id: 'vineyard-museum-oasis-tour',
-		title: 'Vineyard Museum Oasis Tour',
-		shortTitle: 'Vineyard Museum Oasis',
-		subtitle: 'Vineyard Museum Oasis',
-		url_image: 'images/tours/ica/huacachina_oasis_1.t.jpg',
-		description: 'The region is the wine capital of Peru and Pisco capital of the world hosting the largest wineries - traditional and industrial. Tours visit famous wineries such as El Catador and Caravedo. Huacachina, a small tourist village surrounding a large oasis, is just 5 km south west of Ica and a great hiding place for foreigners to stop, relax and practice the best sand boarding in the world. If you\'re not into extreme sports, visiting the vast mountainous dunes surrounding Huacachina by dune buggy is spectacular enough on it\'s own and a must see if you\'re passing through the region.',
+		id: 'tambopata-reserve',
+		title: 'Tambopata Reserve',
+		shortTitle: 'Tambopata Reserve',
+		subtitle: 'Featured in National Geographic magazine, Tambopata Research Center is probably the most remote rainforest lodges in South America and offers adventurers an authentic jungle experience',
+		url_image: 'images/tours/tambopata/macaw_1_portrait.jpg',
+		description: 'The Tambopata River is one of the exclusive habitat of birds and mammals. Flora in the national reserve is fairly typical of the southwest Amazon Basin. The Heath River and surrounding plains are a unique ecosystem in Peru. The pampas are periodically flooded, and small groves of trees with varied plant life grow in isolated clumps on the plain.\nIf you are looking for a more in depth Amazon experience, then the Tambopata Research Center suits you best. After staying the first night at Refugio Amazonas, reach on of the largest known macaw claylick on the second day of your trip and explore the trails of the Tambopata Research Center in the heart of the Tambopata National Reserve.',
 		additionalData: {
-			include: ['Pick up from your hotel in Ica or Huacachina.', 'Private transportation.', 'Visit the pisco vineyards.', 'Guided visit to the Archaeological Museum of Ica.', 'Visit to the Oasis of Huacachina.', 'All entrance fees.', 'English speaking guide.'],
-			notInclude: ['Extras & gratuities', 'Accommodation'],
+			include: ['Transfers', 'Meals', 'Accommodation'],
+			notInclude: ['Extras & gratuities'],
 			duration: {
-				subtitle: '2.5 hours (approx.)',
-				data: ['Departs 09.00am / 14:00pm']
+				subtitle: '5 Days (4 Nights)',
+				data: []
 			},
-			recommendations: ['Wear light clothing.', 'Bring sun cream, sun glasses and a cap.', 'Bring a bottle of water.'],
+			recommendations: ['Travel light'],
 			price: {
 				currency: '$',
-				ammount: 25,
-				data: ['A minimum of 2 participants are required']
+				ammount: 260.00,
+				data: []
 			}
 		}
 	}, {
-		id: 'dune-buggy-sandboard',
-		title: 'Dune Buggy & Sandboard',
-		shortTitle: 'Dune Buggy & Sandboard',
-		subtitle: 'Like a roller coaster ride, the dune buggy circuit near Huacachina is pure adrenaline and offers sights of monstrous dunes.',
-		url_image: 'images/tours/ica/buggy_1_t.jpg',
-		description: 'Huge rolling dunes. Sandboard some of the biggest dunes on the planet.',
+		id: 'manu-reserve',
+		title: 'Manu Reserve',
+		shortTitle: 'Manu Reserve',
+		subtitle: 'The famous Salkantay trek to Machu Picchu is named among the top 25 best excursions in the world by National Geographic Adventure Travel Magazine.',
+		url_image: 'images/tours/tambopata/salkantay_1_portrait.jpg',
+		description: 'The Salkantay Trek is an ancient and remote footpath located in the same region as the Inca Trail where snowcapped mountains collide with lush tropical rain forests.',
 		additionalData: {
-			include: ['Sandboarding', 'Dune buggy trip over giant dunes', 'Entrance fees.'],
-			notInclude: ['Extras & gratuities'],
+			include: ['Transfers', 'Bus transport', 'Meals (2 breakfast, 3 lunch, 3 dinner)', 'Accommodation (basic) 2 nights', 'Bicycles', 'Entrance fees to Archaeological centers and Machu Picchu', 'Return train', 'Accommodation at Hostal Aguas Calientes', 'Guide speaking English or Italian'],
+			notInclude: ['Extras & gratuities', 'Entrance fees to thermal baths', 'The first breakfast', 'The last lunch'],
 			duration: {
-				subtitle: '1.5 hours (approx.)',
-				data: []
+				subtitle: '4 Days (3 Nights)',
+				data: ['Departs at 7:30am from Cusco']
 			},
-			recommendations: ['Bring sun cream, sun glasses and a cap.', 'Bring a bottle of water.'],
+			recommendations: ['Bring a jacket or fleece for cool afternoons during winter', 'A rain poncho in case of rain', 'Insect/mosquito repellent', 'Towels', 'Sandals', 'Sunglasses', 'Travel light'],
+			notes: ['Altitude can pose a problem for many people - a strong fitness level is required.'],
 			price: {
 				currency: '$',
-				ammount: 25,
+				ammount: 260,
 				data: []
 			}
 		}

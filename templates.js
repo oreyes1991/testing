@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 33);
+/******/ 	return __webpack_require__(__webpack_require__.s = 35);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3107,7 +3107,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 
-/***/ 22:
+/***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3118,7 +3118,7 @@ if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv;
 }
 var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-dependencies["../layouts/layout.njk"] = __webpack_require__( 34 );
+dependencies["../layouts/layout.njk"] = __webpack_require__( 36 );
 
 
 
@@ -3182,17 +3182,17 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["pages/index.n
 
 /***/ }),
 
-/***/ 33:
+/***/ 35:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(22);
+__webpack_require__(23);
 
 /***/ }),
 
-/***/ 34:
+/***/ 36:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3203,7 +3203,7 @@ if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv;
 }
 var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-dependencies["../partials/header.njk"] = __webpack_require__( 35 );
+dependencies["../partials/header.njk"] = __webpack_require__( 37 );
 
 
 
@@ -3218,7 +3218,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<!-- layout.nunjucks -->\n<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <title></title>\n        <meta charset=\"UTF-8\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n        <meta name=\"theme-color\" content=\"#DE5A2E\">\n        <meta name=\"msapplication-navbutton-color\" content=\"#DE5A2E\">\n        <meta name=\"apple-mobile-web-app-status-bar-style\" content=\"#DE5A2E\">\n        <link href=\"css/style.css\" rel=\"stylesheet\">\n        <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\n        <link href=\"css/header.css\" rel=\"stylesheet\">\n        <link href=\"css/gallery.css\" rel=\"stylesheet\">\n        <link href=\"css/gallery.theme.css\" rel=\"stylesheet\">\n        <link href=\"css/slick.css\" rel=\"stylesheet\">\n        <link href=\"css/slick.css\" rel=\"stylesheet\">\n        <link href=\"css/popup.css\" rel=\"stylesheet\">\n        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n        <script src=\"js/bootstrap.min.js\"></script>\n\n    </head>\n    <body>\n      <div class=\"container-app\">\n        <div id=\"app\" class=\"container-fluid no-gutter \">\n          <header>\n            ";
+output += "<!-- layout.nunjucks -->\n<!DOCTYPE html>\n<html lang=\"en\">\n\t\t<head>\n\t\t\t\t<title></title>\n\t\t\t\t<meta charset=\"UTF-8\">\n\t\t\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\t\t\t\t<meta name=\"theme-color\" content=\"#DE5A2E\">\n\t\t\t\t<meta name=\"msapplication-navbutton-color\" content=\"#DE5A2E\">\n\t\t\t\t<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"#DE5A2E\">\n\t\t\t\t<link rel=\"icon\" type=\"image/png\" href=\"images/tumi_square.ico\" />\n\t\t\t\t<link href=\"css/style.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/header.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/gallery.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/gallery.theme.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/slick.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/slick.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/popup.css\" rel=\"stylesheet\">\n\t\t\t\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n\t\t\t\t<script src=\"js/bootstrap.min.js\"></script>\n\t\t</head>\n\t\t<body>\n\t\t\t<div class=\"container-app\">\n\t\t\t\t<div id=\"app\" class=\"container-fluid no-gutter \">\n\t\t\t\t\t<header>\n\t\t\t\t\t\t";
 var tasks = [];
 tasks.push(
 function(callback) {
@@ -3238,11 +3238,11 @@ output += result;
 callback(null);
 });
 env.waterfall(tasks, function(){
-output += "\n          </header>\n          <section class=\"page\">\n            ";
+output += "\n\t\t\t\t\t</header>\n\t\t\t\t\t<section class=\"page\">\n\t\t\t\t\t\t";
 (parentTemplate ? function(e, c, f, r, cb) { cb(""); } : context.getBlock("content"))(env, context, frame, runtime, function(t_6,t_5) {
 if(t_6) { cb(t_6); return; }
 output += t_5;
-output += "\n          </section>\n        </div>\n      </div>\n    <script src=\"js/slick.min.js\"></script>\n    <script src=\"js/small-gallery.js\"></script>\n    <script src=\"js/popup.min.js\"></script>\n    <script src=\"menu.js\"></script>\n\n    </body>\n</html>\n";
+output += "\n\t\t\t\t\t</section>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<footer id=\"footer\" class=\"footer text-center\">\n\t\t\t</footer>\n\t\t\t<script src=\"js/slick.min.js\"></script>\n\t\t\t<script src=\"js/small-gallery.js\"></script>\n\t\t\t<script src=\"js/popup.min.js\"></script>\n\t\t\t<script src=\"menu.js\"></script>\n\t\t\t<script src=\"footer.js\"></script>\n\t\t</body>\n</html>\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -3280,7 +3280,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["layouts/layou
 
 /***/ }),
 
-/***/ 35:
+/***/ 37:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
