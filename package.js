@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		37: 0
+/******/ 		34: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -144,7 +144,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 33);
+/******/ 	return __webpack_require__(__webpack_require__.s = 31);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -4620,12 +4620,12 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tour
 
 var map = {
 	"./package-mystery-south-coast.en.js": [
-		45,
-		23
+		43,
+		21
 	],
 	"./package-mystery-south-coast.es.js": [
-		46,
-		22
+		44,
+		20
 	]
 };
 function webpackAsyncContext(req) {
@@ -4654,9 +4654,7 @@ webpackAsyncContext.id = 19;
 /* 28 */,
 /* 29 */,
 /* 30 */,
-/* 31 */,
-/* 32 */,
-/* 33 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

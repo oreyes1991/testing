@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		34: 0
+/******/ 		32: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -144,7 +144,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 32);
+/******/ 	return __webpack_require__(__webpack_require__.s = 30);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -4617,17 +4617,16 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tour
 /* 18 */,
 /* 19 */,
 /* 20 */,
-/* 21 */,
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"./menu.en.njk": [
-		67,
+		63,
 		1
 	],
 	"./menu.es.njk": [
-		68,
+		64,
 		0
 	]
 };
@@ -4643,9 +4642,10 @@ webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
 module.exports = webpackAsyncContext;
-webpackAsyncContext.id = 22;
+webpackAsyncContext.id = 21;
 
 /***/ }),
+/* 22 */,
 /* 23 */,
 /* 24 */,
 /* 25 */,
@@ -4653,9 +4653,7 @@ webpackAsyncContext.id = 22;
 /* 27 */,
 /* 28 */,
 /* 29 */,
-/* 30 */,
-/* 31 */,
-/* 32 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4665,7 +4663,7 @@ var _utils = __webpack_require__(2);
 
 var language = (0, _utils.getPageLanguage)('lng') || 'en';
 var menu = document.querySelector('#menu-content');
-__webpack_require__(22)("./menu." + language + '.njk').then(function (m) {
+__webpack_require__(21)("./menu." + language + '.njk').then(function (m) {
 	console.log(m);
 	var tpl = m;
 	var html = tpl.render({});

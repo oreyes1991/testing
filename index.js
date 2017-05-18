@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		31: 0
+/******/ 		29: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -144,7 +144,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 31);
+/******/ 	return __webpack_require__(__webpack_require__.s = 29);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -4669,8 +4669,8 @@ var map = {
 		15
 	],
 	"./last-news.es.js": [
-		44,
-		24
+		42,
+		22
 	]
 };
 function webpackAsyncContext(req) {
@@ -4694,8 +4694,7 @@ webpackAsyncContext.id = 18;
 /* 22 */,
 /* 23 */,
 /* 24 */,
-/* 25 */,
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4774,11 +4773,10 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last-news.njk"] , dependencies)
 
 /***/ }),
+/* 26 */,
 /* 27 */,
 /* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4788,7 +4786,7 @@ var _lastNewsEn = __webpack_require__(15);
 
 var _lastNewsEn2 = _interopRequireDefault(_lastNewsEn);
 
-var _lastNews = __webpack_require__(26);
+var _lastNews = __webpack_require__(25);
 
 var _lastNews2 = _interopRequireDefault(_lastNews);
 
