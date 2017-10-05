@@ -1,6 +1,6 @@
 webpackJsonp([25],{
 
-/***/ 39:
+/***/ 43:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41,6 +41,7 @@ exports.default = {
 		subtitle: 'Las Islas Ballestas es el principal atractivo de Paracas. Usted encontrar\xE1 innumberables especies ex\xF3ticas de aves y vida marina, algunas \xFAnicas en el Per\xFA.',
 		url_image: 'images/activities/paracas/paracas_03_t.jpg',
 		description: 'Visitar estas islas es como participar de la filmacion de un documental de Nacional Geografic. Organizamos tours guiados desde nuestra oficina en Paracas, \xF3 lo recojemos desde su hotel y nuestro personal le acompa\xF1ar\xE1 hasta el muelle de Paracas. Este viaje de ida y vuelta es de dos horas a las islas m\xE1s famosas del Per\xFA, le permite disfrutar de magn\xEDficas formaciones de rocas esculpidas por la naturaleza y es el hogar de los ping\xFCinos de Humboldt, lobos marinos sudamericanos y una multitud de aves marinas. Estos servicios tambien estan disponibles en primera clase y servicios privados.Estos tours se realiza en lanchas rapidas con certificacion de Guardacostas del Per\xFA. Nuestros servicios de yates est\xE1n asegurados y registrados con todos los organismos pertinentes dispuesto por la ley. Contamos con personal capacitados por la marina de guerra.Capitan piloto y segundo piloto.',
+		yacht: 'yacht.png',
 		gallery: ['images/gallery/ballestas_01_t.jpg', 'images/gallery/ballestas_02_t.jpg', 'images/gallery/ballestas_06_t.jpg', 'images/gallery/ballestas_08_t.jpg', 'images/gallery/ballestas_11_t.jpg', 'images/gallery/ballestas_16_t.jpg', 'images/gallery/ballestas_15_t.jpg', 'images/gallery/ballestas_03_t.jpg', 'images/gallery/ballestas_04_t.jpg'],
 		additionalData: {
 			include: ['40 Pax. capacidad', 'Traslado al muelle de Paracas', 'Transporte en lancha', 'Otro lancha de emergencia preparado y listo', '2 Pilotos abordo', 'Entrada a la Reserva'],

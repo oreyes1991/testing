@@ -1,6 +1,6 @@
 webpackJsonp([4],{
 
-/***/ 60:
+/***/ 64:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21,6 +21,7 @@ exports.default = {
 		subtitle: 'Las Islas Ballestas es el principal atractivo de Paracas. Usted encontrará innumberables especies exóticas de aves y vida marina, algunas únicas en el Perú',
 		url_image: 'images/tours/paracas/paracas_03_t.jpg',
 		description: 'Visitar estas islas es como participar de la filmacion de un documental de Nacional Geografic. Organizamos tours guiados desde nuestra oficina en Paracas, \xF3 lo recojemos desde su hotel y nuestro personal le acompa\xF1ar\xE1 hasta el muelle de Paracas. Este viaje de ida y vuelta es de dos horas a las islas m\xE1s famosas del Per\xFA, le permite disfrutar de magn\xEDficas formaciones de rocas esculpidas por la naturaleza y es el hogar de los ping\xFCinos de Humboldt, lobos marinos sudamericanos y una multitud de aves marinas. Estos servicios tambien estan disponibles en primera clase y servicios privados.',
+		yacht: 'yacht.png',
 		gallery: ['images/gallery/ballestas_01_t.jpg', 'images/gallery/ballestas_02_t.jpg', 'images/gallery/ballestas_03_t.jpg', 'images/gallery/ballestas_04_t.jpg', 'images/gallery/ballestas_15_t.jpg'],
 		additionalData: {
 			include: ['40 Pax. capacidad', 'Traslado al muelle de Paracas', 'Transporte en lancha', 'Otro lancha de emergencia preparado y listo', '2 Pilotos abordo', 'Entrada a la Reserva'],
@@ -42,6 +43,7 @@ exports.default = {
 		subtitle: '',
 		url_image: 'images/tours/paracas/ballestas10_t.jpg',
 		description: 'M\xE1s libertad de movimiento y espacio para llevar equipos de c\xE1mara - nuestra opci\xF3n de servicio de primera clase garantiza nuestro yate con asiento preferencial (2 asientos por persona) de su capacidad siempre habra lugar para cambiarse de sitio \xF3 de posici\xF3n.',
+		yacht: 'yacht2.png',
 		gallery: ['images/gallery/ballestas_13_t.jpg', 'images/gallery/ballestas_02_t.jpg', 'images/gallery/ballestas_03_t.jpg', 'images/gallery/ballestas_04_t.jpg', 'images/gallery/ballestas_15_t.jpg'],
 		additionalData: {
 			include: ['Incluye todo de nuestro tour estándar', 'Asiento preferenciales (2 asientos por persona)'],
@@ -63,6 +65,7 @@ exports.default = {
 		subtitle: '',
 		url_image: 'images/tours/paracas/paracas_05_t.jpg',
 		description: 'Salida en los horarios m\xE1s convenientes para el cliente y disfrute con sus amigos y familiares. El tour privado es para aquellos que desean la exclusividad.Nuestro tour privado es, tambien asequible con los precios para grupos grandes.',
+		yacht: 'yacht3.png',
 		gallery: ['images/gallery/ballestas_05_t.jpg', 'images/gallery/ballestas_17_t.jpg', 'images/gallery/ballestas_18_t.jpg', 'images/gallery/ballestas_19_t.jpg', 'images/gallery/ballestas_20_t.jpg'],
 		additionalData: {
 			include: ['29 Pax. capacidad', 'Incluye todo de nuestro tour estándar'],
@@ -84,6 +87,7 @@ exports.default = {
 		subtitle: '',
 		url_image: 'images/tours/paracas/ballestas_yacht_1_t.jpg',
 		description: 'Chart\xE9e su propio yate y elija su propio plan de viaje con nosotros. Usted es libre de escoger para descubrir todas las islas de Paracas como mejor le parezca.',
+		yacht: 'yacht3.png',
 		gallery: ['images/gallery/ballestas_16_t.jpg', 'images/gallery/ballestas_15_t.jpg', 'images/gallery/ballestas_11_t.jpg', 'images/gallery/ballestas_12_t.jpg'],
 		additionalData: {
 			include: ['29 Pax. capacidad', 'Incluye todos los beneficios del Tour Privado', 'Acesoria profesional para su itinerario', 'Le ayudaremos a tramitar permisos especiales de reserva a las islas de Paracas'],

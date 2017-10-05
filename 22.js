@@ -1,6 +1,6 @@
 webpackJsonp([22],{
 
-/***/ 42:
+/***/ 46:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17,15 +17,6 @@ exports.default = [{
 	date: "Marzo 20,2014",
 	url_image: 'images/articles/monte_sierpe_portrait.jpg',
 	blockquote: '\u201CLo que parece ser una serpiente es en realidad la antigua deidad Q\'hoa. \xC9l era el siervo ... del dios del agua ... y fue utilizado en los rituales ... con respecto a la lluvia\u201D.',
-	url: ''
-}, {
-	title: 'Saving Chankillo',
-	subtitle: "El Observatorio solar más antiguo amenazado por una nueva prisión en Perú",
-	description: "Llegar a Nasca para ver estas enigmáticas líneas de Nazca solía ser un esfuerzo grande y requería mucho tiempo. Al menos que usted quisiera rentar su propio vuelo privado desde Lima, el acceso al público se limitaba en su mayoría en coche o autobús, que tomaba mucho tiempo (12-14 horas ida y vuelta) viaje desde Lima.",
-	author: 'traducido por Rein Petersen del articulo de Juan Carlos Estrada publicada en sophimania.pe',
-	date: 'Febrero 28, 2014',
-	url_image: 'images/articles/chankillo_1.jpg',
-	blockquote: '"Antes, la \xFAnica manera de ver las l\xEDneas de Nasca era viajar a Nasca - viajando en autob\xFAs. Pero ahora volamos desde Pisco y los turistas lo prefieren."Lucio - gu\xEDa veterano',
 	url: ''
 }, {
 	title: 'Lineas de Nasca de Pisco',

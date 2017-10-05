@@ -59,20 +59,21 @@
 /******/ 	// This file contains only the entry chunk.
 /******/ 	// The chunk loading function for additional chunks
 /******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
-/******/ 		if(installedChunks[chunkId] === 0) {
-/******/ 			return Promise.resolve();
+/******/ 		var installedChunkData = installedChunks[chunkId];
+/******/ 		if(installedChunkData === 0) {
+/******/ 			return new Promise(function(resolve) { resolve(); });
 /******/ 		}
 /******/
 /******/ 		// a Promise means "currently loading".
-/******/ 		if(installedChunks[chunkId]) {
-/******/ 			return installedChunks[chunkId][2];
+/******/ 		if(installedChunkData) {
+/******/ 			return installedChunkData[2];
 /******/ 		}
 /******/
 /******/ 		// setup Promise in chunk cache
 /******/ 		var promise = new Promise(function(resolve, reject) {
-/******/ 			installedChunks[chunkId] = [resolve, reject];
+/******/ 			installedChunkData = installedChunks[chunkId] = [resolve, reject];
 /******/ 		});
-/******/ 		installedChunks[chunkId][2] = promise;
+/******/ 		installedChunkData[2] = promise;
 /******/
 /******/ 		// start chunk loading
 /******/ 		var head = document.getElementsByTagName('head')[0];
@@ -144,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 31);
+/******/ 	return __webpack_require__(__webpack_require__.s = 35);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -202,7 +203,7 @@ module.exports = function (nunjucks, env, obj, dependencies){
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/*! Browser bundle of nunjucks 3.0.0 (slim, only works with precompiled templates) */
+/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {/*! Browser bundle of nunjucks 3.0.1 (slim, only works with precompiled templates) */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(true)
 		module.exports = factory();
@@ -257,13 +258,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var lib = __webpack_require__(1);
 	var env = __webpack_require__(2);
-	var Loader = __webpack_require__(14);
+	var Loader = __webpack_require__(15);
 	var loaders = __webpack_require__(3);
 	var precompile = __webpack_require__(3);
 
@@ -283,7 +284,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports.lib = lib;
 	module.exports.nodes = __webpack_require__(3);
 
-	module.exports.installJinjaCompat = __webpack_require__(15);
+	module.exports.installJinjaCompat = __webpack_require__(16);
 
 	// A single instance of an environment, since this is so commonly used
 
@@ -347,9 +348,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -652,9 +653,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -673,7 +674,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	// Unconditionally load in this loader, even if no other ones are
 	// included (possible in the slim browser build)
-	builtin_loaders.PrecompiledLoader = __webpack_require__(13);
+	builtin_loaders.PrecompiledLoader = __webpack_require__(14);
 
 	// If the user is using the async API, *always* call it
 	// asynchronously even if the template was synchronous.
@@ -1251,15 +1252,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -1329,9 +1330,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
 
@@ -1411,9 +1412,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	// Safari 6 and 6.1 for desktop, iPad, and iPhone are the only browsers that
 	// have WebKitMutationObserver but not un-prefixed MutationObserver.
-	// Must use `global` instead of `window` to work in both frames and web
+	// Must use `global` or `self` instead of `window` to work in both frames and web
 	// workers. `global` is a provision of Browserify, Mr, Mrs, or Mop.
-	var BrowserMutationObserver = global.MutationObserver || global.WebKitMutationObserver;
+
+	/* globals self */
+	var scope = typeof global !== "undefined" ? global : self;
+	var BrowserMutationObserver = scope.MutationObserver || scope.WebKitMutationObserver;
 
 	// MutationObservers are desirable because they have high priority and work
 	// reliably everywhere they are implemented.
@@ -1556,9 +1560,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -1626,9 +1630,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = extend(Object, 'Object', {});
 
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -1643,9 +1647,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	var filters = {
-	    abs: function(n) {
-	        return Math.abs(n);
-	    },
+	    abs: Math.abs,
 
 	    batch: function(arr, linecount, fill_with) {
 	        var i;
@@ -2225,9 +2227,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = filters;
 
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -2593,9 +2595,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -2678,9 +2680,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = globals;
 
 
-/***/ },
+/***/ }),
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(setImmediate, process) {// MIT license (by Elan Shanker).
 	(function(globals) {
@@ -2766,17 +2768,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	})(this);
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11).setImmediate, __webpack_require__(3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11).setImmediate, __webpack_require__(13)))
 
-/***/ },
+/***/ }),
 /* 11 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {var nextTick = __webpack_require__(12).nextTick;
 	var apply = Function.prototype.apply;
-	var slice = Array.prototype.slice;
-	var immediateIds = {};
-	var nextImmediateId = 0;
 
 	// DOM APIs, for completeness
 
@@ -2787,7 +2785,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return new Timeout(apply.call(setInterval, window, arguments), clearInterval);
 	};
 	exports.clearTimeout =
-	exports.clearInterval = function(timeout) { timeout.close(); };
+	exports.clearInterval = function(timeout) {
+	  if (timeout) {
+	    timeout.close();
+	  }
+	};
 
 	function Timeout(id, clearFn) {
 	  this._id = id;
@@ -2821,139 +2823,218 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	};
 
-	// That's not how node.js implements it but the exposed api is the same.
-	exports.setImmediate = typeof setImmediate === "function" ? setImmediate : function(fn) {
-	  var id = nextImmediateId++;
-	  var args = arguments.length < 2 ? false : slice.call(arguments, 1);
+	// setimmediate attaches itself to the global object
+	__webpack_require__(12);
+	exports.setImmediate = setImmediate;
+	exports.clearImmediate = clearImmediate;
 
-	  immediateIds[id] = true;
 
-	  nextTick(function onNextTick() {
-	    if (immediateIds[id]) {
-	      // fn.call() is faster so we optimize for the common use-case
-	      // @see http://jsperf.com/call-apply-segu
-	      if (args) {
-	        fn.apply(null, args);
-	      } else {
-	        fn.call(null);
-	      }
-	      // Prevent ids from leaking
-	      exports.clearImmediate(id);
-	    }
-	  });
-
-	  return id;
-	};
-
-	exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate : function(id) {
-	  delete immediateIds[id];
-	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11).setImmediate, __webpack_require__(11).clearImmediate))
-
-/***/ },
+/***/ }),
 /* 12 */
-/***/ function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	// shim for using process in browser
+	/* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
+	    "use strict";
 
-	var process = module.exports = {};
-	var queue = [];
-	var draining = false;
-	var currentQueue;
-	var queueIndex = -1;
-
-	function cleanUpNextTick() {
-	    draining = false;
-	    if (currentQueue.length) {
-	        queue = currentQueue.concat(queue);
-	    } else {
-	        queueIndex = -1;
-	    }
-	    if (queue.length) {
-	        drainQueue();
-	    }
-	}
-
-	function drainQueue() {
-	    if (draining) {
+	    if (global.setImmediate) {
 	        return;
 	    }
-	    var timeout = setTimeout(cleanUpNextTick);
-	    draining = true;
 
-	    var len = queue.length;
-	    while(len) {
-	        currentQueue = queue;
-	        queue = [];
-	        while (++queueIndex < len) {
-	            if (currentQueue) {
-	                currentQueue[queueIndex].run();
+	    var nextHandle = 1; // Spec says greater than zero
+	    var tasksByHandle = {};
+	    var currentlyRunningATask = false;
+	    var doc = global.document;
+	    var registerImmediate;
+
+	    function setImmediate(callback) {
+	      // Callback can either be a function or a string
+	      if (typeof callback !== "function") {
+	        callback = new Function("" + callback);
+	      }
+	      // Copy function arguments
+	      var args = new Array(arguments.length - 1);
+	      for (var i = 0; i < args.length; i++) {
+	          args[i] = arguments[i + 1];
+	      }
+	      // Store and register the task
+	      var task = { callback: callback, args: args };
+	      tasksByHandle[nextHandle] = task;
+	      registerImmediate(nextHandle);
+	      return nextHandle++;
+	    }
+
+	    function clearImmediate(handle) {
+	        delete tasksByHandle[handle];
+	    }
+
+	    function run(task) {
+	        var callback = task.callback;
+	        var args = task.args;
+	        switch (args.length) {
+	        case 0:
+	            callback();
+	            break;
+	        case 1:
+	            callback(args[0]);
+	            break;
+	        case 2:
+	            callback(args[0], args[1]);
+	            break;
+	        case 3:
+	            callback(args[0], args[1], args[2]);
+	            break;
+	        default:
+	            callback.apply(undefined, args);
+	            break;
+	        }
+	    }
+
+	    function runIfPresent(handle) {
+	        // From the spec: "Wait until any invocations of this algorithm started before this one have completed."
+	        // So if we're currently running a task, we'll need to delay this invocation.
+	        if (currentlyRunningATask) {
+	            // Delay by doing a setTimeout. setImmediate was tried instead, but in Firefox 7 it generated a
+	            // "too much recursion" error.
+	            setTimeout(runIfPresent, 0, handle);
+	        } else {
+	            var task = tasksByHandle[handle];
+	            if (task) {
+	                currentlyRunningATask = true;
+	                try {
+	                    run(task);
+	                } finally {
+	                    clearImmediate(handle);
+	                    currentlyRunningATask = false;
+	                }
 	            }
 	        }
-	        queueIndex = -1;
-	        len = queue.length;
 	    }
-	    currentQueue = null;
-	    draining = false;
-	    clearTimeout(timeout);
-	}
 
-	process.nextTick = function (fun) {
-	    var args = new Array(arguments.length - 1);
-	    if (arguments.length > 1) {
-	        for (var i = 1; i < arguments.length; i++) {
-	            args[i - 1] = arguments[i];
+	    function installNextTickImplementation() {
+	        registerImmediate = function(handle) {
+	            process.nextTick(function () { runIfPresent(handle); });
+	        };
+	    }
+
+	    function canUsePostMessage() {
+	        // The test against `importScripts` prevents this implementation from being installed inside a web worker,
+	        // where `global.postMessage` means something completely different and can't be used for this purpose.
+	        if (global.postMessage && !global.importScripts) {
+	            var postMessageIsAsynchronous = true;
+	            var oldOnMessage = global.onmessage;
+	            global.onmessage = function() {
+	                postMessageIsAsynchronous = false;
+	            };
+	            global.postMessage("", "*");
+	            global.onmessage = oldOnMessage;
+	            return postMessageIsAsynchronous;
 	        }
 	    }
-	    queue.push(new Item(fun, args));
-	    if (queue.length === 1 && !draining) {
-	        setTimeout(drainQueue, 0);
+
+	    function installPostMessageImplementation() {
+	        // Installs an event handler on `global` for the `message` event: see
+	        // * https://developer.mozilla.org/en/DOM/window.postMessage
+	        // * http://www.whatwg.org/specs/web-apps/current-work/multipage/comms.html#crossDocumentMessages
+
+	        var messagePrefix = "setImmediate$" + Math.random() + "$";
+	        var onGlobalMessage = function(event) {
+	            if (event.source === global &&
+	                typeof event.data === "string" &&
+	                event.data.indexOf(messagePrefix) === 0) {
+	                runIfPresent(+event.data.slice(messagePrefix.length));
+	            }
+	        };
+
+	        if (global.addEventListener) {
+	            global.addEventListener("message", onGlobalMessage, false);
+	        } else {
+	            global.attachEvent("onmessage", onGlobalMessage);
+	        }
+
+	        registerImmediate = function(handle) {
+	            global.postMessage(messagePrefix + handle, "*");
+	        };
 	    }
-	};
 
-	// v8 likes predictible objects
-	function Item(fun, array) {
-	    this.fun = fun;
-	    this.array = array;
-	}
-	Item.prototype.run = function () {
-	    this.fun.apply(null, this.array);
-	};
-	process.title = 'browser';
-	process.browser = true;
-	process.env = {};
-	process.argv = [];
-	process.version = ''; // empty string to avoid regexp issues
-	process.versions = {};
+	    function installMessageChannelImplementation() {
+	        var channel = new MessageChannel();
+	        channel.port1.onmessage = function(event) {
+	            var handle = event.data;
+	            runIfPresent(handle);
+	        };
 
-	function noop() {}
+	        registerImmediate = function(handle) {
+	            channel.port2.postMessage(handle);
+	        };
+	    }
 
-	process.on = noop;
-	process.addListener = noop;
-	process.once = noop;
-	process.off = noop;
-	process.removeListener = noop;
-	process.removeAllListeners = noop;
-	process.emit = noop;
+	    function installReadyStateChangeImplementation() {
+	        var html = doc.documentElement;
+	        registerImmediate = function(handle) {
+	            // Create a <script> element; its readystatechange event will be fired asynchronously once it is inserted
+	            // into the document. Do so, thus queuing up the task. Remember to clean up once it's been called.
+	            var script = doc.createElement("script");
+	            script.onreadystatechange = function () {
+	                runIfPresent(handle);
+	                script.onreadystatechange = null;
+	                html.removeChild(script);
+	                script = null;
+	            };
+	            html.appendChild(script);
+	        };
+	    }
 
-	process.binding = function (name) {
-	    throw new Error('process.binding is not supported');
-	};
+	    function installSetTimeoutImplementation() {
+	        registerImmediate = function(handle) {
+	            setTimeout(runIfPresent, 0, handle);
+	        };
+	    }
 
-	process.cwd = function () { return '/' };
-	process.chdir = function (dir) {
-	    throw new Error('process.chdir is not supported');
-	};
-	process.umask = function() { return 0; };
+	    // If supported, we should attach to the prototype of global, since that is where setTimeout et al. live.
+	    var attachTo = Object.getPrototypeOf && Object.getPrototypeOf(global);
+	    attachTo = attachTo && attachTo.setTimeout ? attachTo : global;
 
+	    // Don't get fooled by e.g. browserify environments.
+	    if ({}.toString.call(global.process) === "[object process]") {
+	        // For Node.js before 0.9
+	        installNextTickImplementation();
 
-/***/ },
+	    } else if (canUsePostMessage()) {
+	        // For non-IE10 modern browsers
+	        installPostMessageImplementation();
+
+	    } else if (global.MessageChannel) {
+	        // For web workers, where supported
+	        installMessageChannelImplementation();
+
+	    } else if (doc && "onreadystatechange" in doc.createElement("script")) {
+	        // For IE 6–8
+	        installReadyStateChangeImplementation();
+
+	    } else {
+	        // For older browsers
+	        installSetTimeoutImplementation();
+	    }
+
+	    attachTo.setImmediate = setImmediate;
+	    attachTo.clearImmediate = clearImmediate;
+	}(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(13)))
+
+/***/ }),
 /* 13 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
+
+	
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Loader = __webpack_require__(14);
+	var Loader = __webpack_require__(15);
 
 	var PrecompiledLoader = Loader.extend({
 	    init: function(compiledTemplates) {
@@ -2975,9 +3056,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = PrecompiledLoader;
 
 
-/***/ },
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -3014,178 +3095,383 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Loader;
 
 
-/***/ },
-/* 15 */
-/***/ function(module, exports) {
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
 
 	function installCompat() {
-	  'use strict';
+	    'use strict';
 
-	  // This must be called like `nunjucks.installCompat` so that `this`
-	  // references the nunjucks instance
-	  var runtime = this.runtime; // jshint ignore:line
-	  var lib = this.lib; // jshint ignore:line
+	    // This must be called like `nunjucks.installCompat` so that `this`
+	    // references the nunjucks instance
+	    var runtime = this.runtime; // jshint ignore:line
+	    var lib = this.lib; // jshint ignore:line
+	    var Compiler = this.compiler.Compiler; // jshint ignore:line
+	    var Parser = this.parser.Parser; // jshint ignore:line
+	    var nodes = this.nodes; // jshint ignore:line
+	    var lexer = this.lexer; // jshint ignore:line
 
-	  var orig_contextOrFrameLookup = runtime.contextOrFrameLookup;
-	  runtime.contextOrFrameLookup = function(context, frame, key) {
-	    var val = orig_contextOrFrameLookup.apply(this, arguments);
-	    if (val === undefined) {
-	      switch (key) {
-	      case 'True':
-	        return true;
-	      case 'False':
-	        return false;
-	      case 'None':
-	        return null;
-	      }
+	    var orig_contextOrFrameLookup = runtime.contextOrFrameLookup;
+	    var orig_Compiler_assertType = Compiler.prototype.assertType;
+	    var orig_Parser_parseAggregate = Parser.prototype.parseAggregate;
+	    var orig_memberLookup = runtime.memberLookup;
+
+	    function uninstall() {
+	        runtime.contextOrFrameLookup = orig_contextOrFrameLookup;
+	        Compiler.prototype.assertType = orig_Compiler_assertType;
+	        Parser.prototype.parseAggregate = orig_Parser_parseAggregate;
+	        runtime.memberLookup = orig_memberLookup;
 	    }
 
-	    return val;
-	  };
-
-	  var orig_memberLookup = runtime.memberLookup;
-	  var ARRAY_MEMBERS = {
-	    pop: function(index) {
-	      if (index === undefined) {
-	        return this.pop();
-	      }
-	      if (index >= this.length || index < 0) {
-	        throw new Error('KeyError');
-	      }
-	      return this.splice(index, 1);
-	    },
-	    append: function(element) {
-	        return this.push(element);
-	    },
-	    remove: function(element) {
-	      for (var i = 0; i < this.length; i++) {
-	        if (this[i] === element) {
-	          return this.splice(i, 1);
+	    runtime.contextOrFrameLookup = function(context, frame, key) {
+	        var val = orig_contextOrFrameLookup.apply(this, arguments);
+	        if (val === undefined) {
+	            switch (key) {
+	            case 'True':
+	                return true;
+	            case 'False':
+	                return false;
+	            case 'None':
+	                return null;
+	            }
 	        }
-	      }
-	      throw new Error('ValueError');
-	    },
-	    count: function(element) {
-	      var count = 0;
-	      for (var i = 0; i < this.length; i++) {
-	        if (this[i] === element) {
-	          count++;
+
+	        return val;
+	    };
+
+	    var Slice = nodes.Node.extend('Slice', {
+	        fields: ['start', 'stop', 'step'],
+	        init: function(lineno, colno, start, stop, step) {
+	            start = start || new nodes.Literal(lineno, colno, null);
+	            stop = stop || new nodes.Literal(lineno, colno, null);
+	            step = step || new nodes.Literal(lineno, colno, 1);
+	            this.parent(lineno, colno, start, stop, step);
 	        }
-	      }
-	      return count;
-	    },
-	    index: function(element) {
-	      var i;
-	      if ((i = this.indexOf(element)) === -1) {
-	        throw new Error('ValueError');
-	      }
-	      return i;
-	    },
-	    find: function(element) {
-	      return this.indexOf(element);
-	    },
-	    insert: function(index, elem) {
-	      return this.splice(index, 0, elem);
-	    }
-	  };
-	  var OBJECT_MEMBERS = {
-	    items: function() {
-	      var ret = [];
-	      for(var k in this) {
-	        ret.push([k, this[k]]);
-	      }
-	      return ret;
-	    },
-	    values: function() {
-	      var ret = [];
-	      for(var k in this) {
-	        ret.push(this[k]);
-	      }
-	      return ret;
-	    },
-	    keys: function() {
-	      var ret = [];
-	      for(var k in this) {
-	        ret.push(k);
-	      }
-	      return ret;
-	    },
-	    get: function(key, def) {
-	      var output = this[key];
-	      if (output === undefined) {
-	        output = def;
-	      }
-	      return output;
-	    },
-	    has_key: function(key) {
-	      return this.hasOwnProperty(key);
-	    },
-	    pop: function(key, def) {
-	      var output = this[key];
-	      if (output === undefined && def !== undefined) {
-	        output = def;
-	      } else if (output === undefined) {
-	        throw new Error('KeyError');
-	      } else {
-	        delete this[key];
-	      }
-	      return output;
-	    },
-	    popitem: function() {
-	      for (var k in this) {
-	        // Return the first object pair.
-	        var val = this[k];
-	        delete this[k];
-	        return [k, val];
-	      }
-	      throw new Error('KeyError');
-	    },
-	    setdefault: function(key, def) {
-	      if (key in this) {
-	        return this[key];
-	      }
-	      if (def === undefined) {
-	        def = null;
-	      }
-	      return this[key] = def;
-	    },
-	    update: function(kwargs) {
-	      for (var k in kwargs) {
-	        this[k] = kwargs[k];
-	      }
-	      return null;  // Always returns None
-	    }
-	  };
-	  OBJECT_MEMBERS.iteritems = OBJECT_MEMBERS.items;
-	  OBJECT_MEMBERS.itervalues = OBJECT_MEMBERS.values;
-	  OBJECT_MEMBERS.iterkeys = OBJECT_MEMBERS.keys;
-	  runtime.memberLookup = function(obj, val, autoescape) { // jshint ignore:line
-	    obj = obj || {};
+	    });
 
-	    // If the object is an object, return any of the methods that Python would
-	    // otherwise provide.
-	    if (lib.isArray(obj) && ARRAY_MEMBERS.hasOwnProperty(val)) {
-	      return function() {return ARRAY_MEMBERS[val].apply(obj, arguments);};
+	    Compiler.prototype.assertType = function(node) {
+	        if (node instanceof Slice) {
+	            return;
+	        }
+	        return orig_Compiler_assertType.apply(this, arguments);
+	    };
+	    Compiler.prototype.compileSlice = function(node, frame) {
+	        this.emit('(');
+	        this._compileExpression(node.start, frame);
+	        this.emit('),(');
+	        this._compileExpression(node.stop, frame);
+	        this.emit('),(');
+	        this._compileExpression(node.step, frame);
+	        this.emit(')');
+	    };
+
+	    function getTokensState(tokens) {
+	        return {
+	            index: tokens.index,
+	            lineno: tokens.lineno,
+	            colno: tokens.colno
+	        };
 	    }
 
-	    if (lib.isObject(obj) && OBJECT_MEMBERS.hasOwnProperty(val)) {
-	      return function() {return OBJECT_MEMBERS[val].apply(obj, arguments);};
+	    Parser.prototype.parseAggregate = function() {
+	        var self = this;
+	        var origState = getTokensState(this.tokens);
+	        // Set back one accounting for opening bracket/parens
+	        origState.colno--;
+	        origState.index--;
+	        try {
+	            return orig_Parser_parseAggregate.apply(this);
+	        } catch(e) {
+	            var errState = getTokensState(this.tokens);
+	            var rethrow = function() {
+	                lib.extend(self.tokens, errState);
+	                return e;
+	            };
+
+	            // Reset to state before original parseAggregate called
+	            lib.extend(this.tokens, origState);
+	            this.peeked = false;
+
+	            var tok = this.peekToken();
+	            if (tok.type !== lexer.TOKEN_LEFT_BRACKET) {
+	                throw rethrow();
+	            } else {
+	                this.nextToken();
+	            }
+
+	            var node = new Slice(tok.lineno, tok.colno);
+
+	            // If we don't encounter a colon while parsing, this is not a slice,
+	            // so re-raise the original exception.
+	            var isSlice = false;
+
+	            for (var i = 0; i <= node.fields.length; i++) {
+	                if (this.skip(lexer.TOKEN_RIGHT_BRACKET)) {
+	                    break;
+	                }
+	                if (i === node.fields.length) {
+	                    if (isSlice) {
+	                        this.fail('parseSlice: too many slice components', tok.lineno, tok.colno);
+	                    } else {
+	                        break;
+	                    }
+	                }
+	                if (this.skip(lexer.TOKEN_COLON)) {
+	                    isSlice = true;
+	                } else {
+	                    var field = node.fields[i];
+	                    node[field] = this.parseExpression();
+	                    isSlice = this.skip(lexer.TOKEN_COLON) || isSlice;
+	                }
+	            }
+	            if (!isSlice) {
+	                throw rethrow();
+	            }
+	            return new nodes.Array(tok.lineno, tok.colno, [node]);
+	        }
+	    };
+
+	    function sliceLookup(obj, start, stop, step) {
+	        obj = obj || [];
+	        if (start === null) {
+	            start = (step < 0) ? (obj.length - 1) : 0;
+	        }
+	        if (stop === null) {
+	            stop = (step < 0) ? -1 : obj.length;
+	        } else {
+	            if (stop < 0) {
+	                stop += obj.length;
+	            }
+	        }
+
+	        if (start < 0) {
+	            start += obj.length;
+	        }
+
+	        var results = [];
+
+	        for (var i = start; ; i += step) {
+	            if (i < 0 || i > obj.length) {
+	                break;
+	            }
+	            if (step > 0 && i >= stop) {
+	                break;
+	            }
+	            if (step < 0 && i <= stop) {
+	                break;
+	            }
+	            results.push(runtime.memberLookup(obj, i));
+	        }
+	        return results;
 	    }
 
-	    return orig_memberLookup.apply(this, arguments);
-	  };
+	    var ARRAY_MEMBERS = {
+	        pop: function(index) {
+	            if (index === undefined) {
+	                return this.pop();
+	            }
+	            if (index >= this.length || index < 0) {
+	                throw new Error('KeyError');
+	            }
+	            return this.splice(index, 1);
+	        },
+	        append: function(element) {
+	                return this.push(element);
+	        },
+	        remove: function(element) {
+	            for (var i = 0; i < this.length; i++) {
+	                if (this[i] === element) {
+	                    return this.splice(i, 1);
+	                }
+	            }
+	            throw new Error('ValueError');
+	        },
+	        count: function(element) {
+	            var count = 0;
+	            for (var i = 0; i < this.length; i++) {
+	                if (this[i] === element) {
+	                    count++;
+	                }
+	            }
+	            return count;
+	        },
+	        index: function(element) {
+	            var i;
+	            if ((i = this.indexOf(element)) === -1) {
+	                throw new Error('ValueError');
+	            }
+	            return i;
+	        },
+	        find: function(element) {
+	            return this.indexOf(element);
+	        },
+	        insert: function(index, elem) {
+	            return this.splice(index, 0, elem);
+	        }
+	    };
+	    var OBJECT_MEMBERS = {
+	        items: function() {
+	            var ret = [];
+	            for(var k in this) {
+	                ret.push([k, this[k]]);
+	            }
+	            return ret;
+	        },
+	        values: function() {
+	            var ret = [];
+	            for(var k in this) {
+	                ret.push(this[k]);
+	            }
+	            return ret;
+	        },
+	        keys: function() {
+	            var ret = [];
+	            for(var k in this) {
+	                ret.push(k);
+	            }
+	            return ret;
+	        },
+	        get: function(key, def) {
+	            var output = this[key];
+	            if (output === undefined) {
+	                output = def;
+	            }
+	            return output;
+	        },
+	        has_key: function(key) {
+	            return this.hasOwnProperty(key);
+	        },
+	        pop: function(key, def) {
+	            var output = this[key];
+	            if (output === undefined && def !== undefined) {
+	                output = def;
+	            } else if (output === undefined) {
+	                throw new Error('KeyError');
+	            } else {
+	                delete this[key];
+	            }
+	            return output;
+	        },
+	        popitem: function() {
+	            for (var k in this) {
+	                // Return the first object pair.
+	                var val = this[k];
+	                delete this[k];
+	                return [k, val];
+	            }
+	            throw new Error('KeyError');
+	        },
+	        setdefault: function(key, def) {
+	            if (key in this) {
+	                return this[key];
+	            }
+	            if (def === undefined) {
+	                def = null;
+	            }
+	            return this[key] = def;
+	        },
+	        update: function(kwargs) {
+	            for (var k in kwargs) {
+	                this[k] = kwargs[k];
+	            }
+	            return null;    // Always returns None
+	        }
+	    };
+	    OBJECT_MEMBERS.iteritems = OBJECT_MEMBERS.items;
+	    OBJECT_MEMBERS.itervalues = OBJECT_MEMBERS.values;
+	    OBJECT_MEMBERS.iterkeys = OBJECT_MEMBERS.keys;
+	    runtime.memberLookup = function(obj, val, autoescape) { // jshint ignore:line
+	        if (arguments.length === 4) {
+	            return sliceLookup.apply(this, arguments);
+	        }
+	        obj = obj || {};
+
+	        // If the object is an object, return any of the methods that Python would
+	        // otherwise provide.
+	        if (lib.isArray(obj) && ARRAY_MEMBERS.hasOwnProperty(val)) {
+	            return function() {return ARRAY_MEMBERS[val].apply(obj, arguments);};
+	        }
+
+	        if (lib.isObject(obj) && OBJECT_MEMBERS.hasOwnProperty(val)) {
+	            return function() {return OBJECT_MEMBERS[val].apply(obj, arguments);};
+	        }
+
+	        return orig_memberLookup.apply(this, arguments);
+	    };
+
+	    return uninstall;
 	}
 
 	module.exports = installCompat;
 
 
-/***/ }
+/***/ })
 /******/ ])
 });
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2).setImmediate, __webpack_require__(2).clearImmediate))
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var apply = Function.prototype.apply;
+
+// DOM APIs, for completeness
+
+exports.setTimeout = function() {
+  return new Timeout(apply.call(setTimeout, window, arguments), clearTimeout);
+};
+exports.setInterval = function() {
+  return new Timeout(apply.call(setInterval, window, arguments), clearInterval);
+};
+exports.clearTimeout =
+exports.clearInterval = function(timeout) {
+  if (timeout) {
+    timeout.close();
+  }
+};
+
+function Timeout(id, clearFn) {
+  this._id = id;
+  this._clearFn = clearFn;
+}
+Timeout.prototype.unref = Timeout.prototype.ref = function() {};
+Timeout.prototype.close = function() {
+  this._clearFn.call(window, this._id);
+};
+
+// Does not start the time, just sets up the members needed.
+exports.enroll = function(item, msecs) {
+  clearTimeout(item._idleTimeoutId);
+  item._idleTimeout = msecs;
+};
+
+exports.unenroll = function(item) {
+  clearTimeout(item._idleTimeoutId);
+  item._idleTimeout = -1;
+};
+
+exports._unrefActive = exports.active = function(item) {
+  clearTimeout(item._idleTimeoutId);
+
+  var msecs = item._idleTimeout;
+  if (msecs >= 0) {
+    item._idleTimeoutId = setTimeout(function onTimeout() {
+      if (item._onTimeout)
+        item._onTimeout();
+    }, msecs);
+  }
+};
+
+// setimmediate attaches itself to the global object
+__webpack_require__(5);
+exports.setImmediate = setImmediate;
+exports.clearImmediate = clearImmediate;
+
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3202,51 +3488,51 @@ exports.getPackagePageByLanguafge = getPackagePageByLanguafge;
 exports.getLastNewsBannerByLanguage = getLastNewsBannerByLanguage;
 exports.getArticleSidebar = getArticleSidebar;
 
-var _toursPageEn = __webpack_require__(13);
+var _toursPageEn = __webpack_require__(17);
 
 var _toursPageEn2 = _interopRequireDefault(_toursPageEn);
 
-var _toursPageEs = __webpack_require__(14);
+var _toursPageEs = __webpack_require__(18);
 
 var _toursPageEs2 = _interopRequireDefault(_toursPageEs);
 
-var _contactcontentEn = __webpack_require__(7);
+var _contactcontentEn = __webpack_require__(11);
 
 var _contactcontentEn2 = _interopRequireDefault(_contactcontentEn);
 
-var _contactcontentEs = __webpack_require__(8);
+var _contactcontentEs = __webpack_require__(12);
 
 var _contactcontentEs2 = _interopRequireDefault(_contactcontentEs);
 
-var _contactoptionsEn = __webpack_require__(3);
+var _contactoptionsEn = __webpack_require__(7);
 
 var _contactoptionsEn2 = _interopRequireDefault(_contactoptionsEn);
 
-var _contactoptionsEs = __webpack_require__(4);
+var _contactoptionsEs = __webpack_require__(8);
 
 var _contactoptionsEs2 = _interopRequireDefault(_contactoptionsEs);
 
-var _packagePageEs = __webpack_require__(12);
+var _packagePageEs = __webpack_require__(16);
 
 var _packagePageEs2 = _interopRequireDefault(_packagePageEs);
 
-var _packagePageEn = __webpack_require__(11);
+var _packagePageEn = __webpack_require__(15);
 
 var _packagePageEn2 = _interopRequireDefault(_packagePageEn);
 
-var _lastNewsBannerEs = __webpack_require__(10);
+var _lastNewsBannerEs = __webpack_require__(14);
 
 var _lastNewsBannerEs2 = _interopRequireDefault(_lastNewsBannerEs);
 
-var _lastNewsBannerEn = __webpack_require__(9);
+var _lastNewsBannerEn = __webpack_require__(13);
 
 var _lastNewsBannerEn2 = _interopRequireDefault(_lastNewsBannerEn);
 
-var _articleSidebarEn = __webpack_require__(5);
+var _articleSidebarEn = __webpack_require__(9);
 
 var _articleSidebarEn2 = _interopRequireDefault(_articleSidebarEn);
 
-var _articleSidebarEs = __webpack_require__(6);
+var _articleSidebarEs = __webpack_require__(10);
 
 var _articleSidebarEs2 = _interopRequireDefault(_articleSidebarEs);
 
@@ -3335,7 +3621,417 @@ function getArticleSidebar(lng) {
 }
 
 /***/ }),
-/* 3 */
+/* 4 */
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
+    "use strict";
+
+    if (global.setImmediate) {
+        return;
+    }
+
+    var nextHandle = 1; // Spec says greater than zero
+    var tasksByHandle = {};
+    var currentlyRunningATask = false;
+    var doc = global.document;
+    var registerImmediate;
+
+    function setImmediate(callback) {
+      // Callback can either be a function or a string
+      if (typeof callback !== "function") {
+        callback = new Function("" + callback);
+      }
+      // Copy function arguments
+      var args = new Array(arguments.length - 1);
+      for (var i = 0; i < args.length; i++) {
+          args[i] = arguments[i + 1];
+      }
+      // Store and register the task
+      var task = { callback: callback, args: args };
+      tasksByHandle[nextHandle] = task;
+      registerImmediate(nextHandle);
+      return nextHandle++;
+    }
+
+    function clearImmediate(handle) {
+        delete tasksByHandle[handle];
+    }
+
+    function run(task) {
+        var callback = task.callback;
+        var args = task.args;
+        switch (args.length) {
+        case 0:
+            callback();
+            break;
+        case 1:
+            callback(args[0]);
+            break;
+        case 2:
+            callback(args[0], args[1]);
+            break;
+        case 3:
+            callback(args[0], args[1], args[2]);
+            break;
+        default:
+            callback.apply(undefined, args);
+            break;
+        }
+    }
+
+    function runIfPresent(handle) {
+        // From the spec: "Wait until any invocations of this algorithm started before this one have completed."
+        // So if we're currently running a task, we'll need to delay this invocation.
+        if (currentlyRunningATask) {
+            // Delay by doing a setTimeout. setImmediate was tried instead, but in Firefox 7 it generated a
+            // "too much recursion" error.
+            setTimeout(runIfPresent, 0, handle);
+        } else {
+            var task = tasksByHandle[handle];
+            if (task) {
+                currentlyRunningATask = true;
+                try {
+                    run(task);
+                } finally {
+                    clearImmediate(handle);
+                    currentlyRunningATask = false;
+                }
+            }
+        }
+    }
+
+    function installNextTickImplementation() {
+        registerImmediate = function(handle) {
+            process.nextTick(function () { runIfPresent(handle); });
+        };
+    }
+
+    function canUsePostMessage() {
+        // The test against `importScripts` prevents this implementation from being installed inside a web worker,
+        // where `global.postMessage` means something completely different and can't be used for this purpose.
+        if (global.postMessage && !global.importScripts) {
+            var postMessageIsAsynchronous = true;
+            var oldOnMessage = global.onmessage;
+            global.onmessage = function() {
+                postMessageIsAsynchronous = false;
+            };
+            global.postMessage("", "*");
+            global.onmessage = oldOnMessage;
+            return postMessageIsAsynchronous;
+        }
+    }
+
+    function installPostMessageImplementation() {
+        // Installs an event handler on `global` for the `message` event: see
+        // * https://developer.mozilla.org/en/DOM/window.postMessage
+        // * http://www.whatwg.org/specs/web-apps/current-work/multipage/comms.html#crossDocumentMessages
+
+        var messagePrefix = "setImmediate$" + Math.random() + "$";
+        var onGlobalMessage = function(event) {
+            if (event.source === global &&
+                typeof event.data === "string" &&
+                event.data.indexOf(messagePrefix) === 0) {
+                runIfPresent(+event.data.slice(messagePrefix.length));
+            }
+        };
+
+        if (global.addEventListener) {
+            global.addEventListener("message", onGlobalMessage, false);
+        } else {
+            global.attachEvent("onmessage", onGlobalMessage);
+        }
+
+        registerImmediate = function(handle) {
+            global.postMessage(messagePrefix + handle, "*");
+        };
+    }
+
+    function installMessageChannelImplementation() {
+        var channel = new MessageChannel();
+        channel.port1.onmessage = function(event) {
+            var handle = event.data;
+            runIfPresent(handle);
+        };
+
+        registerImmediate = function(handle) {
+            channel.port2.postMessage(handle);
+        };
+    }
+
+    function installReadyStateChangeImplementation() {
+        var html = doc.documentElement;
+        registerImmediate = function(handle) {
+            // Create a <script> element; its readystatechange event will be fired asynchronously once it is inserted
+            // into the document. Do so, thus queuing up the task. Remember to clean up once it's been called.
+            var script = doc.createElement("script");
+            script.onreadystatechange = function () {
+                runIfPresent(handle);
+                script.onreadystatechange = null;
+                html.removeChild(script);
+                script = null;
+            };
+            html.appendChild(script);
+        };
+    }
+
+    function installSetTimeoutImplementation() {
+        registerImmediate = function(handle) {
+            setTimeout(runIfPresent, 0, handle);
+        };
+    }
+
+    // If supported, we should attach to the prototype of global, since that is where setTimeout et al. live.
+    var attachTo = Object.getPrototypeOf && Object.getPrototypeOf(global);
+    attachTo = attachTo && attachTo.setTimeout ? attachTo : global;
+
+    // Don't get fooled by e.g. browserify environments.
+    if ({}.toString.call(global.process) === "[object process]") {
+        // For Node.js before 0.9
+        installNextTickImplementation();
+
+    } else if (canUsePostMessage()) {
+        // For non-IE10 modern browsers
+        installPostMessageImplementation();
+
+    } else if (global.MessageChannel) {
+        // For web workers, where supported
+        installMessageChannelImplementation();
+
+    } else if (doc && "onreadystatechange" in doc.createElement("script")) {
+        // For IE 6–8
+        installReadyStateChangeImplementation();
+
+    } else {
+        // For older browsers
+        installSetTimeoutImplementation();
+    }
+
+    attachTo.setImmediate = setImmediate;
+    attachTo.clearImmediate = clearImmediate;
+}(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(4)))
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3354,7 +4050,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 4 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3373,7 +4069,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 5 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3421,7 +4117,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/article-sidebar.en.njk"] , dependencies)
 
 /***/ }),
-/* 6 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3469,7 +4165,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/article-sidebar.es.njk"] , dependencies)
 
 /***/ }),
-/* 7 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3494,7 +4190,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "\n\n\t<div class=\"col-md-12\">\n\t\t <div class=\"row tour-container\">\n\t\t \t\t<div class=\"col-md-8 col-sm-12\" >\n\t\t\t\t\t<h3>Send us a message</h3>\n\t\t\t\t\t<div id=\"rebelchat-instance\">\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"col-md-4 hidden-sm\" style=\"margin-top:15px\">\n\t\t\t\t\t\t<div class=\"banner-right floating-right\">\n\t\t\t \t\t\t\t<div class=\"tour-detail\">\n\t\t\t\t\t \t\t\t<div class=\"tour-info-title\">South Americans' Secrets</div>\n\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t      <h3></h3>\n\t\t\t\t\t\t      <p>Travel Agency & Tour Operator</p>\n\t\t\t\t\t\t      <p>Amarilis Pereda & Lucio Hancco</p>\n\t\t\t\t\t\t      <p>Av Alan Garcia Mz. C Lt. 7 Paracas</p>\n\t\t\t\t\t\t      <p><b>Cel:</b> 956-481002\t<b>Nextel:</b> 116*6826</p>\n\t\t\t\t\t\t      <p><b>RPM:</b> *585330 </p>\n\t\t\t\t\t\t      <p><b>Skype Us:</b></p>\n\t\t\t\t\t\t    </div>\n\t\t \t\t\t\t\t</div>\n\t\t\t \t\t\t</div>\n\t\t\t\t </div>\n\t\t </div>\n\t</div>\n";
+output += "\n\n\t<div class=\"col-md-12\">\n\t\t <div class=\"row tour-container\">\n\t\t \t\t<div class=\"col-md-8 col-sm-12\" >\n\t\t\t\t\t<h3>Send us a message</h3>\n\t\t\t\t\t<div id=\"rebelchat-instance\">\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"col-md-4 hidden-sm\" style=\"margin-top:15px\">\n\t\t\t\t\t\t<div class=\"banner-right floating-right\">\n\t\t\t \t\t\t\t<div class=\"tour-detail\">\n\t\t\t\t\t \t\t\t<div class=\"tour-info-title\">South Americans' Secrets</div>\n\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t      <p><b>Travel Agency & Tour Operator</b></p>\n\t\t\t\t\t\t      <p><b>Amarilis Pereda & Lucio Hancco</b></p>\n\t\t\t\t\t\t      <p>St. Camino Real Mz D lt. 8 San Andrés</p>\n\t\t\t\t\t\t\t  <p>Inside Marina Turística \"Tourist Pier\", right next to Hotel San Agustín - Paracas.\nOpen 7:30 am to 1:00 pm (Paracas)</p>\n\t\t\t\t\t\t      <p><b>Cel:</b> 956-481002\t/ 947-058508</p>\n\t\t\t\t\t\t    </div>\n\t\t \t\t\t\t\t</div>\n\t\t\t \t\t\t</div>\n\t\t\t\t </div>\n\t\t </div>\n\t</div>\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -3517,7 +4213,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/contactcontent.en.njk"] , dependencies)
 
 /***/ }),
-/* 8 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3542,7 +4238,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "\n\n\t<div class=\"col-md-12\">\n\t\t <div class=\"row tour-container\">\n\t\t \t\t<div class=\"col-md-8 col-sm-12\" >\n\t\t\t\t\t<h3>Envianos un mensaje</h3>\n\t\t\t\t\t<div id=\"rebelchat-instance\">\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"col-md-4 hidden-sm\" style=\"margin-top:15px\">\n\t\t\t\t\t\t<div class=\"banner-right floating-right\">\n\t\t\t \t\t\t\t<div class=\"tour-detail\">\n\t\t\t\t\t \t\t\t<div class=\"tour-info-title\">South Americans' Secrets</div>\n\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t      <h3></h3>\n\t\t\t\t\t\t      <p>Agencia de turismo y Operador de Tours</p>\n\t\t\t\t\t\t      <p>Amarilis Pereda & Lucio Hancco</p>\n\t\t\t\t\t\t      <p>Av Alan Garcia Mz. C Lt. 7 Paracas</p>\n\t\t\t\t\t\t      <p><b>Cel:</b> 956-481002\t<b>Nextel:</b> 116*6826</p>\n\t\t\t\t\t\t      <p><b>RPM:</b> *585330 </p>\n\t\t\t\t\t\t      <p><b>Skype:</b></p>\n\t\t\t\t\t\t    </div>\n\t\t \t\t\t\t\t</div>\n\t\t\t \t\t\t</div>\n\t\t\t\t </div>\n\t\t </div>\n\t</div>\n";
+output += "\n\n\t<div class=\"col-md-12\">\n\t\t <div class=\"row tour-container\">\n\t\t \t\t<div class=\"col-md-8 col-sm-12\" >\n\t\t\t\t\t<h3>Envianos un mensaje</h3>\n\t\t\t\t\t<div id=\"rebelchat-instance\">\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"col-md-4 hidden-sm\" style=\"margin-top:15px\">\n\t\t\t\t\t\t<div class=\"banner-right floating-right\">\n\t\t\t \t\t\t\t<div class=\"tour-detail\">\n\t\t\t\t\t \t\t\t<div class=\"tour-info-title\">South Americans' Secrets</div>\n\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t      <p><b>Agencia de turismo y Operador de Tours</b></p>\n\t\t\t\t\t\t      <p><b>Amarilis Pereda & Lucio Hancco</b></p>\n\t\t\t\t\t\t      <p>Cal. Camino Real Mz D lt. 8 San Andrés</p>\n\t\t\t\t\t\t\t  <p>En la Marina Turística, a un lado del Hotel San Agustín - Paracas.\nAbierto desde las 7:30 am hasta la 1:00 pm (Paracas)</p>\n\t\t\t\t\t\t      <p><b>Cel:</b> 956-481002\t/ 947-058508</p>\n\t\t\t\t\t\t    </div>\n\t\t \t\t\t\t\t</div>\n\t\t\t \t\t\t</div>\n\t\t\t\t </div>\n\t\t </div>\n\t</div>\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -3565,7 +4261,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/contactcontent.es.njk"] , dependencies)
 
 /***/ }),
-/* 9 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3613,7 +4309,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last-news-banner.en.njk"] , dependencies)
 
 /***/ }),
-/* 10 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3661,7 +4357,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last-news-banner.es.njk"] , dependencies)
 
 /***/ }),
-/* 11 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3916,7 +4612,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/package-page.en.njk"] , dependencies)
 
 /***/ }),
-/* 12 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4171,7 +4867,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/package-page.es.njk"] , dependencies)
 
 /***/ }),
-/* 13 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4274,7 +4970,14 @@ output += "\" height=\"50px\" width=\"50px\"/>\n              </a>\n            
 }
 }
 frame = frame.pop();
-output += "\n          </div>\n        </div>\n        <div class=\"col-md-4\">\n            <div class=\"banner-right floating-right\">\n            <div class=\"tour-detail\">\n                <div class=\"tour-info-title\">Include</div>\n                <ul>\n                    ";
+output += "\n          </div>\n        </div>\n        <div class=\"col-md-4\">\n            <div class=\"banner-right floating-right\">\n            <div class=\"tour-detail\">\n                ";
+if(runtime.memberLookup((t_8),"yacht")) {
+output += "\n                    <img src=\"images/";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"yacht"), env.opts.autoescape);
+output += "\" align=\"right\" width=\"60\" style=\"margin-top: -22.5px; margin-right: -32.5px\">\n                ";
+;
+}
+output += "\n                <div class=\"tour-info-title\">Include</div>\n                <ul>\n                    ";
 frame = frame.push();
 var t_15 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"include");
 if(t_15) {var t_14 = t_15.length;
@@ -4391,7 +5094,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tours-page.en.njk"] , dependencies)
 
 /***/ }),
-/* 14 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4494,7 +5197,14 @@ output += "\" height=\"50px\" width=\"50px\"/>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t
 }
 }
 frame = frame.pop();
-output += "\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-4\">\n\t\t\t\t\t\t<div class=\"banner-right floating-right\">\n\t\t\t\t\t\t<div class=\"tour-detail\">\n\t\t\t\t\t\t\t\t<div class=\"tour-info-title\">Incluye</div>\n\t\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t\t\t\t";
+output += "\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-4\">\n\t\t\t\t\t\t<div class=\"banner-right floating-right\">\n\t\t\t\t\t\t<div class=\"tour-detail\">\n\t\t\t\t\t\t\t\t";
+if(runtime.memberLookup((t_8),"yacht")) {
+output += "\n\t\t\t\t\t\t\t\t\t<img src=\"images/";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"yacht"), env.opts.autoescape);
+output += "\" align=\"right\" width=\"60\" style=\"margin-top: -22.5px; margin-right: -32.5px\">\n\t\t\t\t\t\t\t\t";
+;
+}
+output += "\n\t\t\t\t\t\t\t\t<div class=\"tour-info-title\">Incluye</div>\n\t\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t\t\t\t";
 frame = frame.push();
 var t_15 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"include");
 if(t_15) {var t_14 = t_15.length;
@@ -4611,20 +5321,20 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tours-page.es.njk"] , dependencies)
 
 /***/ }),
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"./package-mystery-south-coast.en.js": [
-		43,
+		47,
 		21
 	],
 	"./package-mystery-south-coast.es.js": [
-		44,
+		48,
 		20
 	]
 };
@@ -4640,13 +5350,9 @@ webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
 module.exports = webpackAsyncContext;
-webpackAsyncContext.id = 19;
+webpackAsyncContext.id = 23;
 
 /***/ }),
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
 /* 24 */,
 /* 25 */,
 /* 26 */,
@@ -4654,13 +5360,17 @@ webpackAsyncContext.id = 19;
 /* 28 */,
 /* 29 */,
 /* 30 */,
-/* 31 */
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _utils = __webpack_require__(2);
+var _utils = __webpack_require__(3);
 
 var content = document.querySelector('#page-content');
 var dataRef = content.getAttribute('data-ref');
@@ -4669,7 +5379,7 @@ var language = (0, _utils.getPageLanguage)('lng') || 'en';
 
 var tpl = (0, _utils.getPackagePageByLanguafge)(language);
 
-__webpack_require__(19)("./" + dataRef + '.' + language + '.js').then(function (m) {
+__webpack_require__(23)("./" + dataRef + '.' + language + '.js').then(function (m) {
 	console.log(m);
 	var data = m.default;
 	var html = tpl.render({ data: data });

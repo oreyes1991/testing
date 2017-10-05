@@ -1,6 +1,6 @@
 webpackJsonp([26],{
 
-/***/ 38:
+/***/ 42:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41,6 +41,7 @@ exports.default = {
 		subtitle: 'The Islas Ballestas (Crossbow Islands) are Paracas\'s premier wildlife attraction. You\'ll find many exotic species of birds and marine life, some unique to Peru.',
 		url_image: 'images/activities/paracas/paracas_03_t.jpg',
 		description: 'We meet at our office and escort you to Paracas dock. This two-hour round-trip tour of Peru\'s most famous islands lets you enjoy magnificent rocks formations sculpted by nature and is home of Humboldt penguins, south Americans sea lions and a multitude of marine birds. Services also available in First and Private classes.All yacht tours include a trained, certified, registered yatchsman and crewman/guide onboard. Our yacht services are insured and registered with all appropriate agencies as mandated by law.',
+		yacht: 'yacht.png',
 		gallery: ['images/gallery/ballestas_01_t.jpg', 'images/gallery/ballestas_02_t.jpg', 'images/gallery/ballestas_06_t.jpg', 'images/gallery/ballestas_08_t.jpg', 'images/gallery/ballestas_11_t.jpg', 'images/gallery/ballestas_16_t.jpg', 'images/gallery/ballestas_15_t.jpg', 'images/gallery/ballestas_03_t.jpg', 'images/gallery/ballestas_04_t.jpg'],
 		additionalData: {
 			include: ['40 Pax. capacity', 'Transfer to Paracas dock', 'Boat transport', 'Backup boat primed & ready', 'Professional Yachtsman and mate', 'English speaking guide', 'Reserve and dock entrance fees pre-paid (over $4 US)'],
