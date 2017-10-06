@@ -1,6 +1,6 @@
 webpackJsonp([14],{
 
-/***/ 54:
+/***/ 58:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10,49 +10,50 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.default = {
-	title: 'Ica & Huacachina',
-	subtitle: 'Viaje a través de los valles de vino y bodegas de Ica, un paisaje de contrastes extremos donde el vino y el pisco se producen en la forma tradicional e industrial',
-	description: 'La ciudad de Ica se encuentra entre las dunas de arena y los Andes secos occidentales. Su ubicación geográfica garantiza un clima seco y soleado durante todo el año - perfecto para el cultivo de uvas, espárragos, páprika, y algodón.',
-	url_image: 'images/tours/ica/ica_winery_3_t.jpg',
+	title: 'Selva Tropical Peruana',
+	subtitle: 'La selva amaz\xF3nica peruana es una de las zonas con mayor diversidad biol\xF3gica de la Tierra',
+	description: 'Como naci\xF3n, Per\xFA tiene el mayor n\xFAmero de especies de aves en el mundo y el tercer mayor n\xFAmero de mam\xEDferos, el 44% de las especies de aves y 63% de las especies de mam\xEDferos que habitan la Amazon\xEDa peruana. Per\xFA tambi\xE9n tiene un alto n\xFAmero de especies de mariposas, orqu\xEDdeas y otros organismos',
+	url_image: 'images/tours/tambopata/iquitos_3_t.jpg',
 	tours: [{
-		id: 'vineyard-museum-oasis-tour',
-		title: 'Viñedo Museo y Oasis',
-		shortTitle: 'Viñedo Museo y Oasis',
-		subtitle: '',
-		url_image: 'images/tours/ica/huacachina_oasis_1.t.jpg',
-		description: 'La regi\xF3n es la capital del vino de Per\xFA y el capital mundial de pisco que dispone de las mayores bodegas - tradicional e industrial. Los programas de tours visitan bodegas famosas como El Catador y La Caravedo.',
+		id: 'tambopata-reserve',
+		title: 'Tambopata',
+		shortTitle: 'Tambopata',
+		subtitle: 'Afamado en la revista National Geographic, el Tambopata Research Center es, probablemente, los albergues en la selva más remotas de América del Sur y ofrece aventureros una experiencia auténtica en la selva peruana',
+		url_image: 'images/tours/tambopata/macaw_1_portrait.jpg',
+		description: 'El r\xEDo Tambopata es uno de los h\xE1bitat exclusivo de las aves y los mam\xEDferos. La flora en la reserva nacional es bastante t\xEDpico del suroeste de la Cuenca Amaz\xF3nica. El r\xEDo Heath y llanuras de los alrededores son un ecosistema \xFAnico en el Per\xFA. Las pampas se inundan peri\xF3dicamente, y los peque\xF1os bosques de \xE1rboles con variada vida vegetal crecen en grupos aislados en la llanura.\nSi usted est\xE1 buscando una experiencia m\xE1s en profundidad del Amazonas, el Centro de Investigaciones Tambopata le convenga. Despu\xE9s de pasar la primera noche en el Refugio Amazonas, llega a la m\xE1s grande collpa de guacamayos conocida en el segundo d\xEDa de su viaje y explorar los senderos del Centro de Investigaci\xF3n de Tambopata en el coraz\xF3n de la Reserva Nacional Tambopata.',
 		additionalData: {
-			include: ['Recojo de su hotel en Ica o Huacachina.', 'Transporte privado.', 'Visite los viñedos de pisco.', 'Visita guiada al Museo Arqueológico de Ica.', 'Visita al Oasis de Huacachina.', 'Todas las entradas.'],
-			notInclude: ['Extras y propinas.', 'Alojamiento'],
+			include: ['Transferencias', 'Comidas', 'Alojamiento'],
+			notInclude: ['Extras y propinas'],
 			duration: {
-				subtitle: '2.5 horas (approx.)',
-				data: ['Salida 09 a.m. / 14:00 pm']
+				subtitle: '5 Dias (4 Noches)',
+				data: []
 			},
-			recommendations: ['Use ropa ligera.', 'Traer crema solar, gafas de sol y una gorra.', 'Lleve una botella de agua.'],
+			recommendations: ['Viaje con poco equipaje'],
 			price: {
 				currency: '$',
-				ammount: 25,
-				data: ['Se requiere un mínimo de 2 participantes']
+				ammount: 260.00,
+				data: []
 			}
 		}
 	}, {
-		id: 'dune-buggy-sandboard',
-		title: 'Buggy Tour y Sandboard',
-		shortTitle: 'Buggy Tour y Sandboard',
-		subtitle: 'Huacachina, un pequeño pueblo turístico que rodea a un gran oasis, está a sólo 5 km al sur oeste de Ica y un gran escondite para los extranjeros para relajarse y practicar el mejor surf en la arena en el mundo.',
-		url_image: 'images/tours/ica/buggy_1_t.jpg',
-		description: 'Si usted no est\xE1 en los deportes extremos, visitando las vastas dunas monta\xF1osas que rodean la Huacachina por buggy es bastante espectacular por s\xED mismo y es una visita obligada si est\xE1s pasando a trav\xE9s de la regi\xF3n.',
+		id: 'manu-reserve',
+		title: 'Manu Reserve',
+		shortTitle: 'Manu Reserve',
+		subtitle: 'The famous Salkantay trek to Machu Picchu is named among the top 25 best excursions in the world by National Geographic Adventure Travel Magazine.',
+		url_image: 'images/tours/tambopata/salkantay_1_portrait.jpg',
+		description: 'The Salkantay Trek is an ancient and remote footpath located in the same region as the Inca Trail where snowcapped mountains collide with lush tropical rain forests.',
 		additionalData: {
-			include: ['Sandboarding', 'Viaje de buggy por las dunas gigantes', 'Entradas'],
-			notInclude: ['Extras y propinas.'],
+			include: ['Transfers', 'Bus transport', 'Meals (2 breakfast, 3 lunch, 3 dinner)', 'Accommodation (basic) 2 nights', 'Bicycles', 'Entrance fees to Archaeological centers and Machu Picchu', 'Return train', 'Accommodation at Hostal Aguas Calientes', 'Guide speaking English or Italian'],
+			notInclude: ['Extras & gratuities', 'Entrance fees to thermal baths', 'The first breakfast', 'The last lunch'],
 			duration: {
-				subtitle: '1.5 horas (approx.)',
-				data: []
+				subtitle: '4 Days (3 Nights)',
+				data: ['Departs at 7:30am from Cusco']
 			},
-			recommendations: ['Traer crema solar, gafas de sol y una gorra.', 'Lleve una botella de agua.'],
+			recommendations: ['Bring a jacket or fleece for cool afternoons during winter', 'A rain poncho in case of rain', 'Insect/mosquito repellent', 'Towels', 'Sandals', 'Sunglasses', 'Travel light'],
+			notes: ['Altitude can pose a problem for many people - a strong fitness level is required.'],
 			price: {
 				currency: '$',
-				ammount: 25,
+				ammount: 260,
 				data: []
 			}
 		}

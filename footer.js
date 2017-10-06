@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		31: 0
+/******/ 		35: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -145,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 35);
+/******/ 	return __webpack_require__(__webpack_require__.s = 34);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -5321,64 +5321,30 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tours-page.es.njk"] , dependencies)
 
 /***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.default = [{
-	title: 'Enigmas of Monte Sierpe and Nazca',
-	subtitle: "The geoglyphs at Monte Sierpe are amongst Peru's most enigmatic and unexplainable mysteries",
-	description: "The Avenida de los Hoyos, a geoglyph like the Nazca lines consisting of a series of large basin-like potholes along a mountain ridge, appears to slither up the slope for miles.",
-	author: 'by Rein Petersen',
-	date: "March 20,2014",
-	url_image: 'images/articles/monte_sierpe_portrait.jpg',
-	blockquote: "\u201CI believe that what appears to be a serpent is actually the deity Q'hoa. He was the servant or acolyte of the god of water known as Illapa and his likeness was used in a majority of rituals regarding rain\u201D.",
-	url: ''
-}, {
-	title: 'Nasca Lines from Pisco',
-	subtitle: "*New* Nasca lines tours with regular flights from Pisco's renovated airport",
-	description: "Getting to Nasca to see the Nasca lines once used to be a complicated and time-consuming effort. Unless you chartered your own private flight from Lima, public access was limited to mostly car or bus which is very long (7-8 hour one-way) trip from Lima.",
-	author: 'by Rein Petersen',
-	date: 'February 26, 2014',
-	url_image: 'images/articles/nazca_spider.jpg',
-	blockquote: "\"Before, the only way to see the Nasca lines was to travel to Nasca - usually by bus. But now we fly from Pisco and people prefer it.\"",
-	url: ''
-}, {
-	title: 'Guano Collectors',
-	subtitle: "\"The worst enemy is not the smell, heat or exhaustion.\" As Domingo Le\xF3n explained to us, \"the worst enemy is dust sticking on the eyebrows, covering our noses and cheeks and turning our face into a rigid mask.\"",
-	description: "The rising cost of synthetic fertilizers has made guano sexy again. Some workers collect the dung of seabirds in the North Guañape Island, off the coast of Peru. The global boom in commodities has come to this: before guano, bird dung was the center of an imperialist confrontation at sea in the nineteenth century, and is once again in strong demand.",
-	author: 'by Rein Petersen',
-	date: 'February 22, 2014',
-	url_image: 'images/articles/guano_collectors_1_portrait.jpg',
-	blockquote: "\"The worst enemy is not the smell, heat or exhaustion... [it] is dust sticking on the eyebrows, covering our noses and cheeks and turning our face into a rigid mask.\"",
-	url: ''
-}];
-
-/***/ }),
+/* 19 */,
 /* 20 */,
 /* 21 */,
-/* 22 */
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./last-news.en.js": [
-		19
+	"./footer.en.njk": [
+		69,
+		3
 	],
-	"./last-news.es.js": [
-		48,
-		24
+	"./footer.es.njk": [
+		70,
+		2
 	]
 };
 function webpackAsyncContext(req) {
 	var ids = map[req];
 	if(!ids)
 		return Promise.reject(new Error("Cannot find module '" + req + "'."));
-	return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(function() {
+	return __webpack_require__.e(ids[1]).then(function() {
 		return __webpack_require__(ids[0]);
 	});
 };
@@ -5386,131 +5352,34 @@ webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
 module.exports = webpackAsyncContext;
-webpackAsyncContext.id = 22;
+webpackAsyncContext.id = 25;
 
 /***/ }),
-/* 23 */,
-/* 24 */,
-/* 25 */,
 /* 26 */,
 /* 27 */,
 /* 28 */,
 /* 29 */,
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var nunjucks = __webpack_require__(1);
-var env;
-if (!nunjucks.currentEnv){
-	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
-} else {
-	env = nunjucks.currentEnv;
-}
-var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-
-
-
-
-var shim = __webpack_require__(0);
-
-
-(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/last-news.njk"] = (function() {
-function root(env, context, frame, runtime, cb) {
-var lineno = null;
-var colno = null;
-var output = "";
-try {
-var parentTemplate = null;
-frame = frame.push();
-var t_3 = runtime.contextOrFrameLookup(context, frame, "items");
-if(t_3) {var t_2 = t_3.length;
-for(var t_1=0; t_1 < t_3.length; t_1++) {
-var t_4 = t_3[t_1];
-frame.set("item", t_4);
-frame.set("loop.index", t_1 + 1);
-frame.set("loop.index0", t_1);
-frame.set("loop.revindex", t_2 - t_1);
-frame.set("loop.revindex0", t_2 - t_1 - 1);
-frame.set("loop.first", t_1 === 0);
-frame.set("loop.last", t_1 === t_2 - 1);
-frame.set("loop.length", t_2);
-output += "\n<div class=\"row container-article\">\n    <div class=\"col-sm-4 col-md-4\">\n        <img class=\"article-image\" style=\"background-image:url(";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"url_image"), env.opts.autoescape);
-output += ");\" alt=\"\" width=\"100%\">\n    </div>\n    <div class=\"col-sm-8 col-md-8\">\n        <div class=\"row article\">\n            <div class=\"col-lg-12\">\n                <div class=\"article-title\">";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"title"), env.opts.autoescape);
-output += "</div>\n                <div class=\"article-author\">";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"date"), env.opts.autoescape);
-output += " - ";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"author"), env.opts.autoescape);
-output += "</div>\n                <div class=\"article-subtitle\">\n                    ";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"subtitle"), env.opts.autoescape);
-output += "\n                </div>\n                <p class=\"text-justify\">\n                    ";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"description"), env.opts.autoescape);
-output += "\n                </p>\n                 <blockquote class=\"article-blockquote\">\n                    ";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"blockquote"), env.opts.autoescape);
-output += "\n                </blockquote>\n            </div>\n      \n        </div>\n\n    </div>\n</div>\n";
-;
-}
-}
-frame = frame.pop();
-if(parentTemplate) {
-parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
-} else {
-cb(null, output);
-}
-;
-} catch (e) {
-  cb(runtime.handleError(e, lineno, colno));
-}
-}
-return {
-root: root
-};
-
-})();
-})();
-
-
-
-module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last-news.njk"] , dependencies)
-
-/***/ }),
+/* 30 */,
 /* 31 */,
 /* 32 */,
 /* 33 */,
-/* 34 */,
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _lastNewsEn = __webpack_require__(19);
-
-var _lastNewsEn2 = _interopRequireDefault(_lastNewsEn);
-
-var _lastNews = __webpack_require__(30);
-
-var _lastNews2 = _interopRequireDefault(_lastNews);
-
 var _utils = __webpack_require__(3);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 var language = (0, _utils.getPageLanguage)('lng') || 'en';
-
-var template = (0, _utils.getLastNewsBannerByLanguage)(language);
-
-__webpack_require__(22)("./last-news." + language + '.js').then(function (m) {
-  console.log(m);
-  var LastNews = m.default;
-  var html = _lastNews2.default.render({ items: LastNews });
-  document.querySelector('#last-news').innerHTML = html;
-
-  var html2 = template.render({});
-  document.querySelector('#last-news-banners').innerHTML = html2;
+var footer = document.querySelector('#footer');
+__webpack_require__(25)("./footer." + language + '.njk').then(function (m) {
+	console.log(m);
+	var tpl = m;
+	var html = tpl.render({});
+	footer.innerHTML = html;
 });
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=footer.js.map

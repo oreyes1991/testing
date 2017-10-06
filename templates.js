@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 37);
+/******/ 	return __webpack_require__(__webpack_require__.s = 39);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3393,7 +3393,7 @@ exports.clearImmediate = clearImmediate;
 
 /***/ }),
 
-/***/ 26:
+/***/ 27:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3404,7 +3404,7 @@ if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv;
 }
 var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-dependencies["../layouts/layout.njk"] = __webpack_require__( 38 );
+dependencies["../layouts/layout.njk"] = __webpack_require__( 40 );
 
 
 
@@ -3468,152 +3468,13 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["pages/index.n
 
 /***/ }),
 
-/***/ 37:
+/***/ 39:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(26);
-
-/***/ }),
-
-/***/ 38:
-/***/ (function(module, exports, __webpack_require__) {
-
-var nunjucks = __webpack_require__(1);
-var env;
-if (!nunjucks.currentEnv){
-	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
-} else {
-	env = nunjucks.currentEnv;
-}
-var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-dependencies["../partials/header.njk"] = __webpack_require__( 39 );
-
-
-
-
-var shim = __webpack_require__(0);
-
-
-(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["layouts/layout.njk"] = (function() {
-function root(env, context, frame, runtime, cb) {
-var lineno = null;
-var colno = null;
-var output = "";
-try {
-var parentTemplate = null;
-output += "<!-- layout.nunjucks -->\n<!DOCTYPE html>\n<html lang=\"en\">\n\t\t<head>\n\t\t\t\t<title></title>\n\t\t\t\t<meta charset=\"UTF-8\">\n\t\t\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\t\t\t\t<meta name=\"theme-color\" content=\"#DE5A2E\">\n\t\t\t\t<meta name=\"msapplication-navbutton-color\" content=\"#DE5A2E\">\n\t\t\t\t<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"#DE5A2E\">\n\t\t\t\t<link rel=\"icon\" type=\"image/png\" href=\"images/tumi_square.ico\" />\n\t\t\t\t<link href=\"css/style.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/header.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/gallery.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/gallery.theme.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/slick.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/slick.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/popup.css\" rel=\"stylesheet\">\n\t\t\t\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n\t\t\t\t<script src=\"js/bootstrap.min.js\"></script>\n\t\t</head>\n\t\t<body>\n\t\t\t<div class=\"container-app\">\n\t\t\t\t<div id=\"app\" class=\"container-fluid no-gutter \">\n\t\t\t\t\t<header>\n\t\t\t\t\t\t";
-var tasks = [];
-tasks.push(
-function(callback) {
-env.getTemplate("../partials/header.njk", false, "layouts/layout.njk", null, function(t_3,t_1) {
-if(t_3) { cb(t_3); return; }
-callback(null,t_1);});
-});
-tasks.push(
-function(template, callback){
-template.render(context.getVariables(), frame, function(t_4,t_2) {
-if(t_4) { cb(t_4); return; }
-callback(null,t_2);});
-});
-tasks.push(
-function(result, callback){
-output += result;
-callback(null);
-});
-env.waterfall(tasks, function(){
-output += "\n\t\t\t\t\t</header>\n\t\t\t\t\t<section class=\"page\">\n\t\t\t\t\t\t";
-(parentTemplate ? function(e, c, f, r, cb) { cb(""); } : context.getBlock("content"))(env, context, frame, runtime, function(t_6,t_5) {
-if(t_6) { cb(t_6); return; }
-output += t_5;
-output += "\n\t\t\t\t\t</section>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t";
-output += "\n\t\t\t<script src=\"js/slick.min.js\"></script>\n\t\t\t<script src=\"js/small-gallery.js\"></script>\n\t\t\t<script src=\"js/popup.min.js\"></script>\n\t\t\t<script src=\"menu.js\"></script>\n\t\t\t";
-output += "\n\t\t</body>\n</html>\n";
-if(parentTemplate) {
-parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
-} else {
-cb(null, output);
-}
-})});
-} catch (e) {
-  cb(runtime.handleError(e, lineno, colno));
-}
-}
-function b_content(env, context, frame, runtime, cb) {
-var lineno = null;
-var colno = null;
-var output = "";
-try {
-var frame = frame.push(true);
-output += " ";
-cb(null, output);
-;
-} catch (e) {
-  cb(runtime.handleError(e, lineno, colno));
-}
-}
-return {
-b_content: b_content,
-root: root
-};
-
-})();
-})();
-
-
-
-module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["layouts/layout.njk"] , dependencies)
-
-/***/ }),
-
-/***/ 39:
-/***/ (function(module, exports, __webpack_require__) {
-
-var nunjucks = __webpack_require__(1);
-var env;
-if (!nunjucks.currentEnv){
-	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
-} else {
-	env = nunjucks.currentEnv;
-}
-var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-
-
-
-
-var shim = __webpack_require__(0);
-
-
-(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/header.njk"] = (function() {
-function root(env, context, frame, runtime, cb) {
-var lineno = null;
-var colno = null;
-var output = "";
-try {
-var parentTemplate = null;
-output += "<div class=\"logo\">\n\t\t<img src=\"images/logo.png\" alt=\"\" >\n</div>\n\n<div class=\"title\">\n\t<h1>South American's Secrets</h1>\n\t<h2>Secrets of Peru</h2>\n</div>\n\n<div class=\"gallery autoplay items-4\">\n\t<div id=\"item-1\" class=\"control-operator\"></div>\n\t<div id=\"item-2\" class=\"control-operator\"></div>\n\t<div id=\"item-3\" class=\"control-operator\"></div>\n\n\t<figure class=\"item\">\n\t\t<div class=\"header-img machupicchu-1\">\n\t\t</div>\n\t</figure>\n\n\t<figure class=\"item\">\n\t\t<div class=\"header-img machupicchu-2\">\n\t\t</div>\n\t</figure>\n\n\t<figure class=\"item\">\n\t\t<div class=\"header-img nazca-1\">\n\t\t</div>\n\t</figure>\n\n\t<figure class=\"item\">\n\t\t<div class=\"header-img bikeparacas-1\">\n\t\t</div>\n\t</figure>\n</div>\n\n<div class=\"menu-header\" id=\"menu-content\">\n\n</div>\n";
-if(parentTemplate) {
-parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
-} else {
-cb(null, output);
-}
-;
-} catch (e) {
-  cb(runtime.handleError(e, lineno, colno));
-}
-}
-return {
-root: root
-};
-
-})();
-})();
-
-
-
-module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/header.njk"] , dependencies)
+__webpack_require__(27);
 
 /***/ }),
 
@@ -3805,6 +3666,143 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
+
+/***/ }),
+
+/***/ 40:
+/***/ (function(module, exports, __webpack_require__) {
+
+var nunjucks = __webpack_require__(1);
+var env;
+if (!nunjucks.currentEnv){
+	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
+} else {
+	env = nunjucks.currentEnv;
+}
+var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
+dependencies["../partials/header.njk"] = __webpack_require__( 41 );
+
+
+
+
+var shim = __webpack_require__(0);
+
+
+(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["layouts/layout.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var parentTemplate = null;
+output += "<!-- layout.nunjucks -->\n<!DOCTYPE html>\n<html lang=\"en\">\n\t\t<head>\n\t\t\t\t<title></title>\n\t\t\t\t<meta charset=\"UTF-8\">\n\t\t\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\t\t\t\t<meta name=\"theme-color\" content=\"#DE5A2E\">\n\t\t\t\t<meta name=\"msapplication-navbutton-color\" content=\"#DE5A2E\">\n\t\t\t\t<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"#DE5A2E\">\n\t\t\t\t<link rel=\"icon\" type=\"image/png\" href=\"images/tumi_square.ico\" />\n\t\t\t\t<link href=\"css/style.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/header.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/gallery.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/gallery.theme.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/slick.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/slick.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/popup.css\" rel=\"stylesheet\">\n\t\t\t\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n\t\t\t\t<script src=\"js/bootstrap.min.js\"></script>\n\t\t</head>\n\t\t<body>\n\t\t\t<div class=\"container-app\">\n\t\t\t\t<div id=\"app\" class=\"container-fluid no-gutter \">\n\t\t\t\t\t<header>\n\t\t\t\t\t\t";
+var tasks = [];
+tasks.push(
+function(callback) {
+env.getTemplate("../partials/header.njk", false, "layouts/layout.njk", null, function(t_3,t_1) {
+if(t_3) { cb(t_3); return; }
+callback(null,t_1);});
+});
+tasks.push(
+function(template, callback){
+template.render(context.getVariables(), frame, function(t_4,t_2) {
+if(t_4) { cb(t_4); return; }
+callback(null,t_2);});
+});
+tasks.push(
+function(result, callback){
+output += result;
+callback(null);
+});
+env.waterfall(tasks, function(){
+output += "\n\t\t\t\t\t</header>\n\t\t\t\t\t<section class=\"page\">\n\t\t\t\t\t\t";
+(parentTemplate ? function(e, c, f, r, cb) { cb(""); } : context.getBlock("content"))(env, context, frame, runtime, function(t_6,t_5) {
+if(t_6) { cb(t_6); return; }
+output += t_5;
+output += "\n\t\t\t\t\t</section>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<footer id=\"footer\" class=\"footer text-center\">\n\t\t\t</footer>\n\t\t\t<script src=\"js/slick.min.js\"></script>\n\t\t\t<script src=\"js/small-gallery.js\"></script>\n\t\t\t<script src=\"js/popup.min.js\"></script>\n\t\t\t<script src=\"menu.js\"></script>\n\t\t\t<script src=\"footer.js\"></script>\n\t\t</body>\n</html>\n";
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+})});
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+function b_content(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var frame = frame.push(true);
+output += " ";
+cb(null, output);
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+b_content: b_content,
+root: root
+};
+
+})();
+})();
+
+
+
+module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["layouts/layout.njk"] , dependencies)
+
+/***/ }),
+
+/***/ 41:
+/***/ (function(module, exports, __webpack_require__) {
+
+var nunjucks = __webpack_require__(1);
+var env;
+if (!nunjucks.currentEnv){
+	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
+} else {
+	env = nunjucks.currentEnv;
+}
+var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
+
+
+
+
+var shim = __webpack_require__(0);
+
+
+(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/header.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var parentTemplate = null;
+output += "<div class=\"logo\">\n\t\t<img src=\"images/logo.png\" alt=\"\" >\n</div>\n\n<div class=\"title\">\n\t<h1>South American's Secrets</h1>\n\t<h2>Secrets of Peru</h2>\n</div>\n\n<div class=\"gallery autoplay items-4\">\n\t<div id=\"item-1\" class=\"control-operator\"></div>\n\t<div id=\"item-2\" class=\"control-operator\"></div>\n\t<div id=\"item-3\" class=\"control-operator\"></div>\n\n\t<figure class=\"item\">\n\t\t<div class=\"header-img machupicchu-1\">\n\t\t</div>\n\t</figure>\n\n\t<figure class=\"item\">\n\t\t<div class=\"header-img machupicchu-2\">\n\t\t</div>\n\t</figure>\n\n\t<figure class=\"item\">\n\t\t<div class=\"header-img nazca-1\">\n\t\t</div>\n\t</figure>\n\n\t<figure class=\"item\">\n\t\t<div class=\"header-img bikeparacas-1\">\n\t\t</div>\n\t</figure>\n</div>\n\n<div class=\"menu-header\" id=\"menu-content\">\n\n</div>\n";
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
+
+
+module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/header.njk"] , dependencies)
 
 /***/ }),
 
