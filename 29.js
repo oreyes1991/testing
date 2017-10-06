@@ -1,6 +1,6 @@
 webpackJsonp([29],{
 
-/***/ 43:
+/***/ 42:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36,14 +36,14 @@ exports.default = {
 		}
 	}, {
 		id: 'inca-trail-classic-trek',
-		title: 'Inca Trail Classic Trek',
-		shortTitle: 'Inca Trail Classic Trek',
-		subtitle: '(to Machu Picchu) The classic Inca Trail 4-day trek passes through the exotic Urubamba Valley to the sacred Inca Sanctuary of Machu Picchu.',
+		title: 'Clásica caminata en Camino Inca',
+		shortTitle: 'Clásica caminata en Camino Inca',
+		subtitle: '(a Machu Picchu) La clásica caminata de 4 días a través del Camino Inca que va desde el exótico valle Urubamba hasta el sagrado santuario Inca de Machu Picchu.',
 		url_image: 'images/activities/cusco/inca_trail_2_portrait.jpg',
-		description: 'Through this spiritual journey you will come to understand the culture of the Incas and the archeological legacy they left behind.\nChallenge yourself by walking this sacred route to Machu Picchu as many ancient Incans have done hundreds of years before you.\nYour guided hiking tour takes you through the hills and valleys of the renowned Andes mountain range. You\'ll trek past old ruins and cities along the way and enjoy the diverse flora and fauna, unique to this mountainous region. Your expert guide will share tales of the Inca people with you as well as keep you informed about the various mountains, animals and plants you pass along the way.\nAlthough there is a cook with you on the trail and meals are provided, it is recommended that you bring snacks to keep your energy level high. All tents and sleeping equipment are included in the cost and there are porters who carry the equipment for you.\nThere is at least one guide for every 10 participants and the guides set the pace depending on group fitness level. Groups can also be split into separate parties if pace level is different amongst the participants. There is one porter for every 2-3 people and the porters carry all the camping equipment. They do not carry backpacks or personal belongings unless the client indicates they desire an extra porter.',
+		description: 'A trav\xE9s de esta jornada espiritual usted entender\xE1 la cultura de los Incas y el legado arqueol\xF3gico que dejaron atr\xE1s.\nDesaf\xEDese a usted mismo caminando esta ruta sagrada hacia Machu Picchu tal y como muchos antiguos Incas hicieron hace cientos de a\xF1os.\nEsta excursi\xF3n guiada lo llevar\xE1 a trav\xE9s de los cerros y valles de la renombrada cordillera de los Andes. Caminar\xE1 por viejas ruinas y ciudades durante la jornada y disfrutar\xE1 de la diversa flora y fauna, \xFAnica de esta regi\xF3n monta\xF1osa. Un gu\xEDa experto le contar\xE1 historias de la gente Inca mientras lo mantiene informado acerca de las monta\xF1as, animales y plantas que ver\xE1 en el camino.\nA pesar de que hay un cocinero y comidas durante el camino, le recomendamos que traiga botanas para mantener una alto nivel energ\xE9tico. Todas las tiendas de campa\xF1a y bolsas de dormir est\xE1n incluidas en el costo y habr\xE1 personas encargadas de llevar el equipaje.\nHay al menos un gu\xEDa por cada 10 participantes, estos llevan el paso dependiendo del estado f\xEDsico del grupo. Los grupos tambi\xE9n pueden dividirse en grupos m\xE1s peque\xF1os en caso de que los participantes caminen a un paso distinto. Hay un maletero por cada 2 \xF3 3 personas, estos cargar\xE1n todo el equipaje para el campamento. Los maleteros no cargar\xE1n mochilas u objetos personales a menos que el cliente indique que desea un maletero adicional.',
 		additionalData: {
-			include: ['Transfers', 'Bus transport', 'Meals (2 breakfast, 3 lunch, 3 dinner)', 'Accommodation (basic) 2 nights', 'Bicycles', 'Entrance fees to Archaeological centers and Machu Picchu', 'Return train', 'Accommodation at Hostal Aguas Calientes', 'Guide speaking English or Italian'],
-			notInclude: ['Extras y propinas', 'Entrance fees to thermal baths', 'The first breakfast', 'The last lunch'],
+			include: ['Transferencias', 'Transporte en Bus', 'Comidas (2 desayunos, 3 almuerzos, 3 cenas)', 'Alojamiento (básico) 2 noches', 'Entradas a los centros arqueológicos y Machu Picchu', 'Regreso en tren', 'Alojamiento en el Hostal Aguas Calientes', 'Guía en Inglés o Italiano'],
+			notInclude: ['Extras y propinas', 'Entradas a los baños termales', 'El primer desayuno', 'El último almuerzo'],
 			duration: {
 				subtitle: '4 Days (3 Nights.)',
 				data: ['Salida desde 7:30am de Cusco']

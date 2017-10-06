@@ -145,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 38);
+/******/ 	return __webpack_require__(__webpack_require__.s = 37);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -3483,56 +3483,47 @@ Object.defineProperty(exports, "__esModule", {
 exports.getPageLanguage = getPageLanguage;
 exports.getTourPageByLanguage = getTourPageByLanguage;
 exports.getContactPageByLanguage = getContactPageByLanguage;
-exports.getContactChatOptionsByLanguafge = getContactChatOptionsByLanguafge;
 exports.getPackagePageByLanguafge = getPackagePageByLanguafge;
 exports.getLastNewsBannerByLanguage = getLastNewsBannerByLanguage;
 exports.getArticleSidebar = getArticleSidebar;
 
-var _toursPageEn = __webpack_require__(17);
+var _toursPageEn = __webpack_require__(15);
 
 var _toursPageEn2 = _interopRequireDefault(_toursPageEn);
 
-var _toursPageEs = __webpack_require__(18);
+var _toursPageEs = __webpack_require__(16);
 
 var _toursPageEs2 = _interopRequireDefault(_toursPageEs);
 
-var _contactcontentEn = __webpack_require__(11);
+var _contactcontentEn = __webpack_require__(9);
 
 var _contactcontentEn2 = _interopRequireDefault(_contactcontentEn);
 
-var _contactcontentEs = __webpack_require__(12);
+var _contactcontentEs = __webpack_require__(10);
 
 var _contactcontentEs2 = _interopRequireDefault(_contactcontentEs);
 
-var _contactoptionsEn = __webpack_require__(7);
-
-var _contactoptionsEn2 = _interopRequireDefault(_contactoptionsEn);
-
-var _contactoptionsEs = __webpack_require__(8);
-
-var _contactoptionsEs2 = _interopRequireDefault(_contactoptionsEs);
-
-var _packagePageEs = __webpack_require__(16);
+var _packagePageEs = __webpack_require__(14);
 
 var _packagePageEs2 = _interopRequireDefault(_packagePageEs);
 
-var _packagePageEn = __webpack_require__(15);
+var _packagePageEn = __webpack_require__(13);
 
 var _packagePageEn2 = _interopRequireDefault(_packagePageEn);
 
-var _lastNewsBannerEs = __webpack_require__(14);
+var _lastNewsBannerEs = __webpack_require__(12);
 
 var _lastNewsBannerEs2 = _interopRequireDefault(_lastNewsBannerEs);
 
-var _lastNewsBannerEn = __webpack_require__(13);
+var _lastNewsBannerEn = __webpack_require__(11);
 
 var _lastNewsBannerEn2 = _interopRequireDefault(_lastNewsBannerEn);
 
-var _articleSidebarEn = __webpack_require__(9);
+var _articleSidebarEn = __webpack_require__(7);
 
 var _articleSidebarEn2 = _interopRequireDefault(_articleSidebarEn);
 
-var _articleSidebarEs = __webpack_require__(10);
+var _articleSidebarEs = __webpack_require__(8);
 
 var _articleSidebarEs2 = _interopRequireDefault(_articleSidebarEs);
 
@@ -3565,19 +3556,6 @@ function getContactPageByLanguage(lng) {
 			break;
 		default:
 			return _contactcontentEn2.default;
-	}
-}
-
-function getContactChatOptionsByLanguafge(lng) {
-	switch (lng) {
-		case 'es':
-			return _contactoptionsEs2.default;
-			break;
-		case 'en':
-			return _contactoptionsEn2.default;
-			break;
-		default:
-			return _contactoptionsEn2.default;
 	}
 }
 
@@ -4034,44 +4012,6 @@ module.exports = g;
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = {
-  el: '#rebelchat-instance',
-  mainView: false,
-  serverContactLabel: "South Americans' Secrets",
-  bgColor: 'inherit',
-  clientContactLabel: 'You',
-  chatInputPlaceholder: 'Enter your message'
-};
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = {
-  el: '#rebelchat-instance',
-  mainView: false,
-  serverContactLabel: "South Americans' Secrets",
-  bgColor: 'inherit',
-  clientContactLabel: 'Tu',
-  chatInputPlaceholder: 'Escribe tu mensaje'
-};
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
 var nunjucks = __webpack_require__(1);
 var env;
 if (!nunjucks.currentEnv){
@@ -4117,7 +4057,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/article-sidebar.en.njk"] , dependencies)
 
 /***/ }),
-/* 10 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4165,7 +4105,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/article-sidebar.es.njk"] , dependencies)
 
 /***/ }),
-/* 11 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4190,7 +4130,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "\n\n\t<div class=\"col-md-12\">\n\t\t <div class=\"row tour-container\">\n\t\t \t\t<div class=\"col-md-8 col-sm-12\" >\n\t\t\t\t\t<h3>Send us a message</h3>\n\t\t\t\t\t<div id=\"rebelchat-instance\">\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"col-md-4 hidden-sm\" style=\"margin-top:15px\">\n\t\t\t\t\t\t<div class=\"banner-right floating-right\">\n\t\t\t \t\t\t\t<div class=\"tour-detail\">\n\t\t\t\t\t \t\t\t<div class=\"tour-info-title\">South Americans' Secrets</div>\n\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t      <p><b>Travel Agency & Tour Operator</b></p>\n\t\t\t\t\t\t      <p><b>Amarilis Pereda & Lucio Hancco</b></p>\n\t\t\t\t\t\t      <p>St. Camino Real Mz D lt. 8 San Andrés</p>\n\t\t\t\t\t\t\t  <p>Inside Marina Turística \"Tourist Pier\", right next to Hotel San Agustín - Paracas.\nOpen 7:30 am to 1:00 pm (Paracas)</p>\n\t\t\t\t\t\t      <p><b>Cel:</b> 956-481002\t/ 947-058508</p>\n\t\t\t\t\t\t    </div>\n\t\t \t\t\t\t\t</div>\n\t\t\t \t\t\t</div>\n\t\t\t\t </div>\n\t\t </div>\n\t</div>\n";
+output += "\n\n\t<div class=\"col-md-12\">\n\t\t <div class=\"row tour-container\">\n\t\t \t\t<div id=\"msg-form\" class=\"col-md-8 col-sm-12\" >\n\t\t\t\t\t<h3>Send us a message</h3>\n\t\t\t\t\t<div id=\"contact-form\">\n\t\t\t\t\t\t<div id=\"contact-form-instance\">\n    \t\t\t\t\t\t<div class=\"contact-form\" role=\"form\">\n        \t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"form-name\" placeholder=\"Name\" required=\"required\">\n        \t\t\t\t\t\t<input type=\"email\" class=\"form-control\" id=\"form-email\" placeholder=\"Email\" required=\"required\">\n        \t\t\t\t\t\t<textarea class=\"form-control\" id=\"form-message\" placeholder=\"Message\" rows=\"10\" required=\"required\"></textarea>\n        \t\t\t\t\t\t<button class=\"btn btn-primary btn-lg\" id=\"send-msg\"><i class=\"fa fa-paper-plane \"></i>Send Message</button>\n    \t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"col-md-4 hidden-sm\" style=\"margin-top:15px\">\n\t\t\t\t\t\t<div class=\"banner-right floating-right\">\n\t\t\t \t\t\t\t<div class=\"tour-detail\">\n\t\t\t\t\t \t\t\t<div class=\"tour-info-title\">South Americans' Secrets</div>\n\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t      <p><b>Travel Agency & Tour Operator</b></p>\n\t\t\t\t\t\t      <p><b>Amarilis Pereda & Lucio Hancco</b></p>\n\t\t\t\t\t\t      <p>St. Camino Real Mz D lt. 8 San Andrés</p>\n\t\t\t\t\t\t\t  <p>Inside Marina Turística \"Tourist Pier\", right next to Hotel San Agustín - Paracas.\nOpen 7:30 am to 1:00 pm (Paracas)</p>\n\t\t\t\t\t\t      <p><b>Cel:</b> 956-481002\t/ 947-058508</p>\n\t\t\t\t\t\t    </div>\n\t\t \t\t\t\t\t</div>\n\t\t\t \t\t\t</div>\n\t\t\t\t </div>\n\t\t </div>\n\t</div>\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -4213,7 +4153,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/contactcontent.en.njk"] , dependencies)
 
 /***/ }),
-/* 12 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4238,7 +4178,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "\n\n\t<div class=\"col-md-12\">\n\t\t <div class=\"row tour-container\">\n\t\t \t\t<div class=\"col-md-8 col-sm-12\" >\n\t\t\t\t\t<h3>Envianos un mensaje</h3>\n\t\t\t\t\t<div id=\"rebelchat-instance\">\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"col-md-4 hidden-sm\" style=\"margin-top:15px\">\n\t\t\t\t\t\t<div class=\"banner-right floating-right\">\n\t\t\t \t\t\t\t<div class=\"tour-detail\">\n\t\t\t\t\t \t\t\t<div class=\"tour-info-title\">South Americans' Secrets</div>\n\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t      <p><b>Agencia de turismo y Operador de Tours</b></p>\n\t\t\t\t\t\t      <p><b>Amarilis Pereda & Lucio Hancco</b></p>\n\t\t\t\t\t\t      <p>Cal. Camino Real Mz D lt. 8 San Andrés</p>\n\t\t\t\t\t\t\t  <p>En la Marina Turística, a un lado del Hotel San Agustín - Paracas.\nAbierto desde las 7:30 am hasta la 1:00 pm (Paracas)</p>\n\t\t\t\t\t\t      <p><b>Cel:</b> 956-481002\t/ 947-058508</p>\n\t\t\t\t\t\t    </div>\n\t\t \t\t\t\t\t</div>\n\t\t\t \t\t\t</div>\n\t\t\t\t </div>\n\t\t </div>\n\t</div>\n";
+output += "\n\n\t<div class=\"col-md-12\">\n\t\t <div class=\"row tour-container\">\n\t\t \t\t<div id=\"msg-form\" class=\"col-md-8 col-sm-12\" >\n\t\t\t\t\t<h3>Envianos un mensaje</h3>\n\t\t\t\t\t<div id=\"contact-form\">\n\t\t\t\t\t\t<div id=\"contact-form-instance\">\n    \t\t\t\t\t\t<div class=\"contact-form\" role=\"form\">\n        \t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"form-name\" placeholder=\"Nombre\" required=\"required\">\n        \t\t\t\t\t\t<input type=\"email\" class=\"form-control\" id=\"form-email\" placeholder=\"Email\" required=\"required\">\n        \t\t\t\t\t\t<textarea class=\"form-control\" id=\"form-message\" placeholder=\"Mensaje\" rows=\"10\" required=\"required\"></textarea>\n        \t\t\t\t\t\t<button class=\"btn btn-primary btn-lg\" id=\"send-msg\" type=\"submit\"><i class=\"fa fa-paper-plane \"></i>Enviar</button>\n    \t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t\t <div class=\"col-md-4 hidden-sm\" style=\"margin-top:15px\">\n\t\t\t\t\t\t<div class=\"banner-right floating-right\">\n\t\t\t \t\t\t\t<div class=\"tour-detail\">\n\t\t\t\t\t \t\t\t<div class=\"tour-info-title\">South Americans' Secrets</div>\n\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t      <p><b>Agencia de turismo y Operador de Tours</b></p>\n\t\t\t\t\t\t      <p><b>Amarilis Pereda & Lucio Hancco</b></p>\n\t\t\t\t\t\t      <p>Cal. Camino Real Mz D lt. 8 San Andrés</p>\n\t\t\t\t\t\t\t  <p>En la Marina Turística, a un lado del Hotel San Agustín - Paracas.\nAbierto desde las 7:30 am hasta la 1:00 pm (Paracas)</p>\n\t\t\t\t\t\t      <p><b>Cel:</b> 956-481002\t/ 947-058508</p>\n\t\t\t\t\t\t    </div>\n\t\t \t\t\t\t\t</div>\n\t\t\t \t\t\t</div>\n\t\t\t\t </div>\n\t\t </div>\n\t</div>\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -4261,7 +4201,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/contactcontent.es.njk"] , dependencies)
 
 /***/ }),
-/* 13 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4309,7 +4249,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last-news-banner.en.njk"] , dependencies)
 
 /***/ }),
-/* 14 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4357,7 +4297,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last-news-banner.es.njk"] , dependencies)
 
 /***/ }),
-/* 15 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4612,7 +4552,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/package-page.en.njk"] , dependencies)
 
 /***/ }),
-/* 16 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4867,7 +4807,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/package-page.es.njk"] , dependencies)
 
 /***/ }),
-/* 17 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -5094,7 +5034,7 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tours-page.en.njk"] , dependencies)
 
 /***/ }),
-/* 18 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -5321,85 +5261,85 @@ root: root
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tours-page.es.njk"] , dependencies)
 
 /***/ }),
+/* 17 */,
+/* 18 */,
 /* 19 */,
 /* 20 */,
 /* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"./tours-arequipa.en.js": [
-		51,
+		50,
 		21
 	],
 	"./tours-arequipa.es.js": [
-		52,
+		51,
 		20
 	],
 	"./tours-cuzco.en.js": [
-		53,
+		52,
 		19
 	],
 	"./tours-cuzco.es.js": [
-		54,
+		53,
 		18
 	],
 	"./tours-ica.en.js": [
-		55,
+		54,
 		17
 	],
 	"./tours-ica.es.js": [
-		56,
+		55,
 		16
 	],
 	"./tours-iquitos.en.js": [
-		57,
+		56,
 		15
 	],
 	"./tours-iquitos.es.js": [
-		58,
+		57,
 		14
 	],
 	"./tours-lima.en.js": [
-		59,
+		58,
 		13
 	],
 	"./tours-lima.es.js": [
-		60,
+		59,
 		12
 	],
 	"./tours-nasca.en.js": [
-		61,
+		60,
 		11
 	],
 	"./tours-nasca.es.js": [
-		62,
+		61,
 		10
 	],
 	"./tours-north.en.js": [
-		63,
+		62,
 		9
 	],
 	"./tours-north.es.js": [
-		64,
+		63,
 		8
 	],
 	"./tours-paracas.en.js": [
-		65,
+		64,
 		7
 	],
 	"./tours-paracas.es.js": [
-		66,
+		65,
 		6
 	],
 	"./tours-puno.en.js": [
-		67,
+		66,
 		5
 	],
 	"./tours-puno.es.js": [
-		68,
+		67,
 		4
 	]
 };
@@ -5415,9 +5355,11 @@ webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
 module.exports = webpackAsyncContext;
-webpackAsyncContext.id = 24;
+webpackAsyncContext.id = 22;
 
 /***/ }),
+/* 23 */,
+/* 24 */,
 /* 25 */,
 /* 26 */,
 /* 27 */,
@@ -5430,8 +5372,7 @@ webpackAsyncContext.id = 24;
 /* 34 */,
 /* 35 */,
 /* 36 */,
-/* 37 */,
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5446,7 +5387,7 @@ var language = (0, _utils.getPageLanguage)('lng') || 'en';
 
 var tpl = (0, _utils.getTourPageByLanguage)(language);
 
-__webpack_require__(24)("./" + dataRef + '.' + language + '.js').then(function (m) {
+__webpack_require__(22)("./" + dataRef + '.' + language + '.js').then(function (m) {
 	console.log(m);
 	var data = m.default;
 	var html = tpl.render({ data: data });
