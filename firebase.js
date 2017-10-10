@@ -23533,8 +23533,7 @@ document.getElementById("send-msg").addEventListener("click", function () {
                 database.ref('messages/' + uuidv4()).set({
                     name: name,
                     email: email,
-                    message: message,
-                    timestamp: _firebase2.default.database.ServerValue.TIMESTAMP
+                    message: message
                 }).then(function (e) {
                     // The message has been saved
                     // Shows sent message
