@@ -1,6 +1,6 @@
 webpackJsonp([30],{
 
-/***/ 190:
+/***/ 194:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42,7 +42,7 @@ exports.default = {
 		url_image: 'images/activities/cusco/inca_trail_2_portrait.jpg',
 		description: 'Through this spiritual journey you will come to understand the culture of the Incas and the archeological legacy they left behind.\nChallenge yourself by walking this sacred route to Machu Picchu as many ancient Incans have done hundreds of years before you.\nYour guided hiking tour takes you through the hills and valleys of the renowned Andes mountain range. You\'ll trek past old ruins and cities along the way and enjoy the diverse flora and fauna, unique to this mountainous region. Your expert guide will share tales of the Inca people with you as well as keep you informed about the various mountains, animals and plants you pass along the way.\nAlthough there is a cook with you on the trail and meals are provided, it is recommended that you bring snacks to keep your energy level high. All tents and sleeping equipment are included in the cost and there are porters who carry the equipment for you.\nThere is at least one guide for every 10 participants and the guides set the pace depending on group fitness level. Groups can also be split into separate parties if pace level is different amongst the participants. There is one porter for every 2-3 people and the porters carry all the camping equipment. They do not carry backpacks or personal belongings unless the client indicates they desire an extra porter.',
 		additionalData: {
-			include: ['Transfers', 'Bus transport', 'Meals (2 breakfast, 3 lunch, 3 dinner)', 'Accommodation (basic) 2 nights', 'Bicycles', 'Entrance fees to Archaeological centers and Machu Picchu', 'Return train', 'Accommodation at Hostal Aguas Calientes', 'Guide speaking English or Italian'],
+			include: ['Transfers', 'Bus transport', 'Meals (2 breakfast, 3 lunch, 3 dinner)', 'Accommodation (basic) 2 nights', 'Entrance fees to Archaeological centers and Machu Picchu', 'Return train', 'Accommodation at Hostal Aguas Calientes', 'Guide speaking English or Italian'],
 			notInclude: ['Extras & gratuities.', 'Entrance fees to thermal baths', 'The first breakfast', 'The last lunch'],
 			duration: {
 				subtitle: '4 Days (3 Nights.)',

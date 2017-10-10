@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		33: 0
+/******/ 		34: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -145,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 113);
+/******/ 	return __webpack_require__(__webpack_require__.s = 159);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3411,11 +3411,202 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4).setImmediate, __webpack_require__(4).clearImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6).setImmediate, __webpack_require__(6).clearImmediate))
 
 /***/ }),
 
-/***/ 10:
+/***/ 11:
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+
+/***/ }),
+
+/***/ 12:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -3605,20 +3796,149 @@ return /******/ (function(modules) { // webpackBootstrap
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8), __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(11)))
 
 /***/ }),
 
-/***/ 101:
+/***/ 13:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.getPageLanguage = getPageLanguage;
+exports.getTourPageByLanguage = getTourPageByLanguage;
+exports.getContactPageByLanguage = getContactPageByLanguage;
+exports.getPackagePageByLanguafge = getPackagePageByLanguafge;
+exports.getLastNewsBannerByLanguage = getLastNewsBannerByLanguage;
+exports.getArticleSidebar = getArticleSidebar;
+
+var _toursPageEn = __webpack_require__(26);
+
+var _toursPageEn2 = _interopRequireDefault(_toursPageEn);
+
+var _toursPageEs = __webpack_require__(27);
+
+var _toursPageEs2 = _interopRequireDefault(_toursPageEs);
+
+var _contactcontentEn = __webpack_require__(20);
+
+var _contactcontentEn2 = _interopRequireDefault(_contactcontentEn);
+
+var _contactcontentEs = __webpack_require__(21);
+
+var _contactcontentEs2 = _interopRequireDefault(_contactcontentEs);
+
+var _packagePageEs = __webpack_require__(25);
+
+var _packagePageEs2 = _interopRequireDefault(_packagePageEs);
+
+var _packagePageEn = __webpack_require__(24);
+
+var _packagePageEn2 = _interopRequireDefault(_packagePageEn);
+
+var _lastNewsBannerEs = __webpack_require__(23);
+
+var _lastNewsBannerEs2 = _interopRequireDefault(_lastNewsBannerEs);
+
+var _lastNewsBannerEn = __webpack_require__(22);
+
+var _lastNewsBannerEn2 = _interopRequireDefault(_lastNewsBannerEn);
+
+var _articleSidebarEn = __webpack_require__(18);
+
+var _articleSidebarEn2 = _interopRequireDefault(_articleSidebarEn);
+
+var _articleSidebarEs = __webpack_require__(19);
+
+var _articleSidebarEs2 = _interopRequireDefault(_articleSidebarEs);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function getPageLanguage(name, url) {
+	return localStorage['lng'];
+}
+
+function getTourPageByLanguage(lng) {
+	switch (lng) {
+		case 'es':
+			return _toursPageEs2.default;
+			break;
+		case 'en':
+			return _toursPageEn2.default;
+			break;
+		default:
+			return _toursPageEn2.default;
+	}
+}
+
+function getContactPageByLanguage(lng) {
+	switch (lng) {
+		case 'es':
+			return _contactcontentEs2.default;
+			break;
+		case 'en':
+			return _contactcontentEn2.default;
+			break;
+		default:
+			return _contactcontentEn2.default;
+	}
+}
+
+function getPackagePageByLanguafge(lng) {
+	switch (lng) {
+		case 'es':
+			return _packagePageEs2.default;
+			break;
+		case 'en':
+			return _packagePageEn2.default;
+			break;
+		default:
+			return _packagePageEn2.default;
+	}
+}
+
+function getLastNewsBannerByLanguage(lng) {
+	switch (lng) {
+		case 'es':
+			return _lastNewsBannerEs2.default;
+			break;
+		case 'en':
+			return _lastNewsBannerEn2.default;
+			break;
+		default:
+			return _lastNewsBannerEn2.default;
+	}
+}
+
+function getArticleSidebar(lng) {
+	switch (lng) {
+		case 'es':
+			return _articleSidebarEs2.default;
+			break;
+		case 'en':
+			return _articleSidebarEn2.default;
+			break;
+		default:
+			return _articleSidebarEn2.default;
+	}
+}
+
+/***/ }),
+
+/***/ 145:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"./articles.en.js": [
-		194,
+		198,
 		26
 	],
 	"./articles.es.js": [
-		195,
+		199,
 		25
 	]
 };
@@ -3634,60 +3954,11 @@ webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
 module.exports = webpackAsyncContext;
-webpackAsyncContext.id = 101;
+webpackAsyncContext.id = 145;
 
 /***/ }),
 
-/***/ 11:
-/***/ (function(module, exports, __webpack_require__) {
-
-var nunjucks = __webpack_require__(1);
-var env;
-if (!nunjucks.currentEnv){
-	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
-} else {
-	env = nunjucks.currentEnv;
-}
-var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-
-
-
-
-var shim = __webpack_require__(0);
-
-
-(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/article-sidebar.en.njk"] = (function() {
-function root(env, context, frame, runtime, cb) {
-var lineno = null;
-var colno = null;
-var output = "";
-try {
-var parentTemplate = null;
-output += "<div class=\"banner-right floating-right\">\n  <a href=\"packagecoast.html#package-mystery-south-coast\" class=\"ad\">\n    <div class=\"title\">\n      Nazca Lines & South Coast\n      <div class=\"gallery autoplay items-1\">\n        <div id=\"item-1\" class=\"control-operator\"></div>\n        <figure class=\"item\">\n            <div class=\"banner-img nazca-lines\">\n            </div>\n        </figure>\n      </div>\n      <div class=\"tour-info-title\">2 days / 1 night</div>\n      <div class=\"tour-info-title\"><h4>$565.00 USD</h4></div>\n      <div class=\"tour-info-title\">per person from Lima transport & hotel included</div>\n      <p style=\"font-size:14px;\">\n        <b>Short on time?</b> Get the most out of your vacation with <b>ease, comfort &amp; style</b>:<br>\n        Flight over Nazca lines, guided tour Paracas National Reserve, excursion to Ballestas Islands, visit a winery in Ica, visit Huacachina oasis and a thrilling dune buggy. <br> The price also includes *all* transport, transfers, and fees! From your hotel in Lima!\n      </p>\n    </div>\n  </a>\n</div>\n";
-if(parentTemplate) {
-parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
-} else {
-cb(null, output);
-}
-;
-} catch (e) {
-  cb(runtime.handleError(e, lineno, colno));
-}
-}
-return {
-root: root
-};
-
-})();
-})();
-
-
-
-module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/article-sidebar.en.njk"] , dependencies)
-
-/***/ }),
-
-/***/ 110:
+/***/ 154:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3773,17 +4044,17 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 
 /***/ }),
 
-/***/ 113:
+/***/ 159:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _articleEn = __webpack_require__(110);
+var _articleEn = __webpack_require__(154);
 
 var _articleEn2 = _interopRequireDefault(_articleEn);
 
-var _utils = __webpack_require__(6);
+var _utils = __webpack_require__(13);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3791,7 +4062,7 @@ var language = (0, _utils.getPageLanguage)('lng') || 'en';
 
 var template = (0, _utils.getArticleSidebar)(language);
 
-__webpack_require__(101)("./articles." + language + '.js').then(function (m) {
+__webpack_require__(145)("./articles." + language + '.js').then(function (m) {
 	console.log(m);
 	var articles = m.default;
 	var html = _articleEn2.default.render({ items: articles });
@@ -3803,7 +4074,56 @@ __webpack_require__(101)("./articles." + language + '.js').then(function (m) {
 
 /***/ }),
 
-/***/ 12:
+/***/ 18:
+/***/ (function(module, exports, __webpack_require__) {
+
+var nunjucks = __webpack_require__(1);
+var env;
+if (!nunjucks.currentEnv){
+	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
+} else {
+	env = nunjucks.currentEnv;
+}
+var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
+
+
+
+
+var shim = __webpack_require__(0);
+
+
+(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/article-sidebar.en.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var parentTemplate = null;
+output += "<div class=\"banner-right floating-right\">\n  <a href=\"packagecoast.html#package-mystery-south-coast\" class=\"ad\">\n    <div class=\"title\">\n      Nazca Lines & South Coast\n      <div class=\"gallery autoplay items-1\">\n        <div id=\"item-1\" class=\"control-operator\"></div>\n        <figure class=\"item\">\n            <div class=\"banner-img nazca-lines\">\n            </div>\n        </figure>\n      </div>\n      <div class=\"tour-info-title\">2 days / 1 night</div>\n      <div class=\"tour-info-title\"><h4>$565.00 USD</h4></div>\n      <div class=\"tour-info-title\">per person from Lima transport & hotel included</div>\n      <p style=\"font-size:14px;\">\n        <b>Short on time?</b> Get the most out of your vacation with <b>ease, comfort &amp; style</b>:<br>\n        Flight over Nazca lines, guided tour Paracas National Reserve, excursion to Ballestas Islands, visit a winery in Ica, visit Huacachina oasis and a thrilling dune buggy. <br> The price also includes *all* transport, transfers, and fees! From your hotel in Lima!\n      </p>\n    </div>\n  </a>\n</div>\n";
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
+
+
+module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/article-sidebar.en.njk"] , dependencies)
+
+/***/ }),
+
+/***/ 19:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3852,7 +4172,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 
 /***/ }),
 
-/***/ 13:
+/***/ 20:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3901,7 +4221,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/cont
 
 /***/ }),
 
-/***/ 14:
+/***/ 21:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3950,7 +4270,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/cont
 
 /***/ }),
 
-/***/ 15:
+/***/ 22:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3999,7 +4319,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 
 /***/ }),
 
-/***/ 16:
+/***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4048,7 +4368,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 
 /***/ }),
 
-/***/ 17:
+/***/ 24:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4304,7 +4624,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/pack
 
 /***/ }),
 
-/***/ 18:
+/***/ 25:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4560,7 +4880,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/pack
 
 /***/ }),
 
-/***/ 19:
+/***/ 26:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4788,7 +5108,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tour
 
 /***/ }),
 
-/***/ 20:
+/***/ 27:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -5016,7 +5336,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tour
 
 /***/ }),
 
-/***/ 4:
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -5069,143 +5389,14 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(10);
+__webpack_require__(12);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
 
-/***/ 6:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.getPageLanguage = getPageLanguage;
-exports.getTourPageByLanguage = getTourPageByLanguage;
-exports.getContactPageByLanguage = getContactPageByLanguage;
-exports.getPackagePageByLanguafge = getPackagePageByLanguafge;
-exports.getLastNewsBannerByLanguage = getLastNewsBannerByLanguage;
-exports.getArticleSidebar = getArticleSidebar;
-
-var _toursPageEn = __webpack_require__(19);
-
-var _toursPageEn2 = _interopRequireDefault(_toursPageEn);
-
-var _toursPageEs = __webpack_require__(20);
-
-var _toursPageEs2 = _interopRequireDefault(_toursPageEs);
-
-var _contactcontentEn = __webpack_require__(13);
-
-var _contactcontentEn2 = _interopRequireDefault(_contactcontentEn);
-
-var _contactcontentEs = __webpack_require__(14);
-
-var _contactcontentEs2 = _interopRequireDefault(_contactcontentEs);
-
-var _packagePageEs = __webpack_require__(18);
-
-var _packagePageEs2 = _interopRequireDefault(_packagePageEs);
-
-var _packagePageEn = __webpack_require__(17);
-
-var _packagePageEn2 = _interopRequireDefault(_packagePageEn);
-
-var _lastNewsBannerEs = __webpack_require__(16);
-
-var _lastNewsBannerEs2 = _interopRequireDefault(_lastNewsBannerEs);
-
-var _lastNewsBannerEn = __webpack_require__(15);
-
-var _lastNewsBannerEn2 = _interopRequireDefault(_lastNewsBannerEn);
-
-var _articleSidebarEn = __webpack_require__(11);
-
-var _articleSidebarEn2 = _interopRequireDefault(_articleSidebarEn);
-
-var _articleSidebarEs = __webpack_require__(12);
-
-var _articleSidebarEs2 = _interopRequireDefault(_articleSidebarEs);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function getPageLanguage(name, url) {
-	return localStorage['lng'];
-}
-
-function getTourPageByLanguage(lng) {
-	switch (lng) {
-		case 'es':
-			return _toursPageEs2.default;
-			break;
-		case 'en':
-			return _toursPageEn2.default;
-			break;
-		default:
-			return _toursPageEn2.default;
-	}
-}
-
-function getContactPageByLanguage(lng) {
-	switch (lng) {
-		case 'es':
-			return _contactcontentEs2.default;
-			break;
-		case 'en':
-			return _contactcontentEn2.default;
-			break;
-		default:
-			return _contactcontentEn2.default;
-	}
-}
-
-function getPackagePageByLanguafge(lng) {
-	switch (lng) {
-		case 'es':
-			return _packagePageEs2.default;
-			break;
-		case 'en':
-			return _packagePageEn2.default;
-			break;
-		default:
-			return _packagePageEn2.default;
-	}
-}
-
-function getLastNewsBannerByLanguage(lng) {
-	switch (lng) {
-		case 'es':
-			return _lastNewsBannerEs2.default;
-			break;
-		case 'en':
-			return _lastNewsBannerEn2.default;
-			break;
-		default:
-			return _lastNewsBannerEn2.default;
-	}
-}
-
-function getArticleSidebar(lng) {
-	switch (lng) {
-		case 'es':
-			return _articleSidebarEs2.default;
-			break;
-		case 'en':
-			return _articleSidebarEn2.default;
-			break;
-		default:
-			return _articleSidebarEn2.default;
-	}
-}
-
-/***/ }),
-
-/***/ 8:
+/***/ 9:
 /***/ (function(module, exports) {
 
 var g;
@@ -5229,197 +5420,6 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
-
-
-/***/ }),
-
-/***/ 9:
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
 
 
 /***/ })

@@ -1,6 +1,6 @@
 webpackJsonp([29],{
 
-/***/ 191:
+/***/ 195:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36,8 +36,8 @@ exports.default = {
 		}
 	}, {
 		id: 'inca-trail-classic-trek',
-		title: 'Clásica caminata en Camino Inca',
-		shortTitle: 'Clásica caminata en Camino Inca',
+		title: 'Clásico trek en Camino Inca',
+		shortTitle: 'Clásico trek en Camino Inca',
 		subtitle: '(a Machu Picchu) La clásica caminata de 4 días a través del Camino Inca que va desde el exótico valle Urubamba hasta el sagrado santuario Inca de Machu Picchu.',
 		url_image: 'images/activities/cusco/inca_trail_2_portrait.jpg',
 		description: 'A trav\xE9s de esta jornada espiritual usted entender\xE1 la cultura de los Incas y el legado arqueol\xF3gico que dejaron atr\xE1s.\nDesaf\xEDese a usted mismo caminando esta ruta sagrada hacia Machu Picchu tal y como muchos antiguos Incas hicieron hace cientos de a\xF1os.\nEsta excursi\xF3n guiada lo llevar\xE1 a trav\xE9s de los cerros y valles de la renombrada cordillera de los Andes. Caminar\xE1 por viejas ruinas y ciudades durante la jornada y disfrutar\xE1 de la diversa flora y fauna, \xFAnica de esta regi\xF3n monta\xF1osa. Un gu\xEDa experto le contar\xE1 historias de la gente Inca mientras lo mantiene informado acerca de las monta\xF1as, animales y plantas que ver\xE1 en el camino.\nA pesar de que hay un cocinero y comidas durante el camino, le recomendamos que traiga botanas para mantener una alto nivel energ\xE9tico. Todas las tiendas de campa\xF1a y bolsas de dormir est\xE1n incluidas en el costo y habr\xE1 personas encargadas de llevar el equipaje.\nHay al menos un gu\xEDa por cada 10 participantes, estos llevan el paso dependiendo del estado f\xEDsico del grupo. Los grupos tambi\xE9n pueden dividirse en grupos m\xE1s peque\xF1os en caso de que los participantes caminen a un paso distinto. Hay un maletero por cada 2 \xF3 3 personas, estos cargar\xE1n todo el equipaje para el campamento. Los maleteros no cargar\xE1n mochilas u objetos personales a menos que el cliente indique que desea un maletero adicional.',

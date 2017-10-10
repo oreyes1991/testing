@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		37: 0
+/******/ 		38: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -145,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 120);
+/******/ 	return __webpack_require__(__webpack_require__.s = 168);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3411,11 +3411,202 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4).setImmediate, __webpack_require__(4).clearImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6).setImmediate, __webpack_require__(6).clearImmediate))
 
 /***/ }),
 
-/***/ 10:
+/***/ 11:
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+
+/***/ }),
+
+/***/ 12:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -3605,84 +3796,213 @@ return /******/ (function(modules) { // webpackBootstrap
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8), __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(11)))
 
 /***/ }),
 
-/***/ 104:
+/***/ 13:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.getPageLanguage = getPageLanguage;
+exports.getTourPageByLanguage = getTourPageByLanguage;
+exports.getContactPageByLanguage = getContactPageByLanguage;
+exports.getPackagePageByLanguafge = getPackagePageByLanguafge;
+exports.getLastNewsBannerByLanguage = getLastNewsBannerByLanguage;
+exports.getArticleSidebar = getArticleSidebar;
+
+var _toursPageEn = __webpack_require__(26);
+
+var _toursPageEn2 = _interopRequireDefault(_toursPageEn);
+
+var _toursPageEs = __webpack_require__(27);
+
+var _toursPageEs2 = _interopRequireDefault(_toursPageEs);
+
+var _contactcontentEn = __webpack_require__(20);
+
+var _contactcontentEn2 = _interopRequireDefault(_contactcontentEn);
+
+var _contactcontentEs = __webpack_require__(21);
+
+var _contactcontentEs2 = _interopRequireDefault(_contactcontentEs);
+
+var _packagePageEs = __webpack_require__(25);
+
+var _packagePageEs2 = _interopRequireDefault(_packagePageEs);
+
+var _packagePageEn = __webpack_require__(24);
+
+var _packagePageEn2 = _interopRequireDefault(_packagePageEn);
+
+var _lastNewsBannerEs = __webpack_require__(23);
+
+var _lastNewsBannerEs2 = _interopRequireDefault(_lastNewsBannerEs);
+
+var _lastNewsBannerEn = __webpack_require__(22);
+
+var _lastNewsBannerEn2 = _interopRequireDefault(_lastNewsBannerEn);
+
+var _articleSidebarEn = __webpack_require__(18);
+
+var _articleSidebarEn2 = _interopRequireDefault(_articleSidebarEn);
+
+var _articleSidebarEs = __webpack_require__(19);
+
+var _articleSidebarEs2 = _interopRequireDefault(_articleSidebarEs);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function getPageLanguage(name, url) {
+	return localStorage['lng'];
+}
+
+function getTourPageByLanguage(lng) {
+	switch (lng) {
+		case 'es':
+			return _toursPageEs2.default;
+			break;
+		case 'en':
+			return _toursPageEn2.default;
+			break;
+		default:
+			return _toursPageEn2.default;
+	}
+}
+
+function getContactPageByLanguage(lng) {
+	switch (lng) {
+		case 'es':
+			return _contactcontentEs2.default;
+			break;
+		case 'en':
+			return _contactcontentEn2.default;
+			break;
+		default:
+			return _contactcontentEn2.default;
+	}
+}
+
+function getPackagePageByLanguafge(lng) {
+	switch (lng) {
+		case 'es':
+			return _packagePageEs2.default;
+			break;
+		case 'en':
+			return _packagePageEn2.default;
+			break;
+		default:
+			return _packagePageEn2.default;
+	}
+}
+
+function getLastNewsBannerByLanguage(lng) {
+	switch (lng) {
+		case 'es':
+			return _lastNewsBannerEs2.default;
+			break;
+		case 'en':
+			return _lastNewsBannerEn2.default;
+			break;
+		default:
+			return _lastNewsBannerEn2.default;
+	}
+}
+
+function getArticleSidebar(lng) {
+	switch (lng) {
+		case 'es':
+			return _articleSidebarEs2.default;
+			break;
+		case 'en':
+			return _articleSidebarEn2.default;
+			break;
+		default:
+			return _articleSidebarEn2.default;
+	}
+}
+
+/***/ }),
+
+/***/ 148:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"./tours-arequipa.en.js": [
-		199,
+		203,
 		21
 	],
 	"./tours-arequipa.es.js": [
-		200,
+		204,
 		20
 	],
 	"./tours-cuzco.en.js": [
-		201,
+		205,
 		19
 	],
 	"./tours-cuzco.es.js": [
-		202,
+		206,
 		18
 	],
 	"./tours-ica.en.js": [
-		203,
+		207,
 		17
 	],
 	"./tours-ica.es.js": [
-		204,
+		208,
 		16
 	],
 	"./tours-iquitos.en.js": [
-		205,
+		209,
 		15
 	],
 	"./tours-iquitos.es.js": [
-		206,
+		210,
 		14
 	],
 	"./tours-lima.en.js": [
-		207,
+		211,
 		13
 	],
 	"./tours-lima.es.js": [
-		208,
+		212,
 		12
 	],
 	"./tours-nasca.en.js": [
-		209,
+		213,
 		11
 	],
 	"./tours-nasca.es.js": [
-		210,
+		214,
 		10
 	],
 	"./tours-north.en.js": [
-		211,
+		215,
 		9
 	],
 	"./tours-north.es.js": [
-		212,
+		216,
 		8
 	],
 	"./tours-paracas.en.js": [
-		213,
+		217,
 		7
 	],
 	"./tours-paracas.es.js": [
-		214,
+		218,
 		6
 	],
 	"./tours-puno.en.js": [
-		215,
+		219,
 		5
 	],
 	"./tours-puno.es.js": [
-		216,
+		220,
 		4
 	]
 };
@@ -3698,11 +4018,35 @@ webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
 module.exports = webpackAsyncContext;
-webpackAsyncContext.id = 104;
+webpackAsyncContext.id = 148;
 
 /***/ }),
 
-/***/ 11:
+/***/ 168:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _utils = __webpack_require__(13);
+
+var content = document.querySelector('#page-content');
+var dataRef = content.getAttribute('data-ref');
+
+var language = (0, _utils.getPageLanguage)('lng') || 'en';
+
+var tpl = (0, _utils.getTourPageByLanguage)(language);
+
+__webpack_require__(148)("./" + dataRef + '.' + language + '.js').then(function (m) {
+	console.log(m);
+	var data = m.default;
+	var html = tpl.render({ data: data });
+	document.querySelector('#page-content').innerHTML = html;
+});
+
+/***/ }),
+
+/***/ 18:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3751,7 +4095,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 
 /***/ }),
 
-/***/ 12:
+/***/ 19:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3800,31 +4144,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 
 /***/ }),
 
-/***/ 120:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _utils = __webpack_require__(6);
-
-var content = document.querySelector('#page-content');
-var dataRef = content.getAttribute('data-ref');
-
-var language = (0, _utils.getPageLanguage)('lng') || 'en';
-
-var tpl = (0, _utils.getTourPageByLanguage)(language);
-
-__webpack_require__(104)("./" + dataRef + '.' + language + '.js').then(function (m) {
-	console.log(m);
-	var data = m.default;
-	var html = tpl.render({ data: data });
-	document.querySelector('#page-content').innerHTML = html;
-});
-
-/***/ }),
-
-/***/ 13:
+/***/ 20:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3873,7 +4193,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/cont
 
 /***/ }),
 
-/***/ 14:
+/***/ 21:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3922,7 +4242,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/cont
 
 /***/ }),
 
-/***/ 15:
+/***/ 22:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3971,7 +4291,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 
 /***/ }),
 
-/***/ 16:
+/***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4020,7 +4340,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 
 /***/ }),
 
-/***/ 17:
+/***/ 24:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4276,7 +4596,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/pack
 
 /***/ }),
 
-/***/ 18:
+/***/ 25:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4532,7 +4852,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/pack
 
 /***/ }),
 
-/***/ 19:
+/***/ 26:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4760,7 +5080,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tour
 
 /***/ }),
 
-/***/ 20:
+/***/ 27:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4988,7 +5308,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tour
 
 /***/ }),
 
-/***/ 4:
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -5041,143 +5361,14 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(10);
+__webpack_require__(12);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
 
-/***/ 6:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.getPageLanguage = getPageLanguage;
-exports.getTourPageByLanguage = getTourPageByLanguage;
-exports.getContactPageByLanguage = getContactPageByLanguage;
-exports.getPackagePageByLanguafge = getPackagePageByLanguafge;
-exports.getLastNewsBannerByLanguage = getLastNewsBannerByLanguage;
-exports.getArticleSidebar = getArticleSidebar;
-
-var _toursPageEn = __webpack_require__(19);
-
-var _toursPageEn2 = _interopRequireDefault(_toursPageEn);
-
-var _toursPageEs = __webpack_require__(20);
-
-var _toursPageEs2 = _interopRequireDefault(_toursPageEs);
-
-var _contactcontentEn = __webpack_require__(13);
-
-var _contactcontentEn2 = _interopRequireDefault(_contactcontentEn);
-
-var _contactcontentEs = __webpack_require__(14);
-
-var _contactcontentEs2 = _interopRequireDefault(_contactcontentEs);
-
-var _packagePageEs = __webpack_require__(18);
-
-var _packagePageEs2 = _interopRequireDefault(_packagePageEs);
-
-var _packagePageEn = __webpack_require__(17);
-
-var _packagePageEn2 = _interopRequireDefault(_packagePageEn);
-
-var _lastNewsBannerEs = __webpack_require__(16);
-
-var _lastNewsBannerEs2 = _interopRequireDefault(_lastNewsBannerEs);
-
-var _lastNewsBannerEn = __webpack_require__(15);
-
-var _lastNewsBannerEn2 = _interopRequireDefault(_lastNewsBannerEn);
-
-var _articleSidebarEn = __webpack_require__(11);
-
-var _articleSidebarEn2 = _interopRequireDefault(_articleSidebarEn);
-
-var _articleSidebarEs = __webpack_require__(12);
-
-var _articleSidebarEs2 = _interopRequireDefault(_articleSidebarEs);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function getPageLanguage(name, url) {
-	return localStorage['lng'];
-}
-
-function getTourPageByLanguage(lng) {
-	switch (lng) {
-		case 'es':
-			return _toursPageEs2.default;
-			break;
-		case 'en':
-			return _toursPageEn2.default;
-			break;
-		default:
-			return _toursPageEn2.default;
-	}
-}
-
-function getContactPageByLanguage(lng) {
-	switch (lng) {
-		case 'es':
-			return _contactcontentEs2.default;
-			break;
-		case 'en':
-			return _contactcontentEn2.default;
-			break;
-		default:
-			return _contactcontentEn2.default;
-	}
-}
-
-function getPackagePageByLanguafge(lng) {
-	switch (lng) {
-		case 'es':
-			return _packagePageEs2.default;
-			break;
-		case 'en':
-			return _packagePageEn2.default;
-			break;
-		default:
-			return _packagePageEn2.default;
-	}
-}
-
-function getLastNewsBannerByLanguage(lng) {
-	switch (lng) {
-		case 'es':
-			return _lastNewsBannerEs2.default;
-			break;
-		case 'en':
-			return _lastNewsBannerEn2.default;
-			break;
-		default:
-			return _lastNewsBannerEn2.default;
-	}
-}
-
-function getArticleSidebar(lng) {
-	switch (lng) {
-		case 'es':
-			return _articleSidebarEs2.default;
-			break;
-		case 'en':
-			return _articleSidebarEn2.default;
-			break;
-		default:
-			return _articleSidebarEn2.default;
-	}
-}
-
-/***/ }),
-
-/***/ 8:
+/***/ 9:
 /***/ (function(module, exports) {
 
 var g;
@@ -5201,197 +5392,6 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
-
-
-/***/ }),
-
-/***/ 9:
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
 
 
 /***/ })
