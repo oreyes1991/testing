@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 160);
+/******/ 	return __webpack_require__(__webpack_require__.s = 161);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3718,7 +3718,7 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ 155:
+/***/ 156:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3767,7 +3767,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/back
 
 /***/ }),
 
-/***/ 156:
+/***/ 157:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3792,7 +3792,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<div class=\"col-md-4 col-md-offset-4 secret-login\">\n    <div role=\"form\">\n        <p>Ingrese a su cuenta</p>\n        <input type=\"text\" class=\"form-control\" id=\"backoffice-username\" placeholder=\"Nombre de usuario\" required=\"required\">\n        <input type=\"password\" class=\"form-control\" id=\"backoffice-password\" placeholder=\"Contraseña\" required=\"required\">\n        <button class=\"btn\" id=\"backoffice-login-button\" type=\"submit\">Iniciar sesión</button>\n    </div>\n</div>\n\n<div id=\"TA_socialButtonBubbles320\" class=\"TA_socialButtonBubbles\">\n<ul id=\"te0BVMQy\" class=\"TA_links bM6IjpvwyeUy\">\n<li id=\"x0bOqN\" class=\"1nJSncgFznn\">\n<a target=\"_blank\" href=\"https://www.tripadvisor.com/Attraction_Review-g445063-d6387633-Reviews-South_American_s_Secrets-Paracas_Ica_Region.html\"><img src=\"https://www.tripadvisor.com/img/cdsi/img2/branding/socialWidget/20x28_green-21693-2.png\"/></a>\n</li>\n</ul>\n</div>\n<script src=\"https://www.jscache.com/wejs?wtype=socialButtonBubbles&amp;uniq=320&amp;locationId=6387633&amp;color=green&amp;size=rect&amp;lang=en_US&amp;display_version=2\"></script>";
+output += "<div class=\"col-md-4 col-md-offset-4 secret-login\">\n    <div role=\"form\">\n        <p>Ingrese a su cuenta</p>\n        <input type=\"text\" class=\"form-control\" id=\"backoffice-username\" placeholder=\"Nombre de usuario\" required=\"required\">\n        <input type=\"password\" class=\"form-control\" id=\"backoffice-password\" placeholder=\"Contraseña\" required=\"required\">\n        <button class=\"btn\" id=\"backoffice-login-button\" type=\"submit\">Iniciar sesión</button>\n    </div>\n</div>";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -3816,17 +3816,17 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/back
 
 /***/ }),
 
-/***/ 160:
+/***/ 161:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _backofficeLoginEn = __webpack_require__(155);
+var _backofficeLoginEn = __webpack_require__(156);
 
 var _backofficeLoginEn2 = _interopRequireDefault(_backofficeLoginEn);
 
-var _backofficeLoginEs = __webpack_require__(156);
+var _backofficeLoginEs = __webpack_require__(157);
 
 var _backofficeLoginEs2 = _interopRequireDefault(_backofficeLoginEs);
 
@@ -3836,6 +3836,8 @@ var language = localStorage['lng'] || 'en';
 var tpl = language == 'es' ? _backofficeLoginEs2.default : _backofficeLoginEn2.default;
 var html = tpl.render();
 document.querySelector('#page-content').innerHTML = html;
+
+document.title = language == "es" ? "Iniciar sesión" : "Login";
 
 //Just for now, a hardcoded login
 function temporaryHardcodedLogin(usr, psw) {

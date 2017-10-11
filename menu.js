@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		36: 0
+/******/ 		38: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -145,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 165);
+/******/ 	return __webpack_require__(__webpack_require__.s = 166);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3934,12 +3934,12 @@ function getArticleSidebar(lng) {
 
 var map = {
 	"./menu.en.njk": [
-		223,
-		1
+		224,
+		3
 	],
 	"./menu.es.njk": [
-		224,
-		0
+		225,
+		2
 	]
 };
 function webpackAsyncContext(req) {
@@ -3958,7 +3958,7 @@ webpackAsyncContext.id = 150;
 
 /***/ }),
 
-/***/ 165:
+/***/ 166:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

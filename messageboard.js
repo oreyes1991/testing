@@ -1,6 +1,36 @@
 /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	var parentJsonpFunction = window["webpackJsonp"];
+/******/ 	window["webpackJsonp"] = function webpackJsonpCallback(chunkIds, moreModules, executeModules) {
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [], result;
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(chunkIds, moreModules, executeModules);
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 	};
+/******/
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
+/******/
+/******/ 	// objects to store loaded and loading chunks
+/******/ 	var installedChunks = {
+/******/ 		34: 0
+/******/ 	};
 /******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -26,6 +56,55 @@
 /******/ 		return module.exports;
 /******/ 	}
 /******/
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
+/******/ 		var installedChunkData = installedChunks[chunkId];
+/******/ 		if(installedChunkData === 0) {
+/******/ 			return new Promise(function(resolve) { resolve(); });
+/******/ 		}
+/******/
+/******/ 		// a Promise means "currently loading".
+/******/ 		if(installedChunkData) {
+/******/ 			return installedChunkData[2];
+/******/ 		}
+/******/
+/******/ 		// setup Promise in chunk cache
+/******/ 		var promise = new Promise(function(resolve, reject) {
+/******/ 			installedChunkData = installedChunks[chunkId] = [resolve, reject];
+/******/ 		});
+/******/ 		installedChunkData[2] = promise;
+/******/
+/******/ 		// start chunk loading
+/******/ 		var head = document.getElementsByTagName('head')[0];
+/******/ 		var script = document.createElement('script');
+/******/ 		script.type = 'text/javascript';
+/******/ 		script.charset = 'utf-8';
+/******/ 		script.async = true;
+/******/ 		script.timeout = 120000;
+/******/
+/******/ 		if (__webpack_require__.nc) {
+/******/ 			script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 		}
+/******/ 		script.src = __webpack_require__.p + "" + chunkId + ".js";
+/******/ 		var timeout = setTimeout(onScriptComplete, 120000);
+/******/ 		script.onerror = script.onload = onScriptComplete;
+/******/ 		function onScriptComplete() {
+/******/ 			// avoid mem leaks in IE.
+/******/ 			script.onerror = script.onload = null;
+/******/ 			clearTimeout(timeout);
+/******/ 			var chunk = installedChunks[chunkId];
+/******/ 			if(chunk !== 0) {
+/******/ 				if(chunk) {
+/******/ 					chunk[1](new Error('Loading chunk ' + chunkId + ' failed.'));
+/******/ 				}
+/******/ 				installedChunks[chunkId] = undefined;
+/******/ 			}
+/******/ 		};
+/******/ 		head.appendChild(script);
+/******/
+/******/ 		return promise;
+/******/ 	};
 /******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -62,8 +141,11 @@
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
+/******/ 	// on error function for async loading
+/******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 166);
+/******/ 	return __webpack_require__(__webpack_require__.s = 167);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -20697,7 +20779,34 @@ var querystringDecode = exports.querystringDecode = function querystringDecode(q
 /* 148 */,
 /* 149 */,
 /* 150 */,
-/* 151 */,
+/* 151 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./messages.en.njk": [
+		226,
+		1
+	],
+	"./messages.es.njk": [
+		227,
+		0
+	]
+};
+function webpackAsyncContext(req) {
+	var ids = map[req];
+	if(!ids)
+		return Promise.reject(new Error("Cannot find module '" + req + "'."));
+	return __webpack_require__.e(ids[1]).then(function() {
+		return __webpack_require__(ids[0]);
+	});
+};
+webpackAsyncContext.keys = function webpackAsyncContextKeys() {
+	return Object.keys(map);
+};
+module.exports = webpackAsyncContext;
+webpackAsyncContext.id = 151;
+
+/***/ }),
 /* 152 */,
 /* 153 */,
 /* 154 */,
@@ -20712,7 +20821,8 @@ var querystringDecode = exports.querystringDecode = function querystringDecode(q
 /* 163 */,
 /* 164 */,
 /* 165 */,
-/* 166 */
+/* 166 */,
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20733,20 +20843,66 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 // These imports load individual services into the firebase namespace.
 var config = {
-    apiKey: "AIzaSyADWQW2m0LOHMLhjbv27iQwQjVKLvIiqEw",
-    authDomain: "secrets-74e91.firebaseapp.com",
-    databaseURL: "https://secrets-74e91.firebaseio.com",
-    projectId: "secrets-74e91"
+  apiKey: "AIzaSyADWQW2m0LOHMLhjbv27iQwQjVKLvIiqEw",
+  authDomain: "secrets-74e91.firebaseapp.com",
+  databaseURL: "https://secrets-74e91.firebaseio.com",
+  projectId: "secrets-74e91"
 }; // This import loads the firebase namespace along with all its type information.
 
 firebase.initializeApp(config);
 
 var language = localStorage['lng'] || 'en';
 
+document.title = language == "es" ? "Mensajes" : "Messages";
+
 //Load messages from firebase
 var messages = firebase.database().ref('messages');
 messages.on('value', function (snapshot) {
-    console.log(snapshot.val());
+  snapshot.forEach(function (childSnapshot) {
+    var key = childSnapshot.key;
+    var childData = childSnapshot.val();
+    console.log(key);
+    console.log(childData);
+
+    var dte = new Date(childData.timestamp * 1000);
+    var name = childData.name;
+    var email = childData.email;
+    var message = childData.message;
+
+    var title = document.createElement("div");
+    title.style.height = "30px";
+    title.style.background = "rgba(0,0,0,0.4)";
+    title.style.color = "white";
+    title.innerHTML = " On " + dte + " " + name + "/" + email + " wrote: ";
+
+    var msg = document.createElement("div");
+    msg.style.height = "80px";
+    msg.style.background = "rgba(0,0,0,0.4)";
+    msg.style.color = "white";
+
+    var messagearea = document.createElement("div");
+    messagearea.style.height = "60px";
+    messagearea.style.background = "rgba(255,255,255,0.9)";
+    messagearea.style.color = "rgba(0,0,0,0.4)";
+    messagearea.style.margin = "0 15px";
+    messagearea.style.padding = "5px 5px";
+    messagearea.innerHTML = message;
+
+    msg.appendChild(messagearea);
+
+    var item = document.createElement('li');
+    item.appendChild(title);
+    item.appendChild(msg);
+    document.getElementById("message-list").appendChild(item);
+  });
+});
+
+var board = document.querySelector('#page-content');
+__webpack_require__(151)("./messages." + language + '.njk').then(function (m) {
+  console.log(m);
+  var tpl = m;
+  var html = tpl.render({});
+  board.innerHTML = html;
 });
 
 /***/ })

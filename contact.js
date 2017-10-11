@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 161);
+/******/ 	return __webpack_require__(__webpack_require__.s = 162);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3847,7 +3847,7 @@ function getArticleSidebar(lng) {
 
 /***/ }),
 
-/***/ 161:
+/***/ 162:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3860,6 +3860,8 @@ var language = (0, _utils.getPageLanguage)('lng') || 'en';
 var tpl = (0, _utils.getContactPageByLanguage)(language);
 var html = tpl.render();
 document.querySelector('#page-content').innerHTML = html;
+
+document.title = language == "es" ? "Contáctanos" : "Contact Us";
 
 //const options = getContactChatOptionsByLanguafge(language);
 

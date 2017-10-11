@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 169);
+/******/ 	return __webpack_require__(__webpack_require__.s = 170);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3718,7 +3718,7 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ 152:
+/***/ 153:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3729,7 +3729,7 @@ if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv;
 }
 var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-dependencies["../layouts/layout.njk"] = __webpack_require__( 192 );
+dependencies["../layouts/layout.njk"] = __webpack_require__( 193 );
 
 
 
@@ -3793,17 +3793,17 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["pages/index.n
 
 /***/ }),
 
-/***/ 169:
+/***/ 170:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(152);
+__webpack_require__(153);
 
 /***/ }),
 
-/***/ 192:
+/***/ 193:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3814,7 +3814,7 @@ if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv;
 }
 var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-dependencies["../partials/header.njk"] = __webpack_require__( 193 );
+dependencies["../partials/header.njk"] = __webpack_require__( 194 );
 
 
 
@@ -3853,7 +3853,7 @@ output += "\n\t\t\t\t\t</header>\n\t\t\t\t\t<section class=\"page\">\n\t\t\t\t\t
 (parentTemplate ? function(e, c, f, r, cb) { cb(""); } : context.getBlock("content"))(env, context, frame, runtime, function(t_6,t_5) {
 if(t_6) { cb(t_6); return; }
 output += t_5;
-output += "\n\t\t\t\t\t</section>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div id=\"background-img\"></div>\n\t\t\t<footer id=\"footer\" class=\"footer text-center\">\n\t\t\t</footer>\n\t\t\t<script src=\"js/slick.min.js\"></script>\n\t\t\t<script src=\"js/small-gallery.js\"></script>\n\t\t\t<script src=\"js/popup.min.js\"></script>\n\t\t\t<script src=\"menu.js\"></script>\n\t\t\t<script src=\"footer.js\"></script>\n\t\t</body>\n</html>\n";
+output += "\n\t\t\t\t\t</section>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div id=\"background-img\"></div>\n\t\t\t<footer id=\"footer\" class=\"footer text-center\">\n\t\t\t</footer>\n\t\t\t<script src=\"js/slick.min.js\"></script>\n\t\t\t<script src=\"js/small-gallery.js\"></script>\n\t\t\t<script src=\"js/popup.min.js\"></script>\n\t\t\t<script src=\"menu.js\"></script>\n\t\t\t<script src=\"footer.js\"></script>\n\t\t\t<script src=\"https://www.jscache.com/wejs?wtype=socialButtonBubbles&amp;uniq=759&amp;locationId=6387633&amp;color=white&amp;size=rect&amp;lang=en_US&amp;display_version=2\"></script>\n\t\t</body>\n</html>\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -3891,7 +3891,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["layouts/layou
 
 /***/ }),
 
-/***/ 193:
+/***/ 194:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);

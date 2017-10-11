@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		38: 0
+/******/ 		40: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -145,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 168);
+/******/ 	return __webpack_require__(__webpack_require__.s = 169);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3934,76 +3934,76 @@ function getArticleSidebar(lng) {
 
 var map = {
 	"./tours-arequipa.en.js": [
-		203,
-		21
+		204,
+		23
 	],
 	"./tours-arequipa.es.js": [
-		204,
-		20
+		205,
+		22
 	],
 	"./tours-cuzco.en.js": [
-		205,
-		19
+		206,
+		21
 	],
 	"./tours-cuzco.es.js": [
-		206,
-		18
+		207,
+		20
 	],
 	"./tours-ica.en.js": [
-		207,
-		17
+		208,
+		19
 	],
 	"./tours-ica.es.js": [
-		208,
-		16
+		209,
+		18
 	],
 	"./tours-iquitos.en.js": [
-		209,
-		15
+		210,
+		17
 	],
 	"./tours-iquitos.es.js": [
-		210,
-		14
+		211,
+		16
 	],
 	"./tours-lima.en.js": [
-		211,
-		13
+		212,
+		15
 	],
 	"./tours-lima.es.js": [
-		212,
-		12
+		213,
+		14
 	],
 	"./tours-nasca.en.js": [
-		213,
-		11
+		214,
+		13
 	],
 	"./tours-nasca.es.js": [
-		214,
-		10
+		215,
+		12
 	],
 	"./tours-north.en.js": [
-		215,
-		9
+		216,
+		11
 	],
 	"./tours-north.es.js": [
-		216,
-		8
+		217,
+		10
 	],
 	"./tours-paracas.en.js": [
-		217,
-		7
+		218,
+		9
 	],
 	"./tours-paracas.es.js": [
-		218,
-		6
+		219,
+		8
 	],
 	"./tours-puno.en.js": [
-		219,
-		5
+		220,
+		7
 	],
 	"./tours-puno.es.js": [
-		220,
-		4
+		221,
+		6
 	]
 };
 function webpackAsyncContext(req) {
@@ -4022,7 +4022,7 @@ webpackAsyncContext.id = 148;
 
 /***/ }),
 
-/***/ 168:
+/***/ 169:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4040,6 +4040,7 @@ var tpl = (0, _utils.getTourPageByLanguage)(language);
 __webpack_require__(148)("./" + dataRef + '.' + language + '.js').then(function (m) {
 	console.log(m);
 	var data = m.default;
+	document.title = data.tab_title;
 	var html = tpl.render({ data: data });
 	document.querySelector('#page-content').innerHTML = html;
 });

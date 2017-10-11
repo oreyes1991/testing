@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		39: 0
+/******/ 		41: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -145,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 167);
+/******/ 	return __webpack_require__(__webpack_require__.s = 168);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3934,12 +3934,12 @@ function getArticleSidebar(lng) {
 
 var map = {
 	"./package-mystery-south-coast.en.js": [
-		201,
-		23
+		202,
+		25
 	],
 	"./package-mystery-south-coast.es.js": [
-		202,
-		22
+		203,
+		24
 	]
 };
 function webpackAsyncContext(req) {
@@ -3958,7 +3958,7 @@ webpackAsyncContext.id = 147;
 
 /***/ }),
 
-/***/ 167:
+/***/ 168:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3976,6 +3976,7 @@ var tpl = (0, _utils.getPackagePageByLanguafge)(language);
 __webpack_require__(147)("./" + dataRef + '.' + language + '.js').then(function (m) {
 	console.log(m);
 	var data = m.default;
+	document.title = data.tab_title;
 	var html = tpl.render({ data: data });
 	document.querySelector('#page-content').innerHTML = html;
 });

@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		33: 0
+/******/ 		35: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -145,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 164);
+/******/ 	return __webpack_require__(__webpack_require__.s = 165);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3977,8 +3977,8 @@ var map = {
 		133
 	],
 	"./last-news.es.js": [
-		200,
-		24
+		201,
+		26
 	]
 };
 function webpackAsyncContext(req) {
@@ -3997,7 +3997,7 @@ webpackAsyncContext.id = 146;
 
 /***/ }),
 
-/***/ 157:
+/***/ 158:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4077,7 +4077,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 
 /***/ }),
 
-/***/ 164:
+/***/ 165:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4087,7 +4087,7 @@ var _lastNewsEn = __webpack_require__(133);
 
 var _lastNewsEn2 = _interopRequireDefault(_lastNewsEn);
 
-var _lastNews = __webpack_require__(157);
+var _lastNews = __webpack_require__(158);
 
 var _lastNews2 = _interopRequireDefault(_lastNews);
 
@@ -4098,6 +4098,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var language = (0, _utils.getPageLanguage)('lng') || 'en';
 
 var template = (0, _utils.getLastNewsBannerByLanguage)(language);
+
+document.title = "South American's Secrets";
 
 __webpack_require__(146)("./last-news." + language + '.js').then(function (m) {
   console.log(m);

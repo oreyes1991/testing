@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		34: 0
+/******/ 		36: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -145,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 159);
+/******/ 	return __webpack_require__(__webpack_require__.s = 160);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3934,12 +3934,12 @@ function getArticleSidebar(lng) {
 
 var map = {
 	"./articles.en.js": [
-		198,
-		26
+		199,
+		28
 	],
 	"./articles.es.js": [
-		199,
-		25
+		200,
+		27
 	]
 };
 function webpackAsyncContext(req) {
@@ -3958,7 +3958,7 @@ webpackAsyncContext.id = 145;
 
 /***/ }),
 
-/***/ 154:
+/***/ 155:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4044,13 +4044,13 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 
 /***/ }),
 
-/***/ 159:
+/***/ 160:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _articleEn = __webpack_require__(154);
+var _articleEn = __webpack_require__(155);
 
 var _articleEn2 = _interopRequireDefault(_articleEn);
 
@@ -4059,6 +4059,8 @@ var _utils = __webpack_require__(13);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var language = (0, _utils.getPageLanguage)('lng') || 'en';
+
+document.title = language == "es" ? "Artículos" : "Articles";
 
 var template = (0, _utils.getArticleSidebar)(language);
 

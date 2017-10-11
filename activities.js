@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		35: 0
+/******/ 		37: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -145,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 158);
+/******/ 	return __webpack_require__(__webpack_require__.s = 159);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3934,20 +3934,20 @@ function getArticleSidebar(lng) {
 
 var map = {
 	"./activities-cusco.en.js": [
-		194,
-		30
+		195,
+		32
 	],
 	"./activities-cusco.es.js": [
-		195,
-		29
+		196,
+		31
 	],
 	"./activities-paracas.en.js": [
-		196,
-		28
+		197,
+		30
 	],
 	"./activities-paracas.es.js": [
-		197,
-		27
+		198,
+		29
 	]
 };
 function webpackAsyncContext(req) {
@@ -3966,7 +3966,7 @@ webpackAsyncContext.id = 144;
 
 /***/ }),
 
-/***/ 153:
+/***/ 154:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4139,13 +4139,13 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/acti
 
 /***/ }),
 
-/***/ 158:
+/***/ 159:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _activitiesPage = __webpack_require__(153);
+var _activitiesPage = __webpack_require__(154);
 
 var _activitiesPage2 = _interopRequireDefault(_activitiesPage);
 
@@ -4160,6 +4160,7 @@ var dataRef = content.getAttribute('data-ref');
 __webpack_require__(144)("./" + dataRef + '.' + language + '.js').then(function (m) {
   console.log(m);
   var data = m.default;
+  document.title = data.tab_title;
   var html = _activitiesPage2.default.render({ data: data });
   document.querySelector('#page-content').innerHTML = html;
 });

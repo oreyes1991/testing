@@ -1,42 +1,51 @@
 webpackJsonp([4],{
 
-/***/ 220:
+/***/ 223:
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
+var nunjucks = __webpack_require__(1);
+var env;
+if (!nunjucks.currentEnv){
+	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
+} else {
+	env = nunjucks.currentEnv;
+}
+var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
 
 
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.default = {
-	title: 'Puno',
-	subtitle: 'En las orillas del Lago Titicaca, el lago navegable m\xE1s alto del mundo, se encuentra la ciudad de Puno.',
-	description: 'embrado de iglesias coloniales construidas para evangelizar a los nativos por los conquistadores, los habitantes originales pertenecen a la etnia aymara, cuyas caracter\xEDsticas f\xEDsicas se han adaptado al fr\xEDo del altiplano. Sus pechos se han desarrollado con gran capacidad pulmonar y la sangre rica en gl\xF3bulos rojos - gen\xE9ticamente tienen inusualmente alta resistencia.\nHoy, Puno es conocida como la "Capital Folkl\xF3rica del Per\xFA" (capital folkl\xF3rica) debido a su gran cantidad de expresiones art\xEDsticas y culturales, en particular de baile. Ellos son m\xE1s notables durante las celebraciones de la fiesta de la "Virgen de la Candelaria" y la competencia regional de las danzas aut\xF3ctonas.',
-	url_image: 'images/tours/puno/puno_2.jpg',
-	tours: [{
-		id: 'lake-titicaca-boat-tour',
-		title: 'Lago Titicaca en Lancha',
-		shortTitle: 'Lago Titicaca en Lancha',
-		subtitle: 'Descubre el mundo de los aymaras y quechuas en la Isla de los Uros y Taquile, donde las personas conservan sus antiguas costumbres, que coexisten con la naturaleza, la religión, la agricultura y el arte que continúa como lo hicieron en los tiempos de los Incas.',
-		url_image: 'images/tours/puno/uros_1_portrait.jpg',
-		description: 'El acceso de Puno al Lago Titicaca est\xE1 rodeado por 41 islas flotantes. Hoy en d\xEDa en el pueblo de los Uros mantienen y viven en estas islas hechas por el hombre, dependiendo de ellos para su supervivencia y que atrae a muchos turistas.\nLas Islas de los Uros es un archipi\xE9lago de 48 islas flotantes habitadas por el pueblo Aymara. Las ca\xF1as de totora usadas para construir las islas se recogen de las aguas poco profundas del lago Titicaca.\nEl lago Titicaca es el lago navegable m\xE1s alto del mundo a 3812 metros sobre el nivel del mar. Por volumen de agua, sino que tambi\xE9n es el lago m\xE1s grande de Sudam\xE9rica.\nSea parte de esta experiencia inolvidable y disfrute de esta excursi\xF3n de d\xEDa completo con gu\xEDas expertos que viven y conocen el mundo de los ind\xEDgenas quechua-aymara.',
-		additionalData: {
-			include: ['Recojo de su hotel en Puno', 'Traslado al embarcadero del lago Titicaca', 'Barco turístico con instalaciones de baño', 'Almuerzo en Taquile Island', 'Traslado a su hotel en Puno', 'Entradas'],
-			notInclude: ['Extras y propinas'],
-			duration: {
-				subtitle: 'mas de 10 horas (approx.)',
-				data: ['Salida: 6:30am', 'Regresa: 5:30pm']
-			},
-			recommendations: ['Ropa de abrigo, guantes, chocolate, agua', 'Crema solar'],
-			price: {
-				currency: '$',
-				ammount: 60,
-				data: []
-			}
-		}
-	}]
+
+
+var shim = __webpack_require__(0);
+
+
+(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/footer.es.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var parentTemplate = null;
+output += "<menu>\n  <li><a href=\".\" title=\"Home\">Inicio</a></li>\n  <li><a href=\"#\" title=\"The Best of Peru - read more about Tours of Peru...\">Tours del Perú</a></li>\n  <li><a href=\"#\" title=\"So many things to see and do...\">Actividades</a></li>\n  <li><a href=\"articles.html\" title=\"Engaging articles about Peru's history\">Articulos</a></li>\n  <li><a href=\"contact.html\" title=\"Have a question? Please contact us...\">Contacto</a></li>\n</menu>\n<div id=\"copyright\" class=\"row\">\n  <p><a href=\"#\">\n    <img src=\"images/footer/paypal1.jpg\" width=\"60\">\n  </a>\n  <b>© copyright 2012 SouthAmericansSecrets.com</b>\n  <a href=\"http://www.bookingsperu.com/secure-site/southamericanssecrets\">\n    <img src=\"images/footer/payvisa1.jpg\" width=\"60\">\n  </a></p>\n</div>\n";
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
 };
+
+})();
+})();
+
+
+
+module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/footer.es.njk"] , dependencies)
 
 /***/ })
 
