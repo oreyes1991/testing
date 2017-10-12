@@ -20843,10 +20843,10 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 // These imports load individual services into the firebase namespace.
 var config = {
-  apiKey: "AIzaSyADWQW2m0LOHMLhjbv27iQwQjVKLvIiqEw",
-  authDomain: "secrets-74e91.firebaseapp.com",
-  databaseURL: "https://secrets-74e91.firebaseio.com",
-  projectId: "secrets-74e91"
+    apiKey: "AIzaSyADWQW2m0LOHMLhjbv27iQwQjVKLvIiqEw",
+    authDomain: "secrets-74e91.firebaseapp.com",
+    databaseURL: "https://secrets-74e91.firebaseio.com",
+    projectId: "secrets-74e91"
 }; // This import loads the firebase namespace along with all its type information.
 
 firebase.initializeApp(config);
@@ -20855,54 +20855,72 @@ var language = localStorage['lng'] || 'en';
 
 document.title = language == "es" ? "Mensajes" : "Messages";
 
+var fixdate = function fixdate(d) {
+    var date = d.toString();
+    if (date.length == 1) {
+        date = "0" + date;
+    }
+    return date;
+};
+
+var months = {
+    en: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    es: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"]
+};
+
+var getDateByLang = function getDateByLang(lang, fecha) {
+    var dte;
+    if (lang == "en") {
+        dte = "On " + months["en"][fecha.getMonth()] + " " + fixdate(fecha.getDate()) + " " + fecha.getFullYear() + " at " + fecha.getHours() + ":" + fixdate(fecha.getMinutes());
+        return dte;
+    }
+    dte = "El " + fixdate(fecha.getDate()) + " de " + months[language][fecha.getMonth()] + " de " + fecha.getFullYear() + " a las " + fecha.getHours() + ":" + fixdate(fecha.getMinutes());
+    return dte;
+};
+
 //Load messages from firebase
-var messages = firebase.database().ref('messages');
-messages.on('value', function (snapshot) {
-  snapshot.forEach(function (childSnapshot) {
-    var key = childSnapshot.key;
-    var childData = childSnapshot.val();
-    console.log(key);
-    console.log(childData);
+var messages = firebase.database().ref('messages').orderByChild("timestamp").on('value', function (snapshot) {
+    snapshot.forEach(function (childSnapshot) {
+        var key = childSnapshot.key;
+        var childData = childSnapshot.val();
 
-    var dte = new Date(childData.timestamp * 1000);
-    var name = childData.name;
-    var email = childData.email;
-    var message = childData.message;
+        var fecha = new Date(childData.timestamp);
+        var dte = getDateByLang(language, fecha);
+        var name = childData.name;
+        var email = childData.email;
+        var message = childData.message;
 
-    var title = document.createElement("div");
-    title.style.height = "30px";
-    title.style.background = "rgba(0,0,0,0.4)";
-    title.style.color = "white";
-    title.innerHTML = " On " + dte + " " + name + "/" + email + " wrote: ";
+        var title = document.createElement("div");
+        title.style.height = "30px";
+        title.style.background = "rgba(0,0,0,0.4)";
+        title.style.color = "white";
+        title.innerHTML = "<p class='message-title'> " + dte + " <strong>" + name + "</strong>" + (language == "es" ? " escribió" : " wrote") + ": </p>";
 
-    var msg = document.createElement("div");
-    msg.style.height = "80px";
-    msg.style.background = "rgba(0,0,0,0.4)";
-    msg.style.color = "white";
+        var msg = document.createElement("div");
+        msg.style.height = "80px";
+        msg.style.background = "rgba(0,0,0,0.4)";
+        msg.style.color = "white";
 
-    var messagearea = document.createElement("div");
-    messagearea.style.height = "60px";
-    messagearea.style.background = "rgba(255,255,255,0.9)";
-    messagearea.style.color = "rgba(0,0,0,0.4)";
-    messagearea.style.margin = "0 15px";
-    messagearea.style.padding = "5px 5px";
-    messagearea.innerHTML = message;
+        var messagearea = document.createElement("div");
+        messagearea.className = "message-area";
+        messagearea.innerHTML = message;
 
-    msg.appendChild(messagearea);
+        msg.appendChild(messagearea);
 
-    var item = document.createElement('li');
-    item.appendChild(title);
-    item.appendChild(msg);
-    document.getElementById("message-list").appendChild(item);
-  });
+        var item = document.createElement('div');
+        item.appendChild(title);
+        item.appendChild(msg);
+        var messagelist = document.getElementById("message-list");
+        messagelist.insertBefore(item, messagelist.childNodes[0]);
+    });
 });
 
 var board = document.querySelector('#page-content');
 __webpack_require__(151)("./messages." + language + '.njk').then(function (m) {
-  console.log(m);
-  var tpl = m;
-  var html = tpl.render({});
-  board.innerHTML = html;
+    console.log(m);
+    var tpl = m;
+    var html = tpl.render({});
+    board.innerHTML = html;
 });
 
 /***/ })
