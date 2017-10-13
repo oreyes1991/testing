@@ -145,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 159);
+/******/ 	return __webpack_require__(__webpack_require__.s = 162);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3415,7 +3415,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 
-/***/ 11:
+/***/ 10:
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -3796,7 +3796,7 @@ process.umask = function() { return 0; };
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(11)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8), __webpack_require__(10)))
 
 /***/ }),
 
@@ -3934,19 +3934,19 @@ function getArticleSidebar(lng) {
 
 var map = {
 	"./activities-cusco.en.js": [
-		195,
+		198,
 		32
 	],
 	"./activities-cusco.es.js": [
-		196,
+		199,
 		31
 	],
 	"./activities-paracas.en.js": [
-		197,
+		200,
 		30
 	],
 	"./activities-paracas.es.js": [
-		198,
+		201,
 		29
 	]
 };
@@ -3966,7 +3966,7 @@ webpackAsyncContext.id = 144;
 
 /***/ }),
 
-/***/ 154:
+/***/ 156:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4139,13 +4139,13 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/acti
 
 /***/ }),
 
-/***/ 159:
+/***/ 162:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _activitiesPage = __webpack_require__(154);
+var _activitiesPage = __webpack_require__(156);
 
 var _activitiesPage2 = _interopRequireDefault(_activitiesPage);
 
@@ -4486,15 +4486,15 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<div class=\"col-md-12\">\n\t <div class=\"row tour-container\">\n\t\t\t <div class=\"col-md-8 col-sm-12\">\n\t\t\t\t\t <p class=\"text-justify\">\n\t\t\t\t\t\t\t <img class=\"article-image tour-image\" style=\"background-image:url(";
+output += "<div class=\"col-md-12 col-md-12\">\n\t<div class=\"row tour-container\">\n\t\t<div class=\"col-md-8 col-sm-12\">\n\t\t\t<p class=\"text-justify\">\n\t\t\t\t<img class=\"article-image package-image\" style=\"background-image:url(";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"url_image"), env.opts.autoescape);
-output += ");\" alt=\"\" width=\"100%\">\n\n\t\t\t\t\t\t\t <div class=\"article-title\">";
+output += ");\" alt=\"\" width=\"100%\">\n\t\t\t\t<div class=\"article-title\">";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"title"), env.opts.autoescape);
-output += "</div>\n\t\t\t\t\t <div class=\"article-subtitle\">\n\t\t\t\t\t\t\t ";
+output += "</div>\n\t\t\t\t<div class=\"article-subtitle\">\n\t\t\t\t\t";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"subtitle"), env.opts.autoescape);
-output += "\n\t\t\t\t\t </div>\n\t\t\t\t\t\t\t ";
+output += "\n\t\t\t \t</div>\n\t\t\t\t";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"description"), env.opts.autoescape);
-output += "\n\t\t\t\t\t </p>\n\t\t\t </div>\n\t\t\t <div class=\"col-md-4 hidden-sm hidden-xs\">\n\t\t\t\t\t <div class=\"banner-right floating-right tour-menu\">\n\t\t\t\t\t\t\t <ul>\n\t\t\t\t\t\t\t\t\t ";
+output += "\n\t\t\t</p>\n\t\t</div>\n\t\t<div class=\"col-md-4 hidden-sm hidden-xs\">\n\t\t\t\t\t <div class=\"banner-right floating-right tour-menu\">\n\t\t\t\t\t\t\t <ul>\n\t\t\t\t\t\t\t\t\t ";
 frame = frame.push();
 var t_3 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"packages");
 if(t_3) {var t_2 = t_3.length;
@@ -4517,7 +4517,7 @@ output += "</a></li>\n\t\t\t\t\t\t\t\t\t ";
 }
 }
 frame = frame.pop();
-output += "\n\t\t\t\t\t\t\t\t\t <li><a href=\"#additional-info\">Additional Information</a></li>\n\t\t\t\t\t\t\t </ul>\n\t\t\t\t\t </div>\n\t\t\t </div>\n\t </div>\n\n\t ";
+output += "\n\t\t\t\t\t\t\t\t\t <li><a href=\"#additional-info\">Additional Information</a></li>\n\t\t\t\t\t\t\t </ul>\n\t\t\t\t\t </div>\n\t\t</div>\n\t</div>\n\n\t ";
 frame = frame.push();
 var t_7 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"packages");
 if(t_7) {var t_6 = t_7.length;
@@ -4531,7 +4531,7 @@ frame.set("loop.revindex0", t_6 - t_5 - 1);
 frame.set("loop.first", t_5 === 0);
 frame.set("loop.last", t_5 === t_6 - 1);
 frame.set("loop.length", t_6);
-output += "\n\t\t<div class=\"row tour-container\" >\n\t\t\t <div class=\"col-md-8 tour-info\">\n\t\t\t\t <p class=\"text-justify\">\n\t\t\t\t\t\t\t <img class=\"article-image tour-image\" style=\"background-image:url(";
+output += "\n\t\t<div class=\"row tour-container\" >\n\t\t\t <div class=\"col-md-8 tour-info\">\n\t\t\t\t <p class=\"text-justify\">\n\t\t\t\t\t\t\t <img class=\"article-image package-image\" style=\"background-image:url(";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"url_image"), env.opts.autoescape);
 output += ");\" alt=\"\" width=\"100%\">\n\n\t\t\t\t\t\t\t <div class=\"article-title\" id=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
@@ -4742,15 +4742,15 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<div class=\"col-md-12\">\n\t <div class=\"row tour-container\">\n\t\t\t <div class=\"col-md-8 col-sm-12\">\n\t\t\t\t\t <p class=\"text-justify\">\n\t\t\t\t\t\t\t <img class=\"article-image tour-image\" style=\"background-image:url(";
+output += "<div class=\"col-md-12 col-md-12\">\n\t<div class=\"row tour-container\">\n\t\t<div class=\"col-md-8 col-sm-12\">\n\t\t\t<p class=\"text-justify\">\n\t\t\t\t<img class=\"article-image package-image\" style=\"background-image:url(";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"url_image"), env.opts.autoescape);
-output += ");\" alt=\"\" width=\"100%\">\n\n\t\t\t\t\t\t\t <div class=\"article-title\">";
+output += ");\" alt=\"\" width=\"100%\">\n\t\t\t\t<div class=\"article-title\">";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"title"), env.opts.autoescape);
-output += "</div>\n\t\t\t\t\t <div class=\"article-subtitle\">\n\t\t\t\t\t\t\t ";
+output += "</div>\n\t\t\t\t<div class=\"article-subtitle\">\n\t\t\t\t\t";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"subtitle"), env.opts.autoescape);
-output += "\n\t\t\t\t\t </div>\n\t\t\t\t\t\t\t ";
+output += "\n\t\t\t \t</div>\n\t\t\t\t";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"description"), env.opts.autoescape);
-output += "\n\t\t\t\t\t </p>\n\t\t\t </div>\n\t\t\t <div class=\"col-md-4 hidden-sm hidden-xs\">\n\t\t\t\t\t <div class=\"banner-right floating-right tour-menu\">\n\t\t\t\t\t\t\t <ul>\n\t\t\t\t\t\t\t\t\t ";
+output += "\n\t\t\t</p>\n\t\t</div>\n\t\t<div class=\"col-md-4 hidden-sm hidden-xs\">\n\t\t\t\t\t <div class=\"banner-right floating-right tour-menu\">\n\t\t\t\t\t\t\t <ul>\n\t\t\t\t\t\t\t\t\t ";
 frame = frame.push();
 var t_3 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"packages");
 if(t_3) {var t_2 = t_3.length;
@@ -4773,7 +4773,7 @@ output += "</a></li>\n\t\t\t\t\t\t\t\t\t ";
 }
 }
 frame = frame.pop();
-output += "\n\t\t\t\t\t\t\t\t\t <li><a href=\"#additional-info\">Información Adicional</a></li>\n\t\t\t\t\t\t\t </ul>\n\t\t\t\t\t </div>\n\t\t\t </div>\n\t </div>\n\n\t ";
+output += "\n\t\t\t\t\t\t\t\t\t <li><a href=\"#additional-info\">Información Adicional</a></li>\n\t\t\t\t\t\t\t </ul>\n\t\t\t\t\t </div>\n\t\t</div>\n\t</div>\n\n\t ";
 frame = frame.push();
 var t_7 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"packages");
 if(t_7) {var t_6 = t_7.length;
@@ -4787,7 +4787,7 @@ frame.set("loop.revindex0", t_6 - t_5 - 1);
 frame.set("loop.first", t_5 === 0);
 frame.set("loop.last", t_5 === t_6 - 1);
 frame.set("loop.length", t_6);
-output += "\n\t\t<div class=\"row tour-container\" >\n\t\t\t <div class=\"col-md-8 tour-info\">\n\t\t\t\t <p class=\"text-justify\">\n\t\t\t\t\t <img class=\"article-image tour-image\" style=\"background-image:url(";
+output += "\n\t\t<div class=\"row tour-container\" >\n\t\t\t <div class=\"col-md-8 tour-info\">\n\t\t\t\t <p class=\"text-justify\">\n\t\t\t\t\t <img class=\"article-image package-image\" style=\"background-image:url(";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"url_image"), env.opts.autoescape);
 output += ");\" alt=\"\" width=\"100%\">\n\t\t\t\t\t <div class=\"article-title\" id=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
@@ -4998,15 +4998,15 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += " <div class=\"col-md-12\">\n    <div class=\"row tour-container\">\n        <div class=\"col-md-8 col-sm-12\">\n            <p class=\"text-justify\">\n                <img class=\"article-image tour-image\" style=\"background-image:url(";
+output += " <div class=\"col-md-12\">\n\n\t<div class=\"row tour-container\">\n\t\t<div class=\"col-md-8 col-sm-12\">\n\t\t\t<p class=\"text-justify\">\n\t\t\t\t<img class=\"article-image tour-image\" style=\"background-image:url(";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"url_image"), env.opts.autoescape);
-output += ");\" alt=\"\" width=\"100%\">\n\n                <div class=\"article-title\">";
+output += ");\" alt=\"\" width=\"100%\">\n\t\t\t\t<div class=\"article-title\">";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"title"), env.opts.autoescape);
-output += "</div>\n            <div class=\"article-subtitle\">\n                ";
+output += "</div>\n\t\t\t\t<div class=\"article-subtitle\">\n\t\t\t\t\t";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"subtitle"), env.opts.autoescape);
-output += "\n            </div>\n                ";
+output += "\n\t\t\t \t</div>\n\t\t\t\t";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"description"), env.opts.autoescape);
-output += "\n            </p>\n        </div>\n        <div class=\"col-md-4 hidden-sm hidden-xs\">\n            <div class=\"banner-right floating-right tour-menu\">\n                <ul>\n                    ";
+output += "\n\t\t\t</p>\n\t\t</div>\n\t\t<div class=\"col-md-4 hidden-sm hidden-xs\">\n\t\t\t\t\t <div class=\"banner-right floating-right tour-menu\">\n\t\t\t\t\t\t\t <ul>\n\t\t\t\t\t\t\t\t\t ";
 frame = frame.push();
 var t_3 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"tours");
 if(t_3) {var t_2 = t_3.length;
@@ -5020,16 +5020,16 @@ frame.set("loop.revindex0", t_2 - t_1 - 1);
 frame.set("loop.first", t_1 === 0);
 frame.set("loop.last", t_1 === t_2 - 1);
 frame.set("loop.length", t_2);
-output += "\n                    <li><a href=\"#";
+output += "\n\t\t\t\t\t\t\t\t\t <li><a href=\"#";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"id"), env.opts.autoescape);
 output += "\">";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"shortTitle"), env.opts.autoescape);
-output += "</a></li>\n                    ";
+output += "</a></li>\n\t\t\t\t\t\t\t\t\t ";
 ;
 }
 }
 frame = frame.pop();
-output += "\n                    <li><a href=\"#additional-info\">Additional Information</a></li>\n                </ul>\n            </div>\n        </div>\n    </div>\n\n    ";
+output += "\n\t\t\t\t\t\t\t\t\t <li><a href=\"#additional-info\">Additional Information</a></li>\n\t\t\t\t\t\t\t </ul>\n\t\t\t\t\t </div>\n\t\t</div>\n\t</div>\n\n\n    ";
 frame = frame.push();
 var t_7 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"tours");
 if(t_7) {var t_6 = t_7.length;
@@ -5043,9 +5043,9 @@ frame.set("loop.revindex0", t_6 - t_5 - 1);
 frame.set("loop.first", t_5 === 0);
 frame.set("loop.last", t_5 === t_6 - 1);
 frame.set("loop.length", t_6);
-output += "\n     <div class=\"row tour-container\" >\n        <div class=\"col-md-8 tour-info\">\n          <p class=\"text-justify\">\n                <img class=\"article-image tour-image\" style=\"background-image:url(";
+output += "\n     <div class=\"row tour-container\" >\n        <div class=\"col-md-8 tour-info\">\n          <p class=\"text-justify\">\n                <img class=\"tour-image\" style=\"background-image:url(";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"url_image"), env.opts.autoescape);
-output += ");\" alt=\"\" width=\"100%\">\n\n                <div class=\"article-title\" id=\"";
+output += ");\" alt=\"\">\n\n                <div class=\"article-title\" id=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
 output += "\">";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"title"), env.opts.autoescape);
@@ -5226,15 +5226,15 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += " <div class=\"col-md-12\">\n\t\t<div class=\"row tour-container\">\n\t\t\t\t<div class=\"col-md-8 col-sm-12\">\n\t\t\t\t\t\t<p class=\"text-justify\">\n\t\t\t\t\t\t\t\t<img class=\"article-image tour-image\" style=\"background-image:url(";
+output += " <div class=\"col-md-12\">\n<div class=\"row tour-container\">\n\t<div class=\"row tour-container\">\n\t\t<div class=\"col-md-8 col-sm-12\">\n\t\t\t<p class=\"text-justify\">\n\t\t\t\t<img class=\"article-image tour-image\" style=\"background-image:url(";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"url_image"), env.opts.autoescape);
-output += ");\" alt=\"\" width=\"100%\">\n\n\t\t\t\t\t\t\t\t<div class=\"article-title\">";
+output += ");\" alt=\"\" width=\"100%\">\n\t\t\t\t<div class=\"article-title\">";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"title"), env.opts.autoescape);
-output += "</div>\n\t\t\t\t\t\t<div class=\"article-subtitle\">\n\t\t\t\t\t\t\t\t";
+output += "</div>\n\t\t\t\t<div class=\"article-subtitle\">\n\t\t\t\t\t";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"subtitle"), env.opts.autoescape);
-output += "\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t";
+output += "\n\t\t\t \t</div>\n\t\t\t\t";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"description"), env.opts.autoescape);
-output += "\n\t\t\t\t\t\t</p>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-4 hidden-sm hidden-xs\">\n\t\t\t\t\t\t<div class=\"banner-right floating-right tour-menu\">\n\t\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t\t\t\t";
+output += "\n\t\t\t</p>\n\t\t</div>\n\t\t<div class=\"col-md-4 hidden-sm hidden-xs\">\n\t\t\t\t\t <div class=\"banner-right floating-right tour-menu\">\n\t\t\t\t\t\t\t <ul>\n\t\t\t\t\t\t\t\t\t ";
 frame = frame.push();
 var t_3 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"tours");
 if(t_3) {var t_2 = t_3.length;
@@ -5248,16 +5248,16 @@ frame.set("loop.revindex0", t_2 - t_1 - 1);
 frame.set("loop.first", t_1 === 0);
 frame.set("loop.last", t_1 === t_2 - 1);
 frame.set("loop.length", t_2);
-output += "\n\t\t\t\t\t\t\t\t\t\t<li><a href=\"#";
+output += "\n\t\t\t\t\t\t\t\t\t <li><a href=\"#";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"id"), env.opts.autoescape);
 output += "\">";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"shortTitle"), env.opts.autoescape);
-output += "</a></li>\n\t\t\t\t\t\t\t\t\t\t";
+output += "</a></li>\n\t\t\t\t\t\t\t\t\t ";
 ;
 }
 }
 frame = frame.pop();
-output += "\n\t\t\t\t\t\t\t\t\t\t<li><a href=\"#additional-info\">Información Adicional</a></li>\n\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t</div>\n\n\t\t";
+output += "\n\t\t\t\t\t\t\t\t\t <li><a href=\"#additional-info\">Additional Information</a></li>\n\t\t\t\t\t\t\t </ul>\n\t\t\t\t\t </div>\n\t\t</div>\n\t</div>\n\n\t\t";
 frame = frame.push();
 var t_7 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"tours");
 if(t_7) {var t_6 = t_7.length;
@@ -5271,9 +5271,9 @@ frame.set("loop.revindex0", t_6 - t_5 - 1);
 frame.set("loop.first", t_5 === 0);
 frame.set("loop.last", t_5 === t_6 - 1);
 frame.set("loop.length", t_6);
-output += "\n\t\t <div class=\"row tour-container\" >\n\t\t\t\t<div class=\"col-md-8 tour-info\">\n\t\t\t\t\t<p class=\"text-justify\">\n\t\t\t\t\t\t\t\t<img class=\"article-image tour-image\" style=\"background-image:url(";
+output += "\n\t\t <div class=\"row tour-container\" >\n\t\t\t\t<div class=\"col-md-8 tour-info\">\n\t\t\t\t\t<p class=\"text-justify\">\n\t\t\t\t\t\t\t\t<img class=\"tour-image\" style=\"background-image:url(";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"url_image"), env.opts.autoescape);
-output += ");\" alt=\"\" width=\"100%\">\n\n\t\t\t\t\t\t\t\t<div class=\"article-title\" id=\"";
+output += ");\" alt=\"\">\n\n\t\t\t\t\t\t\t\t<div class=\"article-title\" id=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
 output += "\">";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"title"), env.opts.autoescape);
@@ -5489,7 +5489,7 @@ exports.clearImmediate = clearImmediate;
 
 /***/ }),
 
-/***/ 9:
+/***/ 8:
 /***/ (function(module, exports) {
 
 var g;

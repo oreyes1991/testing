@@ -145,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 167);
+/******/ 	return __webpack_require__(__webpack_require__.s = 170);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1409,7 +1409,7 @@ var _Index = __webpack_require__(37);
 
 var _util = __webpack_require__(3);
 
-var _Node = __webpack_require__(10);
+var _Node = __webpack_require__(11);
 
 var _LeafNode = __webpack_require__(36);
 
@@ -1524,6 +1524,33 @@ var PRIORITY_INDEX = exports.PRIORITY_INDEX = new PriorityIndex();
 
 /***/ }),
 /* 8 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1544,7 +1571,7 @@ var _util = __webpack_require__(3);
 
 var _SortedMap = __webpack_require__(47);
 
-var _Node = __webpack_require__(10);
+var _Node = __webpack_require__(11);
 
 var _snap = __webpack_require__(67);
 
@@ -2031,90 +2058,7 @@ _LeafNode.LeafNode.__childrenNodeConstructor = ChildrenNode;
 
 
 /***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
 /* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/*! @license Firebase v4.5.0
-Build: rev-f49c8b5
-Terms: https://firebase.google.com/terms/ */
-
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * Copyright 2017 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- *
- * @param {!string} name
- * @param {!Node} node
- * @constructor
- * @struct
- */
-var NamedNode = /** @class */function () {
-  function NamedNode(name, node) {
-    this.name = name;
-    this.node = node;
-  }
-  /**
-   *
-   * @param {!string} name
-   * @param {!Node} node
-   * @return {NamedNode}
-   */
-  NamedNode.Wrap = function (name, node) {
-    return new NamedNode(name, node);
-  };
-  return NamedNode;
-}();
-exports.NamedNode = NamedNode;
-//# sourceMappingURL=Node.js.map
-
-
-/***/ }),
-/* 11 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -2301,6 +2245,62 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 process.umask = function() { return 0; };
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*! @license Firebase v4.5.0
+Build: rev-f49c8b5
+Terms: https://firebase.google.com/terms/ */
+
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * Copyright 2017 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ *
+ * @param {!string} name
+ * @param {!Node} node
+ * @constructor
+ * @struct
+ */
+var NamedNode = /** @class */function () {
+  function NamedNode(name, node) {
+    this.name = name;
+    this.node = node;
+  }
+  /**
+   *
+   * @param {!string} name
+   * @param {!Node} node
+   * @return {NamedNode}
+   */
+  NamedNode.Wrap = function (name, node) {
+    return new NamedNode(name, node);
+  };
+  return NamedNode;
+}();
+exports.NamedNode = NamedNode;
+//# sourceMappingURL=Node.js.map
 
 
 /***/ }),
@@ -2494,7 +2494,7 @@ process.umask = function() { return 0; };
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(11)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8), __webpack_require__(10)))
 
 /***/ }),
 /* 13 */,
@@ -3396,7 +3396,7 @@ exports.KEY_INDEX = exports.KeyIndex = undefined;
 
 var _Index = __webpack_require__(37);
 
-var _Node = __webpack_require__(10);
+var _Node = __webpack_require__(11);
 
 var _util = __webpack_require__(3);
 
@@ -3541,11 +3541,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 exports.nodeFromJSON = nodeFromJSON;
 
-var _ChildrenNode = __webpack_require__(8);
+var _ChildrenNode = __webpack_require__(9);
 
 var _LeafNode = __webpack_require__(36);
 
-var _Node = __webpack_require__(10);
+var _Node = __webpack_require__(11);
 
 var _obj = __webpack_require__(4);
 
@@ -4463,7 +4463,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Index = undefined;
 
-var _Node = __webpack_require__(10);
+var _Node = __webpack_require__(11);
 
 var _util = __webpack_require__(3);
 
@@ -6320,7 +6320,7 @@ var _assert = __webpack_require__(2);
 
 var _Change = __webpack_require__(30);
 
-var _ChildrenNode = __webpack_require__(8);
+var _ChildrenNode = __webpack_require__(9);
 
 var _PriorityIndex = __webpack_require__(7);
 
@@ -8701,7 +8701,7 @@ exports.SyncPoint = undefined;
 
 var _CacheNode = __webpack_require__(39);
 
-var _ChildrenNode = __webpack_require__(8);
+var _ChildrenNode = __webpack_require__(9);
 
 var _assert = __webpack_require__(2);
 
@@ -9022,7 +9022,7 @@ var _childSet = __webpack_require__(63);
 
 var _obj = __webpack_require__(4);
 
-var _Node = __webpack_require__(10);
+var _Node = __webpack_require__(11);
 
 var _PriorityIndex = __webpack_require__(7);
 
@@ -9399,9 +9399,9 @@ var _util = __webpack_require__(3);
 
 var _Index = __webpack_require__(37);
 
-var _ChildrenNode = __webpack_require__(8);
+var _ChildrenNode = __webpack_require__(9);
 
-var _Node = __webpack_require__(10);
+var _Node = __webpack_require__(11);
 
 var _nodeFromJSON = __webpack_require__(34);
 
@@ -9522,7 +9522,7 @@ exports.VALUE_INDEX = exports.ValueIndex = undefined;
 
 var _Index = __webpack_require__(37);
 
-var _Node = __webpack_require__(10);
+var _Node = __webpack_require__(11);
 
 var _util = __webpack_require__(3);
 
@@ -10238,7 +10238,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ViewCache = undefined;
 
-var _ChildrenNode = __webpack_require__(8);
+var _ChildrenNode = __webpack_require__(9);
 
 var _CacheNode = __webpack_require__(39);
 
@@ -10351,9 +10351,9 @@ var _IndexedFilter = __webpack_require__(48);
 
 var _PriorityIndex = __webpack_require__(7);
 
-var _Node = __webpack_require__(10);
+var _Node = __webpack_require__(11);
 
-var _ChildrenNode = __webpack_require__(8);
+var _ChildrenNode = __webpack_require__(9);
 
 /**
  * Filters nodes by range and uses an IndexFilter to track any changes after filtering the node
@@ -11942,7 +11942,7 @@ var WebSocketConnection = /** @class */function () {
 exports.WebSocketConnection = WebSocketConnection;
 //# sourceMappingURL=WebSocketConnection.js.map
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 78 */
@@ -12076,7 +12076,7 @@ if (typeof global !== 'undefined') {
 var globalScope = exports.globalScope = scope;
 //# sourceMappingURL=globalScope.js.map
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
 /* 80 */
@@ -12618,7 +12618,7 @@ Z(Ng,"credential",Pg,[V("verificationId"),V("verificationCode")]);Y(Ng.prototype
 (function(){if("undefined"!==typeof firebase&&firebase.INTERNAL&&firebase.INTERNAL.registerService){var a={Auth:T,Error:O};Z(a,"EmailAuthProvider",Ig,[]);Z(a,"FacebookAuthProvider",xg,[]);Z(a,"GithubAuthProvider",zg,[]);Z(a,"GoogleAuthProvider",Bg,[]);Z(a,"TwitterAuthProvider",Dg,[]);Z(a,"OAuthProvider",P,[V("providerId")]);Z(a,"PhoneAuthProvider",Ng,[Yk()]);Z(a,"RecaptchaVerifier",ki,[X(V(),Xk(),"recaptchaContainer"),W("recaptchaParameters",!0),Zk()]);firebase.INTERNAL.registerService("auth",function(a,
 c){a=new T(a);c({INTERNAL:{getUid:r(a.getUid,a),getToken:r(a.Ff,a),addAuthTokenListener:r(a.lf,a),removeAuthTokenListener:r(a.ig,a)}});return a},a,function(a,c){if("create"===a)try{c.auth()}catch(d){}});firebase.INTERNAL.extendNamespace({User:S})}else throw Error("Cannot find the firebase namespace; be sure to include firebase-app.js before this library.");})();}).call(this);
 }).call(typeof global !== undefined ? global : typeof self !== undefined ? self : typeof window !== undefined ? window : {});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
 /* 85 */
@@ -13577,7 +13577,7 @@ var _Path = __webpack_require__(5);
 
 var _obj = __webpack_require__(4);
 
-var _Node = __webpack_require__(10);
+var _Node = __webpack_require__(11);
 
 var _PriorityIndex = __webpack_require__(7);
 
@@ -14038,7 +14038,7 @@ var _obj = __webpack_require__(4);
 
 var _nodeFromJSON = __webpack_require__(34);
 
-var _ChildrenNode = __webpack_require__(8);
+var _ChildrenNode = __webpack_require__(9);
 
 var _Repo = __webpack_require__(35);
 
@@ -14576,7 +14576,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SnapshotHolder = undefined;
 
-var _ChildrenNode = __webpack_require__(8);
+var _ChildrenNode = __webpack_require__(9);
 
 /**
  * Mutable object which basically just stores a reference to the "latest" immutable snapshot.
@@ -14635,7 +14635,7 @@ var _util = __webpack_require__(3);
 
 var _AckUserWrite = __webpack_require__(98);
 
-var _ChildrenNode = __webpack_require__(8);
+var _ChildrenNode = __webpack_require__(9);
 
 var _obj = __webpack_require__(4);
 
@@ -15354,7 +15354,7 @@ var _CompoundWrite = __webpack_require__(92);
 
 var _PriorityIndex = __webpack_require__(7);
 
-var _ChildrenNode = __webpack_require__(8);
+var _ChildrenNode = __webpack_require__(9);
 
 /**
  * WriteTree tracks all pending user-initiated writes and has methods to calculate the result of merging them
@@ -17370,7 +17370,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.EventGenerator = undefined;
 
-var _Node = __webpack_require__(10);
+var _Node = __webpack_require__(11);
 
 var _Change = __webpack_require__(30);
 
@@ -18352,7 +18352,7 @@ var _IndexedFilter = __webpack_require__(48);
 
 var _ViewProcessor = __webpack_require__(117);
 
-var _ChildrenNode = __webpack_require__(8);
+var _ChildrenNode = __webpack_require__(9);
 
 var _CacheNode = __webpack_require__(39);
 
@@ -18582,7 +18582,7 @@ var _ChildChangeAccumulator = __webpack_require__(109);
 
 var _Change = __webpack_require__(30);
 
-var _ChildrenNode = __webpack_require__(8);
+var _ChildrenNode = __webpack_require__(9);
 
 var _KeyIndex = __webpack_require__(33);
 
@@ -19112,9 +19112,9 @@ exports.LimitedFilter = undefined;
 
 var _RangedFilter = __webpack_require__(74);
 
-var _ChildrenNode = __webpack_require__(8);
+var _ChildrenNode = __webpack_require__(9);
 
-var _Node = __webpack_require__(10);
+var _Node = __webpack_require__(11);
 
 var _assert = __webpack_require__(2);
 
@@ -20784,11 +20784,11 @@ var querystringDecode = exports.querystringDecode = function querystringDecode(q
 
 var map = {
 	"./messages.en.njk": [
-		226,
+		229,
 		1
 	],
 	"./messages.es.njk": [
-		227,
+		230,
 		0
 	]
 };
@@ -20822,7 +20822,10 @@ webpackAsyncContext.id = 151;
 /* 164 */,
 /* 165 */,
 /* 166 */,
-/* 167 */
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20880,6 +20883,10 @@ var getDateByLang = function getDateByLang(lang, fecha) {
 
 //Load messages from firebase
 var messages = firebase.database().ref('messages').orderByChild("timestamp").on('value', function (snapshot) {
+    var messagelist = document.getElementById("message-list");
+    while (messagelist.hasChildNodes()) {
+        messagelist.removeChild(messagelist.lastChild);
+    }
     snapshot.forEach(function (childSnapshot) {
         var key = childSnapshot.key;
         var childData = childSnapshot.val();
@@ -20894,7 +20901,7 @@ var messages = firebase.database().ref('messages').orderByChild("timestamp").on(
         title.style.height = "30px";
         title.style.background = "rgba(0,0,0,0.4)";
         title.style.color = "white";
-        title.innerHTML = "<p class='message-title'> " + dte + " <strong>" + name + "</strong>" + (language == "es" ? " escribió" : " wrote") + ": </p>";
+        title.innerHTML = "<p class='message-title'> " + dte + " <strong>" + name + "</strong> (" + email + ")" + (language == "es" ? " escribió" : " wrote") + ": </p>";
 
         var msg = document.createElement("div");
         msg.style.height = "80px";
@@ -20910,7 +20917,6 @@ var messages = firebase.database().ref('messages').orderByChild("timestamp").on(
         var item = document.createElement('div');
         item.appendChild(title);
         item.appendChild(msg);
-        var messagelist = document.getElementById("message-list");
         messagelist.insertBefore(item, messagelist.childNodes[0]);
     });
 });
