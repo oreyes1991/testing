@@ -1,6 +1,6 @@
 webpackJsonp([26],{
 
-/***/ 204:
+/***/ 213:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17,7 +17,8 @@ exports.default = [{
 	date: "Marzo 20,2014",
 	url_image: 'images/articles/monte_sierpe_portrait.jpg',
 	blockquote: '\u201CLo que parece ser una serpiente es en realidad la antigua deidad Q\'hoa. \xC9l era el siervo ... del dios del agua ... y fue utilizado en los rituales ... con respecto a la lluvia\u201D.',
-	url: ''
+	url: '',
+	link: 'article-detail.html?id=2'
 }, {
 	title: 'Lineas de Nasca de Pisco',
 	subtitle: "*Nuevo* Tours de las líneas de Nasca con vuelos regulares desde el aeropuerto renovado de Pisco",
@@ -26,7 +27,8 @@ exports.default = [{
 	date: 'February 26, 2014',
 	url_image: 'images/articles/nazca_spider.jpg',
 	blockquote: '"Antes, la \xFAnica manera de ver las l\xEDneas de Nasca era viajar a Nasca - viajando en autob\xFAs. Pero ahora volamos desde Pisco y los turistas lo prefieren."',
-	url: ''
+	url: '',
+	link: 'article-detail.html?id=2'
 }, {
 	title: 'Recolectores de Guano',
 	subtitle: '"El peor enemigo no es el olor, el calor o el agotamiento. "Como explic\xF3 Domingo Le\xF3n," el peor enemigo es el polvo que se pega en las cejas, cubriendo nuestras narices y mejillas y convirtiendo nuestra cara en una m\xE1scara r\xEDgida."',

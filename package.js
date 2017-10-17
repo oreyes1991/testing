@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		41: 0
+/******/ 		49: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -145,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 171);
+/******/ 	return __webpack_require__(__webpack_require__.s = 173);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3415,198 +3415,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 
-/***/ 10:
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-
-/***/ 12:
+/***/ 11:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -3796,11 +3605,11 @@ process.umask = function() { return 0; };
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8), __webpack_require__(10)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(9)))
 
 /***/ }),
 
-/***/ 13:
+/***/ 12:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3816,43 +3625,43 @@ exports.getPackagePageByLanguafge = getPackagePageByLanguafge;
 exports.getLastNewsBannerByLanguage = getLastNewsBannerByLanguage;
 exports.getArticleSidebar = getArticleSidebar;
 
-var _toursPageEn = __webpack_require__(26);
+var _toursPageEn = __webpack_require__(23);
 
 var _toursPageEn2 = _interopRequireDefault(_toursPageEn);
 
-var _toursPageEs = __webpack_require__(27);
+var _toursPageEs = __webpack_require__(24);
 
 var _toursPageEs2 = _interopRequireDefault(_toursPageEs);
 
-var _contactcontentEn = __webpack_require__(20);
+var _contactcontentEn = __webpack_require__(17);
 
 var _contactcontentEn2 = _interopRequireDefault(_contactcontentEn);
 
-var _contactcontentEs = __webpack_require__(21);
+var _contactcontentEs = __webpack_require__(18);
 
 var _contactcontentEs2 = _interopRequireDefault(_contactcontentEs);
 
-var _packagePageEs = __webpack_require__(25);
+var _packagePageEs = __webpack_require__(22);
 
 var _packagePageEs2 = _interopRequireDefault(_packagePageEs);
 
-var _packagePageEn = __webpack_require__(24);
+var _packagePageEn = __webpack_require__(21);
 
 var _packagePageEn2 = _interopRequireDefault(_packagePageEn);
 
-var _lastNewsBannerEs = __webpack_require__(23);
+var _lastNewsBannerEs = __webpack_require__(20);
 
 var _lastNewsBannerEs2 = _interopRequireDefault(_lastNewsBannerEs);
 
-var _lastNewsBannerEn = __webpack_require__(22);
+var _lastNewsBannerEn = __webpack_require__(19);
 
 var _lastNewsBannerEn2 = _interopRequireDefault(_lastNewsBannerEn);
 
-var _articleSidebarEn = __webpack_require__(18);
+var _articleSidebarEn = __webpack_require__(15);
 
 var _articleSidebarEn2 = _interopRequireDefault(_articleSidebarEn);
 
-var _articleSidebarEs = __webpack_require__(19);
+var _articleSidebarEs = __webpack_require__(16);
 
 var _articleSidebarEs2 = _interopRequireDefault(_articleSidebarEs);
 
@@ -3934,11 +3743,11 @@ function getArticleSidebar(lng) {
 
 var map = {
 	"./package-mystery-south-coast.en.js": [
-		205,
+		214,
 		25
 	],
 	"./package-mystery-south-coast.es.js": [
-		206,
+		215,
 		24
 	]
 };
@@ -3958,32 +3767,7 @@ webpackAsyncContext.id = 147;
 
 /***/ }),
 
-/***/ 171:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _utils = __webpack_require__(13);
-
-var content = document.querySelector('#page-content');
-var dataRef = content.getAttribute('data-ref');
-
-var language = (0, _utils.getPageLanguage)('lng') || 'en';
-
-var tpl = (0, _utils.getPackagePageByLanguafge)(language);
-
-__webpack_require__(147)("./" + dataRef + '.' + language + '.js').then(function (m) {
-	console.log(m);
-	var data = m.default;
-	document.title = data.tab_title;
-	var html = tpl.render({ data: data });
-	document.querySelector('#page-content').innerHTML = html;
-});
-
-/***/ }),
-
-/***/ 18:
+/***/ 15:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4032,7 +3816,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 
 /***/ }),
 
-/***/ 19:
+/***/ 16:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4081,7 +3865,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 
 /***/ }),
 
-/***/ 20:
+/***/ 17:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4130,7 +3914,32 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/cont
 
 /***/ }),
 
-/***/ 21:
+/***/ 173:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _utils = __webpack_require__(12);
+
+var content = document.querySelector('#page-content');
+var dataRef = content.getAttribute('data-ref');
+
+var language = (0, _utils.getPageLanguage)('lng') || 'en';
+
+var tpl = (0, _utils.getPackagePageByLanguafge)(language);
+
+__webpack_require__(147)("./" + dataRef + '.' + language + '.js').then(function (m) {
+	console.log(m);
+	var data = m.default;
+	document.title = data.tab_title;
+	var html = tpl.render({ data: data });
+	document.querySelector('#page-content').innerHTML = html;
+});
+
+/***/ }),
+
+/***/ 18:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4179,7 +3988,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/cont
 
 /***/ }),
 
-/***/ 22:
+/***/ 19:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4228,7 +4037,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 
 /***/ }),
 
-/***/ 23:
+/***/ 20:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4277,7 +4086,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 
 /***/ }),
 
-/***/ 24:
+/***/ 21:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4302,7 +4111,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<div class=\"col-md-12 col-md-12\">\n\t<div class=\"row tour-container\">\n\t\t<div class=\"col-md-8 col-sm-12\">\n\t\t\t<p class=\"text-justify\">\n\t\t\t\t<img class=\"article-image package-image\" style=\"background-image:url(";
+output += "<div class=\"col-md-12\">\n\t<div class=\"row tour-container\">\n\t\t<div class=\"col-md-8 col-sm-12\">\n\t\t\t<p class=\"text-justify\">\n\t\t\t\t<img class=\"article-image package-image\" style=\"background-image:url(";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"url_image"), env.opts.autoescape);
 output += ");\" alt=\"\" width=\"100%\">\n\t\t\t\t<div class=\"article-title\">";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"title"), env.opts.autoescape);
@@ -4380,7 +4189,7 @@ output += "\" height=\"50px\" width=\"50px\"/>\n\t\t\t\t\t\t </a>\n\t\t\t\t\t ";
 }
 }
 frame = frame.pop();
-output += "\n\t\t\t\t </div>\n\t\t\t </div>\n\t\t\t <div class=\"col-md-4\">\n\t\t\t\t\t <div class=\"banner-right floating-right\">\n\t\t\t\t\t <div class=\"tour-detail\">\n\t\t\t\t\t\t\t <div class=\"tour-info-title\">Include</div>\n\t\t\t\t\t\t\t <ul>\n\t\t\t\t\t\t\t\t\t ";
+output += "\n\t\t\t\t </div>\n\t\t\t </div>\n\t\t\t <div class=\"col-md-4 col-sm-12\">\n\t\t\t\t\t <div class=\"banner-right floating-right\">\n\t\t\t\t\t <div class=\"tour-detail\">\n\t\t\t\t\t\t\t <div class=\"tour-info-title\">Include</div>\n\t\t\t\t\t\t\t <ul>\n\t\t\t\t\t\t\t\t\t ";
 frame = frame.push();
 var t_15 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"include");
 if(t_15) {var t_14 = t_15.length;
@@ -4533,7 +4342,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/pack
 
 /***/ }),
 
-/***/ 25:
+/***/ 22:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4603,7 +4412,7 @@ frame.set("loop.revindex0", t_6 - t_5 - 1);
 frame.set("loop.first", t_5 === 0);
 frame.set("loop.last", t_5 === t_6 - 1);
 frame.set("loop.length", t_6);
-output += "\n\t\t<div class=\"row tour-container\" >\n\t\t\t <div class=\"col-md-8 tour-info\">\n\t\t\t\t <p class=\"text-justify\">\n\t\t\t\t\t <img class=\"article-image package-image\" style=\"background-image:url(";
+output += "\n\t\t<div class=\"row tour-container\" >\n\t\t\t <div class=\"col-md-8 col-sm-12 tour-info\">\n\t\t\t\t <p class=\"text-justify\">\n\t\t\t\t\t <img class=\"article-image package-image\" style=\"background-image:url(";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"url_image"), env.opts.autoescape);
 output += ");\" alt=\"\" width=\"100%\">\n\t\t\t\t\t <div class=\"article-title\" id=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
@@ -4636,7 +4445,7 @@ output += "\" height=\"50px\" width=\"50px\"/>\n\t\t\t\t\t\t </a>\n\t\t\t\t\t ";
 }
 }
 frame = frame.pop();
-output += "\n\t\t\t\t </div>\n\n\t\t\t </div>\n\t\t\t <div class=\"col-md-4\">\n\t\t\t\t\t <div class=\"banner-right floating-right\">\n\t\t\t\t\t <div class=\"tour-detail\">\n\t\t\t\t\t\t\t <div class=\"tour-info-title\">Incluye</div>\n\t\t\t\t\t\t\t <ul>\n\t\t\t\t\t\t\t\t\t ";
+output += "\n\t\t\t\t </div>\n\n\t\t\t </div>\n\t\t\t <div class=\"col-md-4 col-sm-12\">\n\t\t\t\t\t <div class=\"banner-right floating-right\">\n\t\t\t\t\t <div class=\"tour-detail\">\n\t\t\t\t\t\t\t <div class=\"tour-info-title\">Incluye</div>\n\t\t\t\t\t\t\t <ul>\n\t\t\t\t\t\t\t\t\t ";
 frame = frame.push();
 var t_15 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"include");
 if(t_15) {var t_14 = t_15.length;
@@ -4789,7 +4598,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/pack
 
 /***/ }),
 
-/***/ 26:
+/***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -5017,7 +4826,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tour
 
 /***/ }),
 
-/***/ 27:
+/***/ 24:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -5042,7 +4851,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += " <div class=\"col-md-12\">\n<div class=\"row tour-container\">\n\t<div class=\"row tour-container\">\n\t\t<div class=\"col-md-8 col-sm-12\">\n\t\t\t<p class=\"text-justify\">\n\t\t\t\t<img class=\"article-image tour-image\" style=\"background-image:url(";
+output += " <div class=\"col-md-12\">\n\t<div class=\"row tour-container\">\n\t\t<div class=\"col-md-8 col-sm-12\">\n\t\t\t<p class=\"text-justify\">\n\t\t\t\t<img class=\"article-image tour-image\" style=\"background-image:url(";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"url_image"), env.opts.autoescape);
 output += ");\" alt=\"\" width=\"100%\">\n\t\t\t\t<div class=\"article-title\">";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"title"), env.opts.autoescape);
@@ -5298,14 +5107,14 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(12);
+__webpack_require__(11);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
 
-/***/ 8:
+/***/ 7:
 /***/ (function(module, exports) {
 
 var g;
@@ -5329,6 +5138,197 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
+
+
+/***/ }),
+
+/***/ 9:
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
 
 
 /***/ })
