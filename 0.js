@@ -3290,7 +3290,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<div class=\"col-md-10 col-md-offset-1\" id=\"messageboard\">\n    <div id=\"message-list\">\n    </div>\n</div>";
+output += "<div class=\"col-md-10 col-md-offset-1\" id=\"messageboard\">\r\n    <div id=\"message-list\">\r\n    </div>\r\n</div>";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {

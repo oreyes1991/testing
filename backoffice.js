@@ -3552,7 +3552,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<div class=\"col-md-4 col-md-offset-4 secret-login\">\n    <div role=\"form\">\n        <p>Access your account</p>\n        <input type=\"text\" class=\"form-control\" id=\"backoffice-username\" placeholder=\"Username\" required=\"required\">\n        <input type=\"password\" class=\"form-control\" id=\"backoffice-password\" placeholder=\"Password\" required=\"required\">\n        <button class=\"btn\" id=\"backoffice-login-button\" type=\"submit\">Login</button>\n    </div>\n</div>";
+output += "<div class=\"col-md-4 col-md-offset-4 secret-login\">\r\n    <div role=\"form\">\r\n        <p>Access your account</p>\r\n        <input type=\"text\" class=\"form-control\" id=\"backoffice-username\" placeholder=\"Username\" required=\"required\">\r\n        <input type=\"password\" class=\"form-control\" id=\"backoffice-password\" placeholder=\"Password\" required=\"required\">\r\n        <button class=\"btn\" id=\"backoffice-login-button\" type=\"submit\">Login</button>\r\n    </div>\r\n</div>";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -3601,7 +3601,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<div class=\"col-md-4 col-md-offset-4 secret-login\">\n    <div role=\"form\">\n        <p>Ingrese a su cuenta</p>\n        <input type=\"text\" class=\"form-control\" id=\"backoffice-username\" placeholder=\"Nombre de usuario\" required=\"required\">\n        <input type=\"password\" class=\"form-control\" id=\"backoffice-password\" placeholder=\"Contraseña\" required=\"required\">\n        <button class=\"btn\" id=\"backoffice-login-button\" type=\"submit\">Iniciar sesión</button>\n    </div>\n</div>";
+output += "<div class=\"col-md-4 col-md-offset-4 secret-login\">\r\n    <div role=\"form\">\r\n        <p>Ingrese a su cuenta</p>\r\n        <input type=\"text\" class=\"form-control\" id=\"backoffice-username\" placeholder=\"Nombre de usuario\" required=\"required\">\r\n        <input type=\"password\" class=\"form-control\" id=\"backoffice-password\" placeholder=\"Contraseña\" required=\"required\">\r\n        <button class=\"btn\" id=\"backoffice-login-button\" type=\"submit\">Iniciar sesión</button>\r\n    </div>\r\n</div>";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {

@@ -25,8 +25,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<menu>\n  <li><a href=\".\" title=\"Home\">Home</a></li>\n";
-output += "\n  <li><a href=\"articles.html\" title=\"Engaging articles about Peru's history\">Articles</a></li>\n  <li><a href=\"contact.html\" title=\"Have a question? Please contact us...\">Contact</a></li>\n  <li><a href=\"about.html\">About Us</a></li>\n</menu>\n<div id=\"copyright\" class=\"row\">\n  <p><a href=\"#\">\n    <img src=\"images/footer/paypal1.jpg\" width=\"60\">\n  </a>\n  <b>© copyright 2012 SouthAmericansSecrets.com</b>\n  <a href=\"http://www.bookingsperu.com/secure-site/southamericanssecrets\">\n    <img src=\"images/footer/payvisa1.jpg\" width=\"60\">\n  </a></p>\n</div>\n";
+output += "<div class=\"col-md-3\">\r\n  <div id=\"copyright\">\r\n    <b>© copyright 2012 SouthAmericansSecrets.com</b>\r\n  </div>\r\n</div>\r\n<menu class=\"col-md-6\">\r\n  <li><a href=\".\" title=\"Home\">Home</a></li>\r\n  <li><a href=\"articles.html\" title=\"Engaging articles about Peru's history\">Articles</a></li>\r\n  <li><a href=\"contact.html\" title=\"Have a question? Please contact us...\">Contact</a></li>\r\n  <li><a href=\"about.html\">About Us</a></li>\r\n</menu>\r\n<div class=\"col-md-3 payment-icons\">\r\n  <img src=\"images/footer/pp-acceptance-small.png\" alt=\"PayPal Acceptance\">\r\n  <img src=\"images/footer/visa.jpg\" alt=\"Visa Acceptance\">\r\n</div>\r\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {

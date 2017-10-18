@@ -3553,18 +3553,18 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<!-- index.nunjucks -->\n";
+output += "<!-- index.nunjucks -->\r\n";
 env.getTemplate("../layouts/layout.njk", true, "pages/index.njk", false, function(t_2,_parentTemplate) {
 if(t_2) { cb(t_2); return; }
 parentTemplate = _parentTemplate
 for(var t_1 in parentTemplate.blocks) {
 context.addBlock(t_1, parentTemplate.blocks[t_1]);
 }
-output += "\n\n";
+output += "\r\n\r\n";
 (parentTemplate ? function(e, c, f, r, cb) { cb(""); } : context.getBlock("content"))(env, context, frame, runtime, function(t_4,t_3) {
 if(t_4) { cb(t_4); return; }
 output += t_3;
-output += "\n";
+output += "\r\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -3581,7 +3581,7 @@ var colno = null;
 var output = "";
 try {
 var frame = frame.push(true);
-output += "\n<div class=\"row content-page\">\n  <div class=\"col-md-8\" id=\"last-news\">\n      <!-- last-news container -->\n  </div>\n  <div class=\"col-md-4 banners\" id=\"last-news-banners\">\n\n  </div>\n</div>\n<script src=\"index.js\"></script>\n";
+output += "\r\n<div class=\"row content-page\">\r\n  <div class=\"col-md-8\" id=\"last-news\">\r\n      <!-- last-news container -->\r\n  </div>\r\n  <div class=\"col-md-4 banners\" id=\"last-news-banners\">\r\n\r\n  </div>\r\n</div>\r\n<script src=\"index.js\"></script>\r\n";
 cb(null, output);
 ;
 } catch (e) {
@@ -3638,7 +3638,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<!-- layout.nunjucks -->\n<!DOCTYPE html>\n<html lang=\"en\">\n\t\t<head>\n\t\t\t\t<title></title>\n\t\t\t\t<meta charset=\"UTF-8\">\n\t\t\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\t\t\t\t<meta name=\"theme-color\" content=\"#DE5A2E\">\n\t\t\t\t<meta name=\"msapplication-navbutton-color\" content=\"#DE5A2E\">\n\t\t\t\t<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"#DE5A2E\">\n\t\t\t\t<link rel=\"icon\" type=\"image/png\" href=\"images/tumi_square.ico\" />\n\t\t\t\t<link href=\"css/style.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/header.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/gallery.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/gallery.theme.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/slick.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/slick.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/popup.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/contact.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/backoffice.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/messageboard.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/about.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/package.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/footer.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/article-detail.css\" rel=\"stylesheet\">\n\t\t\t\t<link href=\"css/font-awesome/css/font-awesome.min.css\" rel=\"stylesheet\">\n\t\t\t\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n\t\t\t\t<script src=\"js/bootstrap.min.js\"></script>\n\t\t</head>\n\t\t<body>\n\t\t\t<div class=\"container-app\">\n\t\t\t\t<div id=\"app\" class=\"container-fluid no-gutter \">\n\t\t\t\t\t<header>\n\t\t\t\t\t\t";
+output += "<!-- layout.nunjucks -->\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\t\t<head>\r\n\t\t\t\t<title></title>\r\n\t\t\t\t<meta charset=\"UTF-8\">\r\n\t\t\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n\t\t\t\t<meta name=\"theme-color\" content=\"#DE5A2E\">\r\n\t\t\t\t<meta name=\"msapplication-navbutton-color\" content=\"#DE5A2E\">\r\n\t\t\t\t<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"#DE5A2E\">\r\n\t\t\t\t<link rel=\"icon\" type=\"image/png\" href=\"images/tumi_square.ico\" />\r\n\t\t\t\t<link href=\"css/style.css\" rel=\"stylesheet\">\r\n\t\t\t\t<link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\r\n\t\t\t\t<link href=\"css/header.css\" rel=\"stylesheet\">\r\n\t\t\t\t<link href=\"css/gallery.css\" rel=\"stylesheet\">\r\n\t\t\t\t<link href=\"css/gallery.theme.css\" rel=\"stylesheet\">\r\n\t\t\t\t<link href=\"css/slick.css\" rel=\"stylesheet\">\r\n\t\t\t\t<link href=\"css/slick.css\" rel=\"stylesheet\">\r\n\t\t\t\t<link href=\"css/popup.css\" rel=\"stylesheet\">\r\n\t\t\t\t<link href=\"css/contact.css\" rel=\"stylesheet\">\r\n\t\t\t\t<link href=\"css/backoffice.css\" rel=\"stylesheet\">\r\n\t\t\t\t<link href=\"css/messageboard.css\" rel=\"stylesheet\">\r\n\t\t\t\t<link href=\"css/about.css\" rel=\"stylesheet\">\r\n\t\t\t\t<link href=\"css/package.css\" rel=\"stylesheet\">\r\n\t\t\t\t<link href=\"css/footer.css\" rel=\"stylesheet\">\r\n\t\t\t\t<link href=\"css/article-detail.css\" rel=\"stylesheet\">\r\n\t\t\t\t<link href=\"css/font-awesome/css/font-awesome.min.css\" rel=\"stylesheet\">\r\n\t\t\t\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\r\n\t\t\t\t<script src=\"js/bootstrap.min.js\"></script>\r\n\t\t</head>\r\n\t\t<body>\r\n\t\t\t<div class=\"container-app\">\r\n\t\t\t\t<div id=\"app\" class=\"container-fluid no-gutter \">\r\n\t\t\t\t\t<header>\r\n\t\t\t\t\t\t";
 var tasks = [];
 tasks.push(
 function(callback) {
@@ -3658,11 +3658,11 @@ output += result;
 callback(null);
 });
 env.waterfall(tasks, function(){
-output += "\n\t\t\t\t\t</header>\n\t\t\t\t\t<section class=\"page\">\n\t\t\t\t\t\t";
+output += "\r\n\t\t\t\t\t</header>\r\n\t\t\t\t\t<section class=\"page\">\r\n\t\t\t\t\t\t";
 (parentTemplate ? function(e, c, f, r, cb) { cb(""); } : context.getBlock("content"))(env, context, frame, runtime, function(t_6,t_5) {
 if(t_6) { cb(t_6); return; }
 output += t_5;
-output += "\n\t\t\t\t\t</section>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div id=\"background-img\"></div>\n\t\t\t<footer id=\"footer\" class=\"footer text-center\">\n\t\t\t</footer>\n\t\t\t<script src=\"js/slick.min.js\"></script>\n\t\t\t<script src=\"js/small-gallery.js\"></script>\n\t\t\t<script src=\"js/popup.min.js\"></script>\n\t\t\t<script src=\"menu.js\"></script>\n\t\t\t<script src=\"footer.js\"></script>\n\t\t\t<script src=\"https://www.jscache.com/wejs?wtype=socialButtonBubbles&amp;uniq=759&amp;locationId=6387633&amp;color=white&amp;size=rect&amp;lang=en_US&amp;display_version=2\"></script>\n\t\t</body>\n</html>\n";
+output += "\r\n\t\t\t\t\t</section>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div id=\"background-img\"></div>\r\n\t\t\t<footer id=\"footer\" class=\"footer text-center\">\r\n\t\t\t</footer>\r\n\t\t\t<script src=\"js/slick.min.js\"></script>\r\n\t\t\t<script src=\"js/small-gallery.js\"></script>\r\n\t\t\t<script src=\"js/popup.min.js\"></script>\r\n\t\t\t<script src=\"menu.js\"></script>\r\n\t\t\t<script src=\"footer.js\"></script>\r\n\t\t\t<script src=\"https://www.jscache.com/wejs?wtype=socialButtonBubbles&amp;uniq=759&amp;locationId=6387633&amp;color=white&amp;size=rect&amp;lang=en_US&amp;display_version=2\"></script>\r\n\t\t</body>\r\n</html>\r\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -3725,7 +3725,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<div class=\"logo\">\n\t\t<img src=\"images/logo.png\" width=\"189\" height=\"216\" alt=\"\" >\n</div>\n\n<div class=\"title\">\n\t<h1>South American's Secrets</h1>\n\t<h2>Secrets of Peru</h2>\n</div>\n\n<div class=\"gallery autoplay items-4\">\n\t<div id=\"item-1\" class=\"control-operator\"></div>\n\t<div id=\"item-2\" class=\"control-operator\"></div>\n\t<div id=\"item-3\" class=\"control-operator\"></div>\n\n\t<figure class=\"item\">\n\t\t<div class=\"header-img machupicchu-1\">\n\t\t</div>\n\t</figure>\n\n\t<figure class=\"item\">\n\t\t<div class=\"header-img machupicchu-2\">\n\t\t</div>\n\t</figure>\n\n\t<figure class=\"item\">\n\t\t<div class=\"header-img nazca-1\">\n\t\t</div>\n\t</figure>\n\n\t<figure class=\"item\">\n\t\t<div class=\"header-img bikeparacas-1\">\n\t\t</div>\n\t</figure>\n</div>\n\n<div class=\"menu-header\" id=\"menu-content\">\n\n</div>\n";
+output += "<div class=\"logo\">\r\n\t\t<img src=\"images/logo.png\" width=\"189\" height=\"216\" alt=\"\" >\r\n</div>\r\n\r\n<div class=\"title\">\r\n\t<h1>South American's Secrets</h1>\r\n\t<h2>Secrets of Peru</h2>\r\n</div>\r\n\r\n<div class=\"gallery autoplay items-4\">\r\n\t<div id=\"item-1\" class=\"control-operator\"></div>\r\n\t<div id=\"item-2\" class=\"control-operator\"></div>\r\n\t<div id=\"item-3\" class=\"control-operator\"></div>\r\n\r\n\t<figure class=\"item\">\r\n\t\t<div class=\"header-img machupicchu-1\">\r\n\t\t</div>\r\n\t</figure>\r\n\r\n\t<figure class=\"item\">\r\n\t\t<div class=\"header-img machupicchu-2\">\r\n\t\t</div>\r\n\t</figure>\r\n\r\n\t<figure class=\"item\">\r\n\t\t<div class=\"header-img nazca-1\">\r\n\t\t</div>\r\n\t</figure>\r\n\r\n\t<figure class=\"item\">\r\n\t\t<div class=\"header-img bikeparacas-1\">\r\n\t\t</div>\r\n\t</figure>\r\n</div>\r\n\r\n<div class=\"menu-header\" id=\"menu-content\">\r\n\r\n</div>\r\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
