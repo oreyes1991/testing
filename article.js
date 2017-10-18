@@ -145,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 165);
+/******/ 	return __webpack_require__(__webpack_require__.s = 187);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3625,43 +3625,43 @@ exports.getPackagePageByLanguafge = getPackagePageByLanguafge;
 exports.getLastNewsBannerByLanguage = getLastNewsBannerByLanguage;
 exports.getArticleSidebar = getArticleSidebar;
 
-var _toursPageEn = __webpack_require__(23);
+var _toursPageEn = __webpack_require__(26);
 
 var _toursPageEn2 = _interopRequireDefault(_toursPageEn);
 
-var _toursPageEs = __webpack_require__(24);
+var _toursPageEs = __webpack_require__(27);
 
 var _toursPageEs2 = _interopRequireDefault(_toursPageEs);
 
-var _contactcontentEn = __webpack_require__(17);
+var _contactcontentEn = __webpack_require__(20);
 
 var _contactcontentEn2 = _interopRequireDefault(_contactcontentEn);
 
-var _contactcontentEs = __webpack_require__(18);
+var _contactcontentEs = __webpack_require__(21);
 
 var _contactcontentEs2 = _interopRequireDefault(_contactcontentEs);
 
-var _packagePageEs = __webpack_require__(22);
+var _packagePageEs = __webpack_require__(25);
 
 var _packagePageEs2 = _interopRequireDefault(_packagePageEs);
 
-var _packagePageEn = __webpack_require__(21);
+var _packagePageEn = __webpack_require__(24);
 
 var _packagePageEn2 = _interopRequireDefault(_packagePageEn);
 
-var _lastNewsBannerEs = __webpack_require__(20);
+var _lastNewsBannerEs = __webpack_require__(23);
 
 var _lastNewsBannerEs2 = _interopRequireDefault(_lastNewsBannerEs);
 
-var _lastNewsBannerEn = __webpack_require__(19);
+var _lastNewsBannerEn = __webpack_require__(22);
 
 var _lastNewsBannerEn2 = _interopRequireDefault(_lastNewsBannerEn);
 
-var _articleSidebarEn = __webpack_require__(15);
+var _articleSidebarEn = __webpack_require__(18);
 
 var _articleSidebarEn2 = _interopRequireDefault(_articleSidebarEn);
 
-var _articleSidebarEs = __webpack_require__(16);
+var _articleSidebarEs = __webpack_require__(19);
 
 var _articleSidebarEs2 = _interopRequireDefault(_articleSidebarEs);
 
@@ -3738,7 +3738,7 @@ function getArticleSidebar(lng) {
 
 /***/ }),
 
-/***/ 144:
+/***/ 167:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -3763,11 +3763,11 @@ webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
 module.exports = webpackAsyncContext;
-webpackAsyncContext.id = 144;
+webpackAsyncContext.id = 167;
 
 /***/ }),
 
-/***/ 15:
+/***/ 18:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3816,7 +3816,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 
 /***/ }),
 
-/***/ 158:
+/***/ 180:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3873,13 +3873,22 @@ output += runtime.suppressValue(runtime.memberLookup((t_4),"blockquote"), env.op
 output += "\r\n\t\t\t\t\t\t</blockquote>\r\n\t\t\t\t\t";
 ;
 }
-output += "\r\n\t\t\t\t\t";
+output += "\r\n                \t";
 if(runtime.memberLookup((t_4),"link")) {
-output += "\r\n\t\t\t\t\t\t<p class=\"read-more\"><a href=\"";
+output += "\r\n                \t    <button class=\"read-more\" onclick=\"document.location.replace(document.location.origin + '/' + '";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"link"), env.opts.autoescape);
-output += "\">";
+output += "');\">";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "link"), env.opts.autoescape);
-output += "</a></p>\r\n\t\t\t\t\t";
+output += "</button>\r\n                \t";
+;
+}
+output += "\r\n\t\t\t\t\t";
+if(runtime.memberLookup((t_4),"tour")) {
+output += "\r\n\t\t\t\t\t\t<button class=\"read-more\" onclick=\"document.location.pathname = '";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"tour"), env.opts.autoescape);
+output += "'\">";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "sTour"), env.opts.autoescape);
+output += "</button>\r\n\t\t\t\t\t";
 ;
 }
 output += "\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n  </div>\r\n";
@@ -3911,7 +3920,40 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 
 /***/ }),
 
-/***/ 16:
+/***/ 187:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _articleEn = __webpack_require__(180);
+
+var _articleEn2 = _interopRequireDefault(_articleEn);
+
+var _utils = __webpack_require__(12);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var language = (0, _utils.getPageLanguage)('lng') || 'en';
+
+document.title = language == "es" ? "Artículos" : "Articles";
+
+var template = (0, _utils.getArticleSidebar)(language);
+
+__webpack_require__(167)("./articles." + language + '.js').then(function (m) {
+	console.log(m);
+	var articles = m.default;
+	var rMore = language == 'en' ? 'Continue Reading...' : 'Leer Artículo...';
+	var sTour = language == 'en' ? 'See tour' : 'Ver tour';
+	var html = _articleEn2.default.render({ items: articles, link: rMore, sTour: sTour });
+	document.querySelector('#page-content').innerHTML = html;
+	var html2 = template.render({});
+	document.querySelector('#articles-banners').innerHTML = html2;
+});
+
+/***/ }),
+
+/***/ 19:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3960,39 +4002,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 
 /***/ }),
 
-/***/ 165:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _articleEn = __webpack_require__(158);
-
-var _articleEn2 = _interopRequireDefault(_articleEn);
-
-var _utils = __webpack_require__(12);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var language = (0, _utils.getPageLanguage)('lng') || 'en';
-
-document.title = language == "es" ? "Artículos" : "Articles";
-
-var template = (0, _utils.getArticleSidebar)(language);
-
-__webpack_require__(144)("./articles." + language + '.js').then(function (m) {
-	console.log(m);
-	var articles = m.default;
-	var rMore = language == 'en' ? 'Continue Reading...' : 'Leer Artículo...';
-	var html = _articleEn2.default.render({ items: articles, link: rMore });
-	document.querySelector('#page-content').innerHTML = html;
-	var html2 = template.render({});
-	document.querySelector('#articles-banners').innerHTML = html2;
-});
-
-/***/ }),
-
-/***/ 17:
+/***/ 20:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4041,7 +4051,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/cont
 
 /***/ }),
 
-/***/ 18:
+/***/ 21:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4090,7 +4100,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/cont
 
 /***/ }),
 
-/***/ 19:
+/***/ 22:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4139,7 +4149,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 
 /***/ }),
 
-/***/ 20:
+/***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4188,7 +4198,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 
 /***/ }),
 
-/***/ 21:
+/***/ 24:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4444,7 +4454,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/pack
 
 /***/ }),
 
-/***/ 22:
+/***/ 25:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4700,7 +4710,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/pack
 
 /***/ }),
 
-/***/ 23:
+/***/ 26:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4899,7 +4909,7 @@ output += "\r\n\t\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t\t";
 }
 }
 frame = frame.pop();
-output += "\r\n\t\t\t\t\t\t\t\t</ul>\r\n\r\n\r\n                <button class=\"bttn-unite bttn-md bttn-warning\">Reserve Tour</button>\r\n            </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    ";
+output += "\r\n\t\t\t\t\t\t\t\t</ul>\r\n                <button class=\"bttn-unite bttn-md bttn-warning\">Reserve Tour</button>\r\n            </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    ";
 ;
 }
 }
@@ -4928,7 +4938,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tour
 
 /***/ }),
 
-/***/ 24:
+/***/ 27:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);

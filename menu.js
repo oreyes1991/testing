@@ -145,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 171);
+/******/ 	return __webpack_require__(__webpack_require__.s = 193);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3625,43 +3625,43 @@ exports.getPackagePageByLanguafge = getPackagePageByLanguafge;
 exports.getLastNewsBannerByLanguage = getLastNewsBannerByLanguage;
 exports.getArticleSidebar = getArticleSidebar;
 
-var _toursPageEn = __webpack_require__(23);
+var _toursPageEn = __webpack_require__(26);
 
 var _toursPageEn2 = _interopRequireDefault(_toursPageEn);
 
-var _toursPageEs = __webpack_require__(24);
+var _toursPageEs = __webpack_require__(27);
 
 var _toursPageEs2 = _interopRequireDefault(_toursPageEs);
 
-var _contactcontentEn = __webpack_require__(17);
+var _contactcontentEn = __webpack_require__(20);
 
 var _contactcontentEn2 = _interopRequireDefault(_contactcontentEn);
 
-var _contactcontentEs = __webpack_require__(18);
+var _contactcontentEs = __webpack_require__(21);
 
 var _contactcontentEs2 = _interopRequireDefault(_contactcontentEs);
 
-var _packagePageEs = __webpack_require__(22);
+var _packagePageEs = __webpack_require__(25);
 
 var _packagePageEs2 = _interopRequireDefault(_packagePageEs);
 
-var _packagePageEn = __webpack_require__(21);
+var _packagePageEn = __webpack_require__(24);
 
 var _packagePageEn2 = _interopRequireDefault(_packagePageEn);
 
-var _lastNewsBannerEs = __webpack_require__(20);
+var _lastNewsBannerEs = __webpack_require__(23);
 
 var _lastNewsBannerEs2 = _interopRequireDefault(_lastNewsBannerEs);
 
-var _lastNewsBannerEn = __webpack_require__(19);
+var _lastNewsBannerEn = __webpack_require__(22);
 
 var _lastNewsBannerEn2 = _interopRequireDefault(_lastNewsBannerEn);
 
-var _articleSidebarEn = __webpack_require__(15);
+var _articleSidebarEn = __webpack_require__(18);
 
 var _articleSidebarEn2 = _interopRequireDefault(_articleSidebarEn);
 
-var _articleSidebarEs = __webpack_require__(16);
+var _articleSidebarEs = __webpack_require__(19);
 
 var _articleSidebarEs2 = _interopRequireDefault(_articleSidebarEs);
 
@@ -3738,7 +3738,36 @@ function getArticleSidebar(lng) {
 
 /***/ }),
 
-/***/ 15:
+/***/ 173:
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./menu.en.njk": [
+		236,
+		3
+	],
+	"./menu.es.njk": [
+		237,
+		2
+	]
+};
+function webpackAsyncContext(req) {
+	var ids = map[req];
+	if(!ids)
+		return Promise.reject(new Error("Cannot find module '" + req + "'."));
+	return __webpack_require__.e(ids[1]).then(function() {
+		return __webpack_require__(ids[0]);
+	});
+};
+webpackAsyncContext.keys = function webpackAsyncContextKeys() {
+	return Object.keys(map);
+};
+module.exports = webpackAsyncContext;
+webpackAsyncContext.id = 173;
+
+/***/ }),
+
+/***/ 18:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3787,36 +3816,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 
 /***/ }),
 
-/***/ 150:
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./menu.en.njk": [
-		236,
-		3
-	],
-	"./menu.es.njk": [
-		237,
-		2
-	]
-};
-function webpackAsyncContext(req) {
-	var ids = map[req];
-	if(!ids)
-		return Promise.reject(new Error("Cannot find module '" + req + "'."));
-	return __webpack_require__.e(ids[1]).then(function() {
-		return __webpack_require__(ids[0]);
-	});
-};
-webpackAsyncContext.keys = function webpackAsyncContextKeys() {
-	return Object.keys(map);
-};
-module.exports = webpackAsyncContext;
-webpackAsyncContext.id = 150;
-
-/***/ }),
-
-/***/ 16:
+/***/ 19:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3865,56 +3865,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 
 /***/ }),
 
-/***/ 17:
-/***/ (function(module, exports, __webpack_require__) {
-
-var nunjucks = __webpack_require__(1);
-var env;
-if (!nunjucks.currentEnv){
-	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
-} else {
-	env = nunjucks.currentEnv;
-}
-var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-
-
-
-
-var shim = __webpack_require__(0);
-
-
-(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/contactcontent.en.njk"] = (function() {
-function root(env, context, frame, runtime, cb) {
-var lineno = null;
-var colno = null;
-var output = "";
-try {
-var parentTemplate = null;
-output += "\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t <div class=\"row tour-container\">\r\n\t\t \t\t<div id=\"msg-form\" class=\"col-md-8 col-sm-12\" >\r\n\t\t\t\t\t<h3>Send us a message</h3>\r\n\t\t\t\t\t<div id=\"contact-form\">\r\n\t\t\t\t\t\t<div id=\"contact-form-instance\">\r\n    \t\t\t\t\t\t<div class=\"contact-form\" role=\"form\">\r\n        \t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"form-name\" placeholder=\"Name\" required=\"required\">\r\n        \t\t\t\t\t\t<input type=\"email\" class=\"form-control\" id=\"form-email\" placeholder=\"Email\" required=\"required\">\r\n        \t\t\t\t\t\t<textarea class=\"form-control\" id=\"form-message\" placeholder=\"Message\" rows=\"10\" required=\"required\"></textarea>\r\n        \t\t\t\t\t\t<button class=\"btn btn-primary btn-lg\" id=\"send-msg\"><i class=\"fa fa-paper-plane \"></i>Send Message</button>\r\n    \t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t </div>\r\n\t\t\t\t <div class=\"col-md-4 hidden-sm\" style=\"margin-top:15px\">\r\n\t\t\t\t\t\t<div class=\"banner-right floating-right\">\r\n\t\t\t \t\t\t\t<div class=\"tour-detail\">\r\n\t\t\t\t\t \t\t\t<div class=\"tour-info-title\">South Americans' Secrets</div>\r\n\t\t\t\t\t\t\t\t<div>\r\n\t\t\t\t\t\t      <p><b>Travel Agency & Tour Operator</b></p>\r\n\t\t\t\t\t\t      <p><b>Amarilis Pereda & Lucio Hancco</b></p>\r\n\t\t\t\t\t\t      <p>St. Camino Real Mz D lt. 8 San Andrés</p>\r\n\t\t\t\t\t\t\t  <p>Inside Marina Turística \"Tourist Pier\", right next to Hotel San Agustín - Paracas.\r\nOpen 7:30 am to 1:00 pm (Paracas)</p>\r\n\t\t\t\t\t\t      <p><b>Cel:</b> 956-481002\t/ 947-058508</p>\r\n\t\t\t\t\t\t    </div>\r\n\t\t \t\t\t\t\t</div>\r\n\t\t\t \t\t\t</div>\r\n\t\t\t\t </div>\r\n\t\t </div>\r\n\t</div>\r\n";
-if(parentTemplate) {
-parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
-} else {
-cb(null, output);
-}
-;
-} catch (e) {
-  cb(runtime.handleError(e, lineno, colno));
-}
-}
-return {
-root: root
-};
-
-})();
-})();
-
-
-
-module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/contactcontent.en.njk"] , dependencies)
-
-/***/ }),
-
-/***/ 171:
+/***/ 193:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3924,7 +3875,7 @@ var _utils = __webpack_require__(12);
 
 var language = (0, _utils.getPageLanguage)('lng') || 'en';
 var menu = document.querySelector('#menu-content');
-__webpack_require__(150)("./menu." + language + '.njk').then(function (m) {
+__webpack_require__(173)("./menu." + language + '.njk').then(function (m) {
 	console.log(m);
 	var tpl = m;
 	var html = tpl.render({});
@@ -3976,7 +3927,56 @@ $(document).on('click', '#change-language-link', function (event) {
 
 /***/ }),
 
-/***/ 18:
+/***/ 20:
+/***/ (function(module, exports, __webpack_require__) {
+
+var nunjucks = __webpack_require__(1);
+var env;
+if (!nunjucks.currentEnv){
+	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
+} else {
+	env = nunjucks.currentEnv;
+}
+var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
+
+
+
+
+var shim = __webpack_require__(0);
+
+
+(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/contactcontent.en.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var parentTemplate = null;
+output += "\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t <div class=\"row tour-container\">\r\n\t\t \t\t<div id=\"msg-form\" class=\"col-md-8 col-sm-12\" >\r\n\t\t\t\t\t<h3>Send us a message</h3>\r\n\t\t\t\t\t<div id=\"contact-form\">\r\n\t\t\t\t\t\t<div id=\"contact-form-instance\">\r\n    \t\t\t\t\t\t<div class=\"contact-form\" role=\"form\">\r\n        \t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"form-name\" placeholder=\"Name\" required=\"required\">\r\n        \t\t\t\t\t\t<input type=\"email\" class=\"form-control\" id=\"form-email\" placeholder=\"Email\" required=\"required\">\r\n        \t\t\t\t\t\t<textarea class=\"form-control\" id=\"form-message\" placeholder=\"Message\" rows=\"10\" required=\"required\"></textarea>\r\n        \t\t\t\t\t\t<button class=\"btn btn-primary btn-lg\" id=\"send-msg\"><i class=\"fa fa-paper-plane \"></i>Send Message</button>\r\n    \t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t </div>\r\n\t\t\t\t <div class=\"col-md-4 hidden-sm\" style=\"margin-top:15px\">\r\n\t\t\t\t\t\t<div class=\"banner-right floating-right\">\r\n\t\t\t \t\t\t\t<div class=\"tour-detail\">\r\n\t\t\t\t\t \t\t\t<div class=\"tour-info-title\">South Americans' Secrets</div>\r\n\t\t\t\t\t\t\t\t<div>\r\n\t\t\t\t\t\t      <p><b>Travel Agency & Tour Operator</b></p>\r\n\t\t\t\t\t\t      <p><b>Amarilis Pereda & Lucio Hancco</b></p>\r\n\t\t\t\t\t\t      <p>St. Camino Real Mz D lt. 8 San Andrés</p>\r\n\t\t\t\t\t\t\t  <p>Inside Marina Turística \"Tourist Pier\", right next to Hotel San Agustín - Paracas.\r\nOpen 7:30 am to 1:00 pm (Paracas)</p>\r\n\t\t\t\t\t\t      <p><b>Cel:</b> 956-481002\t/ 947-058508</p>\r\n\t\t\t\t\t\t    </div>\r\n\t\t \t\t\t\t\t</div>\r\n\t\t\t \t\t\t</div>\r\n\t\t\t\t </div>\r\n\t\t </div>\r\n\t</div>\r\n";
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
+
+
+module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/contactcontent.en.njk"] , dependencies)
+
+/***/ }),
+
+/***/ 21:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4025,7 +4025,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/cont
 
 /***/ }),
 
-/***/ 19:
+/***/ 22:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4074,7 +4074,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 
 /***/ }),
 
-/***/ 20:
+/***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4123,7 +4123,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 
 /***/ }),
 
-/***/ 21:
+/***/ 24:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4379,7 +4379,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/pack
 
 /***/ }),
 
-/***/ 22:
+/***/ 25:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4635,7 +4635,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/pack
 
 /***/ }),
 
-/***/ 23:
+/***/ 26:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4834,7 +4834,7 @@ output += "\r\n\t\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t\t";
 }
 }
 frame = frame.pop();
-output += "\r\n\t\t\t\t\t\t\t\t</ul>\r\n\r\n\r\n                <button class=\"bttn-unite bttn-md bttn-warning\">Reserve Tour</button>\r\n            </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    ";
+output += "\r\n\t\t\t\t\t\t\t\t</ul>\r\n                <button class=\"bttn-unite bttn-md bttn-warning\">Reserve Tour</button>\r\n            </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    ";
 ;
 }
 }
@@ -4863,7 +4863,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tour
 
 /***/ }),
 
-/***/ 24:
+/***/ 27:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
