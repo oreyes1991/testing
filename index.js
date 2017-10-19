@@ -4040,18 +4040,18 @@ output += "\r\n                </p>\r\n                 <blockquote class=\"arti
 output += runtime.suppressValue(runtime.memberLookup((t_4),"blockquote"), env.opts.autoescape);
 output += "\r\n                </blockquote>\r\n                ";
 if(runtime.memberLookup((t_4),"link")) {
-output += "\r\n                    <button class=\"read-more\" onclick=\"document.location.replace(document.location.origin + '/' + '";
+output += "\r\n                    <button class=\"read-more\" onclick=\"changeUriPath('";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"link"), env.opts.autoescape);
-output += "');\">";
+output += "')\">";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "link"), env.opts.autoescape);
 output += "</button>\r\n                ";
 ;
 }
 output += "\r\n\t\t\t\t";
 if(runtime.memberLookup((t_4),"tour")) {
-output += "\r\n\t\t\t\t\t<button class=\"read-more\" onclick=\"document.location.pathname = '";
+output += "\r\n\t\t\t\t\t<button class=\"read-more\" onclick=\"changeUriPath('";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"tour"), env.opts.autoescape);
-output += "'\">";
+output += "')\">";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "sTour"), env.opts.autoescape);
 output += "</button>\r\n\t\t\t\t";
 ;
@@ -4114,6 +4114,8 @@ __webpack_require__(169)("./last-news." + language + '.js').then(function (m) {
 
   var html2 = template.render({});
   document.querySelector('#last-news-banners').innerHTML = html2;
+
+  document.getElementsByClassName("read-more");
 });
 
 /***/ }),

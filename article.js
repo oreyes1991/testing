@@ -4045,18 +4045,18 @@ output += "\r\n\t\t\t\t\t\t</blockquote>\r\n\t\t\t\t\t";
 }
 output += "\r\n                \t";
 if(runtime.memberLookup((t_4),"link")) {
-output += "\r\n                \t    <button class=\"read-more\" onclick=\"document.location.replace(document.location.origin + '/' + '";
+output += "\r\n                \t    <button class=\"read-more\" onclick=\"changeUriPath('";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"link"), env.opts.autoescape);
-output += "');\">";
+output += "')\">";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "link"), env.opts.autoescape);
 output += "</button>\r\n                \t";
 ;
 }
 output += "\r\n\t\t\t\t\t";
 if(runtime.memberLookup((t_4),"tour")) {
-output += "\r\n\t\t\t\t\t\t<button class=\"read-more\" onclick=\"document.location.pathname = '";
+output += "\r\n\t\t\t\t\t\t<button class=\"read-more\" onclick=\"changeUriPath('";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"tour"), env.opts.autoescape);
-output += "'\">";
+output += "')\">";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "sTour"), env.opts.autoescape);
 output += "</button>\r\n\t\t\t\t\t";
 ;
