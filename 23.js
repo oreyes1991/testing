@@ -18,6 +18,7 @@ exports.default = {
 	tours: [{
 		id: 'arequipa-city-tour',
 		title: 'Arequipa City Tour',
+		form_title: 'Arequipa City Tour',
 		shortTitle: 'Arequipa City Tour',
 		subtitle: 'Magnificent colonial architecture and cathedrals in Peru\'s famed White City',
 		url_image: 'images/tours/arequipa/arequipa_3_t.jpg',
@@ -39,6 +40,7 @@ exports.default = {
 	}, {
 		id: 'colca-canyon-tour',
 		title: 'Colca Canyon Tour',
+		form_title: 'Colca Canyon Tour',
 		shortTitle: 'Colca Canyon Tour',
 		subtitle: 'The Colca Canyon is one of the country\'s most popular sightseeing destination to see condor in the wild.',
 		url_image: 'images/tours/arequipa/colca_canyon_3_t.jpg',

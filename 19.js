@@ -18,6 +18,7 @@ exports.default = {
 	tours: [{
 		id: 'vineyard-museum-oasis-tour',
 		title: 'Vineyard Museum Oasis Tour',
+		form_title: 'Vineyard Museum Oasis Tour',
 		shortTitle: 'Vineyard Museum Oasis',
 		subtitle: 'Vineyard Museum Oasis',
 		url_image: 'images/tours/ica/huacachina_oasis_1.t.jpg',
@@ -39,6 +40,7 @@ exports.default = {
 	}, {
 		id: 'dune-buggy-sandboard',
 		title: 'Dune Buggy & Sandboard',
+		form_title: 'Dune Buggy & Sandboard',
 		shortTitle: 'Dune Buggy & Sandboard',
 		subtitle: 'Like a roller coaster ride, the dune buggy circuit near Huacachina is pure adrenaline and offers sights of monstrous dunes.',
 		url_image: 'images/tours/ica/buggy_1_t.jpg',

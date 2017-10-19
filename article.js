@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		44: 0
+/******/ 		45: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -3411,11 +3411,230 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6).setImmediate, __webpack_require__(6).clearImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8).setImmediate, __webpack_require__(8).clearImmediate))
 
 /***/ }),
 
 /***/ 11:
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 13:
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+
+/***/ }),
+
+/***/ 15:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -3605,11 +3824,40 @@ return /******/ (function(modules) { // webpackBootstrap
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11), __webpack_require__(13)))
 
 /***/ }),
 
-/***/ 12:
+/***/ 167:
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./articles.en.js": [
+		204,
+		35
+	],
+	"./articles.es.js": [
+		205,
+		34
+	]
+};
+function webpackAsyncContext(req) {
+	var ids = map[req];
+	if(!ids)
+		return Promise.reject(new Error("Cannot find module '" + req + "'."));
+	return __webpack_require__.e(ids[1]).then(function() {
+		return __webpack_require__(ids[0]);
+	});
+};
+webpackAsyncContext.keys = function webpackAsyncContextKeys() {
+	return Object.keys(map);
+};
+module.exports = webpackAsyncContext;
+webpackAsyncContext.id = 167;
+
+/***/ }),
+
+/***/ 17:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3625,43 +3873,43 @@ exports.getPackagePageByLanguafge = getPackagePageByLanguafge;
 exports.getLastNewsBannerByLanguage = getLastNewsBannerByLanguage;
 exports.getArticleSidebar = getArticleSidebar;
 
-var _toursPageEn = __webpack_require__(26);
+var _toursPageEn = __webpack_require__(36);
 
 var _toursPageEn2 = _interopRequireDefault(_toursPageEn);
 
-var _toursPageEs = __webpack_require__(27);
+var _toursPageEs = __webpack_require__(37);
 
 var _toursPageEs2 = _interopRequireDefault(_toursPageEs);
 
-var _contactcontentEn = __webpack_require__(20);
+var _contactcontentEn = __webpack_require__(30);
 
 var _contactcontentEn2 = _interopRequireDefault(_contactcontentEn);
 
-var _contactcontentEs = __webpack_require__(21);
+var _contactcontentEs = __webpack_require__(31);
 
 var _contactcontentEs2 = _interopRequireDefault(_contactcontentEs);
 
-var _packagePageEs = __webpack_require__(25);
+var _packagePageEs = __webpack_require__(35);
 
 var _packagePageEs2 = _interopRequireDefault(_packagePageEs);
 
-var _packagePageEn = __webpack_require__(24);
+var _packagePageEn = __webpack_require__(34);
 
 var _packagePageEn2 = _interopRequireDefault(_packagePageEn);
 
-var _lastNewsBannerEs = __webpack_require__(23);
+var _lastNewsBannerEs = __webpack_require__(33);
 
 var _lastNewsBannerEs2 = _interopRequireDefault(_lastNewsBannerEs);
 
-var _lastNewsBannerEn = __webpack_require__(22);
+var _lastNewsBannerEn = __webpack_require__(32);
 
 var _lastNewsBannerEn2 = _interopRequireDefault(_lastNewsBannerEn);
 
-var _articleSidebarEn = __webpack_require__(18);
+var _articleSidebarEn = __webpack_require__(28);
 
 var _articleSidebarEn2 = _interopRequireDefault(_articleSidebarEn);
 
-var _articleSidebarEs = __webpack_require__(19);
+var _articleSidebarEs = __webpack_require__(29);
 
 var _articleSidebarEs2 = _interopRequireDefault(_articleSidebarEs);
 
@@ -3735,84 +3983,6 @@ function getArticleSidebar(lng) {
 			return _articleSidebarEn2.default;
 	}
 }
-
-/***/ }),
-
-/***/ 167:
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./articles.en.js": [
-		204,
-		35
-	],
-	"./articles.es.js": [
-		205,
-		34
-	]
-};
-function webpackAsyncContext(req) {
-	var ids = map[req];
-	if(!ids)
-		return Promise.reject(new Error("Cannot find module '" + req + "'."));
-	return __webpack_require__.e(ids[1]).then(function() {
-		return __webpack_require__(ids[0]);
-	});
-};
-webpackAsyncContext.keys = function webpackAsyncContextKeys() {
-	return Object.keys(map);
-};
-module.exports = webpackAsyncContext;
-webpackAsyncContext.id = 167;
-
-/***/ }),
-
-/***/ 18:
-/***/ (function(module, exports, __webpack_require__) {
-
-var nunjucks = __webpack_require__(1);
-var env;
-if (!nunjucks.currentEnv){
-	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
-} else {
-	env = nunjucks.currentEnv;
-}
-var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-
-
-
-
-var shim = __webpack_require__(0);
-
-
-(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/article-sidebar.en.njk"] = (function() {
-function root(env, context, frame, runtime, cb) {
-var lineno = null;
-var colno = null;
-var output = "";
-try {
-var parentTemplate = null;
-output += "<div class=\"banner-right floating-right\">\r\n  <a href=\"packagecoast.html#package-mystery-south-coast\" class=\"ad\">\r\n    <div class=\"title\">\r\n      Nazca Lines & South Coast\r\n      <div class=\"gallery autoplay items-1\">\r\n        <div id=\"item-1\" class=\"control-operator\"></div>\r\n        <figure class=\"item\">\r\n            <div class=\"banner-img nazca-lines\">\r\n            </div>\r\n        </figure>\r\n      </div>\r\n      <div class=\"tour-info-title\">2 days / 1 night</div>\r\n      <div class=\"tour-info-title\"><h4>$565.00 USD</h4></div>\r\n      <div class=\"tour-info-title\">per person from Lima transport & hotel included</div>\r\n      <p style=\"font-size:14px;\">\r\n        <b>Short on time?</b> Get the most out of your vacation with <b>ease, comfort &amp; style</b>:<br>\r\n        Flight over Nazca lines, guided tour Paracas National Reserve, excursion to Ballestas Islands, visit a winery in Ica, visit Huacachina oasis and a thrilling dune buggy. <br> The price also includes *all* transport, transfers, and fees! From your hotel in Lima!\r\n      </p>\r\n    </div>\r\n  </a>\r\n</div>\r\n";
-if(parentTemplate) {
-parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
-} else {
-cb(null, output);
-}
-;
-} catch (e) {
-  cb(runtime.handleError(e, lineno, colno));
-}
-}
-return {
-root: root
-};
-
-})();
-})();
-
-
-
-module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/article-sidebar.en.njk"] , dependencies)
 
 /***/ }),
 
@@ -3930,7 +4100,7 @@ var _articleEn = __webpack_require__(180);
 
 var _articleEn2 = _interopRequireDefault(_articleEn);
 
-var _utils = __webpack_require__(12);
+var _utils = __webpack_require__(17);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3953,7 +4123,56 @@ __webpack_require__(167)("./articles." + language + '.js').then(function (m) {
 
 /***/ }),
 
-/***/ 19:
+/***/ 28:
+/***/ (function(module, exports, __webpack_require__) {
+
+var nunjucks = __webpack_require__(1);
+var env;
+if (!nunjucks.currentEnv){
+	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
+} else {
+	env = nunjucks.currentEnv;
+}
+var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
+
+
+
+
+var shim = __webpack_require__(0);
+
+
+(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/article-sidebar.en.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var parentTemplate = null;
+output += "<div class=\"banner-right floating-right\">\r\n  <a href=\"packagecoast.html#package-mystery-south-coast\" class=\"ad\">\r\n    <div class=\"title\">\r\n      Nazca Lines & South Coast\r\n      <div class=\"gallery autoplay items-1\">\r\n        <div id=\"item-1\" class=\"control-operator\"></div>\r\n        <figure class=\"item\">\r\n            <div class=\"banner-img nazca-lines\">\r\n            </div>\r\n        </figure>\r\n      </div>\r\n      <div class=\"tour-info-title\">2 days / 1 night</div>\r\n      <div class=\"tour-info-title\"><h4>$565.00 USD</h4></div>\r\n      <div class=\"tour-info-title\">per person from Lima transport & hotel included</div>\r\n      <p style=\"font-size:14px;\">\r\n        <b>Short on time?</b> Get the most out of your vacation with <b>ease, comfort &amp; style</b>:<br>\r\n        Flight over Nazca lines, guided tour Paracas National Reserve, excursion to Ballestas Islands, visit a winery in Ica, visit Huacachina oasis and a thrilling dune buggy. <br> The price also includes *all* transport, transfers, and fees! From your hotel in Lima!\r\n      </p>\r\n    </div>\r\n  </a>\r\n</div>\r\n";
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
+
+
+module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/article-sidebar.en.njk"] , dependencies)
+
+/***/ }),
+
+/***/ 29:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4002,7 +4221,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 
 /***/ }),
 
-/***/ 20:
+/***/ 30:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4051,7 +4270,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/cont
 
 /***/ }),
 
-/***/ 21:
+/***/ 31:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4100,7 +4319,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/cont
 
 /***/ }),
 
-/***/ 22:
+/***/ 32:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4149,7 +4368,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 
 /***/ }),
 
-/***/ 23:
+/***/ 33:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4198,7 +4417,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 
 /***/ }),
 
-/***/ 24:
+/***/ 34:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4454,7 +4673,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/pack
 
 /***/ }),
 
-/***/ 25:
+/***/ 35:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4710,7 +4929,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/pack
 
 /***/ }),
 
-/***/ 26:
+/***/ 36:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -4909,12 +5128,25 @@ output += "\r\n\t\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t\t";
 }
 }
 frame = frame.pop();
-output += "\r\n\t\t\t\t\t\t\t\t</ul>\r\n                <button class=\"bttn-unite bttn-md bttn-warning\">Reserve Tour</button>\r\n            </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    ";
+output += "\r\n\t\t\t\t\t\t\t\t</ul>\r\n                <button class=\"bttn-unite bttn-md bttn-warning\" data-toggle=\"modal\" data-target=\"#";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
+output += "-modal\">Reserve Tour</button>\r\n            </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <!-- Modal -->\r\n    <div id=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
+output += "-modal\" class=\"modal\" role=\"dialog\">\r\n        <div class=\"modal-dialog\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\r\n                    <h3 class=\"modal-title\">";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"form_title") || runtime.memberLookup((t_8),"title"), env.opts.autoescape);
+output += "</h3>\r\n                    <div class=\"price-holder\"><span class=\"form_price\">";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"ammount"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"currency"), env.opts.autoescape);
+output += "</span><span> per person</span></div>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    <input type=\"hidden\" id=\"rsv-tour-info\" value=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"title"), env.opts.autoescape);
+output += "\" tour-id=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
+output += "\">\r\n                    <input type=\"hidden\" id=\"rsv-lang\" value=\"en\">\r\n                    <div class=\"reservation-subtitle\">Tour reservation</div>\r\n                    <div class=\"form-inputs\"><input type=\"text\" class=\"rsv-input\" id=\"rsv-name\" placeholder=\"Name*\"></div>\r\n                    <div class=\"input-group\">\r\n                        <span class=\"input-group-addon\">Date*</span>\r\n                        <input type=\"date\" id=\"rsv-date\" class=\"form-control\" class=\"rsv-input\" name=\"date\">\r\n                    </div>\r\n                    <div class=\"form-inputs\"><input id=\"rsv-people\" placeholder=\"N° people*\" class=\"rsv-input\" type=\"number\"></div>\r\n                    <div class=\"form-inputs\"><input id=\"rsv-email\" placeholder=\"Email*\" class=\"rsv-input\" type=\"email\"></div>\r\n                    <div class=\"form-inputs\"><textarea id=\"rsv-notes\" placeholder=\"Notes about your reservation\"></textarea></div>\r\n                    <p id=\"rsv-warn\" class=\"rsv-warn rsv-warn-hidden\">*Invalid request, you must fill all required fields*</p>\r\n                    <p id=\"rsv-warn-email\" class=\"rsv-warn rsv-warn-hidden\">*Invalid email address*</p>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button type=\"button\" id=\"request-reservation\" class=\"btn btn-default request-btn\"><i class=\"fa fa-envelope-o\" aria-hidden=\"true\"></i>  Request Reservation</button>\r\n                    <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\r\n                </div>\r\n          </div>\r\n        </div>\r\n    </div>\r\n    ";
 ;
 }
 }
 frame = frame.pop();
-output += "\r\n    <hr/>\r\n <div class=\"row additional-info\">\r\n    <div class=\"col-md-12\">\r\n       <h2 id=\"additional-info\">Additional Information</h2>\r\n            <ul>\r\n                <li>All your personal information is required at the moment of your booking.</li>\r\n                <li>Confirmation of the excursion will be received at time of booking.</li>\r\n                <li>All tours are operated in English unless otherwise stated.</li>\r\n            </ul>\r\n\r\n            <h4>Travel voucher:</h4>\r\n            <ul>\r\n            <li>You will receive an electronic voucher via e mail once you booking is confirmed.</li>\r\n            <li>For each confirmed booking you are required to print your electronic voucher for presentation at the start of the excursion.</li>\r\n            <li>The electronic voucher acts a confirmation for all services you request.</li>\r\n            </ul>\r\n\r\n            <h4>Local operator information:</h4>\r\n            <ul>\r\n            <li>We will send you complete operator information, including phone numbers at your destination.</li>\r\n            <li>Our managers select only the most experienced and reliable operators in each destination, removing the guesswork for you, and ensuring your peace of mind.</li>\r\n            </ul>\r\n\r\n    </div>\r\n </div>\r\n\r\n</div>\r\n";
+output += "\r\n    <!-- Modal -->\r\n    <div id=\"sent-reservation\" class=\"modal\" role=\"dialog\">\r\n        <div class=\"modal-dialog\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\r\n                    <h3 class=\"modal-title\"><i class=\"fa fa-check\" aria-hidden=\"true\"></i> Request Sent</h3>\r\n                    <div class=\"price-holder\"><span class=\"form_price\">We will contact you soon</span></div>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button type=\"button\" class=\"btn btn-default request-btn\" data-dismiss=\"modal\">Ok</button>\r\n                </div>\r\n          </div>\r\n        </div>\r\n    </div>\r\n    <hr/>\r\n <div class=\"row additional-info\">\r\n    <div class=\"col-md-12\">\r\n       <h2 id=\"additional-info\">Additional Information</h2>\r\n            <ul>\r\n                <li>All your personal information is required at the moment of your booking.</li>\r\n                <li>Confirmation of the excursion will be received at time of booking.</li>\r\n                <li>All tours are operated in English unless otherwise stated.</li>\r\n            </ul>\r\n\r\n            <h4>Travel voucher:</h4>\r\n            <ul>\r\n            <li>You will receive an electronic voucher via e mail once you booking is confirmed.</li>\r\n            <li>For each confirmed booking you are required to print your electronic voucher for presentation at the start of the excursion.</li>\r\n            <li>The electronic voucher acts a confirmation for all services you request.</li>\r\n            </ul>\r\n\r\n            <h4>Local operator information:</h4>\r\n            <ul>\r\n            <li>We will send you complete operator information, including phone numbers at your destination.</li>\r\n            <li>Our managers select only the most experienced and reliable operators in each destination, removing the guesswork for you, and ensuring your peace of mind.</li>\r\n            </ul>\r\n\r\n    </div>\r\n </div>\r\n\r\n</div>\r\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -4938,7 +5170,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tour
 
 /***/ }),
 
-/***/ 27:
+/***/ 37:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -5137,12 +5369,25 @@ output += "\r\n\t\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t\t";
 }
 }
 frame = frame.pop();
-output += "\r\n\t\t\t\t\t\t\t\t</ul>\r\n\r\n\t\t\t\t\t\t\t\t<button class=\"bttn-unite bttn-md bttn-warning\">Reservar Tour</button>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t</div>\r\n\t\t";
+output += "\r\n\t\t\t\t\t\t\t\t</ul>\r\n\r\n\t\t\t\t\t\t\t\t<button class=\"bttn-unite bttn-md bttn-warning\" data-toggle=\"modal\" data-target=\"#";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
+output += "-modal\">Reservar Tour</button>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t</div>\r\n    \t<!-- Modal -->\r\n    <div id=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
+output += "-modal\" class=\"modal\" role=\"dialog\">\r\n        <div class=\"modal-dialog\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\r\n                    <h3 class=\"modal-title\">";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"form_title") || runtime.memberLookup((t_8),"title"), env.opts.autoescape);
+output += "</h3>\r\n                    <div class=\"price-holder\"><span class=\"form_price\">";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"ammount"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"currency"), env.opts.autoescape);
+output += "</span><span> por persona</span></div>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n\t\t\t\t\t<input type=\"hidden\" id=\"rsv-tour-info\" value=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"title"), env.opts.autoescape);
+output += "\" tour-id=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
+output += "\">\r\n\t\t\t\t\t<input type=\"hidden\" id=\"rsv-lang\" value=\"es\">\r\n                    <div class=\"reservation-subtitle\">Reservación de tour</div>\r\n                    <div class=\"form-inputs\"><input type=\"text\" class=\"rsv-input\" id=\"rsv-name\" placeholder=\"Nombre*\"></div>\r\n                    <div class=\"input-group\">\r\n                        <span class=\"input-group-addon\">Fecha*</span>\r\n                        <input type=\"date\" id=\"rsv-date\" class=\"form-control\" class=\"rsv-input\" name=\"date\">\r\n                    </div>\r\n                    <div class=\"form-inputs\"><input id=\"rsv-people\" placeholder=\"N° personas*\" class=\"rsv-input\" type=\"number\"></div>\r\n                    <div class=\"form-inputs\"><input id=\"rsv-email\" placeholder=\"Correo Electrónico*\" class=\"rsv-input\" type=\"email\"></div>\r\n                    <div class=\"form-inputs\"><textarea id=\"rsv-notes\" placeholder=\"Notas de su reservación\"></textarea></div>\r\n\t\t\t\t\t<p id=\"rsv-warn\" class=\"rsv-warn rsv-warn-hidden\">*Solicitud inválida, debe llenar todos los campos obligatorios*</p>\r\n\t\t\t\t\t<p id=\"rsv-warn-email\" class=\"rsv-warn rsv-warn-hidden\">*Dirección de correo electrónico inválida*</p>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button type=\"button\" id=\"request-reservation\" class=\"btn btn-default request-btn\"><i class=\"fa fa-envelope-o\" aria-hidden=\"true\"></i>  Solicitar Reservación</button>\r\n                    <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Cerrar</button>\r\n                </div>\r\n          </div>\r\n        </div>\r\n    </div>\r\n\t\t";
 ;
 }
 }
 frame = frame.pop();
-output += "\r\n\t\t<hr/>\r\n <div class=\"row additional-info\">\r\n\t\t<div class=\"col-md-12\">\r\n\t\t\t<h2 id=\"additional-info\">Información Adicional</h2>\r\n\t\t\t<ul>\r\n\t\t\t\t\t<li>Se requiere toda su información personal en el momento de su reserva.</li>\r\n\t\t\t\t\t<li>La confirmación de la excursión será recibido en el momento de la reserva.</li>\r\n\t\t\t\t\t<li>Todos los tours son operados en español a menos que se indique lo contrario.</li>\r\n\t\t\t</ul>\r\n\r\n\t\t\t<h4>Voucher de Viaje:</h4>\r\n\t\t\t<ul>\r\n\t\t\t\t<li>Usted recibirá un voucher electrónico a través de correo electrónico una vez que se confirma la reserva.</li>\r\n\t\t\t\t<li>Para cada reserva confirmada se le requiere para imprimir el voucher electrónico para la presentación al inicio de la excursión.</li>\r\n\t\t\t\t<li>El voucher electrónico actúa como una confirmación de todos los servicios que usted solicitó.</li>\r\n\t\t\t</ul>\r\n\r\n\t\t\t<h4>Información del operador local:</h4>\r\n\t\t\t<ul>\r\n\t\t\t\t<li>Le enviaremos la información completa del operador, incluyendo los números de teléfono en su destino.</li>\r\n\t\t\t\t<li>Nuestros gestores solo seleccionan a los operadores más fiables y expertos en cada destino, para ahorrarle trabajo a usted, y que garanticen su tranquilidad.</li>\r\n\t\t\t</ul>\r\n\r\n\t\t</div>\r\n </div>\r\n\r\n</div>\r\n";
+output += "\r\n    <!-- Modal -->\r\n    <div id=\"sent-reservation\" class=\"modal\" role=\"dialog\">\r\n        <div class=\"modal-dialog\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\r\n                    <h3 class=\"modal-title\"><i class=\"fa fa-check\" aria-hidden=\"true\"></i> Solicitud Enviada</h3>\r\n                    <div class=\"price-holder\"><span class=\"form_price\">Pronto lo contactaremos</span></div>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button type=\"button\" class=\"btn btn-default request-btn\" data-dismiss=\"modal\">Ok</button>\r\n                </div>\r\n          </div>\r\n        </div>\r\n    </div>\r\n\t\t<hr/>\r\n <div class=\"row additional-info\">\r\n\t\t<div class=\"col-md-12\">\r\n\t\t\t<h2 id=\"additional-info\">Información Adicional</h2>\r\n\t\t\t<ul>\r\n\t\t\t\t\t<li>Se requiere toda su información personal en el momento de su reserva.</li>\r\n\t\t\t\t\t<li>La confirmación de la excursión será recibido en el momento de la reserva.</li>\r\n\t\t\t\t\t<li>Todos los tours son operados en español a menos que se indique lo contrario.</li>\r\n\t\t\t</ul>\r\n\r\n\t\t\t<h4>Voucher de Viaje:</h4>\r\n\t\t\t<ul>\r\n\t\t\t\t<li>Usted recibirá un voucher electrónico a través de correo electrónico una vez que se confirma la reserva.</li>\r\n\t\t\t\t<li>Para cada reserva confirmada se le requiere para imprimir el voucher electrónico para la presentación al inicio de la excursión.</li>\r\n\t\t\t\t<li>El voucher electrónico actúa como una confirmación de todos los servicios que usted solicitó.</li>\r\n\t\t\t</ul>\r\n\r\n\t\t\t<h4>Información del operador local:</h4>\r\n\t\t\t<ul>\r\n\t\t\t\t<li>Le enviaremos la información completa del operador, incluyendo los números de teléfono en su destino.</li>\r\n\t\t\t\t<li>Nuestros gestores solo seleccionan a los operadores más fiables y expertos en cada destino, para ahorrarle trabajo a usted, y que garanticen su tranquilidad.</li>\r\n\t\t\t</ul>\r\n\r\n\t\t</div>\r\n </div>\r\n\r\n</div>\r\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -5166,7 +5411,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tour
 
 /***/ }),
 
-/***/ 6:
+/***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -5219,228 +5464,9 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(11);
+__webpack_require__(15);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
-
-
-/***/ }),
-
-/***/ 7:
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
-/***/ 9:
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
 
 
 /***/ })
