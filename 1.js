@@ -3290,7 +3290,8 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<div class=\"col-md-10 col-md-offset-1\" id=\"messageboard\">\r\n    <div id=\"message-list\">\r\n    </div>\r\n</div>";
+output += "<div class=\"col-md-10 col-md-offset-1 col-sm-12 messageboard-header\">\r\n    <div class=\"row\">\r\n        <span>\r\n            <div class=\"input-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\r\n                <div class=\"input-group-btn\">\r\n                    <button class=\"btn\" type=\"submit\">\r\n                        <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\r\n                    </button>\r\n                </div>\r\n            </div>\r\n        </span>\r\n        ";
+output += "\r\n    </div>\r\n</div>\r\n<div class=\"col-md-10 col-md-offset-1 col-sm-12\" id=\"messageboard\">\r\n    <div id=\"message-list\">\r\n    </div>\r\n</div>";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
