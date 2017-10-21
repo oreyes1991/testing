@@ -145,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 186);
+/******/ 	return __webpack_require__(__webpack_require__.s = 188);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3411,7 +3411,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8).setImmediate, __webpack_require__(8).clearImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7).setImmediate, __webpack_require__(7).clearImmediate))
 
 /***/ }),
 
@@ -3833,27 +3833,27 @@ process.umask = function() { return 0; };
 
 var map = {
 	"./article.1.en.js": [
-		206,
+		209,
 		33
 	],
 	"./article.1.es.js": [
-		207,
+		210,
 		32
 	],
 	"./article.2.en.js": [
-		208,
+		211,
 		31
 	],
 	"./article.2.es.js": [
-		209,
+		212,
 		30
 	],
 	"./article.3.en.js": [
-		210,
+		213,
 		29
 	],
 	"./article.3.es.js": [
-		211,
+		214,
 		28
 	]
 };
@@ -4125,7 +4125,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 
 /***/ }),
 
-/***/ 186:
+/***/ 188:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5450,7 +5450,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tour
 
 /***/ }),
 
-/***/ 8:
+/***/ 7:
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;

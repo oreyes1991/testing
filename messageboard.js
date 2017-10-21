@@ -145,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 194);
+/******/ 	return __webpack_require__(__webpack_require__.s = 197);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1467,6 +1467,65 @@ var PRIORITY_INDEX = exports.PRIORITY_INDEX = new PriorityIndex();
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var apply = Function.prototype.apply;
+
+// DOM APIs, for completeness
+
+exports.setTimeout = function() {
+  return new Timeout(apply.call(setTimeout, window, arguments), clearTimeout);
+};
+exports.setInterval = function() {
+  return new Timeout(apply.call(setInterval, window, arguments), clearInterval);
+};
+exports.clearTimeout =
+exports.clearInterval = function(timeout) {
+  if (timeout) {
+    timeout.close();
+  }
+};
+
+function Timeout(id, clearFn) {
+  this._id = id;
+  this._clearFn = clearFn;
+}
+Timeout.prototype.unref = Timeout.prototype.ref = function() {};
+Timeout.prototype.close = function() {
+  this._clearFn.call(window, this._id);
+};
+
+// Does not start the time, just sets up the members needed.
+exports.enroll = function(item, msecs) {
+  clearTimeout(item._idleTimeoutId);
+  item._idleTimeout = msecs;
+};
+
+exports.unenroll = function(item) {
+  clearTimeout(item._idleTimeoutId);
+  item._idleTimeout = -1;
+};
+
+exports._unrefActive = exports.active = function(item) {
+  clearTimeout(item._idleTimeoutId);
+
+  var msecs = item._idleTimeout;
+  if (msecs >= 0) {
+    item._idleTimeoutId = setTimeout(function onTimeout() {
+      if (item._onTimeout)
+        item._onTimeout();
+    }, msecs);
+  }
+};
+
+// setimmediate attaches itself to the global object
+__webpack_require__(15);
+exports.setImmediate = setImmediate;
+exports.clearImmediate = clearImmediate;
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 /*! @license Firebase v4.5.0
 Build: rev-f49c8b5
@@ -1969,65 +2028,6 @@ _LeafNode.LeafNode.__childrenNodeConstructor = ChildrenNode;
 (0, _snap.setMaxNode)(MAX_NODE);
 (0, _PriorityIndex.setMaxNode)(MAX_NODE);
 //# sourceMappingURL=ChildrenNode.js.map
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var apply = Function.prototype.apply;
-
-// DOM APIs, for completeness
-
-exports.setTimeout = function() {
-  return new Timeout(apply.call(setTimeout, window, arguments), clearTimeout);
-};
-exports.setInterval = function() {
-  return new Timeout(apply.call(setInterval, window, arguments), clearInterval);
-};
-exports.clearTimeout =
-exports.clearInterval = function(timeout) {
-  if (timeout) {
-    timeout.close();
-  }
-};
-
-function Timeout(id, clearFn) {
-  this._id = id;
-  this._clearFn = clearFn;
-}
-Timeout.prototype.unref = Timeout.prototype.ref = function() {};
-Timeout.prototype.close = function() {
-  this._clearFn.call(window, this._id);
-};
-
-// Does not start the time, just sets up the members needed.
-exports.enroll = function(item, msecs) {
-  clearTimeout(item._idleTimeoutId);
-  item._idleTimeout = msecs;
-};
-
-exports.unenroll = function(item) {
-  clearTimeout(item._idleTimeoutId);
-  item._idleTimeout = -1;
-};
-
-exports._unrefActive = exports.active = function(item) {
-  clearTimeout(item._idleTimeoutId);
-
-  var msecs = item._idleTimeout;
-  if (msecs >= 0) {
-    item._idleTimeoutId = setTimeout(function onTimeout() {
-      if (item._onTimeout)
-        item._onTimeout();
-    }, msecs);
-  }
-};
-
-// setimmediate attaches itself to the global object
-__webpack_require__(15);
-exports.setImmediate = setImmediate;
-exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
@@ -3955,7 +3955,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 exports.nodeFromJSON = nodeFromJSON;
 
-var _ChildrenNode = __webpack_require__(7);
+var _ChildrenNode = __webpack_require__(8);
 
 var _LeafNode = __webpack_require__(39);
 
@@ -7107,7 +7107,7 @@ var _assert = __webpack_require__(2);
 
 var _Change = __webpack_require__(23);
 
-var _ChildrenNode = __webpack_require__(7);
+var _ChildrenNode = __webpack_require__(8);
 
 var _PriorityIndex = __webpack_require__(6);
 
@@ -10336,7 +10336,7 @@ exports.SyncPoint = undefined;
 
 var _CacheNode = __webpack_require__(42);
 
-var _ChildrenNode = __webpack_require__(7);
+var _ChildrenNode = __webpack_require__(8);
 
 var _assert = __webpack_require__(2);
 
@@ -11034,7 +11034,7 @@ var _util = __webpack_require__(3);
 
 var _Index = __webpack_require__(40);
 
-var _ChildrenNode = __webpack_require__(7);
+var _ChildrenNode = __webpack_require__(8);
 
 var _Node = __webpack_require__(9);
 
@@ -11873,7 +11873,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ViewCache = undefined;
 
-var _ChildrenNode = __webpack_require__(7);
+var _ChildrenNode = __webpack_require__(8);
 
 var _CacheNode = __webpack_require__(42);
 
@@ -11988,7 +11988,7 @@ var _PriorityIndex = __webpack_require__(6);
 
 var _Node = __webpack_require__(9);
 
-var _ChildrenNode = __webpack_require__(7);
+var _ChildrenNode = __webpack_require__(8);
 
 /**
  * Filters nodes by range and uses an IndexFilter to track any changes after filtering the node
@@ -16805,7 +16805,7 @@ var _obj = __webpack_require__(4);
 
 var _nodeFromJSON = __webpack_require__(27);
 
-var _ChildrenNode = __webpack_require__(7);
+var _ChildrenNode = __webpack_require__(8);
 
 var _Repo = __webpack_require__(38);
 
@@ -17343,7 +17343,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SnapshotHolder = undefined;
 
-var _ChildrenNode = __webpack_require__(7);
+var _ChildrenNode = __webpack_require__(8);
 
 /**
  * Mutable object which basically just stores a reference to the "latest" immutable snapshot.
@@ -17402,7 +17402,7 @@ var _util = __webpack_require__(3);
 
 var _AckUserWrite = __webpack_require__(114);
 
-var _ChildrenNode = __webpack_require__(7);
+var _ChildrenNode = __webpack_require__(8);
 
 var _obj = __webpack_require__(4);
 
@@ -18121,7 +18121,7 @@ var _CompoundWrite = __webpack_require__(108);
 
 var _PriorityIndex = __webpack_require__(6);
 
-var _ChildrenNode = __webpack_require__(7);
+var _ChildrenNode = __webpack_require__(8);
 
 /**
  * WriteTree tracks all pending user-initiated writes and has methods to calculate the result of merging them
@@ -21119,7 +21119,7 @@ var _IndexedFilter = __webpack_require__(54);
 
 var _ViewProcessor = __webpack_require__(133);
 
-var _ChildrenNode = __webpack_require__(7);
+var _ChildrenNode = __webpack_require__(8);
 
 var _CacheNode = __webpack_require__(42);
 
@@ -21349,7 +21349,7 @@ var _ChildChangeAccumulator = __webpack_require__(125);
 
 var _Change = __webpack_require__(23);
 
-var _ChildrenNode = __webpack_require__(7);
+var _ChildrenNode = __webpack_require__(8);
 
 var _KeyIndex = __webpack_require__(26);
 
@@ -21879,7 +21879,7 @@ exports.LimitedFilter = undefined;
 
 var _RangedFilter = __webpack_require__(83);
 
-var _ChildrenNode = __webpack_require__(7);
+var _ChildrenNode = __webpack_require__(8);
 
 var _Node = __webpack_require__(9);
 
@@ -23792,7 +23792,7 @@ module.exports = exports['default'];
 
 })(this);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7).setImmediate))
 
 /***/ }),
 /* 144 */
@@ -26814,11 +26814,11 @@ var querystringDecode = exports.querystringDecode = function querystringDecode(q
 
 var map = {
 	"./messages.en.njk": [
-		238,
+		241,
 		1
 	],
 	"./messages.es.njk": [
-		239,
+		242,
 		0
 	]
 };
@@ -26856,7 +26856,10 @@ webpackAsyncContext.id = 174;
 /* 191 */,
 /* 192 */,
 /* 193 */,
-/* 194 */
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

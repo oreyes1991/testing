@@ -3261,11 +3261,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8).setImmediate, __webpack_require__(8).clearImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7).setImmediate, __webpack_require__(7).clearImmediate))
 
 /***/ }),
 
-/***/ 239:
+/***/ 242:
 /***/ (function(module, exports, __webpack_require__) {
 
 var nunjucks = __webpack_require__(1);
@@ -3290,7 +3290,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<div class=\"col-md-10 col-md-offset-1 col-sm-12 messageboard-header\">\r\n    <div class=\"row\">\r\n        <span>\r\n            <div class=\"input-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Buscar\">\r\n                <div class=\"input-group-btn\">\r\n                    <button class=\"btn\" type=\"submit\">\r\n                        <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\r\n                    </button>\r\n                </div>\r\n            </div>\r\n        </span>\r\n        ";
+output += "<div class=\"col-md-10 col-md-offset-1 col-sm-12 messageboard-header\">\r\n    <div class=\"row\">\r\n        <span>\r\n            <div class=\"input-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Buscar\">\r\n                <div class=\"input-group-btn\">\r\n                    <button class=\"btn\" type=\"submit\">\r\n                        <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\r\n                    </button>\r\n                </div>\r\n            </div>\r\n        </span>\r\n        <span><button class=\"btn btn-cog\" onclick=\"changeUriPath('messageboard-settings.html')\"><i class=\"fa fa-cog\" aria-hidden=\"true\"></i></button></span>\r\n        ";
 output += "\r\n    </div>\r\n</div>\r\n<div class=\"col-md-10 col-md-offset-1 col-sm-12\" id=\"messageboard\">\r\n    <div id=\"message-list\">\r\n    </div>\r\n</div>";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
