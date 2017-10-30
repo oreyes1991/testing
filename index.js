@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		43: 0
+/******/ 		45: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -150,7 +150,850 @@
 /************************************************************************/
 /******/ ({
 
-/***/ 0:
+/***/ 12:
+/***/ (function(module, exports, __webpack_require__) {
+
+var apply = Function.prototype.apply;
+
+// DOM APIs, for completeness
+
+exports.setTimeout = function() {
+  return new Timeout(apply.call(setTimeout, window, arguments), clearTimeout);
+};
+exports.setInterval = function() {
+  return new Timeout(apply.call(setInterval, window, arguments), clearInterval);
+};
+exports.clearTimeout =
+exports.clearInterval = function(timeout) {
+  if (timeout) {
+    timeout.close();
+  }
+};
+
+function Timeout(id, clearFn) {
+  this._id = id;
+  this._clearFn = clearFn;
+}
+Timeout.prototype.unref = Timeout.prototype.ref = function() {};
+Timeout.prototype.close = function() {
+  this._clearFn.call(window, this._id);
+};
+
+// Does not start the time, just sets up the members needed.
+exports.enroll = function(item, msecs) {
+  clearTimeout(item._idleTimeoutId);
+  item._idleTimeout = msecs;
+};
+
+exports.unenroll = function(item) {
+  clearTimeout(item._idleTimeoutId);
+  item._idleTimeout = -1;
+};
+
+exports._unrefActive = exports.active = function(item) {
+  clearTimeout(item._idleTimeoutId);
+
+  var msecs = item._idleTimeout;
+  if (msecs >= 0) {
+    item._idleTimeoutId = setTimeout(function onTimeout() {
+      if (item._onTimeout)
+        item._onTimeout();
+    }, msecs);
+  }
+};
+
+// setimmediate attaches itself to the global object
+__webpack_require__(26);
+exports.setImmediate = setImmediate;
+exports.clearImmediate = clearImmediate;
+
+
+/***/ }),
+
+/***/ 169:
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./last-news.en.js": [
+		215,
+		27
+	],
+	"./last-news.es.js": [
+		216,
+		26
+	]
+};
+function webpackAsyncContext(req) {
+	var ids = map[req];
+	if(!ids)
+		return Promise.reject(new Error("Cannot find module '" + req + "'."));
+	return __webpack_require__.e(ids[1]).then(function() {
+		return __webpack_require__(ids[0]);
+	});
+};
+webpackAsyncContext.keys = function webpackAsyncContextKeys() {
+	return Object.keys(map);
+};
+module.exports = webpackAsyncContext;
+webpackAsyncContext.id = 169;
+
+/***/ }),
+
+/***/ 183:
+/***/ (function(module, exports, __webpack_require__) {
+
+var nunjucks = __webpack_require__(4);
+var env;
+if (!nunjucks.currentEnv){
+	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
+} else {
+	env = nunjucks.currentEnv;
+}
+var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
+
+
+
+
+var shim = __webpack_require__(3);
+
+
+(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/last-news.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var parentTemplate = null;
+frame = frame.push();
+var t_3 = runtime.contextOrFrameLookup(context, frame, "items");
+if(t_3) {var t_2 = t_3.length;
+for(var t_1=0; t_1 < t_3.length; t_1++) {
+var t_4 = t_3[t_1];
+frame.set("item", t_4);
+frame.set("loop.index", t_1 + 1);
+frame.set("loop.index0", t_1);
+frame.set("loop.revindex", t_2 - t_1);
+frame.set("loop.revindex0", t_2 - t_1 - 1);
+frame.set("loop.first", t_1 === 0);
+frame.set("loop.last", t_1 === t_2 - 1);
+frame.set("loop.length", t_2);
+output += "\r\n<div class=\"row container-article\">\r\n    <div class=\"col-sm-4 col-md-4\">\r\n        <img class=\"article-image\" style=\"background-image:url(";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"url_image"), env.opts.autoescape);
+output += ");\" alt=\"\" width=\"100%\">\r\n    </div>\r\n    <div class=\"col-sm-8 col-md-8\">\r\n        <div class=\"row article\">\r\n            <div class=\"col-lg-12\">\r\n                <div class=\"article-title\">";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"title"), env.opts.autoescape);
+output += "</div>\r\n                <div class=\"article-author\">";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"date"), env.opts.autoescape);
+output += " - ";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"author"), env.opts.autoescape);
+output += "</div>\r\n                <div class=\"article-subtitle\">\r\n                    ";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"subtitle"), env.opts.autoescape);
+output += "\r\n                </div>\r\n                <p class=\"text-justify\">\r\n                    ";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"description"), env.opts.autoescape);
+output += "\r\n                </p>\r\n                 <blockquote class=\"article-blockquote\">\r\n                    ";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"blockquote"), env.opts.autoescape);
+output += "\r\n                </blockquote>\r\n<div class=\"share dropdown\">\r\n    <button class=\"btn read-more dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">\r\n       ";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "share"), env.opts.autoescape);
+output += " <i class=\"fa fa-share\" aria-hidden=\"true\"></i>\r\n    </button>\r\n    <ul class=\"dropdown-menu dropdown-menu-right\">\r\n        <div id=\"share-buttons\">\r\n            <a href=\"http://www.facebook.com/sharer.php?u=";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "uri"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((t_4),"link"), env.opts.autoescape);
+output += "\" target=\"_blank\">\r\n                <img src=\"images/facebook.png\" alt=\"Facebook\" />\r\n            </a>\r\n            <a href=\"https://plus.google.com/share?url=";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "uri"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((t_4),"link"), env.opts.autoescape);
+output += "\" target=\"_blank\">\r\n                <img src=\"images/google.png\" alt=\"Google\" />\r\n            </a>\r\n            <a href=\"http://www.linkedin.com/shareArticle?mini=true&amp;url=";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "uri"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((t_4),"link"), env.opts.autoescape);
+output += "\" target=\"_blank\">\r\n                <img src=\"images/linkedin.png\" alt=\"LinkedIn\" />\r\n            </a>\r\n            <a href=\"http://reddit.com/submit?url=";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "uri"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((t_4),"link"), env.opts.autoescape);
+output += "&amp;title=South Americans Secrets\" target=\"_blank\">\r\n                <img src=\"images/reddit.png\" alt=\"Reddit\" />\r\n            </a>\r\n            <a href=\"https://twitter.com/share?url=";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "uri"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((t_4),"link"), env.opts.autoescape);
+output += "&amp;text=South%20Americans%20Secrets&amp;hashtags=southamericanssecrets\" target=\"_blank\">\r\n                <img src=\"images/twitter.png\" alt=\"Twitter\" />\r\n            </a>\r\n        </div> \r\n    </ul>\r\n</div>\r\n                ";
+if(runtime.memberLookup((t_4),"link")) {
+output += "\r\n                    <button class=\"read-more\" onclick=\"changeUriPath('";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"link"), env.opts.autoescape);
+output += "')\">";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "link"), env.opts.autoescape);
+output += "</button>\r\n                ";
+;
+}
+output += "\r\n\t\t\t\t";
+if(runtime.memberLookup((t_4),"tour")) {
+output += "\r\n\t\t\t\t\t<button class=\"read-more\" onclick=\"changeUriPath('";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"tour"), env.opts.autoescape);
+output += "')\">";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "sTour"), env.opts.autoescape);
+output += "</button>\r\n\t\t\t\t";
+;
+}
+output += "\r\n            </div>\r\n      \r\n        </div>\r\n\r\n    </div>\r\n</div>\r\n";
+;
+}
+}
+frame = frame.pop();
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
+
+
+module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last-news.njk"] , dependencies)
+
+/***/ }),
+
+/***/ 19:
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 194:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _lastNews = __webpack_require__(183);
+
+var _lastNews2 = _interopRequireDefault(_lastNews);
+
+var _utils = __webpack_require__(27);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var language = (0, _utils.getPageLanguage)('lng') || 'en';
+
+var template = (0, _utils.getLastNewsBannerByLanguage)(language);
+
+document.title = "South American's Secrets";
+
+__webpack_require__(169)("./last-news." + language + '.js').then(function (m) {
+  console.log(m);
+  var LastNews = m.default;
+  var rMore = language == 'en' ? 'Continue Reading...' : 'Leer Artículo...';
+  var sTour = language == 'en' ? 'See tour' : 'Ver tour';
+  var share = language == 'en' ? 'Share' : 'Compartir';
+  var uri = window.location;
+  if (uri.href.indexOf("http://localhost:9000") > -1) {
+    uri = "https://southamericanssecrets.github.io/web/";
+  }
+  var html = _lastNews2.default.render({ items: LastNews, link: rMore, sTour: sTour, share: share, uri: uri });
+  document.querySelector('#last-news').innerHTML = html;
+
+  var html2 = template.render({});
+  document.querySelector('#last-news-banners').innerHTML = html2;
+
+  document.getElementsByClassName("read-more");
+});
+
+/***/ }),
+
+/***/ 23:
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+
+/***/ }),
+
+/***/ 26:
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
+    "use strict";
+
+    if (global.setImmediate) {
+        return;
+    }
+
+    var nextHandle = 1; // Spec says greater than zero
+    var tasksByHandle = {};
+    var currentlyRunningATask = false;
+    var doc = global.document;
+    var registerImmediate;
+
+    function setImmediate(callback) {
+      // Callback can either be a function or a string
+      if (typeof callback !== "function") {
+        callback = new Function("" + callback);
+      }
+      // Copy function arguments
+      var args = new Array(arguments.length - 1);
+      for (var i = 0; i < args.length; i++) {
+          args[i] = arguments[i + 1];
+      }
+      // Store and register the task
+      var task = { callback: callback, args: args };
+      tasksByHandle[nextHandle] = task;
+      registerImmediate(nextHandle);
+      return nextHandle++;
+    }
+
+    function clearImmediate(handle) {
+        delete tasksByHandle[handle];
+    }
+
+    function run(task) {
+        var callback = task.callback;
+        var args = task.args;
+        switch (args.length) {
+        case 0:
+            callback();
+            break;
+        case 1:
+            callback(args[0]);
+            break;
+        case 2:
+            callback(args[0], args[1]);
+            break;
+        case 3:
+            callback(args[0], args[1], args[2]);
+            break;
+        default:
+            callback.apply(undefined, args);
+            break;
+        }
+    }
+
+    function runIfPresent(handle) {
+        // From the spec: "Wait until any invocations of this algorithm started before this one have completed."
+        // So if we're currently running a task, we'll need to delay this invocation.
+        if (currentlyRunningATask) {
+            // Delay by doing a setTimeout. setImmediate was tried instead, but in Firefox 7 it generated a
+            // "too much recursion" error.
+            setTimeout(runIfPresent, 0, handle);
+        } else {
+            var task = tasksByHandle[handle];
+            if (task) {
+                currentlyRunningATask = true;
+                try {
+                    run(task);
+                } finally {
+                    clearImmediate(handle);
+                    currentlyRunningATask = false;
+                }
+            }
+        }
+    }
+
+    function installNextTickImplementation() {
+        registerImmediate = function(handle) {
+            process.nextTick(function () { runIfPresent(handle); });
+        };
+    }
+
+    function canUsePostMessage() {
+        // The test against `importScripts` prevents this implementation from being installed inside a web worker,
+        // where `global.postMessage` means something completely different and can't be used for this purpose.
+        if (global.postMessage && !global.importScripts) {
+            var postMessageIsAsynchronous = true;
+            var oldOnMessage = global.onmessage;
+            global.onmessage = function() {
+                postMessageIsAsynchronous = false;
+            };
+            global.postMessage("", "*");
+            global.onmessage = oldOnMessage;
+            return postMessageIsAsynchronous;
+        }
+    }
+
+    function installPostMessageImplementation() {
+        // Installs an event handler on `global` for the `message` event: see
+        // * https://developer.mozilla.org/en/DOM/window.postMessage
+        // * http://www.whatwg.org/specs/web-apps/current-work/multipage/comms.html#crossDocumentMessages
+
+        var messagePrefix = "setImmediate$" + Math.random() + "$";
+        var onGlobalMessage = function(event) {
+            if (event.source === global &&
+                typeof event.data === "string" &&
+                event.data.indexOf(messagePrefix) === 0) {
+                runIfPresent(+event.data.slice(messagePrefix.length));
+            }
+        };
+
+        if (global.addEventListener) {
+            global.addEventListener("message", onGlobalMessage, false);
+        } else {
+            global.attachEvent("onmessage", onGlobalMessage);
+        }
+
+        registerImmediate = function(handle) {
+            global.postMessage(messagePrefix + handle, "*");
+        };
+    }
+
+    function installMessageChannelImplementation() {
+        var channel = new MessageChannel();
+        channel.port1.onmessage = function(event) {
+            var handle = event.data;
+            runIfPresent(handle);
+        };
+
+        registerImmediate = function(handle) {
+            channel.port2.postMessage(handle);
+        };
+    }
+
+    function installReadyStateChangeImplementation() {
+        var html = doc.documentElement;
+        registerImmediate = function(handle) {
+            // Create a <script> element; its readystatechange event will be fired asynchronously once it is inserted
+            // into the document. Do so, thus queuing up the task. Remember to clean up once it's been called.
+            var script = doc.createElement("script");
+            script.onreadystatechange = function () {
+                runIfPresent(handle);
+                script.onreadystatechange = null;
+                html.removeChild(script);
+                script = null;
+            };
+            html.appendChild(script);
+        };
+    }
+
+    function installSetTimeoutImplementation() {
+        registerImmediate = function(handle) {
+            setTimeout(runIfPresent, 0, handle);
+        };
+    }
+
+    // If supported, we should attach to the prototype of global, since that is where setTimeout et al. live.
+    var attachTo = Object.getPrototypeOf && Object.getPrototypeOf(global);
+    attachTo = attachTo && attachTo.setTimeout ? attachTo : global;
+
+    // Don't get fooled by e.g. browserify environments.
+    if ({}.toString.call(global.process) === "[object process]") {
+        // For Node.js before 0.9
+        installNextTickImplementation();
+
+    } else if (canUsePostMessage()) {
+        // For non-IE10 modern browsers
+        installPostMessageImplementation();
+
+    } else if (global.MessageChannel) {
+        // For web workers, where supported
+        installMessageChannelImplementation();
+
+    } else if (doc && "onreadystatechange" in doc.createElement("script")) {
+        // For IE 6–8
+        installReadyStateChangeImplementation();
+
+    } else {
+        // For older browsers
+        installSetTimeoutImplementation();
+    }
+
+    attachTo.setImmediate = setImmediate;
+    attachTo.clearImmediate = clearImmediate;
+}(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19), __webpack_require__(23)))
+
+/***/ }),
+
+/***/ 27:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.getPageLanguage = getPageLanguage;
+exports.getTourPageByLanguage = getTourPageByLanguage;
+exports.getContactPageByLanguage = getContactPageByLanguage;
+exports.getPackagePageByLanguafge = getPackagePageByLanguafge;
+exports.getLastNewsBannerByLanguage = getLastNewsBannerByLanguage;
+exports.getArticleSidebar = getArticleSidebar;
+exports.requestResv = requestResv;
+exports.singDB = singDB;
+exports.dostuffDb = dostuffDb;
+
+var _toursPageEn = __webpack_require__(59);
+
+var _toursPageEn2 = _interopRequireDefault(_toursPageEn);
+
+var _toursPageEs = __webpack_require__(60);
+
+var _toursPageEs2 = _interopRequireDefault(_toursPageEs);
+
+var _contactcontentEn = __webpack_require__(53);
+
+var _contactcontentEn2 = _interopRequireDefault(_contactcontentEn);
+
+var _contactcontentEs = __webpack_require__(54);
+
+var _contactcontentEs2 = _interopRequireDefault(_contactcontentEs);
+
+var _packagePageEs = __webpack_require__(58);
+
+var _packagePageEs2 = _interopRequireDefault(_packagePageEs);
+
+var _packagePageEn = __webpack_require__(57);
+
+var _packagePageEn2 = _interopRequireDefault(_packagePageEn);
+
+var _lastNewsBannerEs = __webpack_require__(56);
+
+var _lastNewsBannerEs2 = _interopRequireDefault(_lastNewsBannerEs);
+
+var _lastNewsBannerEn = __webpack_require__(55);
+
+var _lastNewsBannerEn2 = _interopRequireDefault(_lastNewsBannerEn);
+
+var _articleSidebarEn = __webpack_require__(51);
+
+var _articleSidebarEn2 = _interopRequireDefault(_articleSidebarEn);
+
+var _articleSidebarEs = __webpack_require__(52);
+
+var _articleSidebarEs2 = _interopRequireDefault(_articleSidebarEs);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function getPageLanguage(name, url) {
+	return localStorage['lng'];
+}
+
+function getTourPageByLanguage(lng) {
+	switch (lng) {
+		case 'es':
+			return _toursPageEs2.default;
+			break;
+		case 'en':
+			return _toursPageEn2.default;
+			break;
+		default:
+			return _toursPageEn2.default;
+	}
+}
+
+function getContactPageByLanguage(lng) {
+	switch (lng) {
+		case 'es':
+			return _contactcontentEs2.default;
+			break;
+		case 'en':
+			return _contactcontentEn2.default;
+			break;
+		default:
+			return _contactcontentEn2.default;
+	}
+}
+
+function getPackagePageByLanguafge(lng) {
+	switch (lng) {
+		case 'es':
+			return _packagePageEs2.default;
+			break;
+		case 'en':
+			return _packagePageEn2.default;
+			break;
+		default:
+			return _packagePageEn2.default;
+	}
+}
+
+function getLastNewsBannerByLanguage(lng) {
+	switch (lng) {
+		case 'es':
+			return _lastNewsBannerEs2.default;
+			break;
+		case 'en':
+			return _lastNewsBannerEn2.default;
+			break;
+		default:
+			return _lastNewsBannerEn2.default;
+	}
+}
+
+function getArticleSidebar(lng) {
+	switch (lng) {
+		case 'es':
+			return _articleSidebarEs2.default;
+			break;
+		case 'en':
+			return _articleSidebarEn2.default;
+			break;
+		default:
+			return _articleSidebarEn2.default;
+	}
+}
+
+//Request reservation
+function requestResv(id, that, fbase) {
+	var tour = document.getElementById(id);
+	var name = tour.getElementsByClassName("rsv-name")[0].value,
+	    email = tour.getElementsByClassName("rsv-email")[0].value,
+	    date = tour.getElementsByClassName("rsv-date")[0].value,
+	    nPeople = tour.getElementsByClassName("rsv-people")[0].value,
+	    notes = tour.getElementsByClassName("rsv-notes")[0].value,
+	    tTitle = tour.getElementsByClassName("rsv-tour-info")[0].value,
+	    lang = tour.getElementsByClassName("rsv-lang")[0].value,
+	    tId = tour.getElementsByClassName("rsv-tour-info")[0].getAttribute('tour-id'),
+	    payment = tour.getElementsByClassName("rsv-payment")[0].value;
+
+	that.disabled = true;
+
+	//Crucial values
+	if (tId != "" && name != "" && email != "" && date != "" && nPeople != "") {
+		//Second validation
+		if (validateEmail(email)) {
+			insertReservation({
+				tTitle: tTitle,
+				tId: tId,
+				name: name,
+				email: email,
+				date: date,
+				nPeople: nPeople,
+				notes: notes,
+				lang: lang,
+				payment_type: payment
+			}, fbase, that);
+		} else {
+			tour.getElementsByClassName("rsv-warn-email")[0].setAttribute("class", "rsv-warn-email rsv-warn");
+			tour.getElementsByClassName("rsv-email")[0].focus();
+			that.disabled = false;
+		}
+	} else {
+		tour.getElementsByClassName("rsv-warn-regular")[0].setAttribute("class", "rsv-warn-regular rsv-warn");
+		that.disabled = false;
+	}
+}
+function singDB() {
+	firebase.auth().signInAnonymously().catch(function (error) {
+		console.log(error.code);
+		console.log(error.message);
+	});
+}
+function dostuffDb(cb) {
+	singDB();
+	firebase.auth().onAuthStateChanged(function (user) {
+		cb(user);
+	});
+}
+
+/***/ }),
+
+/***/ 3:
 /***/ (function(module, exports) {
 
 module.exports = function (nunjucks, env, obj, dependencies){
@@ -202,7 +1045,7 @@ module.exports = function (nunjucks, env, obj, dependencies){
 
 /***/ }),
 
-/***/ 1:
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {/*! Browser bundle of nunjucks 3.0.1 (slim, only works with precompiled templates) */
@@ -3411,585 +4254,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7).setImmediate, __webpack_require__(7).clearImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12).setImmediate, __webpack_require__(12).clearImmediate))
 
 /***/ }),
 
-/***/ 11:
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
-/***/ 13:
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-
-/***/ 15:
+/***/ 51:
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
-    "use strict";
-
-    if (global.setImmediate) {
-        return;
-    }
-
-    var nextHandle = 1; // Spec says greater than zero
-    var tasksByHandle = {};
-    var currentlyRunningATask = false;
-    var doc = global.document;
-    var registerImmediate;
-
-    function setImmediate(callback) {
-      // Callback can either be a function or a string
-      if (typeof callback !== "function") {
-        callback = new Function("" + callback);
-      }
-      // Copy function arguments
-      var args = new Array(arguments.length - 1);
-      for (var i = 0; i < args.length; i++) {
-          args[i] = arguments[i + 1];
-      }
-      // Store and register the task
-      var task = { callback: callback, args: args };
-      tasksByHandle[nextHandle] = task;
-      registerImmediate(nextHandle);
-      return nextHandle++;
-    }
-
-    function clearImmediate(handle) {
-        delete tasksByHandle[handle];
-    }
-
-    function run(task) {
-        var callback = task.callback;
-        var args = task.args;
-        switch (args.length) {
-        case 0:
-            callback();
-            break;
-        case 1:
-            callback(args[0]);
-            break;
-        case 2:
-            callback(args[0], args[1]);
-            break;
-        case 3:
-            callback(args[0], args[1], args[2]);
-            break;
-        default:
-            callback.apply(undefined, args);
-            break;
-        }
-    }
-
-    function runIfPresent(handle) {
-        // From the spec: "Wait until any invocations of this algorithm started before this one have completed."
-        // So if we're currently running a task, we'll need to delay this invocation.
-        if (currentlyRunningATask) {
-            // Delay by doing a setTimeout. setImmediate was tried instead, but in Firefox 7 it generated a
-            // "too much recursion" error.
-            setTimeout(runIfPresent, 0, handle);
-        } else {
-            var task = tasksByHandle[handle];
-            if (task) {
-                currentlyRunningATask = true;
-                try {
-                    run(task);
-                } finally {
-                    clearImmediate(handle);
-                    currentlyRunningATask = false;
-                }
-            }
-        }
-    }
-
-    function installNextTickImplementation() {
-        registerImmediate = function(handle) {
-            process.nextTick(function () { runIfPresent(handle); });
-        };
-    }
-
-    function canUsePostMessage() {
-        // The test against `importScripts` prevents this implementation from being installed inside a web worker,
-        // where `global.postMessage` means something completely different and can't be used for this purpose.
-        if (global.postMessage && !global.importScripts) {
-            var postMessageIsAsynchronous = true;
-            var oldOnMessage = global.onmessage;
-            global.onmessage = function() {
-                postMessageIsAsynchronous = false;
-            };
-            global.postMessage("", "*");
-            global.onmessage = oldOnMessage;
-            return postMessageIsAsynchronous;
-        }
-    }
-
-    function installPostMessageImplementation() {
-        // Installs an event handler on `global` for the `message` event: see
-        // * https://developer.mozilla.org/en/DOM/window.postMessage
-        // * http://www.whatwg.org/specs/web-apps/current-work/multipage/comms.html#crossDocumentMessages
-
-        var messagePrefix = "setImmediate$" + Math.random() + "$";
-        var onGlobalMessage = function(event) {
-            if (event.source === global &&
-                typeof event.data === "string" &&
-                event.data.indexOf(messagePrefix) === 0) {
-                runIfPresent(+event.data.slice(messagePrefix.length));
-            }
-        };
-
-        if (global.addEventListener) {
-            global.addEventListener("message", onGlobalMessage, false);
-        } else {
-            global.attachEvent("onmessage", onGlobalMessage);
-        }
-
-        registerImmediate = function(handle) {
-            global.postMessage(messagePrefix + handle, "*");
-        };
-    }
-
-    function installMessageChannelImplementation() {
-        var channel = new MessageChannel();
-        channel.port1.onmessage = function(event) {
-            var handle = event.data;
-            runIfPresent(handle);
-        };
-
-        registerImmediate = function(handle) {
-            channel.port2.postMessage(handle);
-        };
-    }
-
-    function installReadyStateChangeImplementation() {
-        var html = doc.documentElement;
-        registerImmediate = function(handle) {
-            // Create a <script> element; its readystatechange event will be fired asynchronously once it is inserted
-            // into the document. Do so, thus queuing up the task. Remember to clean up once it's been called.
-            var script = doc.createElement("script");
-            script.onreadystatechange = function () {
-                runIfPresent(handle);
-                script.onreadystatechange = null;
-                html.removeChild(script);
-                script = null;
-            };
-            html.appendChild(script);
-        };
-    }
-
-    function installSetTimeoutImplementation() {
-        registerImmediate = function(handle) {
-            setTimeout(runIfPresent, 0, handle);
-        };
-    }
-
-    // If supported, we should attach to the prototype of global, since that is where setTimeout et al. live.
-    var attachTo = Object.getPrototypeOf && Object.getPrototypeOf(global);
-    attachTo = attachTo && attachTo.setTimeout ? attachTo : global;
-
-    // Don't get fooled by e.g. browserify environments.
-    if ({}.toString.call(global.process) === "[object process]") {
-        // For Node.js before 0.9
-        installNextTickImplementation();
-
-    } else if (canUsePostMessage()) {
-        // For non-IE10 modern browsers
-        installPostMessageImplementation();
-
-    } else if (global.MessageChannel) {
-        // For web workers, where supported
-        installMessageChannelImplementation();
-
-    } else if (doc && "onreadystatechange" in doc.createElement("script")) {
-        // For IE 6–8
-        installReadyStateChangeImplementation();
-
-    } else {
-        // For older browsers
-        installSetTimeoutImplementation();
-    }
-
-    attachTo.setImmediate = setImmediate;
-    attachTo.clearImmediate = clearImmediate;
-}(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11), __webpack_require__(13)))
-
-/***/ }),
-
-/***/ 169:
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./last-news.en.js": [
-		215,
-		27
-	],
-	"./last-news.es.js": [
-		216,
-		26
-	]
-};
-function webpackAsyncContext(req) {
-	var ids = map[req];
-	if(!ids)
-		return Promise.reject(new Error("Cannot find module '" + req + "'."));
-	return __webpack_require__.e(ids[1]).then(function() {
-		return __webpack_require__(ids[0]);
-	});
-};
-webpackAsyncContext.keys = function webpackAsyncContextKeys() {
-	return Object.keys(map);
-};
-module.exports = webpackAsyncContext;
-webpackAsyncContext.id = 169;
-
-/***/ }),
-
-/***/ 17:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.getPageLanguage = getPageLanguage;
-exports.getTourPageByLanguage = getTourPageByLanguage;
-exports.getContactPageByLanguage = getContactPageByLanguage;
-exports.getPackagePageByLanguafge = getPackagePageByLanguafge;
-exports.getLastNewsBannerByLanguage = getLastNewsBannerByLanguage;
-exports.getArticleSidebar = getArticleSidebar;
-
-var _toursPageEn = __webpack_require__(36);
-
-var _toursPageEn2 = _interopRequireDefault(_toursPageEn);
-
-var _toursPageEs = __webpack_require__(37);
-
-var _toursPageEs2 = _interopRequireDefault(_toursPageEs);
-
-var _contactcontentEn = __webpack_require__(30);
-
-var _contactcontentEn2 = _interopRequireDefault(_contactcontentEn);
-
-var _contactcontentEs = __webpack_require__(31);
-
-var _contactcontentEs2 = _interopRequireDefault(_contactcontentEs);
-
-var _packagePageEs = __webpack_require__(35);
-
-var _packagePageEs2 = _interopRequireDefault(_packagePageEs);
-
-var _packagePageEn = __webpack_require__(34);
-
-var _packagePageEn2 = _interopRequireDefault(_packagePageEn);
-
-var _lastNewsBannerEs = __webpack_require__(33);
-
-var _lastNewsBannerEs2 = _interopRequireDefault(_lastNewsBannerEs);
-
-var _lastNewsBannerEn = __webpack_require__(32);
-
-var _lastNewsBannerEn2 = _interopRequireDefault(_lastNewsBannerEn);
-
-var _articleSidebarEn = __webpack_require__(28);
-
-var _articleSidebarEn2 = _interopRequireDefault(_articleSidebarEn);
-
-var _articleSidebarEs = __webpack_require__(29);
-
-var _articleSidebarEs2 = _interopRequireDefault(_articleSidebarEs);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function getPageLanguage(name, url) {
-	return localStorage['lng'];
-}
-
-function getTourPageByLanguage(lng) {
-	switch (lng) {
-		case 'es':
-			return _toursPageEs2.default;
-			break;
-		case 'en':
-			return _toursPageEn2.default;
-			break;
-		default:
-			return _toursPageEn2.default;
-	}
-}
-
-function getContactPageByLanguage(lng) {
-	switch (lng) {
-		case 'es':
-			return _contactcontentEs2.default;
-			break;
-		case 'en':
-			return _contactcontentEn2.default;
-			break;
-		default:
-			return _contactcontentEn2.default;
-	}
-}
-
-function getPackagePageByLanguafge(lng) {
-	switch (lng) {
-		case 'es':
-			return _packagePageEs2.default;
-			break;
-		case 'en':
-			return _packagePageEn2.default;
-			break;
-		default:
-			return _packagePageEn2.default;
-	}
-}
-
-function getLastNewsBannerByLanguage(lng) {
-	switch (lng) {
-		case 'es':
-			return _lastNewsBannerEs2.default;
-			break;
-		case 'en':
-			return _lastNewsBannerEn2.default;
-			break;
-		default:
-			return _lastNewsBannerEn2.default;
-	}
-}
-
-function getArticleSidebar(lng) {
-	switch (lng) {
-		case 'es':
-			return _articleSidebarEs2.default;
-			break;
-		case 'en':
-			return _articleSidebarEn2.default;
-			break;
-		default:
-			return _articleSidebarEn2.default;
-	}
-}
-
-/***/ }),
-
-/***/ 183:
-/***/ (function(module, exports, __webpack_require__) {
-
-var nunjucks = __webpack_require__(1);
+var nunjucks = __webpack_require__(4);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -4001,163 +4273,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(0);
-
-
-(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/last-news.njk"] = (function() {
-function root(env, context, frame, runtime, cb) {
-var lineno = null;
-var colno = null;
-var output = "";
-try {
-var parentTemplate = null;
-frame = frame.push();
-var t_3 = runtime.contextOrFrameLookup(context, frame, "items");
-if(t_3) {var t_2 = t_3.length;
-for(var t_1=0; t_1 < t_3.length; t_1++) {
-var t_4 = t_3[t_1];
-frame.set("item", t_4);
-frame.set("loop.index", t_1 + 1);
-frame.set("loop.index0", t_1);
-frame.set("loop.revindex", t_2 - t_1);
-frame.set("loop.revindex0", t_2 - t_1 - 1);
-frame.set("loop.first", t_1 === 0);
-frame.set("loop.last", t_1 === t_2 - 1);
-frame.set("loop.length", t_2);
-output += "\r\n<div class=\"row container-article\">\r\n    <div class=\"col-sm-4 col-md-4\">\r\n        <img class=\"article-image\" style=\"background-image:url(";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"url_image"), env.opts.autoescape);
-output += ");\" alt=\"\" width=\"100%\">\r\n    </div>\r\n    <div class=\"col-sm-8 col-md-8\">\r\n        <div class=\"row article\">\r\n            <div class=\"col-lg-12\">\r\n                <div class=\"article-title\">";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"title"), env.opts.autoescape);
-output += "</div>\r\n                <div class=\"article-author\">";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"date"), env.opts.autoescape);
-output += " - ";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"author"), env.opts.autoescape);
-output += "</div>\r\n                <div class=\"article-subtitle\">\r\n                    ";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"subtitle"), env.opts.autoescape);
-output += "\r\n                </div>\r\n                <p class=\"text-justify\">\r\n                    ";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"description"), env.opts.autoescape);
-output += "\r\n                </p>\r\n                 <blockquote class=\"article-blockquote\">\r\n                    ";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"blockquote"), env.opts.autoescape);
-output += "\r\n                </blockquote>\r\n<div class=\"share dropdown\">\r\n    <button class=\"btn read-more dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">\r\n       ";
-output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "share"), env.opts.autoescape);
-output += " <i class=\"fa fa-share\" aria-hidden=\"true\"></i>\r\n    </button>\r\n    <ul class=\"dropdown-menu dropdown-menu-right\">\r\n        <div id=\"share-buttons\">\r\n            <a href=\"http://www.facebook.com/sharer.php?u=";
-output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "uri"), env.opts.autoescape);
-output += runtime.suppressValue(runtime.memberLookup((t_4),"link"), env.opts.autoescape);
-output += "\" target=\"_blank\">\r\n                <img src=\"images/facebook.png\" alt=\"Facebook\" />\r\n            </a>\r\n            <a href=\"https://plus.google.com/share?url=";
-output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "uri"), env.opts.autoescape);
-output += runtime.suppressValue(runtime.memberLookup((t_4),"link"), env.opts.autoescape);
-output += "\" target=\"_blank\">\r\n                <img src=\"images/google.png\" alt=\"Google\" />\r\n            </a>\r\n            <a href=\"http://www.linkedin.com/shareArticle?mini=true&amp;url=";
-output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "uri"), env.opts.autoescape);
-output += runtime.suppressValue(runtime.memberLookup((t_4),"link"), env.opts.autoescape);
-output += "\" target=\"_blank\">\r\n                <img src=\"images/linkedin.png\" alt=\"LinkedIn\" />\r\n            </a>\r\n            <a href=\"http://reddit.com/submit?url=";
-output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "uri"), env.opts.autoescape);
-output += runtime.suppressValue(runtime.memberLookup((t_4),"link"), env.opts.autoescape);
-output += "&amp;title=South Americans Secrets\" target=\"_blank\">\r\n                <img src=\"images/reddit.png\" alt=\"Reddit\" />\r\n            </a>\r\n            <a href=\"https://twitter.com/share?url=";
-output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "uri"), env.opts.autoescape);
-output += runtime.suppressValue(runtime.memberLookup((t_4),"link"), env.opts.autoescape);
-output += "&amp;text=South%20Americans%20Secrets&amp;hashtags=southamericanssecrets\" target=\"_blank\">\r\n                <img src=\"images/twitter.png\" alt=\"Twitter\" />\r\n            </a>\r\n        </div> \r\n    </ul>\r\n</div>\r\n                ";
-if(runtime.memberLookup((t_4),"link")) {
-output += "\r\n                    <button class=\"read-more\" onclick=\"changeUriPath('";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"link"), env.opts.autoescape);
-output += "')\">";
-output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "link"), env.opts.autoescape);
-output += "</button>\r\n                ";
-;
-}
-output += "\r\n\t\t\t\t";
-if(runtime.memberLookup((t_4),"tour")) {
-output += "\r\n\t\t\t\t\t<button class=\"read-more\" onclick=\"changeUriPath('";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"tour"), env.opts.autoescape);
-output += "')\">";
-output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "sTour"), env.opts.autoescape);
-output += "</button>\r\n\t\t\t\t";
-;
-}
-output += "\r\n            </div>\r\n      \r\n        </div>\r\n\r\n    </div>\r\n</div>\r\n";
-;
-}
-}
-frame = frame.pop();
-if(parentTemplate) {
-parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
-} else {
-cb(null, output);
-}
-;
-} catch (e) {
-  cb(runtime.handleError(e, lineno, colno));
-}
-}
-return {
-root: root
-};
-
-})();
-})();
-
-
-
-module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last-news.njk"] , dependencies)
-
-/***/ }),
-
-/***/ 194:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _lastNews = __webpack_require__(183);
-
-var _lastNews2 = _interopRequireDefault(_lastNews);
-
-var _utils = __webpack_require__(17);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var language = (0, _utils.getPageLanguage)('lng') || 'en';
-
-var template = (0, _utils.getLastNewsBannerByLanguage)(language);
-
-document.title = "South American's Secrets";
-
-__webpack_require__(169)("./last-news." + language + '.js').then(function (m) {
-  console.log(m);
-  var LastNews = m.default;
-  var rMore = language == 'en' ? 'Continue Reading...' : 'Leer Artículo...';
-  var sTour = language == 'en' ? 'See tour' : 'Ver tour';
-  var share = language == 'en' ? 'Share' : 'Compartir';
-  var uri = window.location;
-  if (uri.href.indexOf("http://localhost:9000") > -1) {
-    uri = "https://southamericanssecrets.github.io/web/";
-  }
-  var html = _lastNews2.default.render({ items: LastNews, link: rMore, sTour: sTour, share: share, uri: uri });
-  document.querySelector('#last-news').innerHTML = html;
-
-  var html2 = template.render({});
-  document.querySelector('#last-news-banners').innerHTML = html2;
-
-  document.getElementsByClassName("read-more");
-});
-
-/***/ }),
-
-/***/ 28:
-/***/ (function(module, exports, __webpack_require__) {
-
-var nunjucks = __webpack_require__(1);
-var env;
-if (!nunjucks.currentEnv){
-	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
-} else {
-	env = nunjucks.currentEnv;
-}
-var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-
-
-
-
-var shim = __webpack_require__(0);
+var shim = __webpack_require__(3);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/article-sidebar.en.njk"] = (function() {
@@ -4191,10 +4307,10 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 
 /***/ }),
 
-/***/ 29:
+/***/ 52:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(1);
+var nunjucks = __webpack_require__(4);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -4206,7 +4322,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(0);
+var shim = __webpack_require__(3);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/article-sidebar.es.njk"] = (function() {
@@ -4240,10 +4356,10 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 
 /***/ }),
 
-/***/ 30:
+/***/ 53:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(1);
+var nunjucks = __webpack_require__(4);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -4255,7 +4371,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(0);
+var shim = __webpack_require__(3);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/contactcontent.en.njk"] = (function() {
@@ -4289,10 +4405,10 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/cont
 
 /***/ }),
 
-/***/ 31:
+/***/ 54:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(1);
+var nunjucks = __webpack_require__(4);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -4304,7 +4420,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(0);
+var shim = __webpack_require__(3);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/contactcontent.es.njk"] = (function() {
@@ -4338,10 +4454,10 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/cont
 
 /***/ }),
 
-/***/ 32:
+/***/ 55:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(1);
+var nunjucks = __webpack_require__(4);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -4353,7 +4469,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(0);
+var shim = __webpack_require__(3);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/last-news-banner.en.njk"] = (function() {
@@ -4387,10 +4503,10 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 
 /***/ }),
 
-/***/ 33:
+/***/ 56:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(1);
+var nunjucks = __webpack_require__(4);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -4402,7 +4518,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(0);
+var shim = __webpack_require__(3);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/last-news-banner.es.njk"] = (function() {
@@ -4436,10 +4552,10 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 
 /***/ }),
 
-/***/ 34:
+/***/ 57:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(1);
+var nunjucks = __webpack_require__(4);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -4451,7 +4567,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(0);
+var shim = __webpack_require__(3);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/package-page.en.njk"] = (function() {
@@ -4614,7 +4730,9 @@ frame = frame.pop();
 output += "\r\n\t\t\t\t\t\t\t\t </ul>\r\n\t\t\t\t\t\t\t ";
 ;
 }
-output += "\r\n\r\n\t\t\t\t\t\t\t <button class=\"bttn-unite bttn-md bttn-warning\">Reserve Tour</button>\r\n\r\n<div class=\"share dropdown share-tours\">\r\n    <button class=\"btn read-more dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">\r\n       ";
+output += "\r\n\r\n\t\t\t\t\t\t\t <button class=\"bttn-unite bttn-md bttn-warning\" data-toggle=\"modal\" data-target=\"#";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
+output += "-modal\">Reserve Tour</button>\r\n\r\n<div class=\"share dropdown share-tours\">\r\n    <button class=\"btn read-more dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">\r\n       ";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "share"), env.opts.autoescape);
 output += " <i class=\"fa fa-share\" aria-hidden=\"true\"></i>\r\n    </button>\r\n    <ul class=\"dropdown-menu dropdown-menu-right\">\r\n        <div id=\"share-buttons\">\r\n            <a href=\"http://www.facebook.com/sharer.php?u=";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "uri"), env.opts.autoescape);
@@ -4636,7 +4754,20 @@ output += "&amp;title=South Americans Secrets\" target=\"_blank\">\r\n          
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "uri"), env.opts.autoescape);
 output += "#";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
-output += "&amp;text=South%20Americans%20Secrets&amp;hashtags=southamericanssecrets\" target=\"_blank\">\r\n                <img src=\"images/twitter.png\" alt=\"Twitter\" />\r\n            </a>\r\n        </div> \r\n    </ul>\r\n</div>\r\n\r\n\t\t\t\t\t </div>\r\n\t\t\t\t\t </div>\r\n\t\t\t </div>\r\n\t </div>\r\n\r\n\t\t";
+output += "&amp;text=South%20Americans%20Secrets&amp;hashtags=southamericanssecrets\" target=\"_blank\">\r\n                <img src=\"images/twitter.png\" alt=\"Twitter\" />\r\n            </a>\r\n        </div> \r\n    </ul>\r\n</div>\r\n\r\n\t\t\t\t\t </div>\r\n\t\t\t\t\t </div>\r\n\t\t\t </div>\r\n\t </div>\r\n\r\n    <!-- Modal -->\r\n    <div id=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
+output += "-modal\" class=\"rsv-modal-only modal\" role=\"dialog\">\r\n        <div class=\"modal-dialog\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\r\n                    <h3 class=\"modal-title\">";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"form_title") || runtime.memberLookup((t_8),"title"), env.opts.autoescape);
+output += "</h3>\r\n                    <div class=\"price-holder\"><span class=\"form_price\">";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"ammount"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"currency"), env.opts.autoescape);
+output += "</span><span> per person</span></div>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    <input type=\"hidden\" id=\"rsv-tour-info\" class=\"rsv-tour-info\" value=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"title"), env.opts.autoescape);
+output += "\" tour-id=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
+output += "\">\r\n                    <input type=\"hidden\" id=\"rsv-lang\" class=\"rsv-lang\" value=\"en\">\r\n                    <div class=\"reservation-subtitle\">Tour reservation</div>\r\n                    <div class=\"form-inputs\"><input type=\"text\" class=\"rsv-input rsv-name\" id=\"rsv-name\" placeholder=\"Name*\"></div>\r\n                    <div class=\"input-group date-input-group\">\r\n                        <span class=\"input-group-addon\">Date*</span>\r\n                        <input type=\"date\" id=\"rsv-date\" class=\"form-control rsv-date\" name=\"date\">\r\n                    </div>\r\n                    <div class=\"form-inputs\"><input id=\"rsv-people\" placeholder=\"N° people*\" class=\"rsv-input rsv-people\" type=\"number\"></div>\r\n                    <div class=\"form-inputs\"><input id=\"rsv-email\" placeholder=\"Email*\" class=\"rsv-input rsv-email\" type=\"email\"></div>\r\n\t\t\t\t\t<div class=\"input-group\">\r\n\t\t\t\t\t\t<span class=\"input-group-addon\">Payment Type*</span>\r\n\t\t\t\t\t\t<select id=\"rsv-payment\" class=\"form-control rsv-payment\">\r\n\t\t\t\t\t\t\t<option value=\"visa-credit\">Visa credit</option>\r\n\t\t\t\t\t\t\t<option value=\"visa-debit\">Visa debit</option>\r\n\t\t\t\t\t\t\t<option value=\"paypal\">Paypal</option>\r\n\t\t\t\t\t\t\t<option value=\"bank-transfer\">Bank transfer</option>\r\n\t\t\t\t\t\t</select>\r\n\t\t\t\t\t</div>\r\n                    <div class=\"form-inputs\"><textarea id=\"rsv-notes\" class=\"rsv-notes\" placeholder=\"Notes about your reservation\"></textarea></div>\r\n                    <p id=\"rsv-warn\" class=\"rsv-warn-regular rsv-warn rsv-warn-hidden\">*Invalid request, you must fill all required fields*</p>\r\n                    <p id=\"rsv-warn-email\" class=\"rsv-warn-email rsv-warn rsv-warn-hidden\">*Invalid email address*</p>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button type=\"button\" parent-modal=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
+output += "-modal\" id=\"request-reservation\" class=\"request-reservation btn btn-default request-btn\"><i class=\"fa fa-envelope-o\" aria-hidden=\"true\"></i>  Request Reservation</button>\r\n                    <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\r\n                </div>\r\n          </div>\r\n        </div>\r\n    </div>\r\n    <!-- Modal -->\r\n    <div id=\"sent-reservation\" class=\"modal\" role=\"dialog\">\r\n        <div class=\"modal-dialog\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\r\n                    <h3 class=\"modal-title\"><i class=\"fa fa-check\" aria-hidden=\"true\"></i> Request Sent</h3>\r\n                    <div class=\"price-holder\"><span class=\"form_price\">We will contact you soon</span></div>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button type=\"button\" class=\"btn btn-default request-btn\" data-dismiss=\"modal\">Ok</button>\r\n                </div>\r\n          </div>\r\n        </div>\r\n    </div>\r\n\r\n\t\t";
 if(runtime.memberLookup((t_8),"itenerary")) {
 output += "\r\n\t\t\t<div class=\"row tour-container\">\r\n\t\t\t\t\t<div style=\"padding-right:10px; padding-left:10px;\">\r\n\t\t\t\t \t\t<h3 style=\"margin-top:0px;\">Itenerary</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t ";
 frame = frame.push();
@@ -4714,10 +4845,10 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/pack
 
 /***/ }),
 
-/***/ 35:
+/***/ 58:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(1);
+var nunjucks = __webpack_require__(4);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -4729,7 +4860,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(0);
+var shim = __webpack_require__(3);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/package-page.es.njk"] = (function() {
@@ -4892,7 +5023,9 @@ frame = frame.pop();
 output += "\r\n\t\t\t\t\t\t\t\t </ul>\r\n\t\t\t\t\t\t\t ";
 ;
 }
-output += "\r\n\r\n\t\t\t\t\t\t\t <button class=\"bttn-unite bttn-md bttn-warning\">Reservar Tour</button>\r\n\r\n<div class=\"share dropdown share-tours\">\r\n    <button class=\"btn read-more dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">\r\n       ";
+output += "\r\n\r\n\t\t\t\t\t\t\t <button class=\"bttn-unite bttn-md bttn-warning\" data-toggle=\"modal\" data-target=\"#";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
+output += "-modal\">Reserve Tour</button>\r\n\r\n<div class=\"share dropdown share-tours\">\r\n    <button class=\"btn read-more dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">\r\n       ";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "share"), env.opts.autoescape);
 output += " <i class=\"fa fa-share\" aria-hidden=\"true\"></i>\r\n    </button>\r\n    <ul class=\"dropdown-menu dropdown-menu-right\">\r\n        <div id=\"share-buttons\">\r\n            <a href=\"http://www.facebook.com/sharer.php?u=";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "uri"), env.opts.autoescape);
@@ -4914,7 +5047,20 @@ output += "&amp;title=South Americans Secrets\" target=\"_blank\">\r\n          
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "uri"), env.opts.autoescape);
 output += "#";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
-output += "&amp;text=South%20Americans%20Secrets&amp;hashtags=southamericanssecrets\" target=\"_blank\">\r\n                <img src=\"images/twitter.png\" alt=\"Twitter\" />\r\n            </a>\r\n        </div> \r\n    </ul>\r\n</div>\r\n\r\n\t\t\t\t\t </div>\r\n\t\t\t\t\t </div>\r\n\t\t\t </div>\r\n\t </div>\r\n\r\n\t ";
+output += "&amp;text=South%20Americans%20Secrets&amp;hashtags=southamericanssecrets\" target=\"_blank\">\r\n                <img src=\"images/twitter.png\" alt=\"Twitter\" />\r\n            </a>\r\n        </div> \r\n    </ul>\r\n</div>\r\n\r\n\t\t\t\t\t </div>\r\n\t\t\t\t\t </div>\r\n\t\t\t </div>\r\n\t </div>\r\n\r\n    <!-- Modal -->\r\n    <div id=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
+output += "-modal\" class=\"rsv-modal-only modal\" role=\"dialog\">\r\n        <div class=\"modal-dialog\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\r\n                    <h3 class=\"modal-title\">";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"form_title") || runtime.memberLookup((t_8),"title"), env.opts.autoescape);
+output += "</h3>\r\n                    <div class=\"price-holder\"><span class=\"form_price\">";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"ammount"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"currency"), env.opts.autoescape);
+output += "</span><span> per person</span></div>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    <input type=\"hidden\" id=\"rsv-tour-info\" class=\"rsv-tour-info\" value=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"title"), env.opts.autoescape);
+output += "\" tour-id=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
+output += "\">\r\n                    <input type=\"hidden\" id=\"rsv-lang\" class=\"rsv-lang\" value=\"en\">\r\n                    <div class=\"reservation-subtitle\">Tour reservation</div>\r\n                    <div class=\"form-inputs\"><input type=\"text\" class=\"rsv-input rsv-name\" id=\"rsv-name\" placeholder=\"Name*\"></div>\r\n                    <div class=\"input-group date-input-group\">\r\n                        <span class=\"input-group-addon\">Date*</span>\r\n                        <input type=\"date\" id=\"rsv-date\" class=\"form-control rsv-date\" name=\"date\">\r\n                    </div>\r\n                    <div class=\"form-inputs\"><input id=\"rsv-people\" placeholder=\"N° people*\" class=\"rsv-input rsv-people\" type=\"number\"></div>\r\n                    <div class=\"form-inputs\"><input id=\"rsv-email\" placeholder=\"Email*\" class=\"rsv-input rsv-email\" type=\"email\"></div>\r\n\t\t\t\t\t<div class=\"input-group\">\r\n\t\t\t\t\t\t<span class=\"input-group-addon\">Payment Type*</span>\r\n\t\t\t\t\t\t<select id=\"rsv-payment\" class=\"form-control rsv-payment\">\r\n\t\t\t\t\t\t\t<option value=\"visa-credit\">Visa credit</option>\r\n\t\t\t\t\t\t\t<option value=\"visa-debit\">Visa debit</option>\r\n\t\t\t\t\t\t\t<option value=\"paypal\">Paypal</option>\r\n\t\t\t\t\t\t\t<option value=\"bank-transfer\">Bank transfer</option>\r\n\t\t\t\t\t\t</select>\r\n\t\t\t\t\t</div>\r\n                    <div class=\"form-inputs\"><textarea id=\"rsv-notes\" class=\"rsv-notes\" placeholder=\"Notes about your reservation\"></textarea></div>\r\n                    <p id=\"rsv-warn\" class=\"rsv-warn-regular rsv-warn rsv-warn-hidden\">*Invalid request, you must fill all required fields*</p>\r\n                    <p id=\"rsv-warn-email\" class=\"rsv-warn-email rsv-warn rsv-warn-hidden\">*Invalid email address*</p>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button type=\"button\" parent-modal=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
+output += "-modal\" id=\"request-reservation\" class=\"request-reservation btn btn-default request-btn\"><i class=\"fa fa-envelope-o\" aria-hidden=\"true\"></i>  Request Reservation</button>\r\n                    <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\r\n                </div>\r\n          </div>\r\n        </div>\r\n    </div>\r\n    <!-- Modal -->\r\n    <div id=\"sent-reservation\" class=\"modal\" role=\"dialog\">\r\n        <div class=\"modal-dialog\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\r\n                    <h3 class=\"modal-title\"><i class=\"fa fa-check\" aria-hidden=\"true\"></i> Request Sent</h3>\r\n                    <div class=\"price-holder\"><span class=\"form_price\">We will contact you soon</span></div>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button type=\"button\" class=\"btn btn-default request-btn\" data-dismiss=\"modal\">Ok</button>\r\n                </div>\r\n          </div>\r\n        </div>\r\n    </div>\r\n\r\n\t ";
 if(runtime.memberLookup((t_8),"itenerary")) {
 output += "\r\n\t\t <div class=\"row tour-container\">\r\n\t\t\t\t <div style=\"padding-right:10px; padding-left:10px;\">\r\n\t\t\t\t\t <h3 style=\"margin-top:0px;\">Itinerario</h3>\r\n\t\t\t\t </div>\r\n\t\t\t\t";
 frame = frame.push();
@@ -4992,10 +5138,10 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/pack
 
 /***/ }),
 
-/***/ 36:
+/***/ 59:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(1);
+var nunjucks = __webpack_require__(4);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -5007,7 +5153,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(0);
+var shim = __webpack_require__(3);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/tours-page.en.njk"] = (function() {
@@ -5217,16 +5363,18 @@ output += "#";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
 output += "&amp;text=South%20Americans%20Secrets&amp;hashtags=southamericanssecrets\" target=\"_blank\">\r\n                <img src=\"images/twitter.png\" alt=\"Twitter\" />\r\n            </a>\r\n        </div> \r\n    </ul>\r\n</div>\r\n\r\n            </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <!-- Modal -->\r\n    <div id=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
-output += "-modal\" class=\"modal\" role=\"dialog\">\r\n        <div class=\"modal-dialog\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\r\n                    <h3 class=\"modal-title\">";
+output += "-modal\" class=\"rsv-modal-only modal\" role=\"dialog\">\r\n        <div class=\"modal-dialog\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\r\n                    <h3 class=\"modal-title\">";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"form_title") || runtime.memberLookup((t_8),"title"), env.opts.autoescape);
 output += "</h3>\r\n                    <div class=\"price-holder\"><span class=\"form_price\">";
 output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"ammount"), env.opts.autoescape);
 output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"currency"), env.opts.autoescape);
-output += "</span><span> per person</span></div>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    <input type=\"hidden\" id=\"rsv-tour-info\" value=\"";
+output += "</span><span> per person</span></div>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    <input type=\"hidden\" id=\"rsv-tour-info\" class=\"rsv-tour-info\" value=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"title"), env.opts.autoescape);
 output += "\" tour-id=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
-output += "\">\r\n                    <input type=\"hidden\" id=\"rsv-lang\" value=\"en\">\r\n                    <div class=\"reservation-subtitle\">Tour reservation</div>\r\n                    <div class=\"form-inputs\"><input type=\"text\" class=\"rsv-input\" id=\"rsv-name\" placeholder=\"Name*\"></div>\r\n                    <div class=\"input-group\">\r\n                        <span class=\"input-group-addon\">Date*</span>\r\n                        <input type=\"date\" id=\"rsv-date\" class=\"form-control\" class=\"rsv-input\" name=\"date\">\r\n                    </div>\r\n                    <div class=\"form-inputs\"><input id=\"rsv-people\" placeholder=\"N° people*\" class=\"rsv-input\" type=\"number\"></div>\r\n                    <div class=\"form-inputs\"><input id=\"rsv-email\" placeholder=\"Email*\" class=\"rsv-input\" type=\"email\"></div>\r\n                    <div class=\"form-inputs\"><textarea id=\"rsv-notes\" placeholder=\"Notes about your reservation\"></textarea></div>\r\n                    <p id=\"rsv-warn\" class=\"rsv-warn rsv-warn-hidden\">*Invalid request, you must fill all required fields*</p>\r\n                    <p id=\"rsv-warn-email\" class=\"rsv-warn rsv-warn-hidden\">*Invalid email address*</p>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button type=\"button\" id=\"request-reservation\" class=\"btn btn-default request-btn\"><i class=\"fa fa-envelope-o\" aria-hidden=\"true\"></i>  Request Reservation</button>\r\n                    <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\r\n                </div>\r\n          </div>\r\n        </div>\r\n    </div>\r\n    ";
+output += "\">\r\n                    <input type=\"hidden\" id=\"rsv-lang\" class=\"rsv-lang\" value=\"en\">\r\n                    <div class=\"reservation-subtitle\">Tour reservation</div>\r\n                    <div class=\"form-inputs\"><input type=\"text\" class=\"rsv-input rsv-name\" id=\"rsv-name\" placeholder=\"Name*\"></div>\r\n                    <div class=\"input-group date-input-group\">\r\n                        <span class=\"input-group-addon\">Date*</span>\r\n                        <input type=\"date\" id=\"rsv-date\" class=\"form-control rsv-date\" name=\"date\">\r\n                    </div>\r\n                    <div class=\"form-inputs\"><input id=\"rsv-people\" placeholder=\"N° people*\" class=\"rsv-input rsv-people\" type=\"number\"></div>\r\n                    <div class=\"form-inputs\"><input id=\"rsv-email\" placeholder=\"Email*\" class=\"rsv-input rsv-email\" type=\"email\"></div>\r\n\t\t\t\t\t<div class=\"input-group\">\r\n\t\t\t\t\t\t<span class=\"input-group-addon\">Payment Type*</span>\r\n\t\t\t\t\t\t<select id=\"rsv-payment\" class=\"form-control rsv-payment\">\r\n\t\t\t\t\t\t\t<option value=\"visa-credit\">Visa credit</option>\r\n\t\t\t\t\t\t\t<option value=\"visa-debit\">Visa debit</option>\r\n\t\t\t\t\t\t\t<option value=\"paypal\">Paypal</option>\r\n\t\t\t\t\t\t\t<option value=\"bank-transfer\">Bank transfer</option>\r\n\t\t\t\t\t\t</select>\r\n\t\t\t\t\t</div>\r\n                    <div class=\"form-inputs\"><textarea id=\"rsv-notes\" class=\"rsv-notes\" placeholder=\"Notes about your reservation\"></textarea></div>\r\n                    <p id=\"rsv-warn\" class=\"rsv-warn-regular rsv-warn rsv-warn-hidden\">*Invalid request, you must fill all required fields*</p>\r\n                    <p id=\"rsv-warn-email\" class=\"rsv-warn-email rsv-warn rsv-warn-hidden\">*Invalid email address*</p>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button type=\"button\" parent-modal=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
+output += "-modal\" id=\"request-reservation\" class=\"request-reservation btn btn-default request-btn\"><i class=\"fa fa-envelope-o\" aria-hidden=\"true\"></i>  Request Reservation</button>\r\n                    <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\r\n                </div>\r\n          </div>\r\n        </div>\r\n    </div>\r\n    ";
 ;
 }
 }
@@ -5255,10 +5403,10 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tour
 
 /***/ }),
 
-/***/ 37:
+/***/ 60:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(1);
+var nunjucks = __webpack_require__(4);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -5270,7 +5418,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(0);
+var shim = __webpack_require__(3);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/tours-page.es.njk"] = (function() {
@@ -5480,7 +5628,7 @@ output += "#";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
 output += "&amp;text=South%20Americans%20Secrets&amp;hashtags=southamericanssecrets\" target=\"_blank\">\r\n                <img src=\"images/twitter.png\" alt=\"Twitter\" />\r\n            </a>\r\n        </div> \r\n    </ul>\r\n</div>\r\n\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t</div>\r\n    \t<!-- Modal -->\r\n    <div id=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
-output += "-modal\" class=\"modal\" role=\"dialog\">\r\n        <div class=\"modal-dialog\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\r\n                    <h3 class=\"modal-title\">";
+output += "-modal\" class=\"rsv-modal-only modal\" role=\"dialog\">\r\n        <div class=\"modal-dialog\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\r\n                    <h3 class=\"modal-title\">";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"form_title") || runtime.memberLookup((t_8),"title"), env.opts.autoescape);
 output += "</h3>\r\n                    <div class=\"price-holder\"><span class=\"form_price\">";
 output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"ammount"), env.opts.autoescape);
@@ -5489,7 +5637,9 @@ output += "</span><span> por persona</span></div>\r\n                </div>\r\n 
 output += runtime.suppressValue(runtime.memberLookup((t_8),"title"), env.opts.autoescape);
 output += "\" tour-id=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
-output += "\">\r\n\t\t\t\t\t<input type=\"hidden\" id=\"rsv-lang\" value=\"es\">\r\n                    <div class=\"reservation-subtitle\">Reservación de tour</div>\r\n                    <div class=\"form-inputs\"><input type=\"text\" class=\"rsv-input\" id=\"rsv-name\" placeholder=\"Nombre*\"></div>\r\n                    <div class=\"input-group\">\r\n                        <span class=\"input-group-addon\">Fecha*</span>\r\n                        <input type=\"date\" id=\"rsv-date\" class=\"form-control\" class=\"rsv-input\" name=\"date\">\r\n                    </div>\r\n                    <div class=\"form-inputs\"><input id=\"rsv-people\" placeholder=\"N° personas*\" class=\"rsv-input\" type=\"number\"></div>\r\n                    <div class=\"form-inputs\"><input id=\"rsv-email\" placeholder=\"Correo Electrónico*\" class=\"rsv-input\" type=\"email\"></div>\r\n                    <div class=\"form-inputs\"><textarea id=\"rsv-notes\" placeholder=\"Notas de su reservación\"></textarea></div>\r\n\t\t\t\t\t<p id=\"rsv-warn\" class=\"rsv-warn rsv-warn-hidden\">*Solicitud inválida, debe llenar todos los campos obligatorios*</p>\r\n\t\t\t\t\t<p id=\"rsv-warn-email\" class=\"rsv-warn rsv-warn-hidden\">*Dirección de correo electrónico inválida*</p>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button type=\"button\" id=\"request-reservation\" class=\"btn btn-default request-btn\"><i class=\"fa fa-envelope-o\" aria-hidden=\"true\"></i>  Solicitar Reservación</button>\r\n                    <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Cerrar</button>\r\n                </div>\r\n          </div>\r\n        </div>\r\n    </div>\r\n\t\t";
+output += "\">\r\n\t\t\t\t\t<input type=\"hidden\" id=\"rsv-lang\" value=\"es\">\r\n                    <div class=\"reservation-subtitle\">Reservación de tour</div>\r\n                    <div class=\"form-inputs\"><input type=\"text\" class=\"rsv-input\" id=\"rsv-name\" placeholder=\"Nombre*\"></div>\r\n                    <div class=\"input-group date-input-group\">\r\n                        <span class=\"input-group-addon\">Fecha*</span>\r\n                        <input type=\"date\" id=\"rsv-date\" class=\"form-control rsv-date\" name=\"date\">\r\n                    </div>\r\n                    <div class=\"form-inputs\"><input id=\"rsv-people\" placeholder=\"N° personas*\" class=\"rsv-input\" type=\"number\"></div>\r\n                    <div class=\"form-inputs\"><input id=\"rsv-email\" placeholder=\"Correo Electrónico*\" class=\"rsv-input rsv-email\" type=\"email\"></div>\r\n\t\t\t\t\t<div class=\"input-group\">\r\n\t\t\t\t\t\t<span class=\"input-group-addon\">Forma de pago*</span>\r\n\t\t\t\t\t\t<select id=\"rsv-payment\" class=\"form-control\">\r\n\t\t\t\t\t\t\t<option value=\"visa-credit\">Visa crédito</option>\r\n\t\t\t\t\t\t\t<option value=\"visa-debit\">Visa débito</option>\r\n\t\t\t\t\t\t\t<option value=\"paypal\">Paypal</option>\r\n\t\t\t\t\t\t\t<option value=\"bank-transfer\">Transferencia bancaria</option>\r\n\t\t\t\t\t\t</select>\r\n\t\t\t\t\t</div>\r\n                    <div class=\"form-inputs\"><textarea id=\"rsv-notes\" class=\"rsv-notes\" placeholder=\"Notas de su reservación\"></textarea></div>\r\n\t\t\t\t\t<p id=\"rsv-warn\" class=\"rsv-warn-regular rsv-warn rsv-warn-hidden\">*Solicitud inválida, debe llenar todos los campos obligatorios*</p>\r\n\t\t\t\t\t<p id=\"rsv-warn-email\" class=\"rsv-warn rsv-warn-hidden\">*Dirección de correo electrónico inválida*</p>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button type=\"button\" parent-modal=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
+output += "-modal\" id=\"request-reservation\" class=\"request-reservation btn btn-default request-btn\"><i class=\"fa fa-envelope-o\" aria-hidden=\"true\"></i>  Solicitar Reservación</button>\r\n                    <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Cerrar</button>\r\n                </div>\r\n          </div>\r\n        </div>\r\n    </div>\r\n\t\t";
 ;
 }
 }
@@ -5515,66 +5665,6 @@ root: root
 
 
 module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tours-page.es.njk"] , dependencies)
-
-/***/ }),
-
-/***/ 7:
-/***/ (function(module, exports, __webpack_require__) {
-
-var apply = Function.prototype.apply;
-
-// DOM APIs, for completeness
-
-exports.setTimeout = function() {
-  return new Timeout(apply.call(setTimeout, window, arguments), clearTimeout);
-};
-exports.setInterval = function() {
-  return new Timeout(apply.call(setInterval, window, arguments), clearInterval);
-};
-exports.clearTimeout =
-exports.clearInterval = function(timeout) {
-  if (timeout) {
-    timeout.close();
-  }
-};
-
-function Timeout(id, clearFn) {
-  this._id = id;
-  this._clearFn = clearFn;
-}
-Timeout.prototype.unref = Timeout.prototype.ref = function() {};
-Timeout.prototype.close = function() {
-  this._clearFn.call(window, this._id);
-};
-
-// Does not start the time, just sets up the members needed.
-exports.enroll = function(item, msecs) {
-  clearTimeout(item._idleTimeoutId);
-  item._idleTimeout = msecs;
-};
-
-exports.unenroll = function(item) {
-  clearTimeout(item._idleTimeoutId);
-  item._idleTimeout = -1;
-};
-
-exports._unrefActive = exports.active = function(item) {
-  clearTimeout(item._idleTimeoutId);
-
-  var msecs = item._idleTimeout;
-  if (msecs >= 0) {
-    item._idleTimeoutId = setTimeout(function onTimeout() {
-      if (item._onTimeout)
-        item._onTimeout();
-    }, msecs);
-  }
-};
-
-// setimmediate attaches itself to the global object
-__webpack_require__(15);
-exports.setImmediate = setImmediate;
-exports.clearImmediate = clearImmediate;
-
 
 /***/ })
 
