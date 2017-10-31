@@ -7476,14 +7476,14 @@ function requestResv(id, that, fbase) {
 		that.disabled = false;
 	}
 }
-function singDB() {
+function singDB(firebase) {
 	firebase.auth().signInAnonymously().catch(function (error) {
 		console.log(error.code);
 		console.log(error.message);
 	});
 }
-function dostuffDb(cb) {
-	singDB();
+function dostuffDb(cb, firebase) {
+	singDB(firebase);
 	firebase.auth().onAuthStateChanged(function (user) {
 		cb(user);
 	});

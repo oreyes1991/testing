@@ -30023,7 +30023,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<div class=\"col-md-10 col-md-offset-1 col-sm-12\" id=\"messageboard-settings\">\r\n    <div class=\"checkbox\">\r\n        <label><input id=\"isNotified\" type=\"checkbox\" value=\"\">Enable email notifications</label>\r\n    </div>\r\n    <hr>\r\n    <h4>Email List:</h4>\r\n    <div class=\"email-list\">\r\n        <ul id=\"email_list\">\r\n        </ul>\r\n    </div>\r\n    <div class=\"add-email\">\r\n        <div class=\"input-group\">\r\n            <input type=\"email\" class=\"form-control\" id=\"settings-email\" placeholder=\"example@example.com\">\r\n            <div class=\"input-group-btn\">\r\n                <button class=\"btn\" id=\"add-email-btn\" type=\"submit\">\r\n                    <i class=\"fa fa-plus\" aria-hidden=\"true\"></i>\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <p id=\"settings-warn-email\" class=\"settings-warn settings-warn-hidden\">*Invalid email address*</p>\r\n</div>";
+output += "<div class=\"col-md-10 col-md-offset-1 col-sm-12\" id=\"messageboard-settings\">\r\n    <button onclick=\"changeUriPath('messageboard.html')\" class=\"btn go-back\">\r\n        <i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i> <strong>Go back</strong>\r\n    </button>\r\n    <div class=\"checkbox\">\r\n        <label><input id=\"isNotified\" type=\"checkbox\" value=\"\">Enable email notifications</label>\r\n    </div>\r\n    <hr>\r\n    <h4>Email List:</h4>\r\n    <div class=\"email-list\">\r\n        <ul id=\"email_list\">\r\n        </ul>\r\n    </div>\r\n    <div class=\"add-email\">\r\n        <div class=\"input-group\">\r\n            <input type=\"email\" class=\"form-control\" id=\"settings-email\" placeholder=\"example@example.com\">\r\n            <div class=\"input-group-btn\">\r\n                <button class=\"btn\" id=\"add-email-btn\" type=\"submit\">\r\n                    <i class=\"fa fa-plus\" aria-hidden=\"true\"></i>\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <p id=\"settings-warn-email\" class=\"settings-warn settings-warn-hidden\">*Invalid email address*</p>\r\n</div>";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -30071,7 +30071,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<div class=\"col-md-10 col-md-offset-1 col-sm-12\" id=\"messageboard-settings\">\r\n    <div class=\"checkbox\">\r\n        <label><input id=\"isNotified\" type=\"checkbox\" value=\"\">Activar notificaciones por correo</label>\r\n    </div>\r\n    <hr>\r\n    <h4>Lista de correos electrónicos:</h4>\r\n    <div class=\"email-list\">\r\n        <ul id=\"email_list\">\r\n        </ul>\r\n    </div>\r\n    <div class=\"add-email\">\r\n        <div class=\"input-group\">\r\n            <input type=\"email\" class=\"form-control\" id=\"settings-email\" placeholder=\"ejemplo@ejemplo.com\">\r\n            <div class=\"input-group-btn\">\r\n                <button class=\"btn\" id=\"add-email-btn\" type=\"submit\">\r\n                    <i class=\"fa fa-plus\" aria-hidden=\"true\"></i>\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <p id=\"settings-warn-email\" class=\"settings-warn settings-warn-hidden\">*Dirección de correo electrónico inválida*</p>\r\n</div>";
+output += "<div class=\"col-md-10 col-md-offset-1 col-sm-12\" id=\"messageboard-settings\">\r\n    <button onclick=\"changeUriPath('messageboard.html')\" class=\"btn go-back\">\r\n        <i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i> <strong>Regresar</strong>\r\n    </button>\r\n    <div class=\"checkbox\">\r\n        <label><input id=\"isNotified\" type=\"checkbox\" value=\"\">Activar notificaciones por correo</label>\r\n    </div>\r\n    <hr>\r\n    <h4>Lista de correos electrónicos:</h4>\r\n    <div class=\"email-list\">\r\n        <ul id=\"email_list\">\r\n        </ul>\r\n    </div>\r\n    <div class=\"add-email\">\r\n        <div class=\"input-group\">\r\n            <input type=\"email\" class=\"form-control\" id=\"settings-email\" placeholder=\"ejemplo@ejemplo.com\">\r\n            <div class=\"input-group-btn\">\r\n                <button class=\"btn\" id=\"add-email-btn\" type=\"submit\">\r\n                    <i class=\"fa fa-plus\" aria-hidden=\"true\"></i>\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <p id=\"settings-warn-email\" class=\"settings-warn settings-warn-hidden\">*Dirección de correo electrónico inválida*</p>\r\n</div>";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -30143,6 +30143,7 @@ _firebase2.default.auth().signInAnonymously().catch(function (error) {
 var language = localStorage['lng'] || 'en';
 var tpl = language == 'es' ? _messageboardSettingsEs2.default : _messageboardSettingsEn2.default;
 var html = tpl.render();
+document.title = "Messageboard settings";
 document.querySelector('#page-content').innerHTML = html;
 
 function singDB() {
@@ -30184,9 +30185,17 @@ function loadEmails() {
 
             var email = childData.email;
             var li = document.createElement("li");
-            li.innerHTML = email;
+            li.className = 'email-node';
+            li.innerHTML = '<span>' + email + '</span><span id="' + key + '" class="email-trasher"><i class="fa fa-trash" aria-hidden="true"></i></span>';
             email_list.appendChild(li);
         });
+        var trash_cans = document.getElementsByClassName("email-trasher");
+        for (var i = 0; i < trash_cans.length; i++) {
+            trash_cans[i].addEventListener('click', function () {
+                var id = this.id;
+                _firebase2.default.database().ref('mails/' + id).remove();
+            });
+        }
     });
 }
 function isNotified() {
