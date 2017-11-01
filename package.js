@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		41: 0
+/******/ 		43: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -145,7 +145,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 198);
+/******/ 	return __webpack_require__(__webpack_require__.s = 199);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -164,7 +164,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.assertionError = exports.assert = undefined;
 
-var _constants = __webpack_require__(37);
+var _constants = __webpack_require__(36);
 
 /**
  * Throws an error if the provided assertion is falsy
@@ -249,7 +249,7 @@ var _utf = __webpack_require__(50);
 
 var _json = __webpack_require__(10);
 
-var _storage = __webpack_require__(31);
+var _storage = __webpack_require__(30);
 
 var _environment = __webpack_require__(22);
 
@@ -1007,6 +1007,327 @@ var every = exports.every = function every(obj, fn) {
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*! @license Firebase v4.5.0
+Build: rev-f49c8b5
+Terms: https://firebase.google.com/terms/ */
+
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.ValidationPath = exports.Path = undefined;
+
+var _util = __webpack_require__(1);
+
+var _utf = __webpack_require__(50);
+
+/**
+ * An immutable object representing a parsed path.  It's immutable so that you
+ * can pass them around to other functions without worrying about them changing
+ * it.
+ */
+/**
+ * Copyright 2017 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+var Path = /** @class */function () {
+    /**
+     * @param {string|Array.<string>} pathOrString Path string to parse,
+     *      or another path, or the raw tokens array
+     * @param {number=} pieceNum
+     */
+    function Path(pathOrString, pieceNum) {
+        if (pieceNum === void 0) {
+            this.pieces_ = pathOrString.split('/');
+            // Remove empty pieces.
+            var copyTo = 0;
+            for (var i = 0; i < this.pieces_.length; i++) {
+                if (this.pieces_[i].length > 0) {
+                    this.pieces_[copyTo] = this.pieces_[i];
+                    copyTo++;
+                }
+            }
+            this.pieces_.length = copyTo;
+            this.pieceNum_ = 0;
+        } else {
+            this.pieces_ = pathOrString;
+            this.pieceNum_ = pieceNum;
+        }
+    }
+    Object.defineProperty(Path, "Empty", {
+        /**
+         * Singleton to represent an empty path
+         *
+         * @const
+         */
+        get: function get() {
+            return new Path('');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Path.prototype.getFront = function () {
+        if (this.pieceNum_ >= this.pieces_.length) return null;
+        return this.pieces_[this.pieceNum_];
+    };
+    /**
+     * @return {number} The number of segments in this path
+     */
+    Path.prototype.getLength = function () {
+        return this.pieces_.length - this.pieceNum_;
+    };
+    /**
+     * @return {!Path}
+     */
+    Path.prototype.popFront = function () {
+        var pieceNum = this.pieceNum_;
+        if (pieceNum < this.pieces_.length) {
+            pieceNum++;
+        }
+        return new Path(this.pieces_, pieceNum);
+    };
+    /**
+     * @return {?string}
+     */
+    Path.prototype.getBack = function () {
+        if (this.pieceNum_ < this.pieces_.length) return this.pieces_[this.pieces_.length - 1];
+        return null;
+    };
+    Path.prototype.toString = function () {
+        var pathString = '';
+        for (var i = this.pieceNum_; i < this.pieces_.length; i++) {
+            if (this.pieces_[i] !== '') pathString += '/' + this.pieces_[i];
+        }
+        return pathString || '/';
+    };
+    Path.prototype.toUrlEncodedString = function () {
+        var pathString = '';
+        for (var i = this.pieceNum_; i < this.pieces_.length; i++) {
+            if (this.pieces_[i] !== '') pathString += '/' + encodeURIComponent(String(this.pieces_[i]));
+        }
+        return pathString || '/';
+    };
+    /**
+     * Shallow copy of the parts of the path.
+     *
+     * @param {number=} begin
+     * @return {!Array<string>}
+     */
+    Path.prototype.slice = function (begin) {
+        if (begin === void 0) {
+            begin = 0;
+        }
+        return this.pieces_.slice(this.pieceNum_ + begin);
+    };
+    /**
+     * @return {?Path}
+     */
+    Path.prototype.parent = function () {
+        if (this.pieceNum_ >= this.pieces_.length) return null;
+        var pieces = [];
+        for (var i = this.pieceNum_; i < this.pieces_.length - 1; i++) {
+            pieces.push(this.pieces_[i]);
+        }return new Path(pieces, 0);
+    };
+    /**
+     * @param {string|!Path} childPathObj
+     * @return {!Path}
+     */
+    Path.prototype.child = function (childPathObj) {
+        var pieces = [];
+        for (var i = this.pieceNum_; i < this.pieces_.length; i++) {
+            pieces.push(this.pieces_[i]);
+        }if (childPathObj instanceof Path) {
+            for (var i = childPathObj.pieceNum_; i < childPathObj.pieces_.length; i++) {
+                pieces.push(childPathObj.pieces_[i]);
+            }
+        } else {
+            var childPieces = childPathObj.split('/');
+            for (var i = 0; i < childPieces.length; i++) {
+                if (childPieces[i].length > 0) pieces.push(childPieces[i]);
+            }
+        }
+        return new Path(pieces, 0);
+    };
+    /**
+     * @return {boolean} True if there are no segments in this path
+     */
+    Path.prototype.isEmpty = function () {
+        return this.pieceNum_ >= this.pieces_.length;
+    };
+    /**
+     * @param {!Path} outerPath
+     * @param {!Path} innerPath
+     * @return {!Path} The path from outerPath to innerPath
+     */
+    Path.relativePath = function (outerPath, innerPath) {
+        var outer = outerPath.getFront(),
+            inner = innerPath.getFront();
+        if (outer === null) {
+            return innerPath;
+        } else if (outer === inner) {
+            return Path.relativePath(outerPath.popFront(), innerPath.popFront());
+        } else {
+            throw new Error('INTERNAL ERROR: innerPath (' + innerPath + ') is not within ' + 'outerPath (' + outerPath + ')');
+        }
+    };
+    /**
+     * @param {!Path} left
+     * @param {!Path} right
+     * @return {number} -1, 0, 1 if left is less, equal, or greater than the right.
+     */
+    Path.comparePaths = function (left, right) {
+        var leftKeys = left.slice();
+        var rightKeys = right.slice();
+        for (var i = 0; i < leftKeys.length && i < rightKeys.length; i++) {
+            var cmp = (0, _util.nameCompare)(leftKeys[i], rightKeys[i]);
+            if (cmp !== 0) return cmp;
+        }
+        if (leftKeys.length === rightKeys.length) return 0;
+        return leftKeys.length < rightKeys.length ? -1 : 1;
+    };
+    /**
+     *
+     * @param {Path} other
+     * @return {boolean} true if paths are the same.
+     */
+    Path.prototype.equals = function (other) {
+        if (this.getLength() !== other.getLength()) {
+            return false;
+        }
+        for (var i = this.pieceNum_, j = other.pieceNum_; i <= this.pieces_.length; i++, j++) {
+            if (this.pieces_[i] !== other.pieces_[j]) {
+                return false;
+            }
+        }
+        return true;
+    };
+    /**
+     *
+     * @param {!Path} other
+     * @return {boolean} True if this path is a parent (or the same as) other
+     */
+    Path.prototype.contains = function (other) {
+        var i = this.pieceNum_;
+        var j = other.pieceNum_;
+        if (this.getLength() > other.getLength()) {
+            return false;
+        }
+        while (i < this.pieces_.length) {
+            if (this.pieces_[i] !== other.pieces_[j]) {
+                return false;
+            }
+            ++i;
+            ++j;
+        }
+        return true;
+    };
+    return Path;
+}(); // end Path
+exports.Path = Path;
+/**
+ * Dynamic (mutable) path used to count path lengths.
+ *
+ * This class is used to efficiently check paths for valid
+ * length (in UTF8 bytes) and depth (used in path validation).
+ *
+ * Throws Error exception if path is ever invalid.
+ *
+ * The definition of a path always begins with '/'.
+ */
+
+var ValidationPath = /** @class */function () {
+    /**
+     * @param {!Path} path Initial Path.
+     * @param {string} errorPrefix_ Prefix for any error messages.
+     */
+    function ValidationPath(path, errorPrefix_) {
+        this.errorPrefix_ = errorPrefix_;
+        /** @type {!Array<string>} */
+        this.parts_ = path.slice();
+        /** @type {number} Initialize to number of '/' chars needed in path. */
+        this.byteLength_ = Math.max(1, this.parts_.length);
+        for (var i = 0; i < this.parts_.length; i++) {
+            this.byteLength_ += (0, _utf.stringLength)(this.parts_[i]);
+        }
+        this.checkValid_();
+    }
+    Object.defineProperty(ValidationPath, "MAX_PATH_DEPTH", {
+        /** @const {number} Maximum key depth. */
+        get: function get() {
+            return 32;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ValidationPath, "MAX_PATH_LENGTH_BYTES", {
+        /** @const {number} Maximum number of (UTF8) bytes in a Firebase path. */
+        get: function get() {
+            return 768;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /** @param {string} child */
+    ValidationPath.prototype.push = function (child) {
+        // Count the needed '/'
+        if (this.parts_.length > 0) {
+            this.byteLength_ += 1;
+        }
+        this.parts_.push(child);
+        this.byteLength_ += (0, _utf.stringLength)(child);
+        this.checkValid_();
+    };
+    ValidationPath.prototype.pop = function () {
+        var last = this.parts_.pop();
+        this.byteLength_ -= (0, _utf.stringLength)(last);
+        // Un-count the previous '/'
+        if (this.parts_.length > 0) {
+            this.byteLength_ -= 1;
+        }
+    };
+    ValidationPath.prototype.checkValid_ = function () {
+        if (this.byteLength_ > ValidationPath.MAX_PATH_LENGTH_BYTES) {
+            throw new Error(this.errorPrefix_ + 'has a key path longer than ' + ValidationPath.MAX_PATH_LENGTH_BYTES + ' bytes (' + this.byteLength_ + ').');
+        }
+        if (this.parts_.length > ValidationPath.MAX_PATH_DEPTH) {
+            throw new Error(this.errorPrefix_ + 'path specified exceeds the maximum depth that can be written (' + ValidationPath.MAX_PATH_DEPTH + ') or object contains a cycle ' + this.toErrorString());
+        }
+    };
+    /**
+     * String for use in error messages - uses '.' notation for path.
+     *
+     * @return {string}
+     */
+    ValidationPath.prototype.toErrorString = function () {
+        if (this.parts_.length == 0) {
+            return '';
+        }
+        return "in property '" + this.parts_.join('.') + "'";
+    };
+    return ValidationPath;
+}();
+exports.ValidationPath = ValidationPath;
+//# sourceMappingURL=Path.js.map
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports) {
 
 module.exports = function (nunjucks, env, obj, dependencies){
@@ -1057,7 +1378,7 @@ module.exports = function (nunjucks, env, obj, dependencies){
 };
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {/*! Browser bundle of nunjucks 3.0.1 (slim, only works with precompiled templates) */
@@ -4266,328 +4587,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12).setImmediate, __webpack_require__(12).clearImmediate))
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/*! @license Firebase v4.5.0
-Build: rev-f49c8b5
-Terms: https://firebase.google.com/terms/ */
-
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.ValidationPath = exports.Path = undefined;
-
-var _util = __webpack_require__(1);
-
-var _utf = __webpack_require__(50);
-
-/**
- * An immutable object representing a parsed path.  It's immutable so that you
- * can pass them around to other functions without worrying about them changing
- * it.
- */
-/**
- * Copyright 2017 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-var Path = /** @class */function () {
-    /**
-     * @param {string|Array.<string>} pathOrString Path string to parse,
-     *      or another path, or the raw tokens array
-     * @param {number=} pieceNum
-     */
-    function Path(pathOrString, pieceNum) {
-        if (pieceNum === void 0) {
-            this.pieces_ = pathOrString.split('/');
-            // Remove empty pieces.
-            var copyTo = 0;
-            for (var i = 0; i < this.pieces_.length; i++) {
-                if (this.pieces_[i].length > 0) {
-                    this.pieces_[copyTo] = this.pieces_[i];
-                    copyTo++;
-                }
-            }
-            this.pieces_.length = copyTo;
-            this.pieceNum_ = 0;
-        } else {
-            this.pieces_ = pathOrString;
-            this.pieceNum_ = pieceNum;
-        }
-    }
-    Object.defineProperty(Path, "Empty", {
-        /**
-         * Singleton to represent an empty path
-         *
-         * @const
-         */
-        get: function get() {
-            return new Path('');
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Path.prototype.getFront = function () {
-        if (this.pieceNum_ >= this.pieces_.length) return null;
-        return this.pieces_[this.pieceNum_];
-    };
-    /**
-     * @return {number} The number of segments in this path
-     */
-    Path.prototype.getLength = function () {
-        return this.pieces_.length - this.pieceNum_;
-    };
-    /**
-     * @return {!Path}
-     */
-    Path.prototype.popFront = function () {
-        var pieceNum = this.pieceNum_;
-        if (pieceNum < this.pieces_.length) {
-            pieceNum++;
-        }
-        return new Path(this.pieces_, pieceNum);
-    };
-    /**
-     * @return {?string}
-     */
-    Path.prototype.getBack = function () {
-        if (this.pieceNum_ < this.pieces_.length) return this.pieces_[this.pieces_.length - 1];
-        return null;
-    };
-    Path.prototype.toString = function () {
-        var pathString = '';
-        for (var i = this.pieceNum_; i < this.pieces_.length; i++) {
-            if (this.pieces_[i] !== '') pathString += '/' + this.pieces_[i];
-        }
-        return pathString || '/';
-    };
-    Path.prototype.toUrlEncodedString = function () {
-        var pathString = '';
-        for (var i = this.pieceNum_; i < this.pieces_.length; i++) {
-            if (this.pieces_[i] !== '') pathString += '/' + encodeURIComponent(String(this.pieces_[i]));
-        }
-        return pathString || '/';
-    };
-    /**
-     * Shallow copy of the parts of the path.
-     *
-     * @param {number=} begin
-     * @return {!Array<string>}
-     */
-    Path.prototype.slice = function (begin) {
-        if (begin === void 0) {
-            begin = 0;
-        }
-        return this.pieces_.slice(this.pieceNum_ + begin);
-    };
-    /**
-     * @return {?Path}
-     */
-    Path.prototype.parent = function () {
-        if (this.pieceNum_ >= this.pieces_.length) return null;
-        var pieces = [];
-        for (var i = this.pieceNum_; i < this.pieces_.length - 1; i++) {
-            pieces.push(this.pieces_[i]);
-        }return new Path(pieces, 0);
-    };
-    /**
-     * @param {string|!Path} childPathObj
-     * @return {!Path}
-     */
-    Path.prototype.child = function (childPathObj) {
-        var pieces = [];
-        for (var i = this.pieceNum_; i < this.pieces_.length; i++) {
-            pieces.push(this.pieces_[i]);
-        }if (childPathObj instanceof Path) {
-            for (var i = childPathObj.pieceNum_; i < childPathObj.pieces_.length; i++) {
-                pieces.push(childPathObj.pieces_[i]);
-            }
-        } else {
-            var childPieces = childPathObj.split('/');
-            for (var i = 0; i < childPieces.length; i++) {
-                if (childPieces[i].length > 0) pieces.push(childPieces[i]);
-            }
-        }
-        return new Path(pieces, 0);
-    };
-    /**
-     * @return {boolean} True if there are no segments in this path
-     */
-    Path.prototype.isEmpty = function () {
-        return this.pieceNum_ >= this.pieces_.length;
-    };
-    /**
-     * @param {!Path} outerPath
-     * @param {!Path} innerPath
-     * @return {!Path} The path from outerPath to innerPath
-     */
-    Path.relativePath = function (outerPath, innerPath) {
-        var outer = outerPath.getFront(),
-            inner = innerPath.getFront();
-        if (outer === null) {
-            return innerPath;
-        } else if (outer === inner) {
-            return Path.relativePath(outerPath.popFront(), innerPath.popFront());
-        } else {
-            throw new Error('INTERNAL ERROR: innerPath (' + innerPath + ') is not within ' + 'outerPath (' + outerPath + ')');
-        }
-    };
-    /**
-     * @param {!Path} left
-     * @param {!Path} right
-     * @return {number} -1, 0, 1 if left is less, equal, or greater than the right.
-     */
-    Path.comparePaths = function (left, right) {
-        var leftKeys = left.slice();
-        var rightKeys = right.slice();
-        for (var i = 0; i < leftKeys.length && i < rightKeys.length; i++) {
-            var cmp = (0, _util.nameCompare)(leftKeys[i], rightKeys[i]);
-            if (cmp !== 0) return cmp;
-        }
-        if (leftKeys.length === rightKeys.length) return 0;
-        return leftKeys.length < rightKeys.length ? -1 : 1;
-    };
-    /**
-     *
-     * @param {Path} other
-     * @return {boolean} true if paths are the same.
-     */
-    Path.prototype.equals = function (other) {
-        if (this.getLength() !== other.getLength()) {
-            return false;
-        }
-        for (var i = this.pieceNum_, j = other.pieceNum_; i <= this.pieces_.length; i++, j++) {
-            if (this.pieces_[i] !== other.pieces_[j]) {
-                return false;
-            }
-        }
-        return true;
-    };
-    /**
-     *
-     * @param {!Path} other
-     * @return {boolean} True if this path is a parent (or the same as) other
-     */
-    Path.prototype.contains = function (other) {
-        var i = this.pieceNum_;
-        var j = other.pieceNum_;
-        if (this.getLength() > other.getLength()) {
-            return false;
-        }
-        while (i < this.pieces_.length) {
-            if (this.pieces_[i] !== other.pieces_[j]) {
-                return false;
-            }
-            ++i;
-            ++j;
-        }
-        return true;
-    };
-    return Path;
-}(); // end Path
-exports.Path = Path;
-/**
- * Dynamic (mutable) path used to count path lengths.
- *
- * This class is used to efficiently check paths for valid
- * length (in UTF8 bytes) and depth (used in path validation).
- *
- * Throws Error exception if path is ever invalid.
- *
- * The definition of a path always begins with '/'.
- */
-
-var ValidationPath = /** @class */function () {
-    /**
-     * @param {!Path} path Initial Path.
-     * @param {string} errorPrefix_ Prefix for any error messages.
-     */
-    function ValidationPath(path, errorPrefix_) {
-        this.errorPrefix_ = errorPrefix_;
-        /** @type {!Array<string>} */
-        this.parts_ = path.slice();
-        /** @type {number} Initialize to number of '/' chars needed in path. */
-        this.byteLength_ = Math.max(1, this.parts_.length);
-        for (var i = 0; i < this.parts_.length; i++) {
-            this.byteLength_ += (0, _utf.stringLength)(this.parts_[i]);
-        }
-        this.checkValid_();
-    }
-    Object.defineProperty(ValidationPath, "MAX_PATH_DEPTH", {
-        /** @const {number} Maximum key depth. */
-        get: function get() {
-            return 32;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(ValidationPath, "MAX_PATH_LENGTH_BYTES", {
-        /** @const {number} Maximum number of (UTF8) bytes in a Firebase path. */
-        get: function get() {
-            return 768;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    /** @param {string} child */
-    ValidationPath.prototype.push = function (child) {
-        // Count the needed '/'
-        if (this.parts_.length > 0) {
-            this.byteLength_ += 1;
-        }
-        this.parts_.push(child);
-        this.byteLength_ += (0, _utf.stringLength)(child);
-        this.checkValid_();
-    };
-    ValidationPath.prototype.pop = function () {
-        var last = this.parts_.pop();
-        this.byteLength_ -= (0, _utf.stringLength)(last);
-        // Un-count the previous '/'
-        if (this.parts_.length > 0) {
-            this.byteLength_ -= 1;
-        }
-    };
-    ValidationPath.prototype.checkValid_ = function () {
-        if (this.byteLength_ > ValidationPath.MAX_PATH_LENGTH_BYTES) {
-            throw new Error(this.errorPrefix_ + 'has a key path longer than ' + ValidationPath.MAX_PATH_LENGTH_BYTES + ' bytes (' + this.byteLength_ + ').');
-        }
-        if (this.parts_.length > ValidationPath.MAX_PATH_DEPTH) {
-            throw new Error(this.errorPrefix_ + 'path specified exceeds the maximum depth that can be written (' + ValidationPath.MAX_PATH_DEPTH + ') or object contains a cycle ' + this.toErrorString());
-        }
-    };
-    /**
-     * String for use in error messages - uses '.' notation for path.
-     *
-     * @return {string}
-     */
-    ValidationPath.prototype.toErrorString = function () {
-        if (this.parts_.length == 0) {
-            return '';
-        }
-        return "in property '" + this.parts_.join('.') + "'";
-    };
-    return ValidationPath;
-}();
-exports.ValidationPath = ValidationPath;
-//# sourceMappingURL=Path.js.map
-
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13).setImmediate, __webpack_require__(13).clearImmediate))
 
 /***/ }),
 /* 6 */
@@ -4607,13 +4607,13 @@ exports.PRIORITY_INDEX = exports.PriorityIndex = undefined;
 exports.setNodeFromJSON = setNodeFromJSON;
 exports.setMaxNode = setMaxNode;
 
-var _Index = __webpack_require__(30);
+var _Index = __webpack_require__(29);
 
 var _util = __webpack_require__(1);
 
 var _Node = __webpack_require__(8);
 
-var _LeafNode = __webpack_require__(29);
+var _LeafNode = __webpack_require__(28);
 
 /**
  * Copyright 2017 Google Inc.
@@ -4756,7 +4756,7 @@ var _KeyIndex = __webpack_require__(24);
 
 var _IndexMap = __webpack_require__(71);
 
-var _LeafNode = __webpack_require__(29);
+var _LeafNode = __webpack_require__(28);
 
 var _comparators = __webpack_require__(73);
 
@@ -5455,7 +5455,7 @@ exports.invalidRootOperation = invalidRootOperation;
 exports.invalidFormat = invalidFormat;
 exports.internalError = internalError;
 
-var _constants = __webpack_require__(35);
+var _constants = __webpack_require__(34);
 
 var FirebaseStorageError = /** @class */function () {
     function FirebaseStorageError(code, message) {
@@ -5649,6 +5649,49 @@ function internalError(message) {
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+/*! @license Firebase v4.5.0
+Build: rev-f49c8b5
+Terms: https://firebase.google.com/terms/ */
+
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+__webpack_require__(164);
+
+var _firebase_app = __webpack_require__(100);
+
+// Export a single instance of firebase app
+/**
+ * Copyright 2017 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+// Import the needed shims
+var firebase = (0, _firebase_app.createFirebaseNamespace)();
+// Import the createFirebaseNamespace function
+exports.default = firebase;
+module.exports = exports['default'];
+//# sourceMappingURL=app.js.map
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var apply = Function.prototype.apply;
 
 // DOM APIs, for completeness
@@ -5702,49 +5745,6 @@ exports._unrefActive = exports.active = function(item) {
 __webpack_require__(26);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
-
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/*! @license Firebase v4.5.0
-Build: rev-f49c8b5
-Terms: https://firebase.google.com/terms/ */
-
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-__webpack_require__(164);
-
-var _firebase_app = __webpack_require__(100);
-
-// Export a single instance of firebase app
-/**
- * Copyright 2017 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-// Import the needed shims
-var firebase = (0, _firebase_app.createFirebaseNamespace)();
-// Import the createFirebaseNamespace function
-exports.default = firebase;
-module.exports = exports['default'];
-//# sourceMappingURL=app.js.map
 
 
 /***/ }),
@@ -5868,7 +5868,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                                                                                                                                                                                                                                                                                */
 
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _obj = __webpack_require__(2);
 
@@ -6626,7 +6626,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                                                                                                                                                                                                                                                                                */
 
 
-var _constants = __webpack_require__(37);
+var _constants = __webpack_require__(36);
 
 /**
  * Returns navigator.userAgent string or '' if it's not defined.
@@ -6875,7 +6875,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.KEY_INDEX = exports.KeyIndex = undefined;
 
-var _Index = __webpack_require__(30);
+var _Index = __webpack_require__(29);
 
 var _Node = __webpack_require__(8);
 
@@ -7024,7 +7024,7 @@ exports.nodeFromJSON = nodeFromJSON;
 
 var _ChildrenNode = __webpack_require__(7);
 
-var _LeafNode = __webpack_require__(29);
+var _LeafNode = __webpack_require__(28);
 
 var _Node = __webpack_require__(8);
 
@@ -7310,190 +7310,6 @@ function nodeFromJSON(json, priority) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.getPageLanguage = getPageLanguage;
-exports.getTourPageByLanguage = getTourPageByLanguage;
-exports.getContactPageByLanguage = getContactPageByLanguage;
-exports.getPackagePageByLanguafge = getPackagePageByLanguafge;
-exports.getLastNewsBannerByLanguage = getLastNewsBannerByLanguage;
-exports.getArticleSidebar = getArticleSidebar;
-exports.requestResv = requestResv;
-exports.singDB = singDB;
-exports.dostuffDb = dostuffDb;
-
-var _toursPageEn = __webpack_require__(59);
-
-var _toursPageEn2 = _interopRequireDefault(_toursPageEn);
-
-var _toursPageEs = __webpack_require__(60);
-
-var _toursPageEs2 = _interopRequireDefault(_toursPageEs);
-
-var _contactcontentEn = __webpack_require__(53);
-
-var _contactcontentEn2 = _interopRequireDefault(_contactcontentEn);
-
-var _contactcontentEs = __webpack_require__(54);
-
-var _contactcontentEs2 = _interopRequireDefault(_contactcontentEs);
-
-var _packagePageEs = __webpack_require__(58);
-
-var _packagePageEs2 = _interopRequireDefault(_packagePageEs);
-
-var _packagePageEn = __webpack_require__(57);
-
-var _packagePageEn2 = _interopRequireDefault(_packagePageEn);
-
-var _lastNewsBannerEs = __webpack_require__(56);
-
-var _lastNewsBannerEs2 = _interopRequireDefault(_lastNewsBannerEs);
-
-var _lastNewsBannerEn = __webpack_require__(55);
-
-var _lastNewsBannerEn2 = _interopRequireDefault(_lastNewsBannerEn);
-
-var _articleSidebarEn = __webpack_require__(51);
-
-var _articleSidebarEn2 = _interopRequireDefault(_articleSidebarEn);
-
-var _articleSidebarEs = __webpack_require__(52);
-
-var _articleSidebarEs2 = _interopRequireDefault(_articleSidebarEs);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function getPageLanguage(name, url) {
-	return localStorage['lng'];
-}
-
-function getTourPageByLanguage(lng) {
-	switch (lng) {
-		case 'es':
-			return _toursPageEs2.default;
-			break;
-		case 'en':
-			return _toursPageEn2.default;
-			break;
-		default:
-			return _toursPageEn2.default;
-	}
-}
-
-function getContactPageByLanguage(lng) {
-	switch (lng) {
-		case 'es':
-			return _contactcontentEs2.default;
-			break;
-		case 'en':
-			return _contactcontentEn2.default;
-			break;
-		default:
-			return _contactcontentEn2.default;
-	}
-}
-
-function getPackagePageByLanguafge(lng) {
-	switch (lng) {
-		case 'es':
-			return _packagePageEs2.default;
-			break;
-		case 'en':
-			return _packagePageEn2.default;
-			break;
-		default:
-			return _packagePageEn2.default;
-	}
-}
-
-function getLastNewsBannerByLanguage(lng) {
-	switch (lng) {
-		case 'es':
-			return _lastNewsBannerEs2.default;
-			break;
-		case 'en':
-			return _lastNewsBannerEn2.default;
-			break;
-		default:
-			return _lastNewsBannerEn2.default;
-	}
-}
-
-function getArticleSidebar(lng) {
-	switch (lng) {
-		case 'es':
-			return _articleSidebarEs2.default;
-			break;
-		case 'en':
-			return _articleSidebarEn2.default;
-			break;
-		default:
-			return _articleSidebarEn2.default;
-	}
-}
-
-//Request reservation
-function requestResv(id, that, fbase) {
-	var tour = document.getElementById(id);
-	var name = tour.getElementsByClassName("rsv-name")[0].value,
-	    email = tour.getElementsByClassName("rsv-email")[0].value,
-	    date = tour.getElementsByClassName("rsv-date")[0].value,
-	    nPeople = tour.getElementsByClassName("rsv-people")[0].value,
-	    notes = tour.getElementsByClassName("rsv-notes")[0].value,
-	    tTitle = tour.getElementsByClassName("rsv-tour-info")[0].value,
-	    lang = tour.getElementsByClassName("rsv-lang")[0].value,
-	    tId = tour.getElementsByClassName("rsv-tour-info")[0].getAttribute('tour-id'),
-	    payment = tour.getElementsByClassName("rsv-payment")[0].value;
-
-	that.disabled = true;
-
-	//Crucial values
-	if (tId != "" && name != "" && email != "" && date != "" && nPeople != "") {
-		//Second validation
-		if (validateEmail(email)) {
-			insertReservation({
-				tTitle: tTitle,
-				tId: tId,
-				name: name,
-				email: email,
-				date: date,
-				nPeople: nPeople,
-				notes: notes,
-				lang: lang,
-				payment_type: payment
-			}, fbase, that);
-		} else {
-			tour.getElementsByClassName("rsv-warn-email")[0].setAttribute("class", "rsv-warn-email rsv-warn");
-			tour.getElementsByClassName("rsv-email")[0].focus();
-			that.disabled = false;
-		}
-	} else {
-		tour.getElementsByClassName("rsv-warn-regular")[0].setAttribute("class", "rsv-warn-regular rsv-warn");
-		that.disabled = false;
-	}
-}
-function singDB(firebase) {
-	firebase.auth().signInAnonymously().catch(function (error) {
-		console.log(error.code);
-		console.log(error.message);
-	});
-}
-function dostuffDb(cb, firebase) {
-	singDB(firebase);
-	firebase.auth().onAuthStateChanged(function (user) {
-		cb(user);
-	});
-}
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 /*! @license Firebase v4.5.0
 Build: rev-f49c8b5
 Terms: https://firebase.google.com/terms/ */
@@ -7526,7 +7342,7 @@ var _ServerValues = __webpack_require__(80);
 
 var _nodeFromJSON = __webpack_require__(25);
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _SparseSnapshotTree = __webpack_require__(68);
 
@@ -8041,7 +7857,7 @@ exports.Repo = Repo;
 
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8306,7 +8122,7 @@ exports.LeafNode = LeafNode;
 
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8380,7 +8196,7 @@ exports.Index = Index;
 
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8447,7 +8263,7 @@ var SessionStorage = exports.SessionStorage = createStoragefor('sessionStorage')
 
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8537,7 +8353,7 @@ exports.CacheNode = CacheNode;
 
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8578,7 +8394,7 @@ var LONG_POLLING = exports.LONG_POLLING = 'long_polling';
 
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8653,7 +8469,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8726,7 +8542,7 @@ var minSafeInteger = exports.minSafeInteger = -9007199254740991;
 
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8848,7 +8664,7 @@ exports.Location = Location;
 
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8895,6 +8711,190 @@ var CONSTANTS = exports.CONSTANTS = {
 };
 //# sourceMappingURL=constants.js.map
 
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.getPageLanguage = getPageLanguage;
+exports.getTourPageByLanguage = getTourPageByLanguage;
+exports.getContactPageByLanguage = getContactPageByLanguage;
+exports.getPackagePageByLanguafge = getPackagePageByLanguafge;
+exports.getLastNewsBannerByLanguage = getLastNewsBannerByLanguage;
+exports.getArticleSidebar = getArticleSidebar;
+exports.requestResv = requestResv;
+exports.singDB = singDB;
+exports.dostuffDb = dostuffDb;
+
+var _toursPageEn = __webpack_require__(59);
+
+var _toursPageEn2 = _interopRequireDefault(_toursPageEn);
+
+var _toursPageEs = __webpack_require__(60);
+
+var _toursPageEs2 = _interopRequireDefault(_toursPageEs);
+
+var _contactcontentEn = __webpack_require__(53);
+
+var _contactcontentEn2 = _interopRequireDefault(_contactcontentEn);
+
+var _contactcontentEs = __webpack_require__(54);
+
+var _contactcontentEs2 = _interopRequireDefault(_contactcontentEs);
+
+var _packagePageEs = __webpack_require__(58);
+
+var _packagePageEs2 = _interopRequireDefault(_packagePageEs);
+
+var _packagePageEn = __webpack_require__(57);
+
+var _packagePageEn2 = _interopRequireDefault(_packagePageEn);
+
+var _lastNewsBannerEs = __webpack_require__(56);
+
+var _lastNewsBannerEs2 = _interopRequireDefault(_lastNewsBannerEs);
+
+var _lastNewsBannerEn = __webpack_require__(55);
+
+var _lastNewsBannerEn2 = _interopRequireDefault(_lastNewsBannerEn);
+
+var _articleSidebarEn = __webpack_require__(51);
+
+var _articleSidebarEn2 = _interopRequireDefault(_articleSidebarEn);
+
+var _articleSidebarEs = __webpack_require__(52);
+
+var _articleSidebarEs2 = _interopRequireDefault(_articleSidebarEs);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function getPageLanguage(name, url) {
+	return localStorage['lng'];
+}
+
+function getTourPageByLanguage(lng) {
+	switch (lng) {
+		case 'es':
+			return _toursPageEs2.default;
+			break;
+		case 'en':
+			return _toursPageEn2.default;
+			break;
+		default:
+			return _toursPageEn2.default;
+	}
+}
+
+function getContactPageByLanguage(lng) {
+	switch (lng) {
+		case 'es':
+			return _contactcontentEs2.default;
+			break;
+		case 'en':
+			return _contactcontentEn2.default;
+			break;
+		default:
+			return _contactcontentEn2.default;
+	}
+}
+
+function getPackagePageByLanguafge(lng) {
+	switch (lng) {
+		case 'es':
+			return _packagePageEs2.default;
+			break;
+		case 'en':
+			return _packagePageEn2.default;
+			break;
+		default:
+			return _packagePageEn2.default;
+	}
+}
+
+function getLastNewsBannerByLanguage(lng) {
+	switch (lng) {
+		case 'es':
+			return _lastNewsBannerEs2.default;
+			break;
+		case 'en':
+			return _lastNewsBannerEn2.default;
+			break;
+		default:
+			return _lastNewsBannerEn2.default;
+	}
+}
+
+function getArticleSidebar(lng) {
+	switch (lng) {
+		case 'es':
+			return _articleSidebarEs2.default;
+			break;
+		case 'en':
+			return _articleSidebarEn2.default;
+			break;
+		default:
+			return _articleSidebarEn2.default;
+	}
+}
+
+//Request reservation
+function requestResv(id, that, fbase) {
+	var tour = document.getElementById(id);
+	var name = tour.getElementsByClassName("rsv-name")[0].value,
+	    email = tour.getElementsByClassName("rsv-email")[0].value,
+	    date = tour.getElementsByClassName("rsv-date")[0].value,
+	    nPeople = tour.getElementsByClassName("rsv-people")[0].value,
+	    notes = tour.getElementsByClassName("rsv-notes")[0].value,
+	    tTitle = tour.getElementsByClassName("rsv-tour-info")[0].value,
+	    lang = tour.getElementsByClassName("rsv-lang")[0].value,
+	    tId = tour.getElementsByClassName("rsv-tour-info")[0].getAttribute('tour-id'),
+	    payment = tour.getElementsByClassName("rsv-payment")[0].value;
+
+	that.disabled = true;
+
+	//Crucial values
+	if (tId != "" && name != "" && email != "" && date != "" && nPeople != "") {
+		//Second validation
+		if (validateEmail(email)) {
+			insertReservation({
+				tTitle: tTitle,
+				tId: tId,
+				name: name,
+				email: email,
+				date: date,
+				nPeople: nPeople,
+				notes: notes,
+				lang: lang,
+				payment_type: payment
+			}, fbase, that);
+		} else {
+			tour.getElementsByClassName("rsv-warn-email")[0].setAttribute("class", "rsv-warn-email rsv-warn");
+			tour.getElementsByClassName("rsv-email")[0].focus();
+			that.disabled = false;
+		}
+	} else {
+		tour.getElementsByClassName("rsv-warn-regular")[0].setAttribute("class", "rsv-warn-regular rsv-warn");
+		that.disabled = false;
+	}
+}
+function singDB(firebase) {
+	firebase.auth().signInAnonymously().catch(function (error) {
+		console.log(error.code);
+		console.log(error.message);
+	});
+}
+function dostuffDb(cb, firebase) {
+	singDB(firebase);
+	firebase.auth().onAuthStateChanged(function (user) {
+		cb(user);
+	});
+}
 
 /***/ }),
 /* 38 */
@@ -9016,9 +9016,9 @@ var _NextPushId = __webpack_require__(121);
 
 var _Query = __webpack_require__(64);
 
-var _Repo = __webpack_require__(28);
+var _Repo = __webpack_require__(27);
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _QueryParams = __webpack_require__(131);
 
@@ -9334,7 +9334,7 @@ exports.RepoManager = undefined;
 
 var _obj = __webpack_require__(2);
 
-var _Repo = __webpack_require__(28);
+var _Repo = __webpack_require__(27);
 
 var _util = __webpack_require__(1);
 
@@ -9541,7 +9541,7 @@ exports.ImmutableTree = undefined;
 
 var _SortedMap = __webpack_require__(43);
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _util = __webpack_require__(1);
 
@@ -10921,7 +10921,7 @@ var _json = __webpack_require__(150);
 
 var json = _interopRequireWildcard(_json);
 
-var _location = __webpack_require__(36);
+var _location = __webpack_require__(35);
 
 var _path = __webpack_require__(92);
 
@@ -11331,7 +11331,7 @@ exports.makeDownloadUrl = makeDownloadUrl;
 exports.makeUploadUrl = makeUploadUrl;
 exports.makeQueryString = makeQueryString;
 
-var _constants = __webpack_require__(35);
+var _constants = __webpack_require__(34);
 
 var constants = _interopRequireWildcard(_constants);
 
@@ -11489,7 +11489,7 @@ var stringLength = exports.stringLength = function stringLength(str) {
 /* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -11501,7 +11501,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/article-sidebar.en.njk"] = (function() {
@@ -11537,7 +11537,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 /* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -11549,7 +11549,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/article-sidebar.es.njk"] = (function() {
@@ -11585,7 +11585,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 /* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -11597,7 +11597,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/contactcontent.en.njk"] = (function() {
@@ -11633,7 +11633,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/cont
 /* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -11645,7 +11645,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/contactcontent.es.njk"] = (function() {
@@ -11681,7 +11681,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/cont
 /* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -11693,7 +11693,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/last-news-banner.en.njk"] = (function() {
@@ -11729,7 +11729,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 /* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -11741,7 +11741,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/last-news-banner.es.njk"] = (function() {
@@ -11777,7 +11777,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 /* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -11789,7 +11789,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/package-page.en.njk"] = (function() {
@@ -12069,7 +12069,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/pack
 /* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -12081,7 +12081,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/package-page.es.njk"] = (function() {
@@ -12361,7 +12361,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/pack
 /* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -12373,7 +12373,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/tours-page.en.njk"] = (function() {
@@ -12625,7 +12625,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tour
 /* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -12637,7 +12637,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/tours-page.es.njk"] = (function() {
@@ -13134,7 +13134,7 @@ var _validation = __webpack_require__(18);
 
 var _validation2 = __webpack_require__(15);
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _PriorityIndex = __webpack_require__(6);
 
@@ -13322,13 +13322,13 @@ var _util = __webpack_require__(1);
 
 var _parser = __webpack_require__(81);
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _promise = __webpack_require__(17);
 
 var _Reference = __webpack_require__(39);
 
-var _Repo = __webpack_require__(28);
+var _Repo = __webpack_require__(27);
 
 var _RepoManager = __webpack_require__(40);
 
@@ -13499,7 +13499,7 @@ var _PathIndex = __webpack_require__(74);
 
 var _util = __webpack_require__(1);
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _validation = __webpack_require__(15);
 
@@ -13976,7 +13976,7 @@ exports.PersistentConnection = undefined;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _app = __webpack_require__(13);
+var _app = __webpack_require__(12);
 
 var _app2 = _interopRequireDefault(_app);
 
@@ -13988,7 +13988,7 @@ var _assert = __webpack_require__(0);
 
 var _util = __webpack_require__(1);
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _VisibilityMonitor = __webpack_require__(124);
 
@@ -13998,7 +13998,7 @@ var _jwt = __webpack_require__(163);
 
 var _Connection = __webpack_require__(85);
 
-var _constants = __webpack_require__(37);
+var _constants = __webpack_require__(36);
 
 var _environment = __webpack_require__(22);
 
@@ -14794,9 +14794,9 @@ var _assert = __webpack_require__(0);
 
 var _obj = __webpack_require__(2);
 
-var _storage = __webpack_require__(31);
+var _storage = __webpack_require__(30);
 
-var _Constants = __webpack_require__(33);
+var _Constants = __webpack_require__(32);
 
 /**
  * A class that holds metadata about a Repo object
@@ -14986,7 +14986,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SparseSnapshotTree = undefined;
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _PriorityIndex = __webpack_require__(6);
 
@@ -15168,7 +15168,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SyncPoint = undefined;
 
-var _CacheNode = __webpack_require__(32);
+var _CacheNode = __webpack_require__(31);
 
 var _ChildrenNode = __webpack_require__(7);
 
@@ -15424,7 +15424,7 @@ exports.Overwrite = undefined;
 
 var _Operation = __webpack_require__(14);
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 /**
  * @param {!OperationSource} source
@@ -15866,7 +15866,7 @@ var _assert = __webpack_require__(0);
 
 var _util = __webpack_require__(1);
 
-var _Index = __webpack_require__(30);
+var _Index = __webpack_require__(29);
 
 var _ChildrenNode = __webpack_require__(7);
 
@@ -15989,7 +15989,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.VALUE_INDEX = exports.ValueIndex = undefined;
 
-var _Index = __webpack_require__(30);
+var _Index = __webpack_require__(29);
 
 var _Node = __webpack_require__(8);
 
@@ -16467,11 +16467,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _assert = __webpack_require__(0);
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _SparseSnapshotTree = __webpack_require__(68);
 
-var _LeafNode = __webpack_require__(29);
+var _LeafNode = __webpack_require__(28);
 
 var _nodeFromJSON = __webpack_require__(25);
 
@@ -16570,7 +16570,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.parseURL = exports.parseRepoInfo = undefined;
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _RepoInfo = __webpack_require__(66);
 
@@ -16709,7 +16709,7 @@ exports.ViewCache = undefined;
 
 var _ChildrenNode = __webpack_require__(7);
 
-var _CacheNode = __webpack_require__(32);
+var _CacheNode = __webpack_require__(31);
 
 /**
  * Stores the data we have cached for a view.
@@ -16983,7 +16983,7 @@ var _StatsManager = __webpack_require__(41);
 
 var _PacketReceiver = __webpack_require__(136);
 
-var _Constants = __webpack_require__(33);
+var _Constants = __webpack_require__(32);
 
 var _json = __webpack_require__(10);
 
@@ -17583,9 +17583,9 @@ exports.Connection = undefined;
 
 var _util = __webpack_require__(1);
 
-var _storage = __webpack_require__(31);
+var _storage = __webpack_require__(30);
 
-var _Constants = __webpack_require__(33);
+var _Constants = __webpack_require__(32);
 
 var _TransportManager = __webpack_require__(135);
 
@@ -18064,7 +18064,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.WebSocketConnection = undefined;
 exports.setWebSocketImpl = setWebSocketImpl;
 
-var _app = __webpack_require__(13);
+var _app = __webpack_require__(12);
 
 var _app2 = _interopRequireDefault(_app);
 
@@ -18074,11 +18074,11 @@ var _util = __webpack_require__(1);
 
 var _StatsManager = __webpack_require__(41);
 
-var _Constants = __webpack_require__(33);
+var _Constants = __webpack_require__(32);
 
-var _constants = __webpack_require__(37);
+var _constants = __webpack_require__(36);
 
-var _storage = __webpack_require__(31);
+var _storage = __webpack_require__(30);
 
 var _json = __webpack_require__(10);
 
@@ -18445,7 +18445,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _errors = __webpack_require__(38);
 
-var _errors2 = __webpack_require__(34);
+var _errors2 = __webpack_require__(33);
 
 var _errors3 = _interopRequireDefault(_errors2);
 
@@ -19471,7 +19471,7 @@ var _error = __webpack_require__(11);
 
 var errorsExports = _interopRequireWildcard(_error);
 
-var _location = __webpack_require__(36);
+var _location = __webpack_require__(35);
 
 var _metadata = __webpack_require__(47);
 
@@ -19876,7 +19876,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _app = __webpack_require__(13);
+var _app = __webpack_require__(12);
 
 var _app2 = _interopRequireDefault(_app);
 
@@ -20304,7 +20304,7 @@ var appErrors = new _errors.ErrorFactory('app', 'Firebase', errors);
 Build: rev-f49c8b5
 Terms: https://firebase.google.com/terms/ */
 
-var firebase = __webpack_require__(13);
+var firebase = __webpack_require__(12);
 (function(){(function(){var h,aa=aa||{},k=this,ba=function(a){return void 0!==a},m=function(a){return"string"==typeof a},ca=function(a){return"boolean"==typeof a},da=function(){},ea=function(a){var b=typeof a;if("object"==b)if(a){if(a instanceof Array)return"array";if(a instanceof Object)return b;var c=Object.prototype.toString.call(a);if("[object Window]"==c)return"object";if("[object Array]"==c||"number"==typeof a.length&&"undefined"!=typeof a.splice&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("splice"))return"array";
 if("[object Function]"==c||"undefined"!=typeof a.call&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("call"))return"function"}else return"null";else if("function"==b&&"undefined"==typeof a.call)return"object";return b},fa=function(a){return null===a},ha=function(a){return"array"==ea(a)},ia=function(a){var b=ea(a);return"array"==b||"object"==b&&"number"==typeof a.length},p=function(a){return"function"==ea(a)},q=function(a){var b=typeof a;return"object"==b&&null!=a||"function"==
 b},ja=function(a,b,c){return a.call.apply(a.bind,arguments)},ka=function(a,b,c){if(!a)throw Error();if(2<arguments.length){var d=Array.prototype.slice.call(arguments,2);return function(){var c=Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(c,d);return a.apply(b,c)}}return function(){return a.apply(b,arguments)}},r=function(a,b,c){r=Function.prototype.bind&&-1!=Function.prototype.bind.toString().indexOf("native code")?ja:ka;return r.apply(null,arguments)},la=function(a,b){var c=
@@ -20645,7 +20645,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.registerDatabase = registerDatabase;
 
-var _app = __webpack_require__(13);
+var _app = __webpack_require__(12);
 
 var _app2 = _interopRequireDefault(_app);
 
@@ -21174,7 +21174,7 @@ exports.CompoundWrite = undefined;
 
 var _ImmutableTree = __webpack_require__(42);
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _obj = __webpack_require__(2);
 
@@ -21623,7 +21623,7 @@ var _Reference = __webpack_require__(39);
 
 var _DataSnapshot = __webpack_require__(62);
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _Tree = __webpack_require__(123);
 
@@ -21641,7 +21641,7 @@ var _nodeFromJSON = __webpack_require__(25);
 
 var _ChildrenNode = __webpack_require__(7);
 
-var _Repo = __webpack_require__(28);
+var _Repo = __webpack_require__(27);
 
 // TODO: This is pretty messy.  Ideally, a lot of this would move into FirebaseData, or a transaction-specific
 // component used by FirebaseData, but it has ties to user callbacks (transaction update and onComplete) as well
@@ -22250,7 +22250,7 @@ var _Operation = __webpack_require__(14);
 
 var _Overwrite = __webpack_require__(70);
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _SyncPoint = __webpack_require__(69);
 
@@ -22949,7 +22949,7 @@ var _obj = __webpack_require__(2);
 
 var _assert = __webpack_require__(0);
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _CompoundWrite = __webpack_require__(108);
 
@@ -23563,7 +23563,7 @@ exports.AckUserWrite = undefined;
 
 var _assert = __webpack_require__(0);
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _Operation = __webpack_require__(14);
 
@@ -23638,7 +23638,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ListenComplete = undefined;
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _Operation = __webpack_require__(14);
 
@@ -23703,7 +23703,7 @@ var _Operation = __webpack_require__(14);
 
 var _Overwrite = __webpack_require__(70);
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _assert = __webpack_require__(0);
 
@@ -24300,7 +24300,7 @@ exports.Tree = exports.TreeNode = undefined;
 
 var _assert = __webpack_require__(0);
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _obj = __webpack_require__(2);
 
@@ -24734,7 +24734,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.WriteTreeCompleteChildSource = exports.NO_COMPLETE_CHILD_SOURCE = exports.NoCompleteChildSource_ = undefined;
 
-var _CacheNode = __webpack_require__(32);
+var _CacheNode = __webpack_require__(31);
 
 /**
  * An implementation of CompleteChildSource that never returns any additional children
@@ -25955,7 +25955,7 @@ var _ViewProcessor = __webpack_require__(133);
 
 var _ChildrenNode = __webpack_require__(7);
 
-var _CacheNode = __webpack_require__(32);
+var _CacheNode = __webpack_require__(31);
 
 var _ViewCache = __webpack_require__(82);
 
@@ -26189,7 +26189,7 @@ var _KeyIndex = __webpack_require__(24);
 
 var _ImmutableTree = __webpack_require__(42);
 
-var _Path = __webpack_require__(5);
+var _Path = __webpack_require__(3);
 
 var _CompleteChildSource = __webpack_require__(126);
 
@@ -27200,7 +27200,7 @@ var _swController = __webpack_require__(138);
 
 var _swController2 = _interopRequireDefault(_swController);
 
-var _app = __webpack_require__(13);
+var _app = __webpack_require__(12);
 
 var _app2 = _interopRequireDefault(_app);
 
@@ -27261,7 +27261,7 @@ var _controllerInterface = __webpack_require__(87);
 
 var _controllerInterface2 = _interopRequireDefault(_controllerInterface);
 
-var _errors = __webpack_require__(34);
+var _errors = __webpack_require__(33);
 
 var _errors2 = _interopRequireDefault(_errors);
 
@@ -27600,7 +27600,7 @@ var _controllerInterface = __webpack_require__(87);
 
 var _controllerInterface2 = _interopRequireDefault(_controllerInterface);
 
-var _errors = __webpack_require__(34);
+var _errors = __webpack_require__(33);
 
 var _errors2 = _interopRequireDefault(_errors);
 
@@ -28043,7 +28043,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _errors = __webpack_require__(38);
 
-var _errors2 = __webpack_require__(34);
+var _errors2 = __webpack_require__(33);
 
 var _errors3 = _interopRequireDefault(_errors2);
 
@@ -28626,7 +28626,7 @@ module.exports = exports['default'];
 
 })(this);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13).setImmediate))
 
 /***/ }),
 /* 144 */
@@ -28654,7 +28654,7 @@ var _reference = __webpack_require__(96);
 
 var _service = __webpack_require__(157);
 
-var _app = __webpack_require__(13);
+var _app = __webpack_require__(12);
 
 var _app2 = _interopRequireDefault(_app);
 
@@ -28773,7 +28773,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.AuthWrapper = undefined;
 
-var _constants = __webpack_require__(35);
+var _constants = __webpack_require__(34);
 
 var constants = _interopRequireWildcard(_constants);
 
@@ -28783,7 +28783,7 @@ var errorsExports = _interopRequireWildcard(_error2);
 
 var _failrequest = __webpack_require__(148);
 
-var _location = __webpack_require__(36);
+var _location = __webpack_require__(35);
 
 var _promise_external = __webpack_require__(16);
 
@@ -29331,7 +29331,7 @@ var _xhrio = __webpack_require__(95);
 
 var XhrIoExports = _interopRequireWildcard(_xhrio);
 
-var _app = __webpack_require__(13);
+var _app = __webpack_require__(12);
 
 var _app2 = _interopRequireDefault(_app);
 
@@ -29605,7 +29605,7 @@ var _object = __webpack_require__(21);
 
 var object = _interopRequireWildcard(_object);
 
-var _constants = __webpack_require__(35);
+var _constants = __webpack_require__(34);
 
 var constants = _interopRequireWildcard(_constants);
 
@@ -29899,7 +29899,7 @@ var args = _interopRequireWildcard(_args);
 
 var _authwrapper = __webpack_require__(146);
 
-var _location = __webpack_require__(36);
+var _location = __webpack_require__(35);
 
 var _promise_external = __webpack_require__(16);
 
@@ -31644,12 +31644,12 @@ var querystringDecode = exports.querystringDecode = function querystringDecode(q
 
 var map = {
 	"./package-mystery-south-coast.en.js": [
-		217,
-		25
+		219,
+		27
 	],
 	"./package-mystery-south-coast.es.js": [
-		218,
-		24
+		220,
+		26
 	]
 };
 function webpackAsyncContext(req) {
@@ -31694,13 +31694,14 @@ webpackAsyncContext.id = 170;
 /* 195 */,
 /* 196 */,
 /* 197 */,
-/* 198 */
+/* 198 */,
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _utils = __webpack_require__(27);
+var _utils = __webpack_require__(37);
 
 var _firebase = __webpack_require__(99);
 

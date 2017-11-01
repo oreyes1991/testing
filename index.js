@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		45: 0
+/******/ 		48: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -145,12 +145,12 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 194);
+/******/ 	return __webpack_require__(__webpack_require__.s = 195);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 12:
+/***/ 13:
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -215,12 +215,12 @@ exports.clearImmediate = clearImmediate;
 
 var map = {
 	"./last-news.en.js": [
-		215,
-		27
+		217,
+		29
 	],
 	"./last-news.es.js": [
-		216,
-		26
+		218,
+		28
 	]
 };
 function webpackAsyncContext(req) {
@@ -239,10 +239,10 @@ webpackAsyncContext.id = 169;
 
 /***/ }),
 
-/***/ 183:
+/***/ 184:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -254,7 +254,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/last-news.njk"] = (function() {
@@ -382,17 +382,17 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 194:
+/***/ 195:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _lastNews = __webpack_require__(183);
+var _lastNews = __webpack_require__(184);
 
 var _lastNews2 = _interopRequireDefault(_lastNews);
 
-var _utils = __webpack_require__(27);
+var _utils = __webpack_require__(37);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -808,7 +808,7 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ 27:
+/***/ 37:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -993,7 +993,7 @@ function dostuffDb(cb, firebase) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /***/ (function(module, exports) {
 
 module.exports = function (nunjucks, env, obj, dependencies){
@@ -1045,7 +1045,7 @@ module.exports = function (nunjucks, env, obj, dependencies){
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {/*! Browser bundle of nunjucks 3.0.1 (slim, only works with precompiled templates) */
@@ -4254,14 +4254,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12).setImmediate, __webpack_require__(12).clearImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13).setImmediate, __webpack_require__(13).clearImmediate))
 
 /***/ }),
 
 /***/ 51:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -4273,7 +4273,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/article-sidebar.en.njk"] = (function() {
@@ -4310,7 +4310,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 /***/ 52:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -4322,7 +4322,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/article-sidebar.es.njk"] = (function() {
@@ -4359,7 +4359,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/arti
 /***/ 53:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -4371,7 +4371,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/contactcontent.en.njk"] = (function() {
@@ -4408,7 +4408,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/cont
 /***/ 54:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -4420,7 +4420,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/contactcontent.es.njk"] = (function() {
@@ -4457,7 +4457,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/cont
 /***/ 55:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -4469,7 +4469,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/last-news-banner.en.njk"] = (function() {
@@ -4506,7 +4506,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 /***/ 56:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -4518,7 +4518,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/last-news-banner.es.njk"] = (function() {
@@ -4555,7 +4555,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/last
 /***/ 57:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -4567,7 +4567,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/package-page.en.njk"] = (function() {
@@ -4848,7 +4848,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/pack
 /***/ 58:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -4860,7 +4860,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/package-page.es.njk"] = (function() {
@@ -5141,7 +5141,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/pack
 /***/ 59:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -5153,7 +5153,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/tours-page.en.njk"] = (function() {
@@ -5406,7 +5406,7 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/tour
 /***/ 60:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -5418,7 +5418,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/tours-page.es.njk"] = (function() {

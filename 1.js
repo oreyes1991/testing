@@ -1,9 +1,9 @@
 webpackJsonp([1],{
 
-/***/ 241:
+/***/ 245:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -15,18 +15,18 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
-(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/messages.en.njk"] = (function() {
+(function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/reservations.en.njk"] = (function() {
 function root(env, context, frame, runtime, cb) {
 var lineno = null;
 var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<div class=\"col-md-10 col-md-offset-1 col-sm-12 messageboard-header\">\r\n    <div class=\"row\">\r\n        <span>\r\n            <div class=\"input-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\r\n                <div class=\"input-group-btn\">\r\n                    <button class=\"btn\" type=\"submit\">\r\n                        <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\r\n                    </button>\r\n                </div>\r\n            </div>\r\n        </span>\r\n        <span><button class=\"btn btn-cog\" onclick=\"changeUriPath('messageboard-settings.html')\"><i class=\"fa fa-cog\" aria-hidden=\"true\"></i></button></span>\r\n        ";
-output += "\r\n    </div>\r\n</div>\r\n<div class=\"col-md-10 col-md-offset-1 col-sm-12\" id=\"messageboard\">\r\n    <div id=\"message-list\">\r\n    </div>\r\n</div>";
+output += "<div class=\"col-md-10 col-md-offset-1 col-sm-12 messageboard-header\">\r\n    <div class=\"row\">\r\n        <span>\r\n            <div class=\"input-group\">\r\n                <div class=\"input-group-btn\">\r\n                    <button class=\"btn\" type=\"submit\" onclick=\"changeUriPath('messageboard.html')\">\r\n                        See messageboard\r\n                    </button>\r\n                </div>\r\n            </div>\r\n        </span>\r\n        <span><button class=\"btn btn-cog\" onclick=\"changeUriPath('messageboard-settings.html')\"><i class=\"fa fa-cog\" aria-hidden=\"true\"></i></button></span>\r\n        ";
+output += "\r\n    </div>\r\n</div>\r\n<div class=\"col-md-10 col-md-offset-1 col-sm-12\" id=\"messageboard\">\r\n    <div id=\"message-list\" class=\"reservation-list\">\r\n    </div>\r\n</div>";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -46,11 +46,11 @@ root: root
 
 
 
-module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/messages.en.njk"] , dependencies)
+module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["partials/reservations.en.njk"] , dependencies)
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /***/ (function(module, exports) {
 
 module.exports = function (nunjucks, env, obj, dependencies){
@@ -102,7 +102,7 @@ module.exports = function (nunjucks, env, obj, dependencies){
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {/*! Browser bundle of nunjucks 3.0.1 (slim, only works with precompiled templates) */
@@ -3311,7 +3311,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12).setImmediate, __webpack_require__(12).clearImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13).setImmediate, __webpack_require__(13).clearImmediate))
 
 /***/ })
 

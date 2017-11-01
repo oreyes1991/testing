@@ -63,12 +63,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 200);
+/******/ 	return __webpack_require__(__webpack_require__.s = 202);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 12:
+/***/ 13:
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -128,10 +128,10 @@ exports.clearImmediate = clearImmediate;
 
 /***/ }),
 
-/***/ 177:
+/***/ 178:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -139,12 +139,12 @@ if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv;
 }
 var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-dependencies["../layouts/layout.njk"] = __webpack_require__( 201 );
+dependencies["../layouts/layout.njk"] = __webpack_require__( 203 );
 
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["pages/index.njk"] = (function() {
@@ -231,20 +231,20 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 200:
+/***/ 202:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(177);
+__webpack_require__(178);
 
 /***/ }),
 
-/***/ 201:
+/***/ 203:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -252,12 +252,12 @@ if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv;
 }
 var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies = {});
-dependencies["../partials/header.njk"] = __webpack_require__( 202 );
+dependencies["../partials/header.njk"] = __webpack_require__( 204 );
 
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["layouts/layout.njk"] = (function() {
@@ -329,10 +329,10 @@ module.exports = shim(nunjucks, env, nunjucks.nunjucksPrecompiled["layouts/layou
 
 /***/ }),
 
-/***/ 202:
+/***/ 204:
 /***/ (function(module, exports, __webpack_require__) {
 
-var nunjucks = __webpack_require__(4);
+var nunjucks = __webpack_require__(5);
 var env;
 if (!nunjucks.currentEnv){
 	env = nunjucks.currentEnv = new nunjucks.Environment([], { autoescape: true });
@@ -344,7 +344,7 @@ var dependencies = nunjucks.webpackDependencies || (nunjucks.webpackDependencies
 
 
 
-var shim = __webpack_require__(3);
+var shim = __webpack_require__(4);
 
 
 (function() {(nunjucks.nunjucksPrecompiled = nunjucks.nunjucksPrecompiled || {})["partials/header.njk"] = (function() {
@@ -763,7 +763,7 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /***/ (function(module, exports) {
 
 module.exports = function (nunjucks, env, obj, dependencies){
@@ -815,7 +815,7 @@ module.exports = function (nunjucks, env, obj, dependencies){
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {/*! Browser bundle of nunjucks 3.0.1 (slim, only works with precompiled templates) */
@@ -4024,7 +4024,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12).setImmediate, __webpack_require__(12).clearImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13).setImmediate, __webpack_require__(13).clearImmediate))
 
 /***/ })
 
