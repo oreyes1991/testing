@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		48: 0
+/******/ 		50: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -215,11 +215,11 @@ exports.clearImmediate = clearImmediate;
 
 var map = {
 	"./last-news.en.js": [
-		217,
+		219,
 		29
 	],
 	"./last-news.es.js": [
-		218,
+		220,
 		28
 	]
 };

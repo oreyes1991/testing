@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		43: 0
+/******/ 		45: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -31644,11 +31644,11 @@ var querystringDecode = exports.querystringDecode = function querystringDecode(q
 
 var map = {
 	"./package-mystery-south-coast.en.js": [
-		219,
+		221,
 		27
 	],
 	"./package-mystery-south-coast.es.js": [
-		220,
+		222,
 		26
 	]
 };

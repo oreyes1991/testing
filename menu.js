@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		52: 0
+/******/ 		54: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -215,11 +215,11 @@ exports.clearImmediate = clearImmediate;
 
 var map = {
 	"./menu.en.njk": [
-		241,
+		243,
 		5
 	],
 	"./menu.es.njk": [
-		242,
+		244,
 		4
 	]
 };

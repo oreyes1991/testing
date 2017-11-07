@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		50: 0
+/******/ 		52: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -216,11 +216,11 @@ exports.clearImmediate = clearImmediate;
 var map = {
 	"./articles.en.js": [
 		209,
-		37
+		39
 	],
 	"./articles.es.js": [
 		210,
-		36
+		38
 	]
 };
 function webpackAsyncContext(req) {

@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		46: 0
+/******/ 		48: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -26815,11 +26815,11 @@ var querystringDecode = exports.querystringDecode = function querystringDecode(q
 
 var map = {
 	"./reservations.en.njk": [
-		245,
+		247,
 		1
 	],
 	"./reservations.es.njk": [
-		246,
+		248,
 		0
 	]
 };

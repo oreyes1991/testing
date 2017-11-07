@@ -1,6 +1,6 @@
 webpackJsonp([28],{
 
-/***/ 218:
+/***/ 220:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10,6 +10,18 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.default = [{
+	title: 'Machu Picchu',
+	tab_title: 'Machu Picchu',
+	subtitle: 'Machu Picchu',
+	description: 'Machu Picchu, tambi\xE9n conocido como Pata Llacta la ciudad perdida de los Incas, es una de las the earth\u2019s megaestructuras antiguas con m\xE1s valor hist\xF3rico.  Recientemente ha sido reconocida como una de las siete maravillas del mundo moderno.\n\t\tEste impresionante hallazgo arqueol\xF3gico ha ido aumentando su popularidad y actualmente recibe alrededor de 2500 touristas al d\xEDa.  Nuestro gupia veterano Lucio explica que debido al incremento de demanda, las \xE1reas accesibles a los visitantes son reducidas y restringidas cada a\xF1o.\u201D  Hoy en d\xEDa los visitantes a\xFAn se les permite entrar y tocar la mayor\xEDa de las estructuras antiguas de Machu Picchu permitiendo una experiencia muy personal e \xEDntima.  En pocos a\xF1os los tours ser\xE1n restringidos a senderos cercados y filas de una sola l\xEDnea.',
+	blockquote: '"Una construcci\xF3n de esta magnitud en la cresta de la monta\xF1a debi\xF3 haber requerido equipos de arquitectos, ingenieros y ge\xF3logos del antiguo Per\xFA."',
+	author: 'Cameron Metreaud',
+	date: 'Noviembre 06, 2017',
+	url_image: 'images/tours/cuzco/machu_picchu_main.png',
+	tour: 'tourscuzco.html#machu-picchu-day-trip',
+	id: '4',
+	link: 'article-detail.html?id=4'
+}, {
 	title: 'Enigma del Monte Sierpe',
 	subtitle: "Los geoglifos de Monte Sierpe se encuentran entre los misterios más enigmáticos e inexplicables del Perú",
 	description: 'La \u2018Avenida de los Hoyos\u2019, es un geoglifo que consiste en una serie de grandes Hoyos en la cuenca, como tallados en tierra seca dura por la cresta que separa dos valles secos, que parece deslizarse en la pendiente y por millas.\u201CLo que parece ser una serpiente es en realidad la antigua deidad Q\'hoa. \xC9l era el siervo ... del dios del agua ... y fue utilizado en los rituales ... con respecto a la lluvia\u201D.',

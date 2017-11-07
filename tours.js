@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		42: 0
+/******/ 		44: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -31645,75 +31645,75 @@ var querystringDecode = exports.querystringDecode = function querystringDecode(q
 
 var map = {
 	"./tours-arequipa.en.js": [
-		221,
+		223,
 		25
 	],
 	"./tours-arequipa.es.js": [
-		222,
+		224,
 		24
 	],
 	"./tours-cuzco.en.js": [
-		223,
+		225,
 		23
 	],
 	"./tours-cuzco.es.js": [
-		224,
+		226,
 		22
 	],
 	"./tours-ica.en.js": [
-		225,
+		227,
 		21
 	],
 	"./tours-ica.es.js": [
-		226,
+		228,
 		20
 	],
 	"./tours-iquitos.en.js": [
-		227,
+		229,
 		19
 	],
 	"./tours-iquitos.es.js": [
-		228,
+		230,
 		18
 	],
 	"./tours-lima.en.js": [
-		229,
+		231,
 		17
 	],
 	"./tours-lima.es.js": [
-		230,
+		232,
 		16
 	],
 	"./tours-nasca.en.js": [
-		231,
+		233,
 		15
 	],
 	"./tours-nasca.es.js": [
-		232,
+		234,
 		14
 	],
 	"./tours-north.en.js": [
-		233,
+		235,
 		13
 	],
 	"./tours-north.es.js": [
-		234,
+		236,
 		12
 	],
 	"./tours-paracas.en.js": [
-		235,
+		237,
 		11
 	],
 	"./tours-paracas.es.js": [
-		236,
+		238,
 		10
 	],
 	"./tours-puno.en.js": [
-		237,
+		239,
 		9
 	],
 	"./tours-puno.es.js": [
-		238,
+		240,
 		8
 	]
 };

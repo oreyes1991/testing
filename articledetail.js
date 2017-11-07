@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		49: 0
+/******/ 		51: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -216,26 +216,34 @@ exports.clearImmediate = clearImmediate;
 var map = {
 	"./article.1.en.js": [
 		211,
-		35
+		37
 	],
 	"./article.1.es.js": [
 		212,
-		34
+		36
 	],
 	"./article.2.en.js": [
 		213,
-		33
+		35
 	],
 	"./article.2.es.js": [
 		214,
-		32
+		34
 	],
 	"./article.3.en.js": [
 		215,
-		31
+		33
 	],
 	"./article.3.es.js": [
 		216,
+		32
+	],
+	"./article.4.en.js": [
+		217,
+		31
+	],
+	"./article.4.es.js": [
+		218,
 		30
 	]
 };
@@ -280,7 +288,9 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<div class=\"row container-article article article-detail\">\r\n\t<div class=\"col-md-12\">\r\n        <img class=\"article-detail-image image-vertical\" style=\"background-image:url(";
+output += "<div class=\"row container-article article article-detail\">\r\n\t<div class=\"col-md-12\">\r\n        <img class=\"article-detail-image ";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"image_class"), env.opts.autoescape);
+output += "\" style=\"background-image:url(";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"url_image"), env.opts.autoescape);
 output += ");\" alt=\"\" width=\"100%\">\r\n    <div class=\"article-title article-detail-title\">\r\n        ";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"title"), env.opts.autoescape);
@@ -367,6 +377,66 @@ output += "\r\n\t</div>\r\n</div>\r\n";
 }
 }
 frame = frame.pop();
+output += "\r\n";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"bottom")) {
+output += "\r\n<div class=\"bottom-images-container row\">\r\n";
+frame = frame.push();
+var t_11 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"bottom");
+if(t_11) {var t_10 = t_11.length;
+for(var t_9=0; t_9 < t_11.length; t_9++) {
+var t_12 = t_11[t_9];
+frame.set("image", t_12);
+frame.set("loop.index", t_9 + 1);
+frame.set("loop.index0", t_9);
+frame.set("loop.revindex", t_10 - t_9);
+frame.set("loop.revindex0", t_10 - t_9 - 1);
+frame.set("loop.first", t_9 === 0);
+frame.set("loop.last", t_9 === t_10 - 1);
+frame.set("loop.length", t_10);
+output += "\r\n    <div class=\"bottom-images col-lg-4 col-md-4 col-sm-12 col-xs-12\">\r\n        <p class=\"text-justify\">\t\r\n            ";
+output += runtime.suppressValue(runtime.memberLookup((t_12),"description"), env.opts.autoescape);
+output += "\r\n        </p>\r\n        <img class=\"bottom-image ";
+output += runtime.suppressValue(runtime.memberLookup((t_12),"image_class"), env.opts.autoescape);
+output += "\" src=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_12),"url_image"), env.opts.autoescape);
+output += "\">\r\n    </div>\r\n";
+;
+}
+}
+frame = frame.pop();
+output += "\r\n</div>\r\n";
+;
+}
+output += "\r\n";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"bottom2")) {
+output += "\r\n<div class=\"bottom-images-container row\">\r\n";
+frame = frame.push();
+var t_15 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"bottom2");
+if(t_15) {var t_14 = t_15.length;
+for(var t_13=0; t_13 < t_15.length; t_13++) {
+var t_16 = t_15[t_13];
+frame.set("image", t_16);
+frame.set("loop.index", t_13 + 1);
+frame.set("loop.index0", t_13);
+frame.set("loop.revindex", t_14 - t_13);
+frame.set("loop.revindex0", t_14 - t_13 - 1);
+frame.set("loop.first", t_13 === 0);
+frame.set("loop.last", t_13 === t_14 - 1);
+frame.set("loop.length", t_14);
+output += "\r\n    <div class=\"bottom-images col-lg-6 col-md-6 col-sm-12 col-xs-12\">\r\n        <p class=\"text-justify\">\t\r\n            ";
+output += runtime.suppressValue(runtime.memberLookup((t_16),"description"), env.opts.autoescape);
+output += "\r\n        </p>\r\n        <img class=\"bottom-image ";
+output += runtime.suppressValue(runtime.memberLookup((t_16),"image_class"), env.opts.autoescape);
+output += "\" src=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_16),"url_image"), env.opts.autoescape);
+output += "\">\r\n    </div>\r\n";
+;
+}
+}
+frame = frame.pop();
+output += "\r\n</div>\r\n";
+;
+}
 output += "\r\n<blockquote class=\"article-blockquote share-blockquote\">\r\n";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "share_quote"), env.opts.autoescape);
 output += " \r\n<div class=\"share dropup\">\r\n    <button class=\"btn read-more dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">\r\n       ";
