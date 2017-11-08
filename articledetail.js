@@ -300,7 +300,11 @@ output += " - ";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"author"), env.opts.autoescape);
 output += "\r\n\r\n\r\n<div class=\"share dropdown\">\r\n    <button class=\"btn read-more dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">\r\n       ";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "share"), env.opts.autoescape);
-output += " <i class=\"fa fa-share\" aria-hidden=\"true\"></i>\r\n    </button>\r\n    <ul class=\"dropdown-menu dropdown-menu-right\">\r\n        <div id=\"share-buttons\">\r\n            <a href=\"http://www.facebook.com/sharer.php?u=";
+output += " <i class=\"fa fa-share\" aria-hidden=\"true\"></i>\r\n    </button>\r\n    <button class=\"btn read-more\" type=\"button\" onclick=\"changeUriPath('";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"tour"), env.opts.autoescape);
+output += "')\">\r\n       ";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "sTour"), env.opts.autoescape);
+output += "\r\n    </button>\r\n    <ul class=\"dropdown-menu dropdown-menu-right\">\r\n        <div id=\"share-buttons\">\r\n            <a href=\"http://www.facebook.com/sharer.php?u=";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "uri"), env.opts.autoescape);
 output += "\" target=\"_blank\">\r\n                <img src=\"images/facebook.png\" alt=\"Facebook\" />\r\n            </a>\r\n            <a href=\"https://plus.google.com/share?url=";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "uri"), env.opts.autoescape);
@@ -439,9 +443,13 @@ output += "\r\n</div>\r\n";
 }
 output += "\r\n<blockquote class=\"article-blockquote share-blockquote\">\r\n";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "share_quote"), env.opts.autoescape);
-output += " \r\n<div class=\"share dropup\">\r\n    <button class=\"btn read-more dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">\r\n       ";
+output += " \r\n<div class=\"share dropup\">\r\n    <button class=\"btn read-more dropdown-toggle see-tour-btn\" type=\"button\" data-toggle=\"dropdown\">\r\n       ";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "share"), env.opts.autoescape);
-output += " <i class=\"fa fa-share\" aria-hidden=\"true\"></i>\r\n    </button>\r\n    <ul class=\"dropdown-menu dropdown-menu-right\">\r\n        <div id=\"share-buttons\">\r\n            <a href=\"http://www.facebook.com/sharer.php?u=";
+output += " <i class=\"fa fa-share\" aria-hidden=\"true\"></i>\r\n    </button>\r\n    <button class=\"btn read-more see-tour-btn\" type=\"button\" onclick=\"changeUriPath('";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"tour"), env.opts.autoescape);
+output += "')\">\r\n       ";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "sTour"), env.opts.autoescape);
+output += "\r\n    </button>\r\n    <ul class=\"dropdown-menu dropdown-menu-right\">\r\n        <div id=\"share-buttons\">\r\n            <a href=\"http://www.facebook.com/sharer.php?u=";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "uri"), env.opts.autoescape);
 output += "\" target=\"_blank\">\r\n                <img src=\"images/facebook.png\" alt=\"Facebook\" />\r\n            </a>\r\n            <a href=\"https://plus.google.com/share?url=";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "uri"), env.opts.autoescape);
@@ -507,12 +515,13 @@ __webpack_require__(168)("./article." + params.id + '.' + language + '.js').then
     var data = m.default;
     document.title = data.tab_title;
     var share = language == 'en' ? 'Share' : 'Compartir';
+    var sTour = language == 'en' ? 'See Tour' : 'Ver Tour';
     var share_quote = language == 'en' ? 'Did you like this article?' : '¿Te gustó el artículo?';
     var uri = window.location.href;
     if (uri.indexOf("http://localhost:9000") > -1) {
         uri = "https://southamericanssecrets.github.io/web" + window.location.pathname + window.location.search;
     }
-    var html = _articleContentEn2.default.render({ data: data, share: share, uri: uri, share_quote: share_quote });
+    var html = _articleContentEn2.default.render({ data: data, share: share, uri: uri, share_quote: share_quote, sTour: sTour });
     document.querySelector('#page-content').innerHTML = html;
 });
 
@@ -5331,7 +5340,14 @@ frame.set("loop.revindex0", t_6 - t_5 - 1);
 frame.set("loop.first", t_5 === 0);
 frame.set("loop.last", t_5 === t_6 - 1);
 frame.set("loop.length", t_6);
-output += "\r\n     <div class=\"row tour-container\" >\r\n        <div class=\"col-md-8 tour-info\">\r\n          <p class=\"text-justify\">\r\n                <img class=\"tour-image\" style=\"background-image:url(";
+output += "\r\n     <div class=\"row tour-container  ";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"classes"), env.opts.autoescape);
+output += "\" >\r\n        <div class=\"col-md-8 tour-info\">\r\n\t\t\t\t";
+if(runtime.memberLookup((t_8),"classes")) {
+output += "\r\n            \t\t<div class=\"corner-ribbon top-left sticky orange shadow\"><i class=\"fa fa-ship\" aria-hidden=\"true\"></i> Cruise members only</div>\r\n        \t\t";
+;
+}
+output += "\r\n          <p class=\"text-justify\">\r\n                <img class=\"tour-image\" style=\"background-image:url(";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"url_image"), env.opts.autoescape);
 output += ");\" alt=\"\">\r\n\r\n                <div class=\"article-title\" id=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
@@ -5371,13 +5387,15 @@ output += runtime.suppressValue(runtime.memberLookup((t_8),"yacht"), env.opts.au
 output += "\" align=\"right\" width=\"60\" style=\"margin-top: -22.5px; margin-right: -32.5px\">\r\n                ";
 ;
 }
-output += "\r\n                <div class=\"tour-info-title\">Include</div>\r\n                <ul>\r\n                    ";
+output += "\r\n                ";
+if(runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"activities")) {
+output += "\r\n                    <div class=\"tour-info-title\">Activities</div>\r\n                    <ul>\r\n                    ";
 frame = frame.push();
-var t_15 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"include");
+var t_15 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"activities");
 if(t_15) {var t_14 = t_15.length;
 for(var t_13=0; t_13 < t_15.length; t_13++) {
 var t_16 = t_15[t_13];
-frame.set("inc", t_16);
+frame.set("activity", t_16);
 frame.set("loop.index", t_13 + 1);
 frame.set("loop.index0", t_13);
 frame.set("loop.revindex", t_14 - t_13);
@@ -5385,16 +5403,19 @@ frame.set("loop.revindex0", t_14 - t_13 - 1);
 frame.set("loop.first", t_13 === 0);
 frame.set("loop.last", t_13 === t_14 - 1);
 frame.set("loop.length", t_14);
-output += "\r\n                    <li>\r\n                    ";
+output += "\r\n                        <li>\r\n                        ";
 output += runtime.suppressValue(t_16, env.opts.autoescape);
-output += "\r\n                    </li>\r\n                    ";
+output += "\r\n                        </li>\r\n                    ";
 ;
 }
 }
 frame = frame.pop();
-output += "\r\n                </ul>\r\n\r\n                <div class=\"tour-info-title\">Not Include</div>\r\n                <ul>\r\n                    ";
+output += "\r\n                    </ul>\r\n                ";
+;
+}
+output += "\r\n                <div class=\"tour-info-title\">Include</div>\r\n                <ul>\r\n                    ";
 frame = frame.push();
-var t_19 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"notInclude");
+var t_19 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"include");
 if(t_19) {var t_18 = t_19.length;
 for(var t_17=0; t_17 < t_19.length; t_17++) {
 var t_20 = t_19[t_17];
@@ -5413,11 +5434,9 @@ output += "\r\n                    </li>\r\n                    ";
 }
 }
 frame = frame.pop();
-output += "\r\n                </ul>\r\n\r\n                <div class=\"tour-info-title\">Duration <small>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"duration")),"subtitle"), env.opts.autoescape);
-output += "</small></div>\r\n                <ul>\r\n                    ";
+output += "\r\n                </ul>\r\n\r\n                <div class=\"tour-info-title\">Not Include</div>\r\n                <ul>\r\n                    ";
 frame = frame.push();
-var t_23 = runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"duration")),"data");
+var t_23 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"notInclude");
 if(t_23) {var t_22 = t_23.length;
 for(var t_21=0; t_21 < t_23.length; t_21++) {
 var t_24 = t_23[t_21];
@@ -5436,12 +5455,11 @@ output += "\r\n                    </li>\r\n                    ";
 }
 }
 frame = frame.pop();
-output += "\r\n                </ul>\r\n\r\n                <div class=\"tour-info-title\">Price: <small>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"currency"), env.opts.autoescape);
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"ammount"), env.opts.autoescape);
-output += "</small></div>\r\n\t\t\t\t\t\t\t\t<ul>\r\n\t\t\t\t\t\t\t\t\t\t";
+output += "\r\n                </ul>\r\n\r\n                <div class=\"tour-info-title\">Duration <small>";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"duration")),"subtitle"), env.opts.autoescape);
+output += "</small></div>\r\n                <ul>\r\n                    ";
 frame = frame.push();
-var t_27 = runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"data");
+var t_27 = runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"duration")),"data");
 if(t_27) {var t_26 = t_27.length;
 for(var t_25=0; t_25 < t_27.length; t_25++) {
 var t_28 = t_27[t_25];
@@ -5453,8 +5471,32 @@ frame.set("loop.revindex0", t_26 - t_25 - 1);
 frame.set("loop.first", t_25 === 0);
 frame.set("loop.last", t_25 === t_26 - 1);
 frame.set("loop.length", t_26);
-output += "\r\n\t\t\t\t\t\t\t\t\t\t<li>\r\n\t\t\t\t\t\t\t\t\t\t";
+output += "\r\n                    <li>\r\n                    ";
 output += runtime.suppressValue(t_28, env.opts.autoescape);
+output += "\r\n                    </li>\r\n                    ";
+;
+}
+}
+frame = frame.pop();
+output += "\r\n                </ul>\r\n\r\n                <div class=\"tour-info-title\">Price: <small>";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"currency"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"ammount"), env.opts.autoescape);
+output += "</small></div>\r\n\t\t\t\t\t\t\t\t<ul>\r\n\t\t\t\t\t\t\t\t\t\t";
+frame = frame.push();
+var t_31 = runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"data");
+if(t_31) {var t_30 = t_31.length;
+for(var t_29=0; t_29 < t_31.length; t_29++) {
+var t_32 = t_31[t_29];
+frame.set("inc", t_32);
+frame.set("loop.index", t_29 + 1);
+frame.set("loop.index0", t_29);
+frame.set("loop.revindex", t_30 - t_29);
+frame.set("loop.revindex0", t_30 - t_29 - 1);
+frame.set("loop.first", t_29 === 0);
+frame.set("loop.last", t_29 === t_30 - 1);
+frame.set("loop.length", t_30);
+output += "\r\n\t\t\t\t\t\t\t\t\t\t<li>\r\n\t\t\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(t_32, env.opts.autoescape);
 output += "\r\n\t\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t\t";
 ;
 }
@@ -5596,7 +5638,14 @@ frame.set("loop.revindex0", t_6 - t_5 - 1);
 frame.set("loop.first", t_5 === 0);
 frame.set("loop.last", t_5 === t_6 - 1);
 frame.set("loop.length", t_6);
-output += "\r\n\t\t <div class=\"row tour-container\" >\r\n\t\t\t\t<div class=\"col-md-8 tour-info\">\r\n\t\t\t\t\t<p class=\"text-justify\">\r\n\t\t\t\t\t\t\t\t<img class=\"tour-image\" style=\"background-image:url(";
+output += "\r\n\t\t <div class=\"row tour-container ";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"classes"), env.opts.autoescape);
+output += "\" >\r\n\t\t\t\t<div class=\"col-md-8 tour-info\">\r\n\t\t\t\t";
+if(runtime.memberLookup((t_8),"classes")) {
+output += "\r\n            \t\t<div class=\"corner-ribbon top-left sticky orange shadow\"><i class=\"fa fa-ship\" aria-hidden=\"true\"></i> Miembros de crucero</div>\r\n        \t\t";
+;
+}
+output += "\r\n\t\t\t\t\t<p class=\"text-justify\">\r\n\t\t\t\t\t\t\t\t<img class=\"tour-image\" style=\"background-image:url(";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"url_image"), env.opts.autoescape);
 output += ");\" alt=\"\">\r\n\r\n\t\t\t\t\t\t\t\t<div class=\"article-title\" id=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
@@ -5636,13 +5685,15 @@ output += runtime.suppressValue(runtime.memberLookup((t_8),"yacht"), env.opts.au
 output += "\" align=\"right\" width=\"60\" style=\"margin-top: -22.5px; margin-right: -32.5px\">\r\n\t\t\t\t\t\t\t\t";
 ;
 }
-output += "\r\n\t\t\t\t\t\t\t\t<div class=\"tour-info-title\">Incluye</div>\r\n\t\t\t\t\t\t\t\t<ul>\r\n\t\t\t\t\t\t\t\t\t\t";
+output += "\r\n\t\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"activities")) {
+output += "\r\n                    <div class=\"tour-info-title\">Actividades</div>\r\n                    <ul>\r\n                    ";
 frame = frame.push();
-var t_15 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"include");
+var t_15 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"activities");
 if(t_15) {var t_14 = t_15.length;
 for(var t_13=0; t_13 < t_15.length; t_13++) {
 var t_16 = t_15[t_13];
-frame.set("inc", t_16);
+frame.set("activity", t_16);
 frame.set("loop.index", t_13 + 1);
 frame.set("loop.index0", t_13);
 frame.set("loop.revindex", t_14 - t_13);
@@ -5650,16 +5701,19 @@ frame.set("loop.revindex0", t_14 - t_13 - 1);
 frame.set("loop.first", t_13 === 0);
 frame.set("loop.last", t_13 === t_14 - 1);
 frame.set("loop.length", t_14);
-output += "\r\n\t\t\t\t\t\t\t\t\t\t<li>\r\n\t\t\t\t\t\t\t\t\t\t";
+output += "\r\n                        <li>\r\n                        ";
 output += runtime.suppressValue(t_16, env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t\t";
+output += "\r\n                        </li>\r\n                    ";
 ;
 }
 }
 frame = frame.pop();
-output += "\r\n\t\t\t\t\t\t\t\t</ul>\r\n\r\n\t\t\t\t\t\t\t\t<div class=\"tour-info-title\">No Incluye</div>\r\n\t\t\t\t\t\t\t\t<ul>\r\n\t\t\t\t\t\t\t\t\t\t";
+output += "\r\n                    </ul>\r\n                ";
+;
+}
+output += "\r\n\t\t\t\t\t\t\t\t<div class=\"tour-info-title\">Incluye</div>\r\n\t\t\t\t\t\t\t\t<ul>\r\n\t\t\t\t\t\t\t\t\t\t";
 frame = frame.push();
-var t_19 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"notInclude");
+var t_19 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"include");
 if(t_19) {var t_18 = t_19.length;
 for(var t_17=0; t_17 < t_19.length; t_17++) {
 var t_20 = t_19[t_17];
@@ -5678,11 +5732,9 @@ output += "\r\n\t\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t\t";
 }
 }
 frame = frame.pop();
-output += "\r\n\t\t\t\t\t\t\t\t</ul>\r\n\r\n\t\t\t\t\t\t\t\t<div class=\"tour-info-title\">Duración <small>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"duration")),"subtitle"), env.opts.autoescape);
-output += "</small></div>\r\n\t\t\t\t\t\t\t\t<ul>\r\n\t\t\t\t\t\t\t\t\t\t";
+output += "\r\n\t\t\t\t\t\t\t\t</ul>\r\n\r\n\t\t\t\t\t\t\t\t<div class=\"tour-info-title\">No Incluye</div>\r\n\t\t\t\t\t\t\t\t<ul>\r\n\t\t\t\t\t\t\t\t\t\t";
 frame = frame.push();
-var t_23 = runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"duration")),"data");
+var t_23 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"notInclude");
 if(t_23) {var t_22 = t_23.length;
 for(var t_21=0; t_21 < t_23.length; t_21++) {
 var t_24 = t_23[t_21];
@@ -5701,12 +5753,11 @@ output += "\r\n\t\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t\t";
 }
 }
 frame = frame.pop();
-output += "\r\n\t\t\t\t\t\t\t\t</ul>\r\n\r\n                <div class=\"tour-info-title\">Precio: <small>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"currency"), env.opts.autoescape);
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"ammount"), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t\t</ul>\r\n\r\n\t\t\t\t\t\t\t\t<div class=\"tour-info-title\">Duración <small>";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"duration")),"subtitle"), env.opts.autoescape);
 output += "</small></div>\r\n\t\t\t\t\t\t\t\t<ul>\r\n\t\t\t\t\t\t\t\t\t\t";
 frame = frame.push();
-var t_27 = runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"data");
+var t_27 = runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"duration")),"data");
 if(t_27) {var t_26 = t_27.length;
 for(var t_25=0; t_25 < t_27.length; t_25++) {
 var t_28 = t_27[t_25];
@@ -5720,6 +5771,30 @@ frame.set("loop.last", t_25 === t_26 - 1);
 frame.set("loop.length", t_26);
 output += "\r\n\t\t\t\t\t\t\t\t\t\t<li>\r\n\t\t\t\t\t\t\t\t\t\t";
 output += runtime.suppressValue(t_28, env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t\t";
+;
+}
+}
+frame = frame.pop();
+output += "\r\n\t\t\t\t\t\t\t\t</ul>\r\n\r\n                <div class=\"tour-info-title\">Precio: <small>";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"currency"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"ammount"), env.opts.autoescape);
+output += "</small></div>\r\n\t\t\t\t\t\t\t\t<ul>\r\n\t\t\t\t\t\t\t\t\t\t";
+frame = frame.push();
+var t_31 = runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"price")),"data");
+if(t_31) {var t_30 = t_31.length;
+for(var t_29=0; t_29 < t_31.length; t_29++) {
+var t_32 = t_31[t_29];
+frame.set("inc", t_32);
+frame.set("loop.index", t_29 + 1);
+frame.set("loop.index0", t_29);
+frame.set("loop.revindex", t_30 - t_29);
+frame.set("loop.revindex0", t_30 - t_29 - 1);
+frame.set("loop.first", t_29 === 0);
+frame.set("loop.last", t_29 === t_30 - 1);
+frame.set("loop.length", t_30);
+output += "\r\n\t\t\t\t\t\t\t\t\t\t<li>\r\n\t\t\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(t_32, env.opts.autoescape);
 output += "\r\n\t\t\t\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t\t\t\t";
 ;
 }

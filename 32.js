@@ -20,6 +20,7 @@ exports.default = {
 	date: 'February 22, 2014',
 	image_class: 'image-vertical',
 	url_image: 'images/articles/guano_collectors_1_portrait.jpg',
+	tour: 'toursparacas.html',
 	blocks: [{
 		url_image: 'images/articles/guano_collectors_2_t.jpg',
 		image_class: 'image-horizontal',

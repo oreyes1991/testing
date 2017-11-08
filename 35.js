@@ -18,6 +18,7 @@ exports.default = {
 	author: 'Rein Petersen',
 	date: '2014-04-20',
 	image_class: 'image-vertical',
+	tour: 'toursnasca.html',
 	url_image: 'images/articles/monte_sierpe_portrait.jpg',
 	description: 'The Avenida de los Hoyos, a geoglyph like the Nazca lines consisting of a series of large basin-like potholes along a mountain ridge, appears to slither up the slope for miles.',
 	content: 'Getting to Nasca to see the Nasca lines once used to be a complicated and time-consuming effort. Unless you chartered your own private flight from Lima, public access was limited to mostly car or bus which is very long (7-8 hour one-way) trip from Lima.\n\t\t\u201CThe common sentiment related to us by visitors to Nasca Lines has been one of frustration that so much time is wasted travelling to experience a tour that lasts less than an hour\u201D explains Lucio - a veteran Peru guide of more than 20 years.\n\t\tWhile the enigma that is the Nasca Lines is so very powerful, for travellers it comes down to the reality of how they want to spend their precious vacation time - enjoying that time replete with wonders and activities or crammed into buses for long durations.\n\t\tThankfully the enigmatic Nasca Lines are now available to those on limited time. Lucio continues, \u201Cflying from Pisco\'s new airport is so much easier. The airport is a 5 minute drive from Paracas or a 20 minute flight from Lima - you save a whole day of traveling that you can use to enjoy all the other great things that Paracas has to offer.\u201D',

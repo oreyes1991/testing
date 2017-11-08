@@ -19,6 +19,7 @@ exports.default = {
   author: 'Rein Petersen',
   image_class: 'image-vertical',
   date: 'February 22, 2014',
+  tour: 'toursparacas.html',
   url_image: 'images/articles/guano_collectors_1_portrait.jpg',
   blocks: [{
     url_image: 'images/articles/guano_collectors_2_t.jpg',
