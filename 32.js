@@ -1,32 +1,63 @@
 webpackJsonp([32],{
 
-/***/ 216:
+/***/ 218:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+         value: true
 });
 exports.default = {
-	title: 'Recolectores de Guano',
-	tab_title: 'Recolectores de Guano',
-	subtitle: '"El peor enemigo no es el olor, el calor o el agotamiento. "Como explic\xF3 Domingo Le\xF3n," el peor enemigo es el polvo que se pega en las cejas, cubriendo nuestras narices y mejillas y convirtiendo nuestra cara en una m\xE1scara r\xEDgida."',
-	description: "El aumento del costo de los fertilizantes sintéticos han vuelto a hacer guano sexy. Algunos trabajadores recogen el estiércol de las aves marinas en la Isla Norte de Guañape, frente a la costa del Perú. El auge mundial de las materias primas ha llegado a esto: antes del guano, el estiércol del pájaro fue el centro de una confrontación imperialista en el mar en el siglo XIX, y está una vez más en fuerte demanda.",
-	blockquote: '"El peor enemigo no es el olor, el calor o el agotamiento. "Como explic\xF3 Domingo Le\xF3n," el peor enemigo es el polvo que se pega en las cejas, cubriendo nuestras narices y mejillas y convirtiendo nuestra cara en una m\xE1scara r\xEDgida."',
-	blockquoteAuthor: "",
-	author: 'Rein Petersen',
-	date: 'February 22, 2014',
-	image_class: 'image-vertical',
-	url_image: 'images/articles/guano_collectors_1_portrait.jpg',
-	tour: 'toursparacas.html',
-	blocks: [{
-		url_image: 'images/articles/guano_collectors_2_t.jpg',
-		image_class: 'image-horizontal',
-		blockquote: '\u201CWe are excavating some of the last remaining guano in Peru...\u201D',
-		parragraphs: ['Rising prices of synthetic fertilizers and organic foods are shifting attention to guano, an organic fertilizer once found in abundance in this and other 20 islands off the coast Peru, where an exceptionally dry climate preserves the droppings of seabirds like guanay cormorant and the Peruvian booby.', 'On the same islands where thousands of convicts, army deserters and Chinese servants died collecting guano a century and a half ago, teams of Quechua laborers from the mountains now scrape to remove manure from the hard ground and get it into boats that transport it to the continent. "We are excavating some of the last remaining guano in Peru" , explains Victor Rop\xF3n, 66, foreman of the province of Ancash, whose leathery skin reflects his years working on the guano islands, since 17 years old.']
-	}]
+         title: 'Machu Picchu',
+         tab_title: 'Machu Picchu',
+         subtitle: 'Machu Picchu',
+         image_class: 'image-horizontal',
+         description: 'Machu Picchu, tambi\xE9n conocido como Pata Llacta la ciudad perdida de los Incas, es una de las the earth\u2019s megaestructuras antiguas con m\xE1s valor hist\xF3rico.  Recientemente ha sido reconocida como una de las siete maravillas del mundo moderno.\n    Este impresionante hallazgo arqueol\xF3gico ha ido aumentando su popularidad y actualmente recibe alrededor de 2500 touristas al d\xEDa.  Nuestro gupia veterano Lucio explica que debido al incremento de demanda, las \xE1reas accesibles a los visitantes son reducidas y restringidas cada a\xF1o.\u201D  Hoy en d\xEDa los visitantes a\xFAn se les permite entrar y tocar la mayor\xEDa de las estructuras antiguas de Machu Picchu permitiendo una experiencia muy personal e \xEDntima.  En pocos a\xF1os los tours ser\xE1n restringidos a senderos cercados y filas de una sola l\xEDnea.',
+         blockquote: '"En pocos a\xF1os los tours ser\xE1n restringidos a senderos cercados y filas de una sola l\xEDnea."',
+         author: 'Cameron Metreaud',
+         date: 'November 06, 2017',
+         tour: 'tourscuzco.html#machu-picchu-day-trip',
+         url_image: 'images/tours/cuzco/machu_picchu_main.png',
+         content: 'Machu Picchu, also known as Pata Llacta the lost city of the Incas, is one of the earth\u2019s ancient megastructures of great historical value.  Most recently it has been recognized as one of the seven wonders of the modern world.\n    This impressing archaeological site has been steadily growing in popularity and currently receives over 2500 tourists daily.  Veteran guide Lucio explains that \u201Cdue to increasing demand, the areas accessible to visitors are reduced and increasingly restricted every year.\u201D  Today the visitors are still able to go inside and touch most the ancient structures of Machu Picchu allowing for a very intimate and personal experience.  In coming years the tours will be restricted to fenced-off pathways and single file lines.',
+         blocks: [{
+                  url_image: 'images/tours/cuzco/machu_picchu_old2.png',
+                  image_class: 'image-horizontal',
+                  blockquote: '“Esta obra maestra de arquitectura e ingeniería ya era conocida por los pobladores locales …”',
+                  parragraphs: ['Esta obra maestra de arquitectura e ingenier\xEDa ya era conocida por los pobladores locales, como Agustin Liz\xE1rraga, quien afirmaba haber paseado por Los recintos de esta ciudadela, y fue quien gui\xF3 al explorador Norte Americano Hiram Bingham, desde aquel d\xEDa en el a\xF1o 1911 Bingham dedic\xF3 su vida a rescatar Machu picchu del Bosque que lo  estaba devorando y di\xF3 a conocer al mundo entero su hallazgo, Bingham proveniente de una familia de exploradores y ten\xEDa conocimiento de legendaria ciudad perdida de Los Incas.']
+         }, {
+                  url_image: 'images/tours/cuzco/machu_picchu_old4.png',
+                  image_class: 'image-horizontal',
+                  parragraphs: ['Machu picchu; ofrenda sagrada a los Dioses, otorgada por Inca Pachacutec (transformador del universo) una exquisita ciudadela con jardines colgantes, terrazas agr\xEDcolas, sectores sagrados, canales de agua, templos de adoraci\xF3n y que posee todo los elementos naturales a su alrededor, agua, viento, rayo,roca, vegetaci\xF3n as\xED como el reino animal presente, puma, serpiente y el condor.']
+         }, {
+                  url_image: 'images/tours/cuzco/machu_picchu_old3.png',
+                  image_class: 'image-horizontal',
+                  blockquote: '“Una construcción de esta magnitud en la cresta de la montaña debió haber requerido equipos de arquitectos, ingenieros y geólogos del antiguo Perú.',
+                  parragraphs: ['La grandiosidad de Machu Picchu est\xE1 en el lugar que fu\xE9 construido, Una construcci\xF3n de esta magnitud en la cresta de la monta\xF1a debi\xF3 haber requerido equipos de arquitectos, ingenieros y ge\xF3logos del antiguo Per\xFA, claro est\xE1 que es la obra final de las grandes civilizaciones que surgieron en sudam\xE9rica Per\xFA, cabe mencionar las culturas que existieron antes que la Inca.']
+         }],
+         bottom: [{
+                  url_image: 'images/tours/cuzco/machu_picchu_paracas.png',
+                  image_class: 'bottom-image-long',
+                  description: 'paracas 700 BC'
+         }, {
+                  url_image: 'images/tours/cuzco/machu_picchu_chavin.png',
+                  image_class: 'bottom-image-vertical',
+                  description: 'chav\xEDn 1000 BC'
+         }, {
+                  url_image: 'images/tours/cuzco/machu_picchu_nazca.png',
+                  image_class: 'bottom-image-horizontal',
+                  description: 'nazca 550 AD'
+         }],
+         bottom2: [{
+                  url_image: 'images/tours/cuzco/machu_picchu_wari.png',
+                  image_class: 'bottom-image-big',
+                  description: 'wari 550 BC'
+         }, {
+                  url_image: 'images/tours/cuzco/machu_picchu_caral.jpg',
+                  image_class: 'bottom-image-buig',
+                  description: 'caral 3500 AD'
+         }]
 };
 
 /***/ })

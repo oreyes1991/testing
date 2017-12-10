@@ -1,64 +1,60 @@
 webpackJsonp([31],{
 
-/***/ 217:
+/***/ 219:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
-exports.default = {
-  title: 'Machu Picchu',
-  tab_title: 'Machu Picchu',
-  subtitle: 'Machu Picchu',
-  image_class: 'image-horizontal',
-  description: 'Machu Picchu, also known as Pata Llacta the lost city of the Incas, is one of the earth\u2019s ancient megastructures of great historical value.  Most recently it has been recognized as one of the seven wonders of the modern world.\n\t\tThis impressing archaeological site has been steadily growing in popularity and currently receives over 2500 tourists daily.  Veteran guide Lucio explains that \u201Cdue to increasing demand, the areas accessible to visitors are reduced and increasingly restricted every year.\u201D  Today the visitors are still able to go inside and touch most the ancient structures of Machu Picchu allowing for a very intimate and personal experience.  In coming years the tours will be restricted to fenced-off pathways and single file lines.',
-  blockquote: '"In coming years the tours will be restricted to fenced-off pathways and single file lines."',
-  author: 'Cameron Metreaud',
-  date: 'November 06, 2017',
-  tour: 'tourscuzco.html#machu-picchu-day-trip',
-  url_image: 'images/tours/cuzco/machu_picchu_main.png',
-  content: 'Machu Picchu, also known as Pata Llacta the lost city of the Incas, is one of the earth\u2019s ancient megastructures of great historical value.  Most recently it has been recognized as one of the seven wonders of the modern world.\n    This impressing archaeological site has been steadily growing in popularity and currently receives over 2500 tourists daily.  Veteran guide Lucio explains that \u201Cdue to increasing demand, the areas accessible to visitors are reduced and increasingly restricted every year.\u201D  Today the visitors are still able to go inside and touch most the ancient structures of Machu Picchu allowing for a very intimate and personal experience.  In coming years the tours will be restricted to fenced-off pathways and single file lines.',
-  blocks: [{
-    url_image: 'images/tours/cuzco/machu_picchu_old2.png',
-    image_class: 'image-horizontal',
-    blockquote: '“This master work of architecture and advanced engineering was already known by the local inhabitants of the area …”',
-    parragraphs: ['This master work of architecture and advanced engineering was already known by the local inhabitants of the area such as Agustin Liz\xE1rraga who confirmed having passed through the ruins of the rumored lost city.  It was he who first guided Hiram Bingham, the North American explorer credited with discovering Machu Picchu.  Since that day in 1911 Bingham dedicated his life to rescue Machu Picchu from the dense forest that had been actively reclaiming it for hundreds of years.  Coming from a family of explorers Bingham had long heard of the fabled lost city of the Incas and was ecstatic to show his find to the world in all its glory.']
-  }, {
-    url_image: 'images/tours/cuzco/machu_picchu_old4.png',
-    image_class: 'image-horizontal',
-    parragraphs: ['Machu Picchu; sacred offering to the Gods, given by Inca Pachacutec (transformer of the universe) an exquisite town with hanging gardens, agricultural terraces,  sacred areas, irrigation canals, temples of worship, and all the natural resources they need surrounding it; water, wind, rocks, vegetation and the animal kingdom often represented by either the puma, serpent, or condor.']
-  }, {
-    url_image: 'images/tours/cuzco/machu_picchu_old3.png',
-    image_class: 'image-horizontal',
-    blockquote: '“A construction project of this magnitude in such a lofty location would require teams of architects, engineers, and geologists of ancient Peru.',
-    parragraphs: ['The grandeur of Machu Picchu is in its majestic location in the mountain peaks. A construction project of this magnitude in such a lofty location would require teams of architects, engineers, and geologists of ancient Peru.  It is clear that this was a major project for one of the largest civilizations to appear in South America.   It is important to mention the invaluable architectural advancements contributed by various cultures superseding the dawn of the Incas.']
-  }],
-  bottom: [{
-    url_image: 'images/tours/cuzco/machu_picchu_paracas.png',
-    image_class: 'bottom-image-long',
-    description: 'paracas 700 BC'
-  }, {
-    url_image: 'images/tours/cuzco/machu_picchu_chavin.png',
-    image_class: 'bottom-image-vertical',
-    description: 'chav\xEDn 1000 BC'
-  }, {
-    url_image: 'images/tours/cuzco/machu_picchu_nazca.png',
-    image_class: 'bottom-image-horizontal',
-    description: 'nazca 550 AD'
-  }],
-  bottom2: [{
-    url_image: 'images/tours/cuzco/machu_picchu_wari.png',
-    image_class: 'bottom-image-big',
-    description: 'wari 550 BC'
-  }, {
-    url_image: 'images/tours/cuzco/machu_picchu_caral.jpg',
-    image_class: 'bottom-image-buig',
-    description: 'caral 3500 AD'
-  }]
-};
+exports.default = [{
+	title: 'Machu Picchu',
+	tab_title: 'Machu Picchu',
+	subtitle: 'Machu Picchu',
+	description: 'Machu Picchu, also known as Pata Llacta the lost city of the Incas, is one of the earth\u2019s ancient megastructures of great historical value.  Most recently it has been recognized as one of the seven wonders of the modern world.\n\t\tThis impressing archaeological site has been steadily growing in popularity and currently receives over 2500 tourists daily.  Veteran guide Lucio explains that \u201Cdue to increasing demand, the areas accessible to visitors are reduced and increasingly restricted every year.\u201D  Today the visitors are still able to go inside and touch most the ancient structures of Machu Picchu allowing for a very intimate and personal experience.  In coming years the tours will be restricted to fenced-off pathways and single file lines.',
+	blockquote: '"A construction project of this magnitude in such a lofty location would require teams of architects, engineers, and geologists of ancient Peru."',
+	author: 'Cameron Metreaud',
+	date: 'November 06, 2017',
+	url_image: 'images/tours/cuzco/machu_picchu_main.png',
+	tour: 'tourscuzco.html#machu-picchu-day-trip',
+	id: '4',
+	link: 'article-detail.html?id=4'
+}, {
+	title: 'Enigmas of Monte Sierpe and Nazca',
+	subtitle: "The geoglyphs at Monte Sierpe are amongst Peru's most enigmatic and unexplainable mysteries",
+	description: "The Avenida de los Hoyos, a geoglyph like the Nazca lines consisting of a series of large basin-like potholes along a mountain ridge, appears to slither up the slope for miles.",
+	author: 'by Rein Petersen',
+	date: "March 20,2014",
+	url_image: 'images/articles/monte_sierpe_portrait.jpg',
+	blockquote: '\u201CI believe that what appears to be a serpent is actually the deity Q\'hoa. He was the servant or acolyte of the god of water known as Illapa and his likeness was used in a majority of rituals regarding rain\u201D.',
+	url: '',
+	link: 'article-detail.html?id=2',
+	tour: 'toursnasca.html'
+}, {
+	title: 'Nasca Lines from Pisco',
+	subtitle: "*New* Nasca lines tours with regular flights from Pisco's renovated airport",
+	description: "Getting to Nasca to see the Nasca lines once used to be a complicated and time-consuming effort. Unless you chartered your own private flight from Lima, public access was limited to mostly car or bus which is very long (7-8 hour one-way) trip from Lima.",
+	author: 'by Rein Petersen',
+	date: 'February 26, 2014',
+	url_image: 'images/articles/nazca_spider.jpg',
+	blockquote: '"Before, the only way to see the Nasca lines was to travel to Nasca - usually by bus. But now we fly from Pisco and people prefer it."',
+	url: '',
+	link: 'article-detail.html?id=1',
+	tour: 'toursnasca.html'
+}, {
+	title: 'Guano Collectors',
+	subtitle: '"The worst enemy is not the smell, heat or exhaustion." As Domingo Le\xF3n explained to us, "the worst enemy is dust sticking on the eyebrows, covering our noses and cheeks and turning our face into a rigid mask."',
+	description: "The rising cost of synthetic fertilizers has made guano sexy again. Some workers collect the dung of seabirds in the North Guañape Island, off the coast of Peru. The global boom in commodities has come to this: before guano, bird dung was the center of an imperialist confrontation at sea in the nineteenth century, and is once again in strong demand.",
+	author: 'by Rein Petersen',
+	date: 'February 22, 2014',
+	url_image: 'images/articles/guano_collectors_1_portrait.jpg',
+	blockquote: '"The worst enemy is not the smell, heat or exhaustion... [it] is dust sticking on the eyebrows, covering our noses and cheeks and turning our face into a rigid mask."',
+	url: '',
+	link: 'article-detail.html?id=3',
+	tour: 'toursparacas.html'
+}];
 
 /***/ })
 

@@ -1,59 +1,74 @@
 webpackJsonp([28],{
 
-/***/ 220:
+/***/ 222:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
-exports.default = [{
-	title: 'Machu Picchu',
-	tab_title: 'Machu Picchu',
-	subtitle: 'Machu Picchu',
-	description: 'Machu Picchu, tambi\xE9n conocido como Pata Llacta la ciudad perdida de los Incas, es una de las the earth\u2019s megaestructuras antiguas con m\xE1s valor hist\xF3rico.  Recientemente ha sido reconocida como una de las siete maravillas del mundo moderno.\n\t\tEste impresionante hallazgo arqueol\xF3gico ha ido aumentando su popularidad y actualmente recibe alrededor de 2500 touristas al d\xEDa.  Nuestro gupia veterano Lucio explica que debido al incremento de demanda, las \xE1reas accesibles a los visitantes son reducidas y restringidas cada a\xF1o.\u201D  Hoy en d\xEDa los visitantes a\xFAn se les permite entrar y tocar la mayor\xEDa de las estructuras antiguas de Machu Picchu permitiendo una experiencia muy personal e \xEDntima.  En pocos a\xF1os los tours ser\xE1n restringidos a senderos cercados y filas de una sola l\xEDnea.',
-	blockquote: '"Una construcci\xF3n de esta magnitud en la cresta de la monta\xF1a debi\xF3 haber requerido equipos de arquitectos, ingenieros y ge\xF3logos del antiguo Per\xFA."',
-	author: 'Cameron Metreaud',
-	date: 'Noviembre 06, 2017',
-	url_image: 'images/tours/cuzco/machu_picchu_main.png',
-	tour: 'tourscuzco.html#machu-picchu-day-trip',
-	id: '4',
-	link: 'article-detail.html?id=4'
-}, {
-	title: 'Enigma del Monte Sierpe',
-	subtitle: "Los geoglifos de Monte Sierpe se encuentran entre los misterios más enigmáticos e inexplicables del Perú",
-	description: 'La \u2018Avenida de los Hoyos\u2019, es un geoglifo que consiste en una serie de grandes Hoyos en la cuenca, como tallados en tierra seca dura por la cresta que separa dos valles secos, que parece deslizarse en la pendiente y por millas.\u201CLo que parece ser una serpiente es en realidad la antigua deidad Q\'hoa. \xC9l era el siervo ... del dios del agua ... y fue utilizado en los rituales ... con respecto a la lluvia\u201D.',
-	author: 'por Rein Petersen',
-	date: "Marzo 20,2014",
-	url_image: 'images/articles/monte_sierpe_portrait.jpg',
-	blockquote: '\u201CLo que parece ser una serpiente es en realidad la antigua deidad Q\'hoa. \xC9l era el siervo ... del dios del agua ... y fue utilizado en los rituales ... con respecto a la lluvia\u201D.',
-	url: '',
-	link: 'article-detail.html?id=2',
-	tour: 'toursnasca.html'
-}, {
-	title: 'Lineas de Nasca de Pisco',
-	subtitle: "*Nuevo* Tours de las líneas de Nasca con vuelos regulares desde el aeropuerto renovado de Pisco",
-	description: "Llegar a Nasca para ver estas enigmáticas líneas de Nazca solía ser un esfuerzo grande y requería mucho tiempo. Al menos que usted quisiera rentar su propio vuelo privado desde Lima, el acceso al público se limitaba en su mayoría en coche o autobús, que tomaba mucho tiempo (12-14 horas ida y vuelta) viaje desde Lima.",
-	author: 'por Rein Petersen',
-	date: 'February 26, 2014',
-	url_image: 'images/articles/nazca_spider.jpg',
-	blockquote: '"Antes, la \xFAnica manera de ver las l\xEDneas de Nasca era viajar a Nasca - viajando en autob\xFAs. Pero ahora volamos desde Pisco y los turistas lo prefieren."',
-	url: '',
-	link: 'article-detail.html?id=2',
-	tour: 'toursnasca.html'
-}, {
-	title: 'Recolectores de Guano',
-	subtitle: '"El peor enemigo no es el olor, el calor o el agotamiento. "Como explic\xF3 Domingo Le\xF3n," el peor enemigo es el polvo que se pega en las cejas, cubriendo nuestras narices y mejillas y convirtiendo nuestra cara en una m\xE1scara r\xEDgida."',
-	description: "El aumento del costo de los fertilizantes sintéticos han vuelto a hacer guano sexy. Algunos trabajadores recogen el estiércol de las aves marinas en la Isla Norte de Guañape, frente a la costa del Perú. El auge mundial de las materias primas ha llegado a esto: antes del guano, el estiércol del pájaro fue el centro de una confrontación imperialista en el mar en el siglo XIX, y está una vez más en fuerte demanda.",
-	author: 'por Rein Petersen',
-	date: 'Febrero 22, 2014',
-	url_image: 'images/articles/guano_collectors_1_portrait.jpg',
-	blockquote: '"El peor enemigo no es el olor, el calor o el agotamiento. "Como explic\xF3 Domingo Le\xF3n," el peor enemigo es el polvo que se pega en las cejas, cubriendo nuestras narices y mejillas y convirtiendo nuestra cara en una m\xE1scara r\xEDgida."',
-	url: '',
-	tour: 'toursparacas.html'
-}];
+exports.default = {
+    title: 'MACHU PICCHU & VALLE SECRETO DE LOS INCAS tour de 7 días',
+    subtitle: '',
+    description: 'Explore las grandiosas ruinas de Machu Picchu y pasee a trav\xE9s de mercados en aldeas donde tradiciones antiguas contin\xFAan viviendo en los corazones de la gente Andina.',
+    url_image: 'images/tours/cuzco/machu_picchu_main.png',
+    tab_title: "Packages",
+    packages: [{
+        id: 'package-machupicchu',
+        title: 'MACHU PICCHU & THE SECRET VALLEY OF INCAS 7 days Touring',
+        shortTitle: 'MACHU PICCHU & THE SECRET VALLEY',
+        subtitle: '',
+        url_image: 'images/tours/cuzco/machu_picchu_3_t.jpg',
+        image_class: 'image-package-horizontal',
+        is_image_class: true,
+        description: 'Explore las grandiosas ruinas de Machu Picchu y pasee a trav\xE9s de mercados en aldeas donde tradiciones antiguas contin\xFAan viviendo en los corazones de la gente Andina. Uno de nuestros tours m\xE1s populares en el Per\xFA, esta jornada incluye las important\xEDsimas ruinas Inca de Sacsayhuam\xE1n, Pisac y Ollantaytambo. Los invitados tienen dos d\xEDas para explorar la ciudad perdida de Machu Picchu, pasee por el mercado de Brujas en Cusco, regatee tapetes en Pisac, y camine por inusuales senderos en la parte rural de los Andes. Esta excursi\xF3n Peruana de ritmo suave con duraci\xF3n de una semana es perfecta para cualquiera con sentido de curiosidad y adventura.',
+        additionalData: {
+            include: ['All tranfers and transport', 'All entrance fees and taxes', 'Accomodation'],
+            notInclude: ['Extras & gratuities'],
+            duration: {
+                subtitle: '2 days / 1 night',
+                data: []
+            },
+            recommendations: ['Bring sun creme, hats, sunglasses.', 'Bring a light jacket'],
+            price: {
+                currency: '$',
+                ammount: 565,
+                data: ['A minimum of 2 participants are required']
+            }
+        }
+    }],
+    itinerary: [{
+        title: 'Día 1',
+        subTitle: 'Llegada a Lima',
+        contents: 'Llegue a Lima en un vuelo de su elecci\xF3n. Luego de recoger su equipaje y pase por aduana, cruce la calle hacia el c\xF3modo y convenientemente ubicado hotel Ramada Costa del Sol. Acom\xF3dese en su cuarto y descanse para la emocionante jornada que le espera.'
+    }, {
+        title: 'Día 2',
+        subTitle: 'Vuelo a Cusco',
+        contents: 'La historia de los Andes cobra vida en Cusco. Hablantes de Quechua descendientes de los Incas llenan las calles y mercados, Iglesias coloniales descansan sobre bases de estructuras de piedra construidas siglos antes de la llegada de los conquistadores. Campesinos vestidos con su colorida indumentaria est\xE1n en constante movimiento en las plazas. En la tarde, usted explorar\xE1 el mercado abierto m\xE1s grande de Cusco y el Mercado de Brujas. despu\xE9s de probar algunos platos unicos de la zona, visitar\xE1 el Centro de Textiles Tradicionales del Cusco, una organizaci\xF3n con la misi\xF3n de preservar el tejido tradicional de la regi\xF3n (Si est\xE1 visitando el Valle Sagrado el Domingo, usted visitar\xE1 su centro en Chinchero). Observe a los tejedores demostrar su habilidad y aprenda acerca de la historia y procesos de la m\xE1s conocida forma de arte del Per\xFA.'
+    }, {
+        title: 'Día 3',
+        subTitle: 'Valle Sagrado',
+        contents: 'Esta ma\xF1ana su d\xEDa comenzar\xE1 viajando a una de las \xE1reas m\xE1s hermosas de Per\xFA. El Valle Sagrado a menudo se vuelve uno de los puntos m\xE1s destacados del viaje y usted pronto ver\xE1 porqu\xE9! El d\xEDa es flexible y basado en sus intereses, d\xEDas de mercado, y el clima. Usted probar\xE1 sus habilidades de regateo con los locales mientras visita uno de los grandes mercados textiles del \xE1rea. Usted tambi\xE9n puede hacer caminatas en las inspiradoras ruinas de Pisac o tomar un paseo corto a trav\xE9s del \xE1rea rural hacia el poco frecuentado pueblo de Maras, Donde minas de sal precolombinas operan hoy en d\xEDa. Visite las terrazas agricultoras Incas de Moray, se piensa que han sido una enfermer\xEDa para experimentar y modificar diferentes variedades de siembra. Finalmente usted llegar\xE1 de noche a la ciudad Inca viviente de Ollantaytambo. '
+    }, {
+        title: 'Día 4',
+        subTitle: 'Ruinas de Ollantaytambo | Tren a Machu Picchu',
+        contents: 'En la ma\xF1ana, visitar\xE1 las ruinas y el pueblo de Ollantaytambo. Durante el imperio Inca, Ollantaytambo sirvi\xF3 como un estado real y luego como refugio despu\xE9s de la conquista espa\xF1ola de Cusco en 1537. Las ruinas tienen extensas terrazas y una arquitectura bien preservada. El pueblo sigue estando como lo estuvo durante el imperio Inca, permitiendo a los visitantes ver levemente la historia que a\xFAn existe dentro de sus bordes.\n        \n        Aborde el tren que y siga el r\xEDo Urubamba cuyo curso sigue su camino hacia el Amazona y a la sagrada ciudad de Machu Picchu. Viaje por antiguos canales que a\xFAn llevan agua desde la cima de las monta\xF1as hacia los ba\xF1os usados por sacerdotes Inca. Como visitante, usted es bienvenido a sumergir sus manos respetuosamente en el agua fr\xEDa. Despu\xE9s de su tour guiado de Machu Picchu, usted regresar\xE1 a la aldea de Aguas Calientes (ubicada en la base de Machu Picchu). Disfrute uno de los tantos excelentes restaurantes locales o termine su d\xEDa en las aguas termales despu\xE9s de explorar uno de los sitios arqueol\xF3gicos m\xE1s m\xE1gicos en el mundo.\n        '
+    }, {
+        title: 'Día 5',
+        subTitle: 'Día libre en Machu Picchu | Regreso a Cusco',
+        contents: 'Hoy es su oportunidad de observar el amanecer en Machu Picchu y de escuchar los esp\xEDritus de los antiguos habitantes de la ciudad en tranquilidad justo antes de la llegada de los excursionistas del camino del Inca. Puede escoger entre reservar un permiso para escalar el pico sagrado de Huayna Picchu, caminar hasta la Puerta del Sol donde se pueden ver las ruinas desde arriba, o tomar una caminata a trav\xE9s del frondoso bosque de nubes hacia el Templo de la Luna. En la tarde usted regresar\xE1 por tren a Cusco con su gu\xEDa. (Av\xEDsenos si quiere ayudar solicitando sus entradas o permisos para hoy \u2013 estas no est\xE1n inclu\xEDdas y se agotan por adelantado!)\n        '
+    }, {
+        title: 'Día 6',
+        subTitle: 'Explore Cusco',
+        contents: 'En este d\xEDa usted es libre para relajarse y explorar el \xE1rea con un gu\xEDa o por su cuenta. Puede visitar las iglesias y ruinas aleda\xF1as, como las enormes ruinas de Sacsayhuam\xE1n que vigilan Cusco desde arriba (estas ruinas exhiben bloques de construcci\xF3n del tama\xF1o de una pickup). Tambi\xE9n puede pasear a trav\xE9s de la concurrida Plaza de Armas en el coraz\xF3n de Cusco, comprar pociones de amor en los mercados locales, o observar personas desde los caf\xE9s y restaurantes que decoran sus hermosas calles. Para aquellos llenos de energ\xEDa, cabalgatas, ciclismo de monta\xF1a, o incluso rafting (Clase III-IV) pueden ser arreglados. La noche es suya para disfrutar de la emocionante y variada vida nocturna de Cusco donde la m\xFAsica folkl\xF3rica en vivo y la excelente comida abunda! Disfrute de la \xFAltima noche de sus vacaciones en Per\xFA.\n        '
+    }, {
+        title: 'Day 7',
+        subTitle: 'Vuelo a Lima | Regreso a casa',
+        contents: 'Desayuno inclu\xEDdo'
+    }]
+};
 
 /***/ })
 

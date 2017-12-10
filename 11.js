@@ -1,6 +1,6 @@
 webpackJsonp([11],{
 
-/***/ 237:
+/***/ 239:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34,7 +34,7 @@ exports.default = {
 			recommendations: ['Bring sun cream, sun glasses and a cap.', 'Bring warm clothing or wind-breaker.'],
 			price: {
 				currency: '$',
-				ammount: 25,
+				ammount: 28,
 				data: ['Group discounts available']
 			}
 		}
@@ -56,7 +56,7 @@ exports.default = {
 			recommendations: [],
 			price: {
 				currency: '$',
-				ammount: 44,
+				ammount: 50,
 				data: ['Group discounts available']
 			}
 		}
@@ -67,9 +67,9 @@ exports.default = {
 		classes: 'cruise-members-only',
 		subtitle: 'Independent shore excursions from Pisco harbor ( Paracas)',
 		url_image: 'images/tours/paracas/paracas_13.jpg',
-		description: 'Seize the opportunity to book your shore excursion on your own directly from us and get the best value. Our tour advisor will be more than happy answering questions and looking the availability of your request, feel free to contact us.<br/><br/>\n\t\t\t\t\n\t\t\t\tWe provide, Half day tour or whole - day excursion customized to your party managed by Our English spoken staff.\n\t\t\t\t<br/><br/>\n\t\t\t\tEnjoy a more intimate tour experience away from the crowds, South Americans Secrets team who it is to make sure all passengers arrive back to the ship safely and on time.\n\t\t\t\t<br/><br/>\n\t\t\t\tWe design the best shore excursions, based on your interest and abilities like marine wildlife watching, walking on  Inca ancient sites and visiting nature protected areas.\n\t\t\t\t',
+		description: 'Seize the opportunity to book your shore excursion on your own directly from us and get the best value. Our tour advisor will be more than happy answering questions and looking the availability of your request, feel free to contact us.<br/><br/>\n\t\t\t\t\n\t\t\t\t<h4 class="hightlight-letters"><strong>We provide, Half day tour or whole - day excursion customized to your party managed by Our English spoken staff.</strong></h4>\n\t\t\t\t<br/>\n\t\t\t\t<h4 class="hightlight-letters"><strong>Enjoy a more intimate tour experience away from the crowds, South Americans Secrets team who it is to make sure all passengers arrive back to the ship safely and on time.</strong></h4>\n\t\t\t\t<br/>\n\t\t\t\t<h4 class="hightlight-letters"><strong>We design the best shore excursions, based on your interest and abilities like marine wildlife watching, walking on  Inca ancient sites and visiting nature protected areas.</strong></h4>\n\t\t\t\t',
 		additionalData: {
-			activities: ['Nazca lines flight', 'Tambo Colorado ( Ica ancient site)', 'Marine wildlife watching', 'Paracas nature Reserve', 'Pisco distillery and winery Valley'],
+			activities: ['Nazca lines flight', 'Tambo Colorado ( Inca ancient site)', 'Marine wildlife watching', 'Paracas nature Reserve', 'Pisco distillery and winery Valley'],
 			include: ['Pickup and dropoff directly from port/harbor', 'All entrance fees', 'Harbor tax', 'Personal insurance in case of injuries', 'Private transportation.', 'Professional English guide'],
 			notInclude: ['Extras & gratuities.'],
 			duration: {
@@ -92,7 +92,7 @@ exports.default = {
 		yacht: 'yacht.png',
 		gallery: ['images/gallery/ballestas_01_t.jpg', 'images/gallery/ballestas_02_t.jpg', 'images/gallery/ballestas_03_t.jpg', 'images/gallery/ballestas_04_t.jpg', 'images/gallery/ballestas_15_t.jpg'],
 		additionalData: {
-			include: ['30 Pax. capacity', 'All entrances fees', 'Harbor tax', 'Personal insurance in case of injuries', 'Pickup and dropoff directly from port/harbor', 'All transportation', 'English speaking guide'],
+			include: ['28 participants max', 'All entrances fees', 'Harbor tax', 'Personal insurance in case of injuries', 'Pickup and dropoff directly from port/harbor', 'All transportation', 'English speaking guide'],
 			notInclude: ['Extras & gratuities'],
 			duration: {
 				subtitle: '5-6 hours',
@@ -114,7 +114,7 @@ exports.default = {
 		yacht: 'yacht2.png',
 		gallery: ['images/gallery/ballestas_13_t.jpg', 'images/gallery/ballestas_02_t.jpg', 'images/gallery/ballestas_03_t.jpg', 'images/gallery/ballestas_04_t.jpg', 'images/gallery/ballestas_15_t.jpg'],
 		additionalData: {
-			include: ['20 pax capacity', 'Double seating', 'All entrance fees', 'Harbor tax', 'Personal insurance in case of injuries', 'Pickup and dropoff directly from port/harbor', 'All transportation', 'English speaking guide'],
+			include: ['18 pax capacity', 'Double seating', 'All entrance fees', 'Harbor tax', 'Personal insurance in case of injuries', 'Pickup and dropoff directly from port/harbor', 'All transportation', 'English speaking guide'],
 			notInclude: ['Extras and gratuities'],
 			duration: {
 				subtitle: '5-6 hours',
@@ -143,9 +143,10 @@ exports.default = {
 			},
 			recommendations: [],
 			price: {
+				base_price: true,
 				currency: '$',
-				ammount: 250,
-				data: ['Group discounts available']
+				ammount: 300,
+				data: ['Prices may vary depending on the amount of participants and the activities selected']
 			}
 		}
 	}, {
@@ -166,7 +167,8 @@ exports.default = {
 			recommendations: [],
 			price: {
 				currency: '$',
-				ammount: 125,
+				ammount: 180,
+				per_hour: true,
 				data: ['Minimum 2 hours']
 			}
 		}
@@ -187,7 +189,7 @@ exports.default = {
 			recommendations: ['Bring sun cream, sun glasses and a cap.', 'Bring a bottle of water.'],
 			price: {
 				currency: '$',
-				ammount: 25,
+				ammount: 30,
 				data: ['A minimum of 2 participants are required']
 			}
 		}

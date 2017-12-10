@@ -1,6 +1,6 @@
 webpackJsonp([10],{
 
-/***/ 238:
+/***/ 240:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34,7 +34,7 @@ exports.default = {
 			recommendations: ['Traer crema solar, gafas de sol y una gorra.', 'Llevar ropa abrigadora o chaqueta lijera'],
 			price: {
 				currency: '$',
-				ammount: 25,
+				ammount: 28,
 				data: ['Hay descuentos para grupos']
 			}
 		}
@@ -56,7 +56,7 @@ exports.default = {
 			recommendations: [],
 			price: {
 				currency: '$',
-				ammount: 44,
+				ammount: 50,
 				data: ['Hay descuentos para grupos']
 			}
 		}
@@ -67,9 +67,9 @@ exports.default = {
 		classes: 'cruise-members-only',
 		subtitle: 'Excursiones de costa indeéndientes desde el muelle de pisco ( Paracas)',
 		url_image: 'images/tours/paracas/paracas_13.jpg',
-		description: 'Aproveche la oportunidad de reservar su excursi\xF3n costal directamente con nosotros y obtener el mejor precio. Nuestro consejero de tours estar\xE1 m\xE1s que feliz en responder todas sus preguntas y en buscar la disponibilidad de su solicitud, por favor si\xE9ntase libre de contactarnos.\n\t\t\t\t<br/><br/>\n\t\t\t\tNosotros ofrecemos, tours de media jornada o completa personalizada para su grupo y guiada por nuestro personal biling\xFCe.\n\t\t\t\t<br/><br/>\n\t\t\t\tDisfrute una experiencia m\xE1s \xEDntima lejos de las multitudes, el equipo de South Americans Secrets se asegura de que todos los pasajeros vuelvan a su crucero seguros y a tiempo.\n\t\t\t\t<br/><br/>\n\t\t\t\tNosotros dise\xF1amos las mejores excursiones costales bas\xE1ndonos en sus intereses y habilidades como observar la vida marina, caminar a trav\xE9s de antiguos recintos arqueol\xF3gicos y visitar \xE1reas naurales protegidas.\n\t\t\t\t',
+		description: 'Aproveche la oportunidad de reservar su excursi\xF3n costal directamente con nosotros y obtener el mejor precio. Nuestro consejero de tours estar\xE1 m\xE1s que feliz en responder todas sus preguntas y en buscar la disponibilidad de su solicitud, por favor si\xE9ntase libre de contactarnos.\n\n\t\t\t\t<h4 class="hightlight-letters"><strong>Nosotros ofrecemos, tours de media jornada o completa personalizada para su grupo y guiada por nuestro personal biling\xFCe.</strong></h4>\n\t\t\t\t<br/>\n\t\t\t\t<h4 class="hightlight-letters"><strong>Disfrute una experiencia m\xE1s \xEDntima lejos de las multitudes, el equipo de South Americans Secrets se asegura de que todos los pasajeros vuelvan a su crucero seguros y a tiempo.</strong></h4>\n\t\t\t\t<br/>\n\t\t\t\t<h4 class="hightlight-letters"><strong>Nosotros dise\xF1amos las mejores excursiones costales bas\xE1ndonos en sus intereses y habilidades como observar la vida marina, caminar a trav\xE9s de antiguos recintos arqueol\xF3gicos y visitar \xE1reas naurales protegidas.</strong></h4>\n\t\t\t\t',
 		additionalData: {
-			activities: ['Vuelo sobre las líneas de Nazca', 'Tambo Colorado (Antiguo recinto de Ica)', 'Observación de vida marina', 'Reserva natural de Paracas', 'Destilería de Pisco y viñedo'],
+			activities: ['Vuelo sobre las líneas de Nazca', 'Tambo Colorado (Antiguo recinto Inca)', 'Observación de vida marina', 'Reserva natural de Paracas', 'Destilería de Pisco y viñedo'],
 			include: ['Traslado ida y vuelta directamente desde el muelle', 'Entradas', 'Impuesto del puerto', 'Seguro personal en caso de heridas', 'Transporte privado', 'Guía bilingüe profesional'],
 			notInclude: ['Extras y propinas'],
 			duration: {
@@ -92,7 +92,7 @@ exports.default = {
 		yacht: 'yacht.png',
 		gallery: ['images/gallery/ballestas_01_t.jpg', 'images/gallery/ballestas_02_t.jpg', 'images/gallery/ballestas_03_t.jpg', 'images/gallery/ballestas_04_t.jpg', 'images/gallery/ballestas_15_t.jpg'],
 		additionalData: {
-			include: ['30 Pax. capacidad', 'Entradas', 'Impuestos del puerto', 'Seguro personal en caso de heridas', 'traslado ida y vuelta desde el puerto', 'Transportes', 'Guía bilingüe'],
+			include: ['Max participantes 28', 'Entradas', 'Impuestos del puerto', 'Seguro personal en caso de heridas', 'traslado ida y vuelta desde el puerto', 'Transportes', 'Guía bilingüe'],
 			notInclude: ['Extras y propinas'],
 			duration: {
 				subtitle: '5-6 horas',
@@ -114,7 +114,7 @@ exports.default = {
 		yacht: 'yacht2.png',
 		gallery: ['images/gallery/ballestas_13_t.jpg', 'images/gallery/ballestas_02_t.jpg', 'images/gallery/ballestas_03_t.jpg', 'images/gallery/ballestas_04_t.jpg', 'images/gallery/ballestas_15_t.jpg'],
 		additionalData: {
-			include: ['20 pax capacidad', 'Doble asiento', 'Entradas', 'Impuesto del puerto', 'Seguro personal en caso de heridas', 'Traslado ida y vuelta desde el puerto', 'Transportes', 'Guía bilingüe'],
+			include: ['Max participantes 18', 'Doble asiento', 'Entradas', 'Impuesto del puerto', 'Seguro personal en caso de heridas', 'Traslado ida y vuelta desde el puerto', 'Transportes', 'Guía bilingüe'],
 			notInclude: ['Extras y propinas'],
 			duration: {
 				subtitle: '5-6 horas'
@@ -143,8 +143,9 @@ exports.default = {
 			recommendations: [],
 			price: {
 				currency: '$',
-				ammount: 250,
-				data: ['Hay descuentos para grupos']
+				base_price: true,
+				ammount: 300,
+				data: ['El precio puede variar dependiendo de la cantidad de participantes y las actividades seleccionadas.']
 			}
 		}
 	}, {
@@ -165,7 +166,8 @@ exports.default = {
 			recommendations: [],
 			price: {
 				currency: '$',
-				ammount: 125,
+				ammount: 180,
+				per_hour: true,
 				data: ['Minimo 2 horas']
 			}
 		}
@@ -186,7 +188,7 @@ exports.default = {
 			recommendations: ['Traer crema solar, gafas de sol y una gorra.', 'Lleve una botella de agua'],
 			price: {
 				currency: '$',
-				ammount: 25,
+				ammount: 30,
 				data: ['Se requiere un mínimo de 2 participantes']
 			}
 		}
