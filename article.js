@@ -4334,7 +4334,7 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<div class=\"banner-right floating-right\">\r\n  <a href=\"packagecoast.html#package-mystery-south-coast\" class=\"ad\">\r\n    <div class=\"title\">\r\n      Nazca Lines & South Coast\r\n      <div class=\"gallery autoplay items-1\">\r\n        <div id=\"item-1\" class=\"control-operator\"></div>\r\n        <figure class=\"item\">\r\n            <div class=\"banner-img nazca-lines\">\r\n            </div>\r\n        </figure>\r\n      </div>\r\n      <div class=\"tour-info-title\">2 days / 1 night</div>\r\n      <div class=\"tour-info-title\"><h4>$565.00 USD</h4></div>\r\n      <div class=\"tour-info-title\">per person from Lima transport & hotel included</div>\r\n      <p style=\"font-size:14px;\">\r\n        <b>Short on time?</b> Get the most out of your vacation with <b>ease, comfort &amp; style</b>:<br>\r\n        Flight over Nazca lines, guided tour Paracas National Reserve, excursion to Ballestas Islands, visit a winery in Ica, visit Huacachina oasis and a thrilling dune buggy. <br> The price also includes *all* transport, transfers, and fees! From your hotel in Lima!\r\n      </p>\r\n    </div>\r\n  </a>\r\n</div>\r\n";
+output += "<div class=\"banner-right floating-right\">\r\n  <a href=\"packagecoast.html#package-mystery-south-coast\" class=\"ad\">\r\n    <div class=\"title\">\r\n      Líneas de Nazca & Costa Sur\r\n      <div class=\"gallery autoplay items-1\">\r\n        <div id=\"item-1\" class=\"control-operator\"></div>\r\n        <figure class=\"item\">\r\n            <div class=\"banner-img nazca-lines\">\r\n            </div>\r\n        </figure>\r\n      </div>\r\n      <div class=\"tour-info-title\">2 días / 1 noche</div>\r\n      <div class=\"tour-info-title\"><h4>$565.00 USD</h4></div>\r\n      <div class=\"tour-info-title\">Por persona desde Lima transporte & hotel incluídos</div>\r\n      <p style=\"font-size:14px;\">\r\n        <b>¿No tiene mucho tiempo disponible?</b> Disfrute de unas vacaciones enteras con <b>tranquilidad, comfort &amp; y estilo</b>:<br>\r\n        Vuele sobre las líneas de Nazca, con un tour guíado por la Reserva Nacional de Paracas, excursiones a las Islas Ballestas, visite el viñedo en Ica, visite el oasis Huacachina y disfrute de un emocionante paseo en un vehículo rustico a través de la duna. <br> El coste también incluye *todo* transporte, transfers, y ¡gastos! Desde tu hotel en Lima.\r\n      </p>\r\n    </div>\r\n  </a>\r\n</div>\r\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -5551,7 +5551,7 @@ output += "</a></li>\r\n\t\t\t\t\t\t\t\t\t ";
 }
 }
 frame = frame.pop();
-output += "\r\n\t\t\t\t\t\t\t\t\t <li><a href=\"#additional-info\">Additional Information</a></li>\r\n\t\t\t\t\t\t\t </ul>\r\n\t\t\t\t\t </div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t\t";
+output += "\r\n\t\t\t\t\t\t\t\t\t <li><a href=\"#additional-info\">Información Adicional</a></li>\r\n\t\t\t\t\t\t\t </ul>\r\n\t\t\t\t\t </div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t\t";
 frame = frame.push();
 var t_7 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "data")),"tours");
 if(t_7) {var t_6 = t_7.length;

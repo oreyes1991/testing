@@ -62,10 +62,10 @@ exports.default = {
 		}
 	}, {
 		id: 'cruise-shore-excursion',
-		title: 'Cruise Shore Excursions',
+		title: 'Excursiones de Crucero',
 		shortTitle: 'Excursiones para miembros de crucero',
 		classes: 'cruise-members-only',
-		subtitle: 'Excursiones de costa indeéndientes desde el muelle de pisco ( Paracas)',
+		subtitle: 'Excursiones de costa independientes desde el muelle de pisco ( Paracas)',
 		url_image: 'images/tours/paracas/paracas_13.jpg',
 		description: 'Aproveche la oportunidad de reservar su excursi\xF3n costal directamente con nosotros y obtener el mejor precio. Nuestro consejero de tours estar\xE1 m\xE1s que feliz en responder todas sus preguntas y en buscar la disponibilidad de su solicitud, por favor si\xE9ntase libre de contactarnos.\n\n\t\t\t\t<h4 class="hightlight-letters"><strong>Nosotros ofrecemos, tours de media jornada o completa personalizada para su grupo y guiada por nuestro personal biling\xFCe.</strong></h4>\n\t\t\t\t<br/>\n\t\t\t\t<h4 class="hightlight-letters"><strong>Disfrute una experiencia m\xE1s \xEDntima lejos de las multitudes, el equipo de South Americans Secrets se asegura de que todos los pasajeros vuelvan a su crucero seguros y a tiempo.</strong></h4>\n\t\t\t\t<br/>\n\t\t\t\t<h4 class="hightlight-letters"><strong>Nosotros dise\xF1amos las mejores excursiones costales bas\xE1ndonos en sus intereses y habilidades como observar la vida marina, caminar a trav\xE9s de antiguos recintos arqueol\xF3gicos y visitar \xE1reas naurales protegidas.</strong></h4>\n\t\t\t\t',
 		additionalData: {
@@ -153,7 +153,7 @@ exports.default = {
 		title: 'Charter de Yate',
 		subtitle: '',
 		url_image: 'images/tours/paracas/ballestas_yacht_1_t.jpg',
-		description: 'Chart\xE9e su propio yate y elija su propio plan de viaje con nosotros. Usted es libre de escoger para descubrir todas las islas de Paracas como mejor le parezca.',
+		description: 'Chartee su propio yate y elija su propio plan de viaje con nosotros. Usted es libre de escoger para descubrir todas las islas de Paracas como mejor le parezca.',
 		yacht: 'yacht3.png',
 		gallery: ['images/gallery/ballestas_16_t.jpg', 'images/gallery/ballestas_15_t.jpg', 'images/gallery/ballestas_11_t.jpg', 'images/gallery/ballestas_12_t.jpg'],
 		additionalData: {
@@ -161,7 +161,7 @@ exports.default = {
 			notInclude: [],
 			duration: {
 				subtitle: '2 horas',
-				data: ['Departs by appointment as late as 1pm']
+				data: ['Salidas previstas a más tardar a la 1pm']
 			},
 			recommendations: [],
 			price: {
@@ -198,7 +198,7 @@ exports.default = {
 		shortTitle: 'Líneas de Nazca desde Paracas',
 		subtitle: '\xA1Nuevo! Sobrevuelo de las l\xEDneas de Nasca saliendo desde Paracas (Pisco)! Ahorre tiempo volando desde Paracas.',
 		url_image: 'images/tours/paracas/nazca_condor.t.jpg',
-		description: 'Nazca es el nombre de sistema de valles en la costa sur del Per\xFA, as\xED como el nombre de la cultura pre-inca que floreci\xF3 en la zona entre 200 AC y 800 DC.\nLa cultura Nazca es de fama mundial por sus L\xEDneas de Nazca, cer\xE1mica policromada y sofisticado sistema de acueductos para riego de campos de cultivo (agricultura). Pero las l\xEDneas de Nazca siguen siendo la atracci\xF3n m\xE1s fascinante y misterioso para los viajeros.\nLa cultura Nazca dise\xF1o figuras \xF3 geoglifos enormes y misteriosos que son imposibles de ver estas sofisticadas l\xEDneas, sin la tecnolog\xEDa de vuelo habr\xEDa sido imposible para ellos ver nunca sus propios dise\xF1os terminados. Muchas de las teor\xEDas extra\xF1as de por qu\xE9 la gente de Nazca a dedicado un enorme esfuerzo en la creaci\xF3n de estas l\xEDneas ser\xE1 compartida con usted por nuestros gu\xEDas.\nNuestro programa guiado comienza una vez que nuestro gu\xEDa le recoge en su hotel. Nuestros pilotos hablan Ingl\xE9s y explican cada ubicacion de la figura grabada en la tierra.',
+		description: 'Nazca es el nombre de sistema de valles en la costa sur del Per\xFA, as\xED como el nombre de la cultura pre-inca que floreci\xF3 en la zona entre 200 AC y 800 DC.\nLa cultura Nazca es de fama mundial por sus L\xEDneas de Nazca, cer\xE1mica policromada y sofisticado sistema de acueductos para riego de campos de cultivo (agricultura). Pero las l\xEDneas de Nazca siguen siendo la atracci\xF3n m\xE1s fascinante y misterioso para los viajeros.\nLa cultura Nazca dise\xF1o figuras \xF3 geoglifos enormes y misteriosos que son imposibles de ver estas sofisticadas l\xEDneas, sin la visi\xF3n a\xE9rea. Habr\xEDa sido imposible para ellos ver sus propios dise\xF1os terminados. Muchas de las teor\xEDas extra\xF1as de por qu\xE9 la gente de Nazca ha dedicado un enorme esfuerzo en la creaci\xF3n de estas l\xEDneas ser\xE1 compartida con usted por nuestros gu\xEDas.\nNuestro programa guiado comienza una vez que nuestro gu\xEDa le recoge en su hotel. Nuestros pilotos hablan Ingl\xE9s y explican cada ubicacion de la figura grabada en la tierra.',
 		additionalData: {
 			include: ['Recojo de su hotel en Paracas', 'Tasas de aeropuerto', 'Traslado al aeropuerto internacional de Pisco', 'Guía', 'Traslado a su hotel al final del vuelo'],
 			notInclude: ['Extras y propinas.', 'Alojamiento'],
@@ -218,9 +218,9 @@ exports.default = {
 		id: 'biking-paracas-reserve',
 		title: 'La Reserva de Paracas en Bici',
 		shortTitle: 'La Reserva de Paracas en Bici',
-		subtitle: 'Disfrute de su libertad, disfrute de la belleza desertico y brisa marina fresca mientras descubre las maravillas de la Reserva Nacional de Paracas en bicicleta de montaña.',
+		subtitle: 'Disfrute de su libertad, disfrute de la belleza desertica y brisa marina fresca mientras descubre las maravillas de la Reserva Nacional de Paracas en bicicleta de montaña.',
 		url_image: 'images/activities/paracas/bike_paracas_3_t.jpg',
-		description: '<b>Tour de Bici Autoguiado</b></br>Descubra la belleza de la Reserva de Paracas y deje que la brisa de mar te lleve donde le lleve. Nuestro tour guiado en bicicleta le proporcionamos mapas de ruta, casco, herramientas para bicicletas, y los equipos de comunicaci\xF3n para emergencia (opcional).\n<b>Tour de Bici con soporte de Van</b><br/>\nVamos con usted y su bicicleta para llevar al mejor lugar en la Reserva. A partir de ah\xED a disfrutar de la libertad sobre dos ruedas con el viento en su espalda. Incluye transporte, mapas, rutas, casco, herramientas y comunicaci\xF3n de emergencia (opcional).',
+		description: '<b>Tour de Bici Autoguiado</b></br>Descubra la belleza de la Reserva de Paracas y deje que la brisa de mar te lleve donde le lleve. Nuestro tour guiado en bicicleta le proporcionamos mapas de ruta, casco, herramientas para bicicletas, y los equipos de comunicaci\xF3n para emergencia (opcional).\n<b>Tour de Bici con soporte de Van</b><br/>\nVamos con usted y su bicicleta para llevarlo al mejor lugar en la reserva. A partir de ah\xED a disfrutar de la libertad sobre dos ruedas con el viento en su espalda. Incluye transporte, mapas, rutas, casco, herramientas y comunicaci\xF3n de emergencia (opcional).',
 		gallery: ['images/gallery/bike_paracas_01.jpg', 'images/gallery/bike_paracas_02.jpg', 'images/gallery/bike_paracas_03.jpg', 'images/gallery/bike_paracas_04.jpg'],
 		additionalData: {
 			include: ['Bicicletas profesionales', 'Mapa', 'Herramientas'],
@@ -242,9 +242,9 @@ exports.default = {
 		id: 'islas-ballestas',
 		title: 'Islas Ballestas',
 		shortTitle: 'Islas Ballestas',
-		subtitle: 'Las Islas Ballestas es el principal atractivo de Paracas. Usted encontrar\xE1 innumberables especies ex\xF3ticas de aves y vida marina, algunas \xFAnicas en el Per\xFA.',
+		subtitle: 'Las Islas Ballestas es el principal atractivo de Paracas. Usted encontrar\xE1 inumberables especies ex\xF3ticas de aves y vida marina, algunas \xFAnicas en el Per\xFA.',
 		url_image: 'images/activities/paracas/paracas_03_t.jpg',
-		description: 'Visitar estas islas es como participar de la filmacion de un documental de Nacional Geografic. Organizamos tours guiados desde nuestra oficina en Paracas, \xF3 lo recojemos desde su hotel y nuestro personal le acompa\xF1ar\xE1 hasta el muelle de Paracas. Este viaje de ida y vuelta es de dos horas a las islas m\xE1s famosas del Per\xFA, le permite disfrutar de magn\xEDficas formaciones de rocas esculpidas por la naturaleza y es el hogar de los ping\xFCinos de Humboldt, lobos marinos sudamericanos y una multitud de aves marinas. Estos servicios tambien estan disponibles en primera clase y servicios privados.Estos tours se realiza en lanchas rapidas con certificacion de Guardacostas del Per\xFA. Nuestros servicios de yates est\xE1n asegurados y registrados con todos los organismos pertinentes dispuesto por la ley. Contamos con personal capacitados por la marina de guerra.Capitan piloto y segundo piloto.',
+		description: 'Visitar estas islas es como participar en la filmacion de un documental de Nacional Geografic. Organizamos tours gu\xEDados desde nuestra oficina en Paracas, \xF3 lo recojemos desde su hotel y nuestro personal le acompa\xF1ar\xE1 hasta el muelle de Paracas. Este viaje de ida y vuelta es de dos horas a las islas m\xE1s famosas del Per\xFA, le permite disfrutar de magn\xEDficas formaciones de rocas esculpidas por la naturaleza y es el hogar de los ping\xFCinos de Humboldt, lobos marinos sudamericanos y una multitud de aves marinas. Estos servicios tambi\xE9n est\xE1n disponibles en primera clase y servicios privados. Estos tours se realizan en lanchas r\xE1pidas con certificaci\xF3n de Guardacostas del Per\xFA. Nuestros servicios de yates est\xE1n asegurados y registrados con todos los organismos pertinentes dispuesto por la ley. Contamos con personal capacitados por la marina de guerra. Capit\xE1n piloto y segundo piloto.',
 		yacht: 'yacht.png',
 		gallery: ['images/gallery/ballestas_01_t.jpg', 'images/gallery/ballestas_02_t.jpg', 'images/gallery/ballestas_06_t.jpg', 'images/gallery/ballestas_08_t.jpg', 'images/gallery/ballestas_11_t.jpg', 'images/gallery/ballestas_16_t.jpg', 'images/gallery/ballestas_15_t.jpg', 'images/gallery/ballestas_03_t.jpg', 'images/gallery/ballestas_04_t.jpg'],
 		additionalData: {
@@ -288,9 +288,9 @@ exports.default = {
 		id: 'kayak-paracas-bay',
 		title: 'Kayak en Bahia de Paracas',
 		shortTitle: 'Kayak en Bahia de Paracas',
-		subtitle: 'Explora la naturaleza y de la tranquilidad de la Bahía de Paracas en kayak',
+		subtitle: 'Explora la naturaleza y la tranquilidad de la Bahía de Paracas en kayak',
 		url_image: 'images/activities/paracas/kayak_1_t.jpg',
-		description: 'Una de las mejores maneras de disfrutar de la bah\xEDa y ver la vida silvestre es en kayak durante la quietud de la ma\xF1ana.\nDescubra la bah\xEDa con kayak para 2 personas y segue tu sentido y descubre en tu camino nuevas experiencias y como tambien podemos ayudarle a planear una ruta a usted y su equipo. Sabra donde desembarcar.',
+		description: 'Una de las mejores maneras de disfrutar de la bah\xEDa y ver la vida silvestre es en kayak durante la quietud de la ma\xF1ana.\nDescubra la bah\xEDa con kayak para 2 personas y siga sus sentidos en camino dentro de nuevas experiencias y tambi\xE9n podemos ayudarle a planear una ruta a usted y su equipo. Sabr\xE1 donde desembarcar.',
 		gallery: ['images/gallery/kayak_paracas_1.jpg', 'images/gallery/kayak_paracas_2.jpg'],
 		additionalData: {
 			include: ['Chaleco Salvavida', 'Kayak y remo(s)', 'Entrega de Kayak en la playa', 'Recogo del Kayak', 'Instrucciones'],
@@ -303,7 +303,7 @@ exports.default = {
 			price: {
 				currency: '$',
 				ammount: 20,
-				data: ['2-person kayak']
+				data: ['kayak de dos personas']
 			}
 
 		}
