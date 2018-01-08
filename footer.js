@@ -4522,7 +4522,7 @@ output += "\" height=\"50px\" width=\"50px\"/>\r\n\t\t\t\t\t\t </a>\r\n\t\t\t\t\
 }
 }
 frame = frame.pop();
-output += "\r\n\t\t\t\t </div>\r\n\t\t\t </div>\r\n\t\t\t <div class=\"col-md-4 col-sm-12\">\r\n\t\t\t\t\t <div class=\"banner-right floating-right\">\r\n\t\t\t\t\t <div class=\"tour-detail\">\r\n\t\t\t\t\t\t\t <div class=\"tour-info-title\">Include</div>\r\n\t\t\t\t\t\t\t <ul>\r\n\t\t\t\t\t\t\t\t\t ";
+output += "\r\n\t\t\t\t </div>\r\n\t\t\t </div>\r\n\t\t\t <div class=\"col-md-4 col-sm-12\">\r\n\t\t\t\t\t <div class=\"banner-right floating-right\">\r\n\t\t\t\t\t <div class=\"tour-detail\">\r\n\t\t\t\t\t\t\t <div class=\"tour-info-title\">Included</div>\r\n\t\t\t\t\t\t\t <ul>\r\n\t\t\t\t\t\t\t\t\t ";
 frame = frame.push();
 var t_15 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"include");
 if(t_15) {var t_14 = t_15.length;
@@ -4545,7 +4545,7 @@ output += "\r\n\t\t\t\t\t\t\t\t\t </li>\r\n\t\t\t\t\t\t\t\t\t ";
 frame = frame.pop();
 output += "\r\n\t\t\t\t\t\t\t </ul>\r\n\t\t\t\t\t\t\t ";
 if(runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"notInclude")) {
-output += "\r\n\t\t\t\t\t\t\t\t <div class=\"tour-info-title\">Not Include</div>\r\n\t\t\t\t\t\t\t\t <ul>\r\n\t\t\t\t\t\t\t\t\t\t ";
+output += "\r\n\t\t\t\t\t\t\t\t <div class=\"tour-info-title\">Not Included</div>\r\n\t\t\t\t\t\t\t\t <ul>\r\n\t\t\t\t\t\t\t\t\t\t ";
 frame = frame.push();
 var t_19 = runtime.memberLookup((runtime.memberLookup((t_8),"additionalData")),"notInclude");
 if(t_19) {var t_18 = t_19.length;
