@@ -4773,7 +4773,12 @@ output += "\">\r\n                    <input type=\"hidden\" id=\"rsv-lang\" cla
 output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
 output += "-modal\" id=\"request-reservation\" class=\"request-reservation btn btn-default request-btn\"><i class=\"fa fa-envelope-o\" aria-hidden=\"true\"></i>  Request Reservation</button>\r\n                    <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\r\n                </div>\r\n          </div>\r\n        </div>\r\n    </div>\r\n    <!-- Modal -->\r\n    <div id=\"sent-reservation\" class=\"modal\" role=\"dialog\">\r\n        <div class=\"modal-dialog\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\r\n                    <h3 class=\"modal-title\"><i class=\"fa fa-check\" aria-hidden=\"true\"></i> Request Sent</h3>\r\n                    <div class=\"price-holder\"><span class=\"form_price\">We will contact you soon</span></div>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button type=\"button\" class=\"btn btn-default request-btn\" data-dismiss=\"modal\">Ok</button>\r\n                </div>\r\n          </div>\r\n        </div>\r\n    </div>\r\n\r\n\t\t";
 if(runtime.memberLookup((t_8),"itenerary")) {
-output += "\r\n\t\t\t<div class=\"row tour-container\">\r\n\t\t\t\t\t<div style=\"padding-right:10px; padding-left:10px;\">\r\n\t\t\t\t \t\t<h3 style=\"margin-top:0px;\">Itenerary</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t ";
+output += "\r\n\t\t\t<div class=\"row tour-container\">\r\n\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"itenerary")),0)),"hasTitle")) {
+output += "\r\n\t\t\t\t\t<div style=\"padding-right:10px; padding-left:10px;\">\r\n\t\t\t\t \t\t<h3 style=\"margin-top:0px;\">Itenerary</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t ";
 frame = frame.push();
 var t_27 = runtime.memberLookup((t_8),"itenerary");
 if(t_27) {var t_26 = t_27.length;
@@ -4787,7 +4792,9 @@ frame.set("loop.revindex0", t_26 - t_25 - 1);
 frame.set("loop.first", t_25 === 0);
 frame.set("loop.last", t_25 === t_26 - 1);
 frame.set("loop.length", t_26);
-output += "\r\n\t\t\t\t\t <div class=\"col-md-6\">\r\n\t\t\t\t\t\t <table class=\"schedule table\">\r\n\t\t\t\t\t\t\t <tbody>\r\n\t\t\t\t\t\t\t\t <tr>\r\n\t\t\t\t\t\t\t\t\t <th colspan=\"2\">";
+output += "\r\n\t\t\t\t\t <div class=\"col-md-6 ";
+output += runtime.suppressValue(runtime.memberLookup((t_28),"className"), env.opts.autoescape);
+output += "\">\r\n\t\t\t\t\t\t <table class=\"schedule table\">\r\n\t\t\t\t\t\t\t <tbody>\r\n\t\t\t\t\t\t\t\t <tr>\r\n\t\t\t\t\t\t\t\t\t <th colspan=\"2\">";
 output += runtime.suppressValue(runtime.memberLookup((t_28),"title"), env.opts.autoescape);
 output += "</th>\r\n\t\t\t\t\t\t\t\t </tr>\r\n\t\t\t\t\t\t\t\t ";
 frame = frame.push();
@@ -4850,7 +4857,7 @@ output += "</h4>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</p>\r\n\t\t\t</div>\r\n\t\t</di
 }
 }
 frame = frame.pop();
-output += "\r\n\t <hr/>\r\n<div class=\"row additional-info\">\r\n\t <div class=\"col-md-12\">\r\n\t\t\t<h2 id=\"additional-info\">Additional Information</h2>\r\n\t\t\t <ul>\r\n\t\t\t\t\t <li>All your personal information is required at the moment of your booking.</li>\r\n\t\t\t\t\t <li>Confirmation of the excursion will be received at time of booking.</li>\r\n\t\t\t\t\t <li>All tours are operated in English unless otherwise stated.</li>\r\n\t\t\t </ul>\r\n\r\n\t\t\t <h4>Travel voucher:</h4>\r\n\t\t\t <ul>\r\n\t\t\t\t <li>You will receive an electronic voucher via e mail once you booking is confirmed.</li>\r\n\t\t\t\t <li>For each confirmed booking you are required to print your electronic voucher for presentation at the start of the excursion.</li>\r\n\t\t\t\t <li>The electronic voucher acts a confirmation for all services you request.</li>\r\n\t\t\t </ul>\r\n\r\n\t\t\t <h4>Local operator information:</h4>\r\n\t\t\t <ul>\r\n\t\t\t\t <li>We will send you complete operator information, including phone numbers at your destination.</li>\r\n\t\t\t\t <li>Our managers select only the most experienced and reliable operators in each destination, removing the guesswork for you, and ensuring your peace of mind.</li>\r\n\t\t\t </ul>\r\n\t </div>\r\n</div>\r\n\r\n</div>\r\n";
+output += "\r\n\t <hr/>\r\n<div class=\"row additional-info\">\r\n\t <div class=\"col-md-12\">\r\n\t\t\t<h2 id=\"additional-info\">Additional Information</h2>\r\n\t\t\t <ul>\r\n\t\t\t\t\t <li>All your personal information is required at the moment of your booking.</li>\r\n\t\t\t\t\t <li>Confirmation of the excursion will be received at time of booking.</li>\r\n\t\t\t\t\t <li>All tours are operated in English unless otherwise stated.</li>\r\n\t\t\t </ul>\r\n\r\n\t\t\t <h4>Travel voucher:</h4>\r\n\t\t\t <ul>\r\n\t\t\t\t <li>You will receive an electronic voucher via e mail once your booking is confirmed.</li>\r\n\t\t\t\t <li>For each confirmed booking you are required to print your electronic voucher for presentation at the start of the excursion.</li>\r\n\t\t\t\t <li>The electronic voucher acts a confirmation for all services you request.</li>\r\n\t\t\t </ul>\r\n\r\n\t\t\t <h4>Local operator information:</h4>\r\n\t\t\t <ul>\r\n\t\t\t\t <li>We will send you complete operator information, including phone numbers at your destination.</li>\r\n\t\t\t\t <li>Our managers select only the most experienced and reliable operators in each destination, removing the guesswork for you, and ensuring your peace of mind.</li>\r\n\t\t\t </ul>\r\n\t </div>\r\n</div>\r\n\r\n</div>\r\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -5093,7 +5100,12 @@ output += "\">\r\n                    <input type=\"hidden\" id=\"rsv-lang\" cla
 output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
 output += "-modal\" id=\"request-reservation\" class=\"request-reservation btn btn-default request-btn\"><i class=\"fa fa-envelope-o\" aria-hidden=\"true\"></i>  Request Reservation</button>\r\n                    <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\r\n                </div>\r\n          </div>\r\n        </div>\r\n    </div>\r\n    <!-- Modal -->\r\n    <div id=\"sent-reservation\" class=\"modal\" role=\"dialog\">\r\n        <div class=\"modal-dialog\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\r\n                    <h3 class=\"modal-title\"><i class=\"fa fa-check\" aria-hidden=\"true\"></i> Request Sent</h3>\r\n                    <div class=\"price-holder\"><span class=\"form_price\">We will contact you soon</span></div>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button type=\"button\" class=\"btn btn-default request-btn\" data-dismiss=\"modal\">Ok</button>\r\n                </div>\r\n          </div>\r\n        </div>\r\n    </div>\r\n\r\n\t ";
 if(runtime.memberLookup((t_8),"itenerary")) {
-output += "\r\n\t\t <div class=\"row tour-container\">\r\n\t\t\t\t <div style=\"padding-right:10px; padding-left:10px;\">\r\n\t\t\t\t\t <h3 style=\"margin-top:0px;\">Itinerario</h3>\r\n\t\t\t\t </div>\r\n\t\t\t\t";
+output += "\r\n\t\t <div class=\"row tour-container\">\r\n\t\t \t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"itenerary")),0)),"hasTitle")) {
+output += "\r\n\t\t\t\t <div style=\"padding-right:10px; padding-left:10px;\">\r\n\t\t\t\t\t <h3 style=\"margin-top:0px;\">Itinerario</h3>\r\n\t\t\t\t </div>\r\n\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t";
 frame = frame.push();
 var t_27 = runtime.memberLookup((t_8),"itenerary");
 if(t_27) {var t_26 = t_27.length;
@@ -5107,7 +5119,9 @@ frame.set("loop.revindex0", t_26 - t_25 - 1);
 frame.set("loop.first", t_25 === 0);
 frame.set("loop.last", t_25 === t_26 - 1);
 frame.set("loop.length", t_26);
-output += "\r\n\t\t\t\t\t<div class=\"col-md-6\">\r\n\t\t\t\t\t\t<table class=\"schedule\">\r\n\t\t\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t<th colspan=\"2\">";
+output += "\r\n\t\t\t\t\t<div class=\"col-md-6 ";
+output += runtime.suppressValue(runtime.memberLookup((t_28),"className"), env.opts.autoescape);
+output += "\">\r\n\t\t\t\t\t\t<table class=\"schedule\">\r\n\t\t\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t<th colspan=\"2\">";
 output += runtime.suppressValue(runtime.memberLookup((t_28),"title"), env.opts.autoescape);
 output += "</th>\r\n\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t\t";
 frame = frame.push();

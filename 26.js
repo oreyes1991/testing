@@ -38,6 +38,7 @@ exports.default = {
 			}
 		},
 		itenerary: [{
+			hasTitle: true,
 			title: 'Día 1',
 			data: [['6:00am', 'Traslado Hotel a estacion de bus Cruz del Sur'], ['6:45am - 11:20am', 'Servicio de bus a Paracas en primera clase (3 horas 35 minutos) desayuno, WiFi, peliculas, aire acondicionado, 160 grados-asiento reclinable, servicio a bordo'], ['11:30am', 'Traslado al aereopuerto (15 minutos)'], ['12:00pm - 1:30pm', 'Sobrevuelo a las Lineas de Nazca en avionetas Cessna Gran Caravan asientos para 12 personas. (90 minutos)'], ['1:45pm', 'Traslado a Paracas - check-in Hotel y tiempo libre para el almuerzo'], ['3:30pm - 5:30pm', 'Tour guiado a la Reserva Nacional de Paracas(2 horas)']]
 		}, {
@@ -62,6 +63,7 @@ exports.default = {
 		gallery: ['images/gallery/taxi_01_t.jpg', 'images/package/aranwa_paracas_01_p.jpg', 'images/package/aranwa_paracas_02.jpg', 'images/package/aranwa_paracas_03.jpg', 'images/package/aranwa_paracas_04.jpg', 'images/package/nazca_flight_01_p.jpg', 'images/package/nazca_flights_03.jpg', 'images/package/nazca_flights_04.jpg', 'images/gallery/ballestas_04_t.jpg', 'images/gallery/ballestas_10_t.jpg', 'images/gallery/ballestas_12_t.jpg', 'images/gallery/ballestas_14_t.jpg', 'images/gallery/ballestas_15_t.jpg', 'images/gallery/ballestas_18_t.jpg', 'images/gallery/ballestas_19_t.jpg'],
 		itenerary: [{
 			title: 'Día 1',
+			hasTitle: true,
 			data: [['8:00am - 11:00am', 'Servicio VIP Traslado del Hotel (Lima) a Paracas (3 horas)'], ['11:30am', '	Check in en el hotel y traslado privado al aeropuerto (15 minutos)'], ['12:00pm - 1:30pm', 'Sobrevuelo a las Lineas de Nasca en avionetas Cessna Gran Caravans asientos para 12 personas. (90 minutos)'], ['1:45pm', 'Traslado a Paracas - tiempo libre para almorzar en Aranwa restaurant'], ['3:30pm - 5:30pm', 'Servicio Privado con Guia a la Reserva de Paracas (2 horas)']]
 		}, {
 			title: 'Día 2',
