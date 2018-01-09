@@ -107,14 +107,14 @@ exports.default = {
 	}, {
 		id: 'islas-ballestas-cruise-member-first-class',
 		title: 'Tour primera clase Islas ballestas para miembros de cruceros',
-		subtitle: 'Upgrade a primera clase opcional 110 USD por persona (20 pasajeros máximo)',
+		subtitle: 'Upgrade a primera clase opcional',
 		url_image: 'images/tours/paracas/big-cruise2.png',
 		classes: 'cruise-members-only',
 		description: 'La opci\xF3n de primera clase es la elecci\xF3n preferida de los pasajeros de crucero debido a sus amplios asientos que le da a los pasajeros m\xE1s espacio para disfrutar de la vida marina en acci\xF3n y tomar fotos c\xF3modamente.',
 		yacht: 'yacht2.png',
 		gallery: ['images/gallery/ballestas_13_t.jpg', 'images/gallery/ballestas_02_t.jpg', 'images/gallery/ballestas_03_t.jpg', 'images/gallery/ballestas_04_t.jpg', 'images/gallery/ballestas_15_t.jpg'],
 		additionalData: {
-			include: ['Max participantes 18', 'Doble asiento', 'Entradas', 'Impuesto del puerto', 'Seguro personal en caso de heridas', 'Traslado ida y vuelta desde el puerto', 'Transportes', 'Guía bilingüe'],
+			include: ['Limitado a 18 pasajeros', 'Doble asiento', 'Entradas', 'Impuesto del puerto', 'Seguro personal en caso de heridas', 'Traslado ida y vuelta desde el puerto', 'Transportes', 'Guía bilingüe'],
 			notInclude: ['Extras y propinas'],
 			duration: {
 				subtitle: '5-6 horas'
@@ -237,31 +237,59 @@ exports.default = {
 				data: []
 			}
 
-		}
-	}, {
-		id: 'islas-ballestas',
-		title: 'Islas Ballestas',
-		shortTitle: 'Islas Ballestas',
-		subtitle: 'Las Islas Ballestas es el principal atractivo de Paracas. Usted encontrar\xE1 inumberables especies ex\xF3ticas de aves y vida marina, algunas \xFAnicas en el Per\xFA.',
-		url_image: 'images/activities/paracas/paracas_03_t.jpg',
-		description: 'Visitar estas islas es como participar en la filmacion de un documental de Nacional Geografic. Organizamos tours gu\xEDados desde nuestra oficina en Paracas, \xF3 lo recojemos desde su hotel y nuestro personal le acompa\xF1ar\xE1 hasta el muelle de Paracas. Este viaje de ida y vuelta es de dos horas a las islas m\xE1s famosas del Per\xFA, le permite disfrutar de magn\xEDficas formaciones de rocas esculpidas por la naturaleza y es el hogar de los ping\xFCinos de Humboldt, lobos marinos sudamericanos y una multitud de aves marinas. Estos servicios tambi\xE9n est\xE1n disponibles en primera clase y servicios privados. Estos tours se realizan en lanchas r\xE1pidas con certificaci\xF3n de Guardacostas del Per\xFA. Nuestros servicios de yates est\xE1n asegurados y registrados con todos los organismos pertinentes dispuesto por la ley. Contamos con personal capacitados por la marina de guerra. Capit\xE1n piloto y segundo piloto.',
-		yacht: 'yacht.png',
-		gallery: ['images/gallery/ballestas_01_t.jpg', 'images/gallery/ballestas_02_t.jpg', 'images/gallery/ballestas_06_t.jpg', 'images/gallery/ballestas_08_t.jpg', 'images/gallery/ballestas_11_t.jpg', 'images/gallery/ballestas_16_t.jpg', 'images/gallery/ballestas_15_t.jpg', 'images/gallery/ballestas_03_t.jpg', 'images/gallery/ballestas_04_t.jpg'],
-		additionalData: {
-			include: ['40 Pax. capacidad', 'Traslado al muelle de Paracas', 'Transporte en lancha', 'Otro lancha de emergencia preparado y listo', '2 Pilotos abordo', 'Entrada a la Reserva'],
-			notInclude: ['Extras y propinas', 'Alojamiento'],
-			duration: {
-				subtitle: '2 horas',
-				data: ['Salidas diarias: 8am and 10am']
-			},
-			recommendations: ['Traer crema solar, gafas de sol y una gorra.', 'Llevar ropa abrigadora o chaqueta lijera'],
-			price: {
-				currency: '$',
-				ammount: 25,
-				data: ['Hay descuentos para grupos']
-			}
-
-		}
+		} /*,
+    {
+    		id:'islas-ballestas',
+    		title:'Islas Ballestas',
+    		shortTitle:'Islas Ballestas',
+    		subtitle:`Las Islas Ballestas es el principal atractivo de Paracas. Usted encontrará inumberables especies exóticas de aves y vida marina, algunas únicas en el Perú.`,
+    		url_image:'images/activities/paracas/paracas_03_t.jpg',
+    		description:`Visitar estas islas es como participar en la filmacion de un documental de Nacional Geografic. Organizamos tours guíados desde nuestra oficina en Paracas, ó lo recojemos desde su hotel y nuestro personal le acompañará hasta el muelle de Paracas. Este viaje de ida y vuelta es de dos horas a las islas más famosas del Perú, le permite disfrutar de magníficas formaciones de rocas esculpidas por la naturaleza y es el hogar de los pingüinos de Humboldt, lobos marinos sudamericanos y una multitud de aves marinas. Estos servicios también están disponibles en primera clase y servicios privados. Estos tours se realizan en lanchas rápidas con certificación de Guardacostas del Perú. Nuestros servicios de yates están asegurados y registrados con todos los organismos pertinentes dispuesto por la ley. Contamos con personal capacitados por la marina de guerra. Capitán piloto y segundo piloto.`,
+    		yacht: 'yacht.png',
+    		gallery:[
+    			'images/gallery/ballestas_01_t.jpg',
+    			'images/gallery/ballestas_02_t.jpg',
+    			'images/gallery/ballestas_06_t.jpg',
+    			'images/gallery/ballestas_08_t.jpg',
+    			'images/gallery/ballestas_11_t.jpg',
+    			'images/gallery/ballestas_16_t.jpg',
+    			'images/gallery/ballestas_15_t.jpg',
+    			'images/gallery/ballestas_03_t.jpg',
+    			'images/gallery/ballestas_04_t.jpg',
+    		],
+    		additionalData:
+    		{
+    				include:[
+    					'40 Pax. capacidad',
+    					'Traslado al muelle de Paracas',
+    					'Transporte en lancha',
+    					'Otro lancha de emergencia preparado y listo',
+    					'2 Pilotos abordo',
+    					'Entrada a la Reserva',
+    				],
+    				notInclude:[
+    					'Extras y propinas',
+    					'Alojamiento'
+    				],
+    				duration:{
+    					subtitle:'2 horas',
+    					data:[
+    						'Salidas diarias: 8am and 10am'
+    					]
+    				},
+    				recommendations:[
+    					'Traer crema solar, gafas de sol y una gorra.',
+    					'Llevar ropa abrigadora o chaqueta lijera',
+    				],
+    				price:{
+    						currency:'$',
+    						ammount:25,
+    						data:[
+    							'Hay descuentos para grupos'
+    						]
+    				}
+    				}
+    }*/
 	}, {
 		id: 'dune-buggy-sandboard',
 		title: 'Tubular Arenero y Sandboard',

@@ -34,7 +34,7 @@ exports.default = {
             recommendations: ['Bring sun creme, hats, sunglasses.', 'Bring a light jacket'],
             price: {
                 currency: '$',
-                ammount: 565,
+                ammount: 1600,
                 data: ['A minimum of 2 participants are required']
             }
         },
