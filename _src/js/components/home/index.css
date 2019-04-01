@@ -1,0 +1,28 @@
+main-home {
+	display: grid;
+	grid-template-columns: 1fr 30%;
+	height: 100%;
+}
+
+.text-content {
+	display: grid;
+	grid-template-columns: 1.6fr 3fr;
+	grid-column-gap: 1vw;
+	grid-row-gap: 1vh;
+	margin: 1vw;
+	text-align: justify;
+}
+
+.box-img img {
+	width: 100%;
+	height: auto;
+	border: 1px solid #bfc0bf;
+	border-radius: 3px;
+}
+
+.actions-box {
+	display: grid;
+	grid-template-columns: 6em 10em 5em;
+	place-self: start end;
+	grid-template-rows: 5vh;
+}

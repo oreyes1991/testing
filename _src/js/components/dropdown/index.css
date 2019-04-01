@@ -1,0 +1,32 @@
+dropdown-menu {
+	padding: 0 1em 1em;
+	font-family: 'Lato', sans-serif;
+	cursor: default;
+}
+
+dropdown-menu.complex > div {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	height: 100%;
+}
+
+dropdown-menu.simple > div {
+	display: grid;
+	height: 100%;
+}
+
+.dropdown-complex-options {
+	display: grid;
+	grid-row-gap: .5em;
+}
+.dropdown-complex-options > a {
+	color: #fff;
+	font-size: 14px;
+	text-decoration: none;
+ }
+
+.dropdown-section a {
+	color: #fff;
+	font-size: 14px;
+	text-decoration: none;
+}

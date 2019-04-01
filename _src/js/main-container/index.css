@@ -1,0 +1,11 @@
+main-container {
+	display: grid;
+	grid-template-columns: 10% 1fr 10%;
+	height: 100vh;
+}
+
+#container {
+	grid-area: 1 / 2;
+	display: grid;
+	grid-template-rows: .1fr 1fr;
+}
